@@ -1,0 +1,235 @@
+[
+  {
+    "title": "1st Semester (Required)",
+    "courses": [
+      {
+        "code": "CEN100",
+        "title": "Introduction to Engineering"
+      },
+      {
+        "code": "CEN199",
+        "title": "Writing Skills"
+      },
+      {
+        "code": "CHY102",
+        "title": "General Chemistry"
+      },
+      {
+        "code": "MTH140",
+        "title": "Calculus I"
+      },
+      {
+        "code": "MTH141",
+        "title": "Linear Algebra"
+      },
+      {
+        "code": "PCS211",
+        "title": "Physics: Mechanics"
+      }
+    ]
+  },
+  {
+    "title": "2nd Semester (Required)",
+    "courses": [
+      {
+        "code": "CPS125",
+        "title": "Digital Computation and Programming"
+      },
+      {
+        "code": "CVL207",
+        "title": "Graphics"
+      },
+      {
+        "code": "ECN801",
+        "title": "Principles of Engineering Economics"
+      },
+      {
+        "code": "MTH240",
+        "title": "Calculus II"
+      },
+      {
+        "code": "MTL200",
+        "title": "Materials Science Fundamentals"
+      },
+      {
+        "code": "PCS125",
+        "title": "Physics: Waves and Fields"
+      }
+    ]
+  },
+  {
+    "title": "3rd Semester (Required)",
+    "courses": [
+      {
+        "code": "CVL320",
+        "title": "Strength of Materials I"
+      },
+      {
+        "code": "CVL323",
+        "title": "Fundamentals of Surveying"
+      },
+      {
+        "code": "CVL405",
+        "title": "Probability and Statistics for Engineers"
+      },
+      {
+        "code": "MEC522",
+        "title": "Fluid Mechanics"
+      },
+      {
+        "code": "MTH425",
+        "title": "Differential Equations and Vector Calculus"
+      }
+    ]
+  },
+  {
+    "title": "4th Semester (Required)",
+    "courses": [
+      {
+        "code": "CMN432",
+        "title": "Communication in the Engineering Professions"
+      },
+      {
+        "code": "CVL316",
+        "title": "Transportation Engineering"
+      },
+      {
+        "code": "CVL420",
+        "title": "Strength of Materials II"
+      },
+      {
+        "code": "CVL423",
+        "title": "Geology for Engineers"
+      },
+      {
+        "code": "CVL434",
+        "title": "Geotechnical Properties of Soils"
+      },
+      {
+        "code": "CVL502",
+        "title": "Hydraulics Engineering"
+      }
+    ]
+  },
+  {
+    "title": "5th Semester (Required)",
+    "courses": [
+      {
+        "code": "CVL352",
+        "title": "Geomatics Measurement Techniques"
+      },
+      {
+        "code": "CVL400",
+        "title": "Hydrology and Water Resources"
+      },
+      {
+        "code": "CVL500",
+        "title": "Introduction to Structural Design"
+      },
+      {
+        "code": "CVL533",
+        "title": "Concrete Materials"
+      },
+      {
+        "code": "MTH510",
+        "title": "Numerical Analysis"
+      }
+    ]
+  },
+  {
+    "title": "6th Semester (Required)",
+    "courses": [
+      {
+        "code": "CVL354",
+        "title": "Remote Sensing and Image Analysis"
+      },
+      {
+        "code": "CVL602",
+        "title": "Municipal Engineering"
+      },
+      {
+        "code": "CVL609",
+        "title": "Civil Engineering Systems"
+      },
+      {
+        "code": "CVL735",
+        "title": "Highway Design"
+      },
+      {
+        "code": "CVL742",
+        "title": "Project Management"
+      }
+    ]
+  },
+  {
+    "title": "7th Semester (Required / Streams)",
+    "courses": [
+      {
+        "code": "CVL650",
+        "title": "Satellite Geodesy"
+      },
+      {
+        "code": "CVL71A",
+        "title": "Environment Capstone Design Project (part A)"
+      },
+      {
+        "code": "CVL72A",
+        "title": "Transportation Capstone Design Project (part A)"
+      }
+    ]
+  },
+  {
+    "title": "7th & 8th Semester (Core Electives / Streams)",
+    "courses": [
+      {
+        "code": "CVL903",
+        "title": "Water Resources Engineering"
+      },
+      {
+        "code": "CVL920",
+        "title": "Water and Wastewater Treatment"
+      },
+      {
+        "code": "CVL902",
+        "title": "Traffic Operations and Management"
+      },
+      {
+        "code": "CVL910",
+        "title": "Transportation Planning"
+      },
+      {
+        "code": "CVL901",
+        "title": "Municipal Solid Waste Management"
+      },
+      {
+        "code": "CVL914",
+        "title": "Pavement Materials and Design"
+      }
+    ]
+  },
+  {
+    "title": "8th Semester (Required & Notes)",
+    "courses": [
+      {
+        "code": "CEN800",
+        "title": "Law and Ethics in Engineering Practice"
+      },
+      {
+        "code": "CVL300",
+        "title": "Environmental Science and Impact Assessment"
+      },
+      {
+        "code": "CVL736",
+        "title": "Geospatial Information Systems"
+      },
+      {
+        "code": "CVL71B",
+        "title": "Environment Capstone Design Project (part B)"
+      },
+      {
+        "code": "CVL72B",
+        "title": "Transportation Capstone Design Project (part B)"
+      }
+    ]
+  }
+]

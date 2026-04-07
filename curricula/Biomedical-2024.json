@@ -1,0 +1,263 @@
+[
+  {
+    "title": "1st Semester (Required)",
+    "courses": [
+      {
+        "code": "CEN100",
+        "title": "Introduction to Engineering"
+      },
+      {
+        "code": "CEN199",
+        "title": "Writing Skills"
+      },
+      {
+        "code": "CHY102",
+        "title": "General Chemistry"
+      },
+      {
+        "code": "MTH140",
+        "title": "Calculus I"
+      },
+      {
+        "code": "MTH141",
+        "title": "Linear Algebra"
+      },
+      {
+        "code": "PCS211",
+        "title": "Physics: Mechanics"
+      }
+    ]
+  },
+  {
+    "title": "2nd Semester (Required)",
+    "courses": [
+      {
+        "code": "BME100",
+        "title": "Introduction to Biomedical Engineering"
+      },
+      {
+        "code": "CPS188",
+        "title": "Computer Programming Fundamentals"
+      },
+      {
+        "code": "ECN801",
+        "title": "Principles of Engineering Economics"
+      },
+      {
+        "code": "ELE202",
+        "title": "Electric Circuit Analysis"
+      },
+      {
+        "code": "MTH240",
+        "title": "Calculus II"
+      },
+      {
+        "code": "PCS125",
+        "title": "Physics: Waves and Fields"
+      }
+    ]
+  },
+  {
+    "title": "3rd Semester (Required)",
+    "courses": [
+      {
+        "code": "BLG143",
+        "title": "Biology I"
+      },
+      {
+        "code": "BME229",
+        "title": "Biomedical Physics"
+      },
+      {
+        "code": "BME323",
+        "title": "Statics and Mechanics of Materials"
+      },
+      {
+        "code": "BME328",
+        "title": "Digital Systems"
+      },
+      {
+        "code": "MTH425",
+        "title": "Differential Equations and Vector Calculus"
+      }
+    ]
+  },
+  {
+    "title": "4th Semester (Required)",
+    "courses": [
+      {
+        "code": "BLG601",
+        "title": "Physiology"
+      },
+      {
+        "code": "BME406",
+        "title": "Biomechanics"
+      },
+      {
+        "code": "BME423",
+        "title": "Biomaterials"
+      },
+      {
+        "code": "BME434",
+        "title": "Circuits, Devices, and Sensors"
+      },
+      {
+        "code": "CMN432",
+        "title": "Communication in the Engineering Professions"
+      }
+    ]
+  },
+  {
+    "title": "5th Semester (Required)",
+    "courses": [
+      {
+        "code": "BLG701",
+        "title": "Anatomy"
+      },
+      {
+        "code": "BME501",
+        "title": "Bioinformatics"
+      },
+      {
+        "code": "BME506",
+        "title": "Introduction to Software"
+      },
+      {
+        "code": "BME516",
+        "title": "Fluid Mechanics"
+      },
+      {
+        "code": "BME532",
+        "title": "Signals and Systems I"
+      },
+      {
+        "code": "BME538",
+        "title": "Microprocessor Systems"
+      }
+    ]
+  },
+  {
+    "title": "6th Semester (Required)",
+    "courses": [
+      {
+        "code": "BME632",
+        "title": "Signals and Systems II"
+      },
+      {
+        "code": "BME634",
+        "title": "Electrical Machines and Actuators"
+      },
+      {
+        "code": "BME639",
+        "title": "Control Systems and Bio-Robotics"
+      },
+      {
+        "code": "BME674",
+        "title": "Biomedical Instrumentation"
+      },
+      {
+        "code": "MTH410",
+        "title": "Statistics"
+      }
+    ]
+  },
+  {
+    "title": "7th Semester (Required & Liberal Studies)",
+    "courses": [
+      {
+        "code": "BME70A",
+        "title": "Biomedical Engineering Capstone Design (part A)"
+      },
+      {
+        "code": "ENG503",
+        "title": "Science Fiction (Liberal Studies)"
+      },
+      {
+        "code": "GEO702",
+        "title": "Technology and the Contemporary Environment"
+      },
+      {
+        "code": "HST701",
+        "title": "Scientific Technology and Modern Society"
+      },
+      {
+        "code": "PHL709",
+        "title": "Religion, Science and Philosophy"
+      },
+      {
+        "code": "POL507",
+        "title": "Power, Change and Technology"
+      }
+    ]
+  },
+  {
+    "title": "7th Semester (Core Electives / Options)",
+    "courses": [
+      {
+        "code": "BME703",
+        "title": "Tissue Engineering"
+      },
+      {
+        "code": "BME704",
+        "title": "Radiation Therapy Devices"
+      },
+      {
+        "code": "BME705",
+        "title": "Rehabilitation Engineering"
+      },
+      {
+        "code": "BME714",
+        "title": "Medical Robotics"
+      },
+      {
+        "code": "BME772",
+        "title": "Biomedical Signal Analysis"
+      },
+      {
+        "code": "BME777",
+        "title": "Emerging Topics in Biomedical Engineering"
+      }
+    ]
+  },
+  {
+    "title": "8th Semester (Capstone & Core Electives)",
+    "courses": [
+      {
+        "code": "BME70B",
+        "title": "Biomedical Engineering Capstone Design (part B)"
+      },
+      {
+        "code": "CEN800",
+        "title": "Law and Ethics in Engineering Practice"
+      },
+      {
+        "code": "BME802",
+        "title": "Human-Computer Interaction"
+      },
+      {
+        "code": "BME803",
+        "title": "Cardiovascular Biomechanics"
+      },
+      {
+        "code": "BME809",
+        "title": "Biomedical Systems Modelling"
+      },
+      {
+        "code": "BME872",
+        "title": "Biomedical Image Analysis"
+      },
+      {
+        "code": "BME804",
+        "title": "Design of Bio-MEMS"
+      },
+      {
+        "code": "BME808",
+        "title": "Computations in Genetic Engineering"
+      },
+      {
+        "code": "CEN810",
+        "title": "Selected Topics in Engineering"
+      }
+    ]
+  }
+]
