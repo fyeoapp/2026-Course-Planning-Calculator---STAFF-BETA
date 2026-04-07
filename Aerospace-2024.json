@@ -1,0 +1,292 @@
+[
+  {
+    "title": "1st Semester (Required)",
+    "courses": [
+      {
+        "code": "CEN100",
+        "title": "Introduction to Engineering"
+      },
+      {
+        "code": "CEN199",
+        "title": "Writing Skills"
+      },
+      {
+        "code": "CHY102",
+        "title": "General Chemistry"
+      },
+      {
+        "code": "MTH140",
+        "title": "Calculus I"
+      },
+      {
+        "code": "MTH141",
+        "title": "Linear Algebra"
+      },
+      {
+        "code": "PCS211",
+        "title": "Physics: Mechanics"
+      }
+    ]
+  },
+  {
+    "title": "2nd Semester (Required)",
+    "courses": [
+      {
+        "code": "AER222",
+        "title": "Engineering Design and Graphical Communication"
+      },
+      {
+        "code": "CPS125",
+        "title": "Digital Computation and Programming"
+      },
+      {
+        "code": "ECN801",
+        "title": "Principles of Engineering Economics"
+      },
+      {
+        "code": "MTH240",
+        "title": "Calculus II"
+      },
+      {
+        "code": "MTL200",
+        "title": "Materials Science Fundamentals"
+      },
+      {
+        "code": "PCS125",
+        "title": "Physics: Waves and Fields"
+      }
+    ]
+  },
+  {
+    "title": "3rd Semester (Required)",
+    "courses": [
+      {
+        "code": "AER309",
+        "title": "Basic Thermodynamics"
+      },
+      {
+        "code": "AER316",
+        "title": "Fluid Mechanics"
+      },
+      {
+        "code": "AER318",
+        "title": "Dynamics"
+      },
+      {
+        "code": "AER320",
+        "title": "Statics and Intro to Strength of Materials"
+      },
+      {
+        "code": "CMN432",
+        "title": "Communication in the Engineering Professions"
+      },
+      {
+        "code": "MTH425",
+        "title": "Differential Equations and Vector Calculus"
+      }
+    ]
+  },
+  {
+    "title": "4th Semester (Required)",
+    "courses": [
+      {
+        "code": "AER403",
+        "title": "Mechanisms and Vibrations"
+      },
+      {
+        "code": "AER404",
+        "title": "Intro to Aerospace Engineering Design"
+      },
+      {
+        "code": "AER416",
+        "title": "Flight Mechanics"
+      },
+      {
+        "code": "AER423",
+        "title": "Thermodynamics and Heat Transfer"
+      },
+      {
+        "code": "EES512",
+        "title": "Electric Circuits"
+      },
+      {
+        "code": "MTH410",
+        "title": "Statistics"
+      }
+    ]
+  },
+  {
+    "title": "5th Semester (Required)",
+    "courses": [
+      {
+        "code": "AER504",
+        "title": "Aerodynamics"
+      },
+      {
+        "code": "AER507",
+        "title": "Materials and Manufacturing"
+      },
+      {
+        "code": "AER520",
+        "title": "Stress Analysis"
+      },
+      {
+        "code": "EES612",
+        "title": "Electric Machines and Actuators"
+      },
+      {
+        "code": "MTH510",
+        "title": "Numerical Analysis"
+      }
+    ]
+  },
+  {
+    "title": "6th Semester (Required)",
+    "courses": [
+      {
+        "code": "AER509",
+        "title": "Control Systems"
+      },
+      {
+        "code": "AER606",
+        "title": "Component Design and Material Selection"
+      },
+      {
+        "code": "AER615",
+        "title": "Aircraft Performance"
+      },
+      {
+        "code": "AER621",
+        "title": "Aerospace Structural Design"
+      },
+      {
+        "code": "AER622",
+        "title": "Gas Dynamics"
+      }
+    ]
+  },
+  {
+    "title": "6th Semester (Stream Electives)",
+    "courses": [
+      {
+        "code": "AER626",
+        "title": "Applied Finite Elements"
+      },
+      {
+        "code": "AER699",
+        "title": "Aerospace Sensors"
+      },
+      {
+        "code": "AER721",
+        "title": "Orbital Dynamics"
+      }
+    ]
+  },
+  {
+    "title": "7th Semester (Liberal Studies & Stream Requirements)",
+    "courses": [
+      {
+        "code": "ENG503",
+        "title": "Science Fiction (Liberal Studies)"
+      },
+      {
+        "code": "GEO702",
+        "title": "Technology and the Contemporary Environment"
+      },
+      {
+        "code": "HST701",
+        "title": "Scientific Technology and Modern Society"
+      },
+      {
+        "code": "PHL709",
+        "title": "Religion, Science and Philosophy"
+      },
+      {
+        "code": "POL507",
+        "title": "Power, Change and Technology"
+      },
+      {
+        "code": "AER715",
+        "title": "Avionics and Systems"
+      },
+      {
+        "code": "AER716",
+        "title": "Aircraft Stability and Control"
+      },
+      {
+        "code": "AER722",
+        "title": "Aeroelasticity"
+      },
+      {
+        "code": "EES508",
+        "title": "Digital Systems"
+      },
+      {
+        "code": "AER723",
+        "title": "Introduction to Space Systems Design"
+      },
+      {
+        "code": "AER821",
+        "title": "Spacecraft Attitude Dynamics and Control"
+      }
+    ]
+  },
+  {
+    "title": "7th Semester (Stream Electives / Core Electives)",
+    "courses": [
+      {
+        "code": "AER817",
+        "title": "Systems Engineering"
+      },
+      {
+        "code": "AER827",
+        "title": "Composite Materials"
+      },
+      {
+        "code": "AER850",
+        "title": "Introduction to Machine Learning"
+      }
+    ]
+  },
+  {
+    "title": "8th Semester (Required & Design Projects)",
+    "courses": [
+      {
+        "code": "AER710",
+        "title": "Propulsion"
+      },
+      {
+        "code": "CEN800",
+        "title": "Law and Ethics in Engineering Practice"
+      },
+      {
+        "code": "AER627",
+        "title": "Introduction to Space Robotics"
+      },
+      {
+        "code": "AER818",
+        "title": "Manufacturing Management"
+      },
+      {
+        "code": "AER870",
+        "title": "Aerospace Engineering Thesis"
+      },
+      {
+        "code": "CEN810",
+        "title": "Selected Topics in Engineering"
+      },
+      {
+        "code": "AER814",
+        "title": "Aircraft Design Project"
+      },
+      {
+        "code": "AER822",
+        "title": "Avionics Design Project"
+      },
+      {
+        "code": "AER813",
+        "title": "Space Systems Design Project"
+      }
+    ]
+  }
+]

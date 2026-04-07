@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Engineering Spring/Summer 2026 Course Planning Calculator</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <style>
+  :root{
+    --purple:#6f2bb8;
+    --yellow:#ffd842;
+    --blue:#16579b;
+    --bg:#5e2b97;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    margin: 0;
+    padding: 18px;
+    -webkit-font-smoothing:antialiased;
+    color:#222;
+  }
+  .info-btn{background:#f1f5f9;border:1px solid #d1d5db;border-radius:4px;padding:4px 6px;cursor:pointer;margin-left:8px;font-size:12px}
+
+  .topbar{
+    background: var(--purple);
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 10px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    max-width:1200px;
+    margin:0 auto 18px auto;
+    box-shadow:0 6px 18px rgba(0,0,0,0.15);
+  }
+  .callout-link{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+  .callout-link a{color:var(--blue);text-decoration:none}
+  .arrow-mark{font-size:18px;color:var(--blue);transform:translateY(1px)}
+  .topbar .site-title{font-weight:700;display:flex;align-items:center;gap:12px}
+  .topbar .site-title .title-text{color:#fff;font-size:18px;font-weight:700}
+  .back-btn{background:transparent;border:1px solid rgba(0,0,0,0.08);padding:8px 12px;border-radius:6px;cursor:pointer;font-weight:600;margin-bottom:12px}
+  .pill{background:var(--yellow);color:#222;border:none;padding:8px 12px;border-radius:20px;cursor:pointer;font-weight:600}
+
+  .layout{display:flex;gap:20px;align-items:flex-start;max-width:1200px;margin:0 auto}
+
+  .left-sidebar{width:220px}
+  .right-sidebar{width:260px}
+  .sidebar-section{background:rgba(255,255,255,0.95);padding:12px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+  .left-sidebar button, .right-sidebar button{display:block;width:100%;margin:8px 0;border:none;padding:10px 12px;border-radius:8px;cursor:pointer;text-align:left}
+  .yellow{background:var(--yellow);color:#222;font-weight:600}
+  .blue{background:var(--blue);color:#fff;font-weight:600}
+  .support-box{margin-top:14px;padding:12px;background:#fff;border-radius:8px}
+
+  .main-container{flex:1;background:#fff;padding:30px;border-radius:10px;box-shadow:0 10px 25px rgba(0,0,0,0.2)}
+
+  h1,h2,h3{text-align:center}
+  button{padding:8px 14px;margin:5px;cursor:pointer}
+  .hidden{display:none}
+  .warning{color:darkred;font-weight:700;text-align:center;margin-top:15px}
+  .section{margin-top:25px;padding-top:20px;border-top:1px solid #ddd}
+
+  .course-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+  .tool-links button{display:block;width:100%;margin:8px 0}
+  .popup{background:#fff3cd;padding:15px;border-radius:6px;margin-top:15px;font-weight:bold}
+
+  /* Responsive */
+  @media (max-width:980px){
+    .layout{flex-direction:column;padding:0 12px}
+    .left-sidebar,.right-sidebar{width:100%}
+  }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="site-title">
+  <img src="FYEO LOGO.png" alt="FYEO Logo" style="width:96px;height:96px;border-radius:8px;object-fit:contain;display:block;margin-right:8px" />
+      <div class="title-text">Engineering Spring/Summer 2026 Course Planning Calculator</div>
+    </div>
+    <div class="top-buttons">
+      <button class="pill">Significant Dates Calendar</button>
+      <button class="pill">First-Year Engineering Office</button>
+    </div>
+  </div>
+
+  <!-- Debug info (visible) -->
+  <div style="max-width:1200px;margin:8px auto 0 auto;text-align:right;font-size:12px;color:#fff;">
+    <span id="debugInfo" style="background:rgba(0,0,0,0.12);padding:6px 8px;border-radius:6px;display:inline-block">Debug: no action yet</span>
+  </div>
+
+  <div class="layout">
+
+    <aside class="left-sidebar">
+      <div class="sidebar-section">
+        <div style="font-weight:700;margin-bottom:8px">Spring/Summer Quick Links</div>
+  <!-- Left block: three primary support links -->
+  <button class="yellow" onclick="window.open('https://www.torontomu.ca/engineering-architectural-science/programs/undergraduate-programs/transition-program/','_blank')">Spring/Summer Engineering Transition Program</button>
+  <button class="yellow" onclick="window.open('https://www.torontomu.ca/student-life-and-learning/learning-support/math-support/','_blank')">Math Tutoring</button>
+  <button class="yellow" onclick="window.open('https://www.cs.torontomu.ca/~h9saini/FYEO/gpa/ccal.php','_blank')">TMU GPA Scale</button>
+
+        <div style="height:10px"></div>
+        <div style="font-weight:700;margin:10px 0 8px 0">Advising & Tools</div>
+        <!-- Second block: advisement, transcript, mobile app -->
+  <button class="blue" onclick="window.open('https://www.youtube.com/watch?v=hTO9H4SxP4s','_blank')">How to View Your Advisement Report</button>
+        <button class="blue" onclick="window.open('https://www.torontomu.ca/myservicehub-support/students/academics/unofficial-transcript/','_blank')">How to Generate Your Unofficial Transcript</button>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <label for="fyengStore" style="font-size:16px;color:#222;margin-bottom:6px;font-weight:700;display:block">FYEng Mobile App</label>
+          <select id="fyengStore" style="padding:8px;border-radius:6px;border:1px solid var(--blue);cursor:pointer;background:#fff;color:#000;font-weight:700;font-size:16px;display:block">
+            <option value="">-- Choose store --</option>
+            <option value="https://apps.apple.com/ca/app/fyeng-mobile/id6749859039">App Store</option>
+            <option value="https://play.google.com/store/apps/details?id=com.fyengtmu.fyeng">Google Play</option>
+          </select>
+        </div>
+
+        <div style="height:10px"></div>
+        <!-- Additional requested items -->
+  <button class="blue" onclick="window.open('https://www.torontomu.ca/myservicehub-support/students/academics/how-to-enrol/','_blank')">How to Add a Course</button>
+  <button class="blue" onclick="window.open('https://www.torontomu.ca/servicehub/news/2025/05/spring-summer-2025/','_blank')">Any additional Spring/Summer supports and services</button>
+      </div>
+    </aside>
+
+    <main class="main-container">
+      <div style="display:flex;align-items:center;gap:12px;justify-content:flex-start;">
+        <button id="backButton" class="back-btn hidden" onclick="goBack()">← Back</button>
+        <h1>Engineering Spring/Summer 2026 Course Planning Calculator</h1>
+      </div>
+
+      <!-- STEP 1 -->
+      <div id="step1" class="section">
+        <h2>Standing Verification</h2>
+
+        <p style="text-align:center;font-weight:600">Is your academic standing clear?</p>
+
+        <div style="text-align:center;">
+          <button onclick="standingCheck(true)">Yes</button>
+          <button onclick="standingCheck(false)">No</button>
+        </div>
+
+        <p style="text-align:center;margin-top:12px;color:#555">Check your unofficial transcript to confirm and/or meet with your program advisor.</p>
+
+        <p style="text-align:center;margin-top:6px"><span class="callout-link"><span class="arrow-mark">→</span><a id="transcriptCallout" href="https://www.torontomu.ca/myservicehub-support/students/academics/unofficial-transcript/" target="_blank" rel="noopener">View unofficial transcript</a></span></p>
+
+        <div id="contactDept" class="hidden warning">Please consult with your program department for further guidance.</div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div id="step2" class="section hidden">
+        <h2>Program Identification</h2>
+
+        <h3>Select your program:</h3>
+         <select id="programSelect" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc">
+           <option value="">-- Choose your program --</option>
+           <option value="Aerospace">Aerospace Engineering</option>
+           <option value="Biomedical">Biomedical Engineering</option>
+           <option value="Chemical">Chemical Engineering Co-op</option>
+           <option value="Civil">Civil Engineering</option>
+           <option value="Computer">Computer Engineering</option>
+           <option value="Electrical">Electrical Engineering</option>
+           <option value="Industrial">Industrial Engineering</option>
+           <option value="Mechanical">Mechanical Engineering</option>
+           <option value="Mechatronics">Mechatronics Engineering</option>
+         </select>
+
+  <h3 style="margin-top:20px;">Select your admit year</h3>
+  <label for="admitYearSelect" style="display:block;margin-bottom:6px;">Admit year</label>
+  <select id="admitYearSelect" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc">
+    <option value="">-- Select admit year --</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
+    <option value="2025">2025</option>
+    <option value="2026" selected>2026</option>
+  </select>
+
+        <!-- local file input removed: automatic/embedded loading or manifest-driven flow is used instead -->
+
+  <p style="color:#555;margin-top:10px">Not sure what your initial admit year was? Refer to your unofficial transcript or view your advisement report. <a id="advisementCallout" href="https://www.youtube.com/watch?v=hTO9H4SxP4s" target="_blank" rel="noopener" style="text-decoration:underline;font-weight:700;color:var(--blue)">View advisement report (video)</a></p>
+
+        <button onclick="showCourses()">Continue</button>
+      </div>
+
+      <!-- STEP 3 -->
+      <div id="step3" class="section hidden">
+        <h2>Curriculum Required Courses</h2>
+        <p>Select all courses completed with a D- or higher, or approved credit.</p>
+        <p style="color:#555">Not sure if you’ve ever been issued a credit and/or Course Substitution/Directive? Refer to your Advisement Report or reach out to your program department.</p>
+
+        <h3>First Year – Fall</h3>
+        <div class="course-grid">
+          <label><input type="checkbox" value="CEN100"> CEN100</label>
+          <label><input type="checkbox" value="CHY102"> CHY102</label>
+          <label><input type="checkbox" value="MTH140"> MTH140</label>
+          <label><input type="checkbox" value="PCS211"> PCS211</label>
+        </div>
+
+        <h3>First Year – Winter</h3>
+        <div class="course-grid">
+          <label><input type="checkbox" value="CEN199"> CEN199</label>
+          <label><input type="checkbox" value="MTH141"> MTH141</label>
+        </div>
+
+        <button onclick="calculateEligibility()">Calculate Spring/Summer Eligibility</button>
+      </div>
+
+      <!-- STEP 4 -->
+      <div id="step4" class="section hidden">
+        <h2>4. Automated Course Eligibility Mapping</h2>
+        <div id="eligibleCourses"></div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div id="step5" class="section hidden">
+        <h2>5. Course Load Guidance</h2>
+        <div class="popup">Spring/Summer courses run in a 6-week compressed format. Students are strongly encouraged to take no more than 2 courses per term due to intensity.</div>
+      </div>
+
+      <!-- Transition Courses section removed as requested -->
+
+    </main>
+
+    <!-- right-sidebar removed: tools consolidated into left sidebar per request -->
+
+  </div> <!-- end layout -->
+
+  <script>
+  // Attempt to synchronously load an embedded curricula bundle if it exists
+  (function(){
+    try{
+      var s = document.createElement('script');
+      s.src = 'curricula.bundle.js';
+      s.onload = function(){ console.log('curricula.bundle.js loaded'); };
+      s.onerror = function(){ /* bundle absent or failed to load - continue */ };
+      document.head.appendChild(s);
+    } catch(e){ }
+  })();
+
+  function standingCheck(isClear) {
+    // hide the first step when making a choice so the flow progresses to a dedicated screen
+    document.getElementById("step1").classList.add("hidden");
+    if (!isClear) {
+      document.getElementById("contactDept").classList.remove("hidden");
+      document.getElementById("step2").classList.add("hidden");
+    } else {
+      document.getElementById("contactDept").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+    }
+    updateBackButtonVisibility();
+  }
+
+  async function showCourses() {
+    // advance to step 3 and hide step 2 so previous content disappears
+    const program = document.getElementById('programSelect').value;
+    const admitYear = document.getElementById('admitYearSelect').value;
+
+    // Require a program selection so we don't silently fall back to the static checklist
+    if(!program){
+      alert('Please select your program from the dropdown before continuing.');
+      return;
+    }
+
+    // Debug: log chosen program/year and available keys
+    try {
+      console.log('showCourses called with', { program, admitYear });
+      console.log('Available curriculum keys:', Object.keys(curriculumMap).slice(0,50));
+      if(document.getElementById('debugInfo')) document.getElementById('debugInfo').textContent = 'Selected: ' + program + ':' + admitYear;
+    } catch (e){}
+
+    // try to render curriculum for the selected program+year (async)
+    try{
+      const rendered = await renderCurriculumIfAvailable(program, admitYear);
+      if(rendered){
+        document.getElementById("step2").classList.add("hidden");
+        document.getElementById("step3").classList.remove("hidden");
+        updateBackButtonVisibility();
+        return;
+      }
+    } catch(e){ console.warn('render error', e); }
+
+    // If manifest is available, show a friendly message about what is missing.
+    if(manifest){
+      const available = manifest.find(m=> m.program === program);
+      const container = document.getElementById('step3');
+      let msg = '<div class="warning">No curriculum file was found for ' + program + ' (' + admitYear + ').';
+      if(available){ msg += '<br>Available admit years for this program: ' + available.years.join(', ') + '.</div>'; }
+      else { msg += '<br>This program has no curriculum files listed in the manifest.</div>'; }
+      container.innerHTML = '<h2>Curriculum Not Found</h2>' + msg + '<div style="margin-top:12px;text-align:center;"><button onclick="window.location.reload()">Retry</button></div>';
+      document.getElementById('step2').classList.add('hidden');
+      document.getElementById('step3').classList.remove('hidden');
+      updateBackButtonVisibility();
+      if(document.getElementById('debugInfo')) document.getElementById('debugInfo').textContent = 'No curriculum file for ' + program + ':' + admitYear;
+      return;
+    }
+
+    // fallback to showing the existing (static) course checklist when no manifest
+    document.getElementById("step2").classList.add("hidden");
+    document.getElementById("step3").classList.remove("hidden");
+    updateBackButtonVisibility();
+  }
+
+  // curriculumMap will be populated by loading external JSON files from the
+  // base folder (e.g. "Aerospace-2026.json"). This keeps the HTML small and
+  // allows maintaining per-program JSON files separately in the same folder.
+  const curriculumMap = {};
+  const years = ['2026','2025','2024','2023','2022','2021','2020','2019'];
+
+  // manifest loaded from index.json (created in the same folder). When present
+  // it drives the program and admit-year dropdowns and signals which files are
+  // actually available. If the manifest cannot be loaded the app falls back
+  // to the static dropdown options embedded in the HTML.
+  let manifest = null;
+
+  async function loadManifest(){
+    try{
+      const res = await fetch('index.json');
+      if(!res.ok) return null;
+      const j = await res.json();
+      manifest = j;
+      populateProgramSelectFromManifest(j);
+      return j;
+    } catch(e){
+      console.warn('Could not load index.json manifest', e);
+      return null;
+    }
+  }
+
+  // If the developer generated `curricula.bundle.js`, it exposes a global
+  // `embeddedCurricula` object. Merge any entries into `curriculumMap` so the
+  // rest of the code can use them even when fetch() is blocked (file://).
+  function mergeEmbeddedCurricula(){
+    try{
+      if(typeof embeddedCurricula === 'object' && embeddedCurricula !== null){
+        Object.keys(embeddedCurricula).forEach(k => { curriculumMap[k] = embeddedCurricula[k]; });
+        console.log('Merged embedded curricula keys:', Object.keys(embeddedCurricula).length);
+        if(document.getElementById('debugInfo')) document.getElementById('debugInfo').textContent = 'Using embedded curricula (' + Object.keys(embeddedCurricula).length + ' entries)';
+        return true;
+      }
+    } catch(e){ /* ignore */ }
+    return false;
+  }
+
+  // Wait briefly for the embedded bundle to load (it is appended as a script
+  // tag and may arrive asynchronously). Poll for `embeddedCurricula` for up
+  // to 3 seconds then merge if available.
+  function ensureEmbeddedMerged(timeoutMs = 3000){
+    return new Promise(resolve => {
+      const start = Date.now();
+      function tryMerge(){
+        if(typeof embeddedCurricula !== 'undefined'){
+          mergeEmbeddedCurricula();
+          resolve(true);
+          return;
+        }
+        if(Date.now() - start > timeoutMs){
+          resolve(false);
+          return;
+        }
+        setTimeout(tryMerge, 100);
+      }
+      tryMerge();
+    });
+  }
+
+  function populateProgramSelectFromManifest(man){
+    try{
+      const sel = document.getElementById('programSelect');
+      if(!sel) return;
+      // clear existing program options (leave the placeholder)
+      const placeholder = sel.querySelector('option[value=""]');
+      sel.innerHTML = '';
+      sel.appendChild(placeholder || document.createElement('option'));
+      if(placeholder) placeholder.value = '';
+      if(placeholder) placeholder.textContent = '-- Choose your program --';
+
+      man.forEach(entry => {
+        const opt = document.createElement('option');
+        opt.value = entry.program;
+        opt.textContent = entry.program + (entry.alias ? ' (' + entry.alias + ')' : '');
+        sel.appendChild(opt);
+      });
+      // when the user changes program, update the admit-year select to show only available years
+      sel.addEventListener('change', function(){
+        updateAdmitYearsForProgram(this.value);
+        // persist selection as before
+        saveProgramChoice();
+      });
+      // also populate admit year with the common years list (if present, keep the select value)
+      const yearSel = document.getElementById('admitYearSelect');
+      if(yearSel){
+        yearSel.innerHTML = '';
+        const ph = document.createElement('option'); ph.value=''; ph.textContent='-- Select admit year --'; yearSel.appendChild(ph);
+        years.forEach(y => { const o = document.createElement('option'); o.value = y; o.textContent = y; yearSel.appendChild(o); });
+        // keep 2026 selected by default if present
+        yearSel.value = '2026';
+      }
+    } catch(e){ console.warn('populate error', e); }
+  }
+
+  function updateAdmitYearsForProgram(program){
+    const yearSel = document.getElementById('admitYearSelect');
+    if(!yearSel) return;
+    yearSel.innerHTML = '';
+    const ph = document.createElement('option'); ph.value=''; ph.textContent='-- Select admit year --'; yearSel.appendChild(ph);
+    if(!manifest || !program){
+      // no manifest: show default common years
+      years.forEach(y => { const o = document.createElement('option'); o.value = y; o.textContent = y; yearSel.appendChild(o); });
+      yearSel.value = '2026';
+      return;
+    }
+    const entry = manifest.find(m => m.program === program);
+    if(!entry){
+      // no entry; leave the placeholder
+      return;
+    }
+    // add manifest years (in manifest order)
+    entry.years.forEach(y => { const o = document.createElement('option'); o.value = y; o.textContent = y; yearSel.appendChild(o); });
+    // default to the most-recent year if available
+    if(entry.years.includes('2026')) yearSel.value = '2026'; else yearSel.value = entry.years[0] || '';
+  }
+
+  // Try to fetch a curriculum JSON file for a given program and year. Returns
+  // the parsed JSON array on success or null on failure.
+  async function fetchCurriculumFile(program, year){
+    const filename = `${program}-${year}.json`;
+    try{
+      const res = await fetch(filename);
+      if(!res.ok) return null;
+      const json = await res.json();
+      return json;
+    } catch(e){
+      return null;
+    }
+  }
+
+  // Find the closest available curriculum for the program/year. This will try
+  // the requested year first then fall back through the years list and cache
+  // any successful loads into curriculumMap for faster subsequent lookups.
+  async function getClosestCurriculum(program, admitYear){
+    const exactKey = program + ':' + admitYear;
+    if(curriculumMap[exactKey]) return { key: exactKey, mapping: curriculumMap[exactKey] };
+
+    // order tries: requested year first, then fallback years in preference order
+    const tryYears = [admitYear].concat(years.filter(y=> y !== String(admitYear)));
+    for(const y of tryYears){
+      const key = program + ':' + y;
+      if(curriculumMap[key]) return { key, mapping: curriculumMap[key] };
+      const json = await fetchCurriculumFile(program, y);
+      if(json){
+        curriculumMap[key] = json;
+        return { key, mapping: json };
+      }
+    }
+    return null;
+  }
+
+  // Async renderer that will attempt to load curricula from the base folder and
+  // then render the course checklist into Step 3. Returns true when rendering
+  // succeeded, false otherwise (caller may show a static fallback checklist).
+  async function renderCurriculumIfAvailable(program, admitYear){
+    if(!program || !admitYear) return false;
+    const found = await getClosestCurriculum(program, admitYear);
+    if(!found) return false;
+    const key = found.key;
+    const mapping = found.mapping;
+    try{ console.log('rendering curriculum using key:', key); if(document.getElementById('debugInfo')) document.getElementById('debugInfo').textContent = 'Rendering: ' + key; } catch(e){}
+
+    const container = document.getElementById('step3');
+    let html = '<h2>Curriculum Required Courses</h2>';
+    html += '<p>Select all courses completed with a D- or higher, or approved credit.</p>';
+    html += '<p style="color:#555">Not sure if you’ve ever been issued a credit and/or Course Substitution/Directive? Refer to your Advisement Report or reach out to your program department.</p>';
+
+    mapping.forEach(group => {
+      html += '<h3 style="text-align:left">' + group.title + '</h3>';
+      html += '<div class="course-grid">';
+      group.courses.forEach(c => {
+        const code = c.code;
+        const title = c.title ? ' ' + c.title : '';
+        html += '<label><input type="checkbox" value="' + code + '"> ' + code + title + '</label>';
+      });
+      html += '</div>';
+    });
+
+    html += '<div style="margin-top:12px;text-align:center;"><button onclick="calculateEligibility()">Calculate Spring/Summer Eligibility</button></div>';
+
+    container.innerHTML = html;
+    return true;
+  }
+
+  // --- Reintroduced helpers ---
+  function calculateEligibility() {
+    // Collect completed courses from checked boxes in the visible checklist
+    const checked = document.querySelectorAll('#step3 input[type="checkbox"]:checked');
+    const completedSet = new Set(Array.from(checked).map(cb => cb.value.toUpperCase().replace(/\s+/g, '')));
+
+    // Gather candidate courses (unchecked boxes in the current rendered curriculum)
+    const candidateInputs = document.querySelectorAll('#step3 input[type="checkbox"]');
+    const eligible = [];
+
+    function normalizeCode(s){ return (s||'').toUpperCase().replace(/\s+/g,''); }
+
+    // helper: parse prereq text into tokens and detect AND/OR logic
+    function parsePrereqs(prStr){
+      if(!prStr) return {mode:'none', tokens:[]};
+      const s = prStr.replace(/[()]/g,' ').toUpperCase();
+      // find course-like tokens e.g. MTH 140 or CPS125
+      const raw = s.match(/[A-Z]{2,5}\s?\d{3}/g) || [];
+      const tokens = raw.map(t => t.replace(/\s+/g,''));
+      if(tokens.length===0) return {mode:'none', tokens:[]};
+      // if the string contains ' OR ' treat as any-of, otherwise require all
+      const mode = /\bOR\b|\b\/\b/.test(s) ? 'any' : 'all';
+      return {mode, tokens};
+    }
+
+    candidateInputs.forEach(inp => {
+      const code = normalizeCode(inp.value);
+      if(!code) return;
+      // skip already completed
+      if(completedSet.has(code)) return;
+
+      // Special-case literal labels (some checkboxes may have non-course values)
+      if(code === 'UPPER-YEAR MECHANICS'.replace(/\W/g,'')){
+        // if PCS211 completed then upper-year mechanics is eligible
+        if(completedSet.has('PCS211')) eligible.push('Upper-Year Mechanics');
+        return;
+      }
+
+      // Look up prereqs from courseInfoMap
+      const info = courseInfoMap[code] || courseInfoMap[inp.value] || null;
+      let pr = info && info.prereqs ? info.prereqs : '';
+      // Also handle cases where course is known from programCourseMap ordering
+      const parsed = parsePrereqs(pr);
+
+      if(parsed.mode === 'none'){
+        // No structured prereqs: be conservative for upper-year courses (300+)
+        const numMatch = code.match(/(\d{3})$/);
+        const level = numMatch ? parseInt(numMatch[1].charAt(0)) * 100 : 0;
+        // If the course appears to be 300-level or higher and no prereqs are listed, do NOT mark eligible automatically.
+        if(level >= 300){
+          return; // skip
+        }
+        // lower-level (100/200) courses without prereqs are likely eligible
+        eligible.push(code);
+        return;
+      }
+
+      if(parsed.mode === 'any'){
+        for(const tok of parsed.tokens){ if(completedSet.has(tok)) { eligible.push(code); break; } }
+      } else {
+        // require all tokens to be present in completedSet
+        const allOk = parsed.tokens.every(tok => completedSet.has(tok));
+        if(allOk) eligible.push(code);
+      }
+    });
+
+    // If no eligible courses found, fall back to a few common progress rules
+    if(eligible.length === 0){
+      if(completedSet.has('MTH140') && !completedSet.has('MTH141')) eligible.push('MTH141');
+      if(completedSet.has('CEN100') && !completedSet.has('CEN199')) eligible.push('CEN199');
+      if(completedSet.has('PCS211')) eligible.push('Upper-Year Mechanics');
+    }
+
+    // Render eligible courses (show more friendly titles where possible)
+    const out = eligible.map(code => {
+      // restore spacing if code looks like a course
+      if(/^[A-Z]{2,5}\d{3}$/.test(code)) return code.replace(/([A-Z]+)(\d{3})/, '$1 $2');
+      return code;
+    });
+
+    document.getElementById('eligibleCourses').innerHTML = '<strong>Eligible Courses:</strong><br>' + (out.length ? out.join('<br>') : 'No eligible courses determined.');
+
+    // hide the completed review step and show eligibility and guidance screens
+    document.getElementById('step3').classList.add('hidden');
+    document.getElementById('step4').classList.remove('hidden');
+    document.getElementById('step5').classList.remove('hidden');
+    updateBackButtonVisibility();
+  }
+
+  // Back button helpers
+  function updateBackButtonVisibility(){
+    const backBtn = document.getElementById('backButton');
+    // show back button if we're on step2, step3, or step4
+    const step2Visible = !document.getElementById('step2').classList.contains('hidden');
+    const step3Visible = !document.getElementById('step3').classList.contains('hidden');
+    const step4Visible = !document.getElementById('step4').classList.contains('hidden');
+    if(step2Visible || step3Visible || step4Visible){
+      backBtn.classList.remove('hidden');
+    } else {
+      backBtn.classList.add('hidden');
+    }
+  }
+
+  function goBack(){
+    try {
+      // If step4 is visible, go back to step3
+      const step4 = document.getElementById('step4');
+      const step3 = document.getElementById('step3');
+      const step2 = document.getElementById('step2');
+      const step1 = document.getElementById('step1');
+      if(step4 && !step4.classList.contains('hidden')){
+        step4.classList.add('hidden');
+        const step5 = document.getElementById('step5');
+        if(step5) step5.classList.add('hidden');
+        if(step3) step3.classList.remove('hidden');
+        updateBackButtonVisibility();
+        return;
+      }
+      // If step3 is visible, go back to step2
+      if(step3 && !step3.classList.contains('hidden')){
+        step3.classList.add('hidden');
+        if(step2) step2.classList.remove('hidden');
+        updateBackButtonVisibility();
+        return;
+      }
+      // If step2 is visible, go back to step1
+      if(step2 && !step2.classList.contains('hidden')){
+        step2.classList.add('hidden');
+        if(step1) step1.classList.remove('hidden');
+        updateBackButtonVisibility();
+        return;
+      }
+    } catch(err) {
+      // Fail-safe: ensure back button hidden and avoid uncaught exceptions
+      console.error('goBack error:', err);
+      try { document.getElementById('backButton').classList.add('hidden'); } catch(e){}
+    }
+  }
+
+  // Transition courses removed from UI; related helpers have been cleared.
+
+  // Intercept browser Back (history popstate) while the app is active and map it to goBack()
+  window.addEventListener('popstate', function(e){
+    // If any of our app steps are visible, prevent navigation and handle internally
+    try {
+      const anyVisible = !document.getElementById('step1').classList.contains('hidden') || !document.getElementById('step2').classList.contains('hidden') || !document.getElementById('step3').classList.contains('hidden') || !document.getElementById('step4').classList.contains('hidden');
+      if(anyVisible){
+        // push state back so the browser doesn't actually navigate away
+        history.pushState(null, document.title, window.location.href);
+        goBack();
+      }
+    } catch(err){
+      // if DOM not ready or element missing, allow default
+      console.warn('popstate handler error', err);
+    }
+  });
+
+  // Seed history state so popstate can be intercepted
+  try { history.replaceState(null, document.title, window.location.href); } catch(e){}
+  const programSelect = document.getElementById('programSelect');
+  const SAVED_PROGRAM_KEY = 'tmu_selected_program_v1';
+
+  // basic mapping: which first-year courses are relevant per program
+  const programCourseMap = {
+    'Aerospace': ['MTH140','MTH141','MTH240','PCS211','MEC222','ELE202'],
+    'Biomedical': ['MTH140','MTH141','CHY211','PCS211','BME100'],
+    'Chemical': ['MTH140','MTH141','CHY211','CHE200'],
+    'Civil': ['MTH140','MTH141','MTH240','CVL207','CHY211'],
+    'Computer': ['MTH140','MTH141','CPS125','CPS188','PCS211'],
+    'Electrical': ['MTH140','MTH141','ELE202','PCS211'],
+    'Industrial': ['MTH140','MTH141','PCS211','MEC222'],
+    'Mechanical': ['MTH140','MTH141','MEC222','PCS211','MTH240'],
+    'Mechatronics': ['MTH140','MTH141','MEC222','ELE202','PCS211'],
+    'Materials': ['MTH140','MTH141','MTL200','CHY211'],
+    'Environmental': ['MTH140','MTH141','CHY211','CVL207'],
+    'Software': ['MTH140','MTH141','CPS125','CPS188']
+  };
+
+  function saveProgramChoice(){
+    const val = programSelect.value;
+    if(val) localStorage.setItem(SAVED_PROGRAM_KEY, val);
+  }
+
+  function loadSavedProgram(){
+    const saved = localStorage.getItem(SAVED_PROGRAM_KEY);
+    if(saved){
+      programSelect.value = saved;
+    }
+  }
+
+  // filterTransitionCoursesByProgram removed (transition UI removed)
+
+  if(programSelect) programSelect.addEventListener('change', saveProgramChoice);
+  loadSavedProgram();
+
+  // selectGroup/clearGroup/saveSelectedTransition removed (transition UI removed)
+
+  // --- prerequisite / antirequisite validation ---
+  // transition validation removed (transition UI removed)
+
+  // small course info lookup for transition info buttons
+  const courseInfoMap = {
+    'CHE200': {
+      title: 'CHE 200 - Chemical Engineering Fundamentals',
+      description: 'Fundamentals and principles of chemical engineering; analysis and synthesis of chemical and biochemical processes; material and energy balances for reacting and non-reacting systems; recycle and by-pass systems; phase equilibrium; and combustion. Weekly Contact: Lecture: 4 hrs; Tutorial: 2 hrs. GPA Weight: 1.00. Course Count: 1.00; Billing Units: 1.',
+      prereqs: 'CHY 102',
+      coreqs: 'None',
+      antireqs: 'None',
+      customRequisites: 'None'
+    },
+    'CPS125': {
+      title: 'CPS 125 - Digital Computation and Programming',
+      description: 'Introduces concepts, theory and practice of computer programming using the C programming language. Topics include program structure, control flow, standard libraries, functions, arrays, pointers, sorting, matrix operations, strings, dynamic storage, structures and file I/O. Weekly Contact: Lab: 2 hrs; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'None',
+      coreqs: 'None',
+      antireqs: 'CPS 188'
+    },
+    'CPS188': {
+      title: 'CPS 188 - Computer Programming Fundamentals',
+      description: 'Foundational C programming course for engineering students covering program organisation, data types, selection/repetition, libraries, functions, arrays, pointers, recursion, dynamic storage, structures and I/O. Weekly Contact: Lab: 2 hrs; Lecture: 4 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'None',
+      coreqs: 'None',
+      antireqs: 'CPS 125'
+    },
+    'CVL207': {
+      title: 'CVL 207 - Graphics',
+      description: 'Descriptive geometry and modern drafting tools: orthographic/auxiliary views, intersections, developments, pictorial drawing; 2D and 3D CAD (AutoCAD) for civil engineering; structural drafting for steel, concrete and timber. Weekly Contact: Lab: 2 hrs; Lecture: 2 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'None',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'ELE202': {
+      title: 'ELE 202 - Electric Circuit Analysis',
+      description: 'Introductory one-semester course in circuit analysis: resistive circuits, circuit theorems, energy storage elements, transient responses, sinusoidal steady-state, and AC power concepts. Weekly Contact: Lab: 1.5 hrs; Lecture: 4 hrs; Tutorial: 0.5 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'MTH 140 and MTH 141',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'MEC222': {
+      title: 'MEC 222 - Engineering Graphical Communication',
+      description: 'Technical drawing to Canadian/international standards: orthographic views, sectioning, dimensioning, tolerancing, assemblies, parts lists, free-hand sketching and CAD labs. Weekly Contact: Lab: 2 hrs; Lecture: 2 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'None',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'MTH140': {
+      title: 'MTH 140 - Calculus I',
+      description: 'Limits, continuity, differentiation, extrema, curve sketching, definite/indefinite integrals, Fundamental Theorem of Calculus, areas and volumes, transcendental functions. Weekly Contact: Lab: 2 hrs; Lecture: 4 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'None',
+      coreqs: 'None',
+      antireqs: 'MTH 207 and MTH 131 (available only to engineering/special students)'
+    },
+    'MTH141': {
+      title: 'MTH 141 - Linear Algebra',
+      description: 'Euclidean spaces, matrices, determinants, linear systems, linear transformations, bases and dimensions, eigenvalues, vector spaces and applications. Weekly Contact: Lab: 1 hr; Lecture: 4 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'None',
+      coreqs: 'None',
+      antireqs: 'MTH 108'
+    },
+    'MTH240': {
+      title: 'MTH 240 - Calculus II',
+      description: 'Integration techniques, improper integrals, partial derivatives, sequences and series, power series, first-order differential equations and applications. Weekly Contact: Lab: 1 hr; Lecture: 4 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'MTH 140',
+      coreqs: 'None',
+      antireqs: 'MTH 310 and MTH 231'
+    },
+    'MTL200': {
+      title: 'MTL 200 - Materials Science Fundamentals',
+      description: 'Atomic structure, bonding, crystallinity, defects, diffusion, phase diagrams, structures of metals/polymers/ceramics, corrosion and thermal/electrical material properties. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CHY 102',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'PCS211': {
+      title: 'PCS 211 - Physics: Mechanics',
+      description: 'Vector forces, free body diagrams, equilibrium, centre of mass, kinematics, Newtonian dynamics, work and energy, momentum and angular momentum. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs; Tutorial: 1 hr. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'None',
+      coreqs: 'None',
+      antireqs: 'None',
+      customRequisites: 'Available only to Engineering students.'
+    },
+    'AER309': {
+      title: 'AER 309 - Basic Thermodynamics',
+      description: 'Introductory thermodynamics: systems and properties, first/second law, entropy, thermodynamic cycles, control volume analysis and gas power systems. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CPS 125 and MTH 240 and PCS 211',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'AER318': {
+      title: 'AER 318 - Dynamics',
+      description: 'Particles and rigid bodies: kinematics and kinetics, planar motion, equations of motion, work and energy, impulse and momentum, applications to mechanical linkages. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'AER 222 and MTH 141 and MTH 240 and PCS 211',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'AER320': {
+      title: 'AER 320 - Statics and Intro to Strength of Materials',
+      description: 'Rigid body equilibrium, trusses, frames, method of joints/sections, introduction to strength of materials: stress, strain, bending, shear and beam analysis. Weekly Contact: Lab: 1 hr; Lecture: 4 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'AER 222 and MTH 141 and MTH 240 and MTL 200 and PCS 211',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'AER509': {
+      title: 'AER 509 - Control Systems',
+      description: 'System modelling, time-domain/time-response analysis, open/closed loop analysis, stability (Routh, root locus, Bode), frequency response, control design methods. Weekly Contact: Lab: 1.5 hrs; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'AER 403 and CMN 432 and EES 612',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'AER520': {
+      title: 'AER 520 - Stress Analysis',
+      description: 'Torsion, shear and bending moment analysis, combined loading, deflections (Castigliano), strain/stress transformation and Mohr\'s circle, experimental stress analysis. Weekly Contact: Lab: 1 hr; Lecture: 4 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'AER 320 and CEN 199 and CMN 432 and MTH 410 and MTH 425',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'AER615': {
+      title: 'AER 615 - Aircraft Performance',
+      description: 'Aircraft performance and safety standards, takeoff/landing performance, range-payload analysis, climb/cruise performance, flight planning and automatic flight control systems. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'AER 504',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'BME323': {
+      title: 'BME 323 - Statics and Mechanics of Materials',
+      description: 'Statics: rigid body equilibrium, two- and three-force members, trusses, frames and machines. Mechanics of materials: introductory stress and strain, Hooke\'s Law, axial and torsional loading, and statically indeterminate problems. Weekly Contact: Lab: 1 hr; Lecture: 4 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'BME 100, CHY 102, CPS 188, ELE 202, MTH 240, PCS 125',
+      coreqs: 'None',
+      antireqs: 'MEC 323',
+      customRequisites: 'None'
+    },
+    'BME328': {
+      title: 'BME 328 - Digital Systems',
+      description: 'Fundamentals of digital logic and modern digital system design including Boolean algebra, combinational and sequential logic, CAD tools and hardware description languages, and implementation on CPLDs/FPGAs. Laboratory work uses CAD tools to design and simulate basic digital circuits. Weekly Contact: Lab: 3 hrs; Lecture: 4 hrs. GPA Weight: 1.00; Billing Units: 2.',
+      prereqs: 'CPS 188, ELE 202, MTH 240',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'CPS688': {
+      title: 'CPS 688 - Advanced Algorithms',
+      description: 'Algorithms with an engineering emphasis: divide-and-conquer, graph decompositions, greedy algorithms, dynamic programming, linear programming and reductions, NP-completeness and coping strategies, and quantum algorithms. Weekly Contact: Lab: 2 hrs; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'COE 428',
+      coreqs: 'None',
+      antireqs: 'CPS 616'
+    },
+    'BME639': {
+      title: 'BME 639 - Control Systems and Bio-Robotics',
+      description: 'System modelling, simulation and classical controller design for linear time-invariant systems; stability (Routh-Hurwitz), root locus, Bode and Nyquist methods; introduction to state-space representation and basic feedback design. Lab experiments use modular servo-systems integrated with MATLAB/Simulink. Weekly Contact: Lab: 1.5 hrs; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'BME 532, CEN 199',
+      coreqs: 'None',
+      antireqs: 'ELE 639'
+    },
+    'BME674': {
+      title: 'BME 674 - Biomedical Instrumentation',
+      description: 'Application and design of medical instrumentation for signals from living tissue: transduction, sensors, amplification, signal processing, electrodes and biopotential amplifiers, non-invasive measurement techniques, and electrical safety. Design labs and a final design project using circuit simulation tools. Weekly Contact: Lab: 2 hrs; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'BLG 601, BLG 701, BME 506, BME 538, CEN 199',
+      coreqs: 'BME 532',
+      antireqs: 'None'
+    },
+    'CHE308': {
+      title: 'CHE 308 - Mass Transfer',
+      description: 'Mass transfer fundamentals including molecular and convective mass transfer, diffusion, mass transfer coefficients, interphase mass transfer and applications such as distillation. Weekly Contact: Lecture: 3 hrs; Tutorial: 2 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CEN 199, CHE 214, CHE 220',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'CHE312': {
+      title: 'CHE 312 - Chemical Reaction Engineering',
+      description: 'Chemical kinetics, rate laws, kinetics in batch and flow systems, reactor design for ideal reactors and networks, non-isothermal reactors, and catalytic reactors. Weekly Contact: Lecture: 3 hrs; Tutorial: 2 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CHE 318',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'CHE319': {
+      title: 'CHE 319 - Process Modeling and Simulation',
+      description: 'Mathematical modelling and simulation of processes: conservation equations, solution techniques for ODEs/PDEs, Laplace transforms, transfer functions, dynamic behaviour, and use of software to simulate process dynamics. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs; Tutorial: 1 hr. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CHE 318 and CHE 338',
+      coreqs: 'CHE 312',
+      antireqs: 'None'
+    },
+    'CHE338': {
+      title: 'CHE 338 - Chemical Engineering Computations',
+      description: 'Introduction to numerical methods for chemical engineering problems: numerical errors, root-finding, linear and nonlinear algebraic solvers, interpolation, least-squares fitting, numerical integration/differentiation, and solution of ODEs/PDEs. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs; Tutorial: 1 hr. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CEN 199, CHE 200, CHE 214, CHE 220, CPS 125',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'CHE474': {
+      title: 'CHE 474 - Nanotechnology and Its Applications',
+      description: 'Principles of nanotechnology and applications in chemical engineering: nanostructured materials, manufacturing methods, characterization, properties and toxicological effects; applications in electronics, energy and other technologies. Weekly Contact: Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CHE 307',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'COE318': {
+      title: 'COE 318 - Software Systems',
+      description: 'Software development cycle: requirements analysis, specification, implementation, testing, debugging and integration. Object-oriented decomposition into classes and modules. Weekly Contact: Lab: 2 hrs; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CHY 102, CPS 188, ELE 202, MTH 240, PCS 211',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'COE328': {
+      title: 'COE 328 - Digital Systems',
+      description: 'Digital logic and system design, CAD tools and HDL, implementation technologies (CPLDs/FPGAs), combinational and sequential circuits, CPU datapath and control units. Weekly Contact: Lab: 3 hrs; Lecture: 4 hrs. GPA Weight: 1.00; Billing Units: 2.',
+      prereqs: 'CPS 188, ELE 202, MTH 240',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'CPS688': {
+      title: 'CPS 688 - Advanced Algorithms',
+      description: 'Algorithms with an engineering emphasis: divide-and-conquer, graph decompositions, greedy algorithms, dynamic programming, linear programming and reductions, NP-completeness and coping strategies, and quantum algorithms. Weekly Contact: Lab: 2 hrs; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'COE 428',
+      coreqs: 'None',
+      antireqs: 'CPS 616'
+    },
+    'CVL320': {
+      title: 'CVL 320 - Strength of Materials I',
+      description: 'Analysis of trusses, frames, beams, arches and cables; reactions, shear force and bending moment diagrams; stress and strain; Hooke\'s law and generalized elasticity relations; strain measurement and rosette analysis. Laboratory work included. Weekly Contact: Lab: 3 hrs; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CEN 100, MTH 141, MTH 240, MTL 200, PCS 125, PCS 211',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'CVL500': {
+      title: 'CVL 500 - Introduction to Structural Design',
+      description: 'Types of structures; loads and load factors; properties and behaviour of structural steel, reinforced concrete and timber; design of beams, slabs and short columns; design for ultimate and serviceability limit states. Weekly Contact: Lecture: 3 hrs; Tutorial: 2 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CEN 199, CVL 420',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'BME100': {
+      title: 'BME 100 - Introduction to Biomedical Engineering',
+      description: 'Terminology of the medical profession; anatomy and physiology overview; exposure to medical equipment and small animal handling; seminars from guest speakers. Graded pass/fail. Lab: 1 hr. Lecture: 1 hr. GPA weight 1.0.',
+      prereqs: 'None',
+      coreqs: 'None',
+      antireqs: 'None'
+    }
+    ,
+    'EES512': {
+      title: 'EES 512 - Electric Circuits',
+      description: 'One-semester lecture/lab course covering basic electric circuit parameters and laws: sources, resistive circuits, DC analysis, capacitance and inductance, transient responses, AC phasors, reactance/impedance, resonance, and real/complex power in reactive loads. Weekly Contact: Lecture: 3 hrs; Tutorial: 2 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'MTH 140 and MTH 141',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'EES612': {
+      title: 'EES 612 - Electric Machines and Actuators',
+      description: 'Covers DC and AC machines, transformer applications, motor characteristics and drives, power electronic converters (H-bridges, PWM), interfacing and control of DC servo/stepper and AC induction/synchronous machines, and basic speed/torque control techniques. Weekly Contact: Lab: 2 hrs; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CEN 199 and (EES 512 or MTE 401)',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'ELE639': {
+      title: 'ELE 639 - Control Systems',
+      description: 'Introductory control theory: modelling, simulation, transfer functions, block diagrams, time- and frequency-domain analysis, Routh-Hurwitz, Root Locus, Bode/Nyquist methods, and classical controller design (lead/lag, PID). Labs use DSP-based servomotor systems and MATLAB/Simulink. Weekly Contact: Lab: 1.5 hrs; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'ELE 532 and CEN 199',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'IND832': {
+      title: 'IND 832 - Reliability and Decision Analysis',
+      description: 'Analytical approaches to reliability engineering (reliability functions, failure data, system reliability, design for reliability, maintenance) and decision analysis (decision trees, value of information, risk assessment, utility theory, multi-objective decision-making). Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'MEC 325, MTH 410, MTH 510',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'MEC309': {
+      title: 'MEC 309 - Basic Thermodynamics',
+      description: 'Introductory thermodynamics: systems and properties, first and second laws, entropy, control-volume analysis, pure substances, ideal gas model, thermodynamic cycles (Otto, Diesel, Brayton), and efficiencies. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs; Tutorial: 1 hr. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'MTH 240, MTL 200, PCS 211',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'MEC311': {
+      title: 'MEC 311 - Dynamics',
+      description: 'Particles and rigid bodies in motion: kinematics and kinetics, work and energy, impulse and momentum, vibrating systems and practical applications such as clutches and brakes. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'PCS 211, MTH 141, MTH 240',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'MEC323': {
+      title: 'MEC 323 - Statics and Mechanics of Materials',
+      description: 'Rigid body equilibrium, two- and three-force members, trusses, frames and machines; mechanics of materials topics including stress/strain, Hooke\'s Law, axial/torsional loading and statically indeterminate problems. Weekly Contact: Lab: 1 hr; Lecture: 4 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'PCS 211, MTH 240, MTH 141',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'MEC430': {
+      title: 'MEC 430 - Solid Mechanics I',
+      description: 'Stress and strain analysis, stress transformation, principal stresses, Mohr\'s Circle, flexural analysis, beams and shafts design, columns and buckling (Euler), and related applied topics. Weekly Contact: Lab: 1.5 hrs; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CEN 199, MEC 323, MTL 200, MTH 425',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'MEC511': {
+      title: 'MEC 511 - Thermodynamics and Fluids',
+      description: 'Scope of thermodynamics and fluid flow: energy, heat and work, first and second laws, properties of substances, control-mass and control-volume analysis, entropy, conservation equations for fluid flow and one-dimensional flow applications. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'CEN 199, CHY 102, PCS 211, (CPS 125 or CPS 188), ELE 202',
+      coreqs: 'None',
+      antireqs: 'None'
+    },
+    'MEC522': {
+      title: 'MEC 522 - Fluid Mechanics',
+      description: 'Fluid properties and statics, manometry, forces on submerged planes, continuity, energy and momentum equations, one-dimensional flow in conduits, dimensional analysis and model testing. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+      prereqs: 'MTH 141, PCS 211, CPS 125, CVL 207, MTH 240, MTL 200',
+      coreqs: 'None',
+      antireqs: 'None'
+    }
+  };
+
+  // Added advanced/core courses
+  courseInfoMap['MEC701'] = {
+    title: 'MEC 701 - Heat Transfer',
+    description: 'Fundamental course in heat transfer covering conduction, convection and radiation; analytical, graphical and numerical solutions for steady and unsteady conduction; convection analysis and heat exchanger theory and design. (2 hr. Lab every other week) Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'MEC 309 and MEC 516',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['MEC709'] = {
+    title: 'MEC 709 - Control Systems',
+    description: 'Mathematical models of physical control systems; open and closed-loop analysis, block diagram algebra, stability analysis (Bode, Routh-Hurwitz, Root Locus) and introduction to compensator design (lead/lag). Weekly Contact: Lab: 1 hr; Lecture: 3 hrs; Tutorial: 1 hr. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: '(EES 512 or MTE 401) and MEC 311 and MEC 325 and MTH 425',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['MEC832'] = {
+    title: 'MEC 832 - Reliability and Decision Analysis',
+    description: 'Analytical approaches to reliability engineering and decision analysis: reliability functions, failure data analysis, system reliability, maintenance, decision trees, value of information, risk assessment and multi-objective decision making. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'MEC 325, MTH 410, MTH 510',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['MTE301'] = {
+    title: 'MTE 301 - Programming for Mechatronics Engineering',
+    description: 'Programming for digital computation in mechatronics: C/C++, MATLAB/Simulink and Python basics, program structure, OOP, GUIs, algorithm analysis, recursion and basic data structures. Weekly Contact: Lab: 2 hrs; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'CPS 188',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['MTE501'] = {
+    title: 'MTE 501 - Signals and Systems for Mechatronics Engineering',
+    description: 'Continuous- and discrete-time signals and systems, LTI system representations, convolution, Fourier analysis, Laplace and Z-transforms, sampling and frequency-domain analysis. Weekly Contact: Lab: 2 hrs; Lecture: 4 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'CEN 199, MTH 425, MTE 401, MTE 301',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['MTE502'] = {
+    title: 'MTE 502 - Microprocessor Systems',
+    description: 'Introduces microprocessor-based systems: digital logic review, microprocessor architectures (8/16/32-bit), assembly and high-level languages, I/O, memory, interrupts, peripheral devices and case studies. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'MEC 325, MTE 301, MTH 425',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['MTH410'] = {
+    title: 'MTH 410 - Statistics',
+    description: 'Statistical methods including discrete and continuous distributions, confidence intervals, hypothesis testing, correlation and simple linear regression. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'MTH 141 and MTH 240',
+    coreqs: 'None',
+    antireqs: 'MTH 304, MTH 380, MTH 404'
+  };
+
+  courseInfoMap['MTH425'] = {
+    title: 'MTH 425 - Differential Equations and Vector Calculus',
+    description: 'Review of ODEs, higher-order linear equations, Laplace transforms, vector calculus (grad, div, curl), line/surface/multiple integrals and fundamental theorems (Green, Stokes, Divergence). Weekly Contact: Lab: 2 hrs; Lecture: 4 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'MTH 140 and MTH 141 and MTH 240',
+    coreqs: 'None',
+    antireqs: 'MTH 312, MTH 330, MTH 430, MTH 350'
+  };
+
+  courseInfoMap['MTH510'] = {
+    title: 'MTH 510 - Numerical Analysis',
+    description: 'Numerical methods: Taylor error, solution of nonlinear equations, LU decomposition, iterative linear solvers, eigenvalues, interpolation, numerical integration and numerical ODE solvers. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'MTH 141 and MTH 240',
+    coreqs: 'None',
+    antireqs: 'MTH 501'
+  };
+
+  courseInfoMap['MTH514'] = {
+    title: 'MTH 514 - Probability and Stochastic Processes',
+    description: 'Probability theory and stochastic processes, random variables, transforms, joint/marginal distributions, stochastic processes (stationarity, ergodicity), power spectral density and applications. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'MTH 312 or MTH 425',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['PCS213'] = {
+    title: 'PCS 213 - Physics: Light and Modern Physics',
+    description: "Ray and wave models of light; reflection, refraction, interference, diffraction and polarization; Planck's hypothesis, Bohr model, photoelectric effect, uncertainty principle, Schrodinger equation, nuclear properties and radioactivity. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.",
+    prereqs: 'PCS 125',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['PCS224'] = {
+    title: 'PCS 224 - Solid State Physics',
+    description: 'Quantum nature of solids, band theory of metals and semiconductors, conduction processes, p-n junctions, transistors and other solid-state devices. Weekly Contact: Lab: 1 hr; Lecture: 3 hrs; Tutorial: 1 hr. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'PCS 110 or PCS 125 or PCS 130',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  // Engineering Management Science (EMS) courses
+  courseInfoMap['EMS201'] = {
+    title: 'EMS 201 - Entrepreneurship and Innovation Management',
+    description: 'Illustrates how managers implement innovation in their areas of responsibility. Covers leadership, entrepreneurial thinking, creativity, and approaches to managing change for new ventures or intra-company innovation. Weekly Contact: Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'None',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['EMS202'] = {
+    title: 'EMS 202 - Operations Management',
+    description: 'Topics include productivity; competitiveness and strategy; quality management; product and service design; process selection; design of work systems; learning curves; inventory management; MRP, JIT; maintenance and reliability; and an introduction to supply chain management. Weekly Contact: Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'None',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['EMS204'] = {
+    title: 'EMS 204 - Organization Design and Dynamics',
+    description: 'Develops theoretical understanding of organizational behaviour and interpersonal skills for productive team work. Topics include motivation, job design, perception and diversity, communication, team dynamics, leadership, industrial relations and legislation, power and organizational culture. Weekly Contact: Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'None',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['EMS301'] = {
+    title: 'EMS 301 - Management Information Systems',
+    description: 'Algorithm analysis/design, data structures, searching/sorting, recursion and list processing. Coverage of database systems from a systems analyst perspective and enterprise resource planning (ERP) concepts from business and technical viewpoints. This course is not available to Computer Science students. Weekly Contact: Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'EMS 201',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['EMS303'] = {
+    title: 'EMS 303 - Managerial Accounting',
+    description: 'Review of accounting principles and reporting for internal management use. Topics include budgets, standards and variance analysis, performance measures such as ROI and residual income, and management control techniques. Weekly Contact: Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'CHE 411 or ECN 801',
+    coreqs: 'None',
+    antireqs: 'None'
+  };
+
+  courseInfoMap['EMS304'] = {
+    title: 'EMS 304 - Project Management',
+    description: 'Fundamentals of project management using a life-cycle approach: project screening and selection, evaluation methods, structures, management and control, scheduling, resource management, life-cycle costing, computer support for project management, and project termination. Weekly Contact: Lecture: 3 hrs. GPA Weight: 1.00; Billing Units: 1.',
+    prereqs: 'EMS 204',
+    coreqs: 'None',
+    antireqs: 'CVL 742, IND 713, MEC 713'
+  };
+
+  function showCourseInfo(code){
+    const info = courseInfoMap[code];
+    if(!info){ alert('No additional info for ' + code); return; }
+    const msg = info.title + '\n\n' + info.description + '\n\nPrerequisites: ' + info.prereqs + '\nCo-Requisites: ' + info.coreqs + '\nAntirequisites: ' + info.antireqs;
+    alert(msg);
+  }
+
+  // Local file preview handler removed; app relies on manifest + embedded bundle or server-hosted JSON files.
+
+  // Attempt to load the manifest as soon as the DOM is ready so the UI can
+  // populate available programs/years. If the manifest isn't present, the
+  // existing static dropdowns remain usable.
+  document.addEventListener('DOMContentLoaded', async function(){
+    if(document.getElementById('debugInfo')) document.getElementById('debugInfo').textContent = 'Loading curriculum manifest...';
+    // Ensure any embedded bundle is merged first (useful when opening file://)
+    const embeddedFound = await ensureEmbeddedMerged(3000);
+    if(embeddedFound){
+      // If embedded curricula exist, we can populate the program select from them
+      // by synthesizing a manifest-like structure. Build a quick manifest view
+      // if index.json isn't present.
+      const keys = Object.keys(curriculumMap);
+      const progMap = {};
+      keys.forEach(k => {
+        const [prog, year] = k.split(':');
+        progMap[prog] = progMap[prog] || new Set();
+        progMap[prog].add(year);
+      });
+      const synthesized = Object.keys(progMap).sort().map(p => ({ program: p, years: Array.from(progMap[p]).sort().reverse() }));
+      manifest = synthesized;
+      populateProgramSelectFromManifest(synthesized);
+      if(document.getElementById('debugInfo')) document.getElementById('debugInfo').textContent = 'Embedded curricula loaded. Select your program.';
+    }
+
+    const m = await loadManifest();
+    if(m){
+      if(document.getElementById('debugInfo')) document.getElementById('debugInfo').textContent = 'Manifest loaded. Select your program.';
+    } else if(!embeddedFound){
+      if(document.getElementById('debugInfo')) document.getElementById('debugInfo').textContent = 'Manifest not found; using embedded dropdowns. To enable dynamic curricula, create index.json in this folder.';
+      // Also add a prominent on-page banner to make the problem obvious to users
+      try{
+        const banner = document.createElement('div');
+        banner.style.background = '#fff5f5';
+        banner.style.border = '1px solid #ffcccc';
+        banner.style.color = '#7a0000';
+        banner.style.padding = '12px';
+        banner.style.margin = '12px auto';
+        banner.style.maxWidth = '1200px';
+        banner.style.borderRadius = '8px';
+        banner.style.textAlign = 'center';
+        banner.id = 'manifestWarning';
+        banner.innerHTML = '<strong>Notice:</strong> The planner could not load curriculum files dynamically. If you opened this file directly (file://), your browser blocks local fetch requests. To load the JSON files, serve this folder over HTTP (see README.md).';
+        const root = document.querySelector('.layout') || document.body;
+        root.parentNode.insertBefore(banner, root);
+      } catch(e){ console.warn('Could not insert manifest warning banner', e); }
+    }
+  });
+
+    // FYEng Mobile App store selector behavior
+    document.addEventListener('DOMContentLoaded', function(){
+      const sel = document.getElementById('fyengStore');
+      if(!sel) return;
+      sel.addEventListener('change', function(){
+        const url = this.value;
+        if(url) window.open(url, '_blank');
+        // reset selection to placeholder
+        this.value = '';
+      });
+    });
+  </script>
+
+</body>
+</html>

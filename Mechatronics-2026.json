@@ -1,0 +1,218 @@
+[
+  {
+    "title": "1st Semester (Required)",
+    "courses": [
+      {
+        "code": "CEN100",
+        "title": "Introduction to Engineering"
+      },
+      {
+        "code": "CEN199",
+        "title": "Writing Skills"
+      },
+      {
+        "code": "CHY102",
+        "title": "General Chemistry"
+      },
+      {
+        "code": "MTH140",
+        "title": "Calculus I"
+      },
+      {
+        "code": "MTH141",
+        "title": "Linear Algebra"
+      },
+      {
+        "code": "PCS211",
+        "title": "Physics: Mechanics"
+      }
+    ]
+  },
+  {
+    "title": "2nd Semester (Required)",
+    "courses": [
+      {
+        "code": "CPS188",
+        "title": "Computer Programming Fundamentals"
+      },
+      {
+        "code": "ECN801",
+        "title": "Principles of Engineering Economics"
+      },
+      {
+        "code": "MEC222",
+        "title": "Engineering Graphical Communication"
+      },
+      {
+        "code": "MTH240",
+        "title": "Calculus II"
+      },
+      {
+        "code": "MTL200",
+        "title": "Materials Science Fundamentals"
+      },
+      {
+        "code": "PCS125",
+        "title": "Physics: Waves and Fields"
+      }
+    ]
+  },
+  {
+    "title": "3rd Semester (Required)",
+    "courses": [
+      {
+        "code": "CMN432",
+        "title": "Communication in the Engineering Professions"
+      },
+      {
+        "code": "MEC323",
+        "title": "Statics and Mechanics of Materials"
+      },
+      {
+        "code": "MEC325",
+        "title": "Introduction to Engineering Design"
+      },
+      {
+        "code": "MTE301",
+        "title": "Programming for Mechatronics Engineering"
+      },
+      {
+        "code": "MTH425",
+        "title": "Differential Equations and Vector Calculus"
+      }
+    ]
+  },
+  {
+    "title": "4th Semester (Required)",
+    "courses": [
+      {
+        "code": "MEC311",
+        "title": "Dynamics"
+      },
+      {
+        "code": "MEC322",
+        "title": "Manufacturing Fundamentals"
+      },
+      {
+        "code": "MEC511",
+        "title": "Thermodynamics and Fluids"
+      },
+      {
+        "code": "MTE401",
+        "title": "Analysis of Electric Circuits"
+      },
+      {
+        "code": "MTH410",
+        "title": "Statistics"
+      }
+    ]
+  },
+  {
+    "title": "5th Semester (Required)",
+    "courses": [
+      {
+        "code": "EES612",
+        "title": "Electric Machines and Actuators"
+      },
+      {
+        "code": "MTE713",
+        "title": "Project Management"
+      },
+      {
+        "code": "MTE501",
+        "title": "Signals and Systems for Mechatronics Engineering"
+      },
+      {
+        "code": "MTE502",
+        "title": "Microprocessor Systems"
+      },
+      {
+        "code": "MTH510",
+        "title": "Numerical Analysis"
+      }
+    ]
+  },
+  {
+    "title": "6th Semester (Required)",
+    "courses": [
+      {
+        "code": "MEC709",
+        "title": "Control Systems"
+      },
+      {
+        "code": "MTE601",
+        "title": "Machine Mechanics and Design"
+      },
+      {
+        "code": "MTE602",
+        "title": "Introduction to Robotics"
+      },
+      {
+        "code": "MTE603",
+        "title": "Computer Structures and Real-Time Systems"
+      },
+      {
+        "code": "MTE604",
+        "title": "Electromechanical System Modelling and Design"
+      },
+      {
+        "code": "MTE751",
+        "title": "Measurements, Sensors and Instruments"
+      }
+    ]
+  },
+  {
+    "title": "7th Semester (Capstone & Core)",
+    "courses": [
+      {
+        "code": "MTE70A",
+        "title": "Mechatronics Capstone Design (part A)"
+      },
+      {
+        "code": "MTE701",
+        "title": "Real-Time Digital Control Systems Design"
+      },
+      {
+        "code": "MTE617",
+        "title": "Manufacturing System Controls"
+      }
+    ]
+  },
+  {
+    "title": "8th Semester (Capstone & Options)",
+    "courses": [
+      {
+        "code": "CEN800",
+        "title": "Law and Ethics in Engineering Practice"
+      },
+      {
+        "code": "MTE70B",
+        "title": "Mechatronics Capstone Design (part B)"
+      },
+      {
+        "code": "MTE801",
+        "title": "Hardware in the Loop and RCP"
+      },
+      {
+        "code": "MTE811",
+        "title": "Design of Modern Control Systems"
+      },
+      {
+        "code": "MTE812",
+        "title": "Autonomous Robots and Vehicles"
+      },
+      {
+        "code": "MTE819",
+        "title": "Control of Robotic Manipulators"
+      },
+      {
+        "code": "MTE882",
+        "title": "Introduction to Digital Image Processing"
+      },
+      {
+        "code": "MTE888",
+        "title": "Intelligent Systems"
+      }
+    ]
+  }
+]
