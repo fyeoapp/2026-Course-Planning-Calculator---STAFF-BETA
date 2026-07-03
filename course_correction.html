@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Correction Widget</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <style>
+  :root{
+    --purple:#6f2bb8;
+    --yellow:#ffd842;
+    --blue:#16579b;
+    --bg:#5e2b97;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    margin: 0;
+    padding: 18px;
+    -webkit-font-smoothing:antialiased;
+    color:#222;
+  }
+  
+  h1,h2,h3{text-align:center}
+  button{padding:8px 14px;margin:5px;cursor:pointer}
+
+  
+  
+  </style>
+</head>
+<body>
+    <div id="courseForm" style="background-color: white; width:40%; margin: 0 auto" >
+        <h1>Course Correction Form</h1>
+        <!-- Step 1: Select Program -->
+         <div id="step1" class="section">
+            <h3>Select Program</h3>
+            <select id="programSelect" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc">
+                <option value="">-- Choose your program --</option>
+                <option value="Aerospace">Aerospace Engineering</option>
+                <option value="Biomedical">Biomedical Engineering</option>
+                <option value="Chemical">Chemical Engineering Co-op</option>
+                <option value="Civil">Civil Engineering</option>
+                <option value="Computer">Computer Engineering</option>
+                <option value="Electrical">Electrical Engineering</option>
+                <option value="Industrial">Industrial Engineering</option>
+                <option value="Mechanical">Mechanical Engineering</option>
+                <option value="Mechatronics">Mechatronics Engineering</option>
+            </select>
+        </div>
+
+        <!-- Step 2: Select Year -->
+         <div id="step2">
+            <h3 style="margin-top:20px;">Select Course year</h3>
+                <label for="admitYearSelect" style="display:block;margin-bottom:6px;">Course year</label>
+                <select id="admitYearSelect" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc">
+                    <option value="">-- Select Course year --</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026" selected>2026</option>
+                </select>
+        </div>
+        <div id="step3">
+          <h3 style="margin-top:20px;">Select Correction Type</h3>
+            <!-- <label for="correctionType" style="display:block;margin-bottom:6px;">Admit year</label> -->
+            <select id="correctionType" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc">
+            <!-- <option value="">-- Select admit year --</option> -->
+            <option value="Add">Add Course</option>
+            <option value="Replace">Replace Course</option>
+            <option value="Remove">Remove Course</option>
+            </select>
+        </div>
+        
+        <div>
+
+        <button onclick="evalOptions()">Confirm</button>
+
+        </div>
+    </div>
+
+    <script>
+
+    async function evalOptions(){
+      const correction = document.getElementById("correctionType").value;
+      if (correction == "Add") {
+        console.log("Works")
+      }
+      else{
+        showCourses();
+      }
+    }  
+    async function showCourses() {
+      const programName = document.getElementById("programSelect").value.split(" ")[0];;
+      const programYear = document.getElementById("admitYearSelect").value;
+
+      if (!programName){
+        alert('Select program from the dropdown before continuing.');
+        return;
+      }
+
+      const iframe = Object.assign(
+        document.createElement('iframe'), {
+          id: 'curriculumIframe',
+          src: `Programs_v2/${programName}/${programName}-${programYear}_layout.html`,
+          style: "width: 100%; display: block; border: none; overflow: hidden;",
+
+          // onload: function() {
+          //   const iframeDoc = this.contentWindow.document;
+          //   this.style.height = iframeDoc.documentElement.scrollHeight + 'px'
+          // }
+          onload: function() {
+            const iframeDoc = this.contentWindow.document;
+            this.style.height = iframeDoc.documentElement.scrollHeight + 'px';
+
+            // Track selections in real-time
+            let firstSelected = null;
+
+            iframeDoc.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', (e) => {
+                    const checkedBoxes = iframeDoc.querySelectorAll('input[type="checkbox"]:checked');
+                    
+                    if (checkedBoxes.length > 1) {
+                        alert("You can only replace one course at a time.");
+                        
+                        // Unselect everything except the first one picked
+                        checkedBoxes.forEach(cb => {
+                            if (cb !== firstSelected) {
+                                cb.checked = false;
+                            }
+                        });
+                    } else if (checkedBoxes.length === 1) {
+                        // Store the first selection
+                        firstSelected = checkedBoxes[0];
+                    } else {
+                        firstSelected = null;
+                    }
+                });
+            });
+        }
+
+        }
+      )
+
+      const button = Object.assign(
+        document.createElement('button'), {
+          id: 'replace',
+          onclick: function() {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            const checked = iframeDoc.querySelectorAll('input[type="checkbox"]:checked');
+            if (checked.length == 0) {
+              alert("Select the course to be replaced.");
+              return;
+            }
+            replace();
+            
+          }
+          
+        }, 
+        { innerText: "Replace"}
+        
+      )
+
+      
+      
+      
+      document.getElementById("courseForm").replaceChildren();
+      document.getElementById("courseForm").append(iframe, button);
+    }
+
+    async function replace() {
+      const courseToReplace = document.getElementById('curriculumIframe').contentDocument.querySelectorAll('input[type="checkbox"]:checked');
+      console.log(courseToReplace);
+      document.getElementById("courseForm").replaceChildren();
+      const replacementCourse = await selectReplacementCourse();
+      fetchCourseInfo(replacementCourse);
+
+    }
+
+    async function selectReplacementCourse() {
+      const replacementContainer = Object.assign(
+        document.createElement('form'), {
+          id: "replacementDiv",
+          style: "display: flex; flex-direction: column; align-items: center; gap: 8px",
+        }
+      )
+      replacementContainer.append(Object.assign(
+        document.createElement('label'), {
+          innerText: "Enter the URL of the replacement course.", 
+          htmlFor: 'replacementCourseInputField',
+        }
+      ))
+      replacementContainer.append(Object.assign(
+        document.createElement('input'), {
+          id: 'replacementCourseInputField',
+          placeholder: "ex. https://www.torontomu.ca/calendar/2026-2027/courses/mathematics/MTH/140/",
+          type: 'url',
+          style: "width: 80%; box-sizing: border-box; padding: 8px; border-radius: 6px; border: 1px solid #ccc;"
+  
+        }, 
+      ))
+      replacementContainer.append(Object.assign(
+        document.createElement('input'), {
+          type: 'submit',
+          value: 'Submit',
+        }
+      ))
+      document.getElementById("courseForm").append(replacementContainer);
+      
+      return new Promise((resolve) =>
+    {
+      replacementContainer.addEventListener('submit', (event) =>
+    {
+      event.preventDefault();
+
+      const typedValue = document.getElementById('replacementCourseInputField').value;
+      // replacementContainer.remove();
+      resolve(typedValue);
+    })
+    })
+  }
+
+  async function fetchCourseInfo(courseURL) {
+    try {
+      const response = await fetch(courseURL);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      
+      const data = await response.json(); 
+      console.log(data);
+      return data;
+      
+    } catch (error) {
+      console.error("Fetch failed:", error);
+    }
+
+    
+  }
+
+   
+    
+    // async function fetchData() {    
+    //     try{
+        
+    //     const response = await fetch(`./Programs_v2/{programSelect.value}/{programSelect.value}-{programYear.value}_layout.html`)
+    //     const data = await response.json();
+    //     console.log(data);
+    //     }
+    //     catch (error) {
+    //     console.error('Fetch operation failed:', error);
+    //     }
+    // }
+</script>
+</body>
+</html>

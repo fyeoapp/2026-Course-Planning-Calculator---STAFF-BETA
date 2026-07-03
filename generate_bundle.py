@@ -13,6 +13,7 @@ it will use the embedded curricula.
 """
 import os, re, json
 
+#regex pattern to filter out files with name type <Program-name>-<YYYY>.json, accepts both upper/lower case letters for program name
 pattern = re.compile(r"^([A-Za-z]+)-([0-9]{4})\.json$")
 
 files = [f for f in os.listdir('.') if pattern.match(f)]

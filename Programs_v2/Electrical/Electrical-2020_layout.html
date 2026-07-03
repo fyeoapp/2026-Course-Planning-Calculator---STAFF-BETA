@@ -1,0 +1,1575 @@
+<meta charset="UTF-8">
+<base target="_blank">
+<div class="scoped bootstrap" style="padding: 20px;">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<div class="panel panel-default" data-panel-container-id="0">
+ <div class="panel-heading">
+  <h4>
+   Full-Time, Four-Year Program
+  </h4>
+ </div>
+ <div class="panel-body">
+  <div class="1595938881234 stackparsys">
+   <div class="resTitle section">
+    <h2>
+     1st &amp; 2nd Semester
+    </h2>
+   </div>
+   <div class="resTwoColEven section">
+    <div class="row">
+     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+      <div class="c1 stackparsys">
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="0cca10f6-f5c4-4441-b357-fc5f80aea9a1">
+         <p>
+          <strong>
+           <span>
+            1st Semester
+           </span>
+          </strong>
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#0cca10f6-f5c4-4441-b357-fc5f80aea9a1");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="9477fea4-3c6a-4a8b-96d0-1dce975c94ad">
+         <p>
+          <strong>
+           REQUIRED
+          </strong>
+          :
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#9477fea4-3c6a-4a8b-96d0-1dce975c94ad");});
+        </script>
+       </div>
+       <div class="resTable parbase section">
+        <div class="scrollIndicator hidden">
+         <i aria-hidden="true" class="fa fa-long-arrow-left">
+         </i>
+         Swipe to see more
+         <i aria-hidden="true" class="fa fa-long-arrow-right">
+         </i>
+        </div>
+        <div class="tableContainer" id="785f1520-53de-4a5a-833d-8e4b9a2dc85a">
+         <table border="0" cellpadding="0" cellspacing="0">
+          <colgroup>
+           <col width="20%"/>
+           <col width="80%"/>
+          </colgroup>
+          <tbody>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="CEN 100"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/common-engineering/CEN/100.html">
+               CEN 100
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Introduction to Engineering
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="CEN 199"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/common-engineering/CEN/199.html">
+               CEN 199
+              </a>
+             </label>
+             *
+            </td>
+            <td valign="top">
+             Writing Skills
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="CHY 102"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/chemistry/CHY/102.html">
+               CHY 102
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             General Chemistry
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="MTH 140"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/mathematics/MTH/140.html">
+               MTH 140
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Calculus I
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="MTH 141"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/mathematics/MTH/141.html">
+               MTH 141
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Linear Algebra
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="PCS 211"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/physics/PCS/211.html">
+               PCS 211
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Physics: Mechanics
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <script>
+         //convert to plugin in pure js....later (soon)
+	$(document).ready(function() {
+		$('#785f1520-53de-4a5a-833d-8e4b9a2dc85a table').addClass("table");
+		
+		$('#785f1520-53de-4a5a-833d-8e4b9a2dc85a table').addClass("table-bordered");
+		var removeHeading = false;
+		
+		//mandatory to have heading on initialization but remove it after. See #NOTE-REMOVE
+		if($('#785f1520-53de-4a5a-833d-8e4b9a2dc85a table thead').eq(0).length == 0){
+			//insert fake row and delete
+			removeHeading = true;
+			var numOfColsTD = $('#785f1520-53de-4a5a-833d-8e4b9a2dc85a table tbody tr').eq(0).find('td').length;
+			var numOfColsTH = $('#785f1520-53de-4a5a-833d-8e4b9a2dc85a table tbody tr').eq(0).find('th').length;
+
+			var appendTH = "<thead>";
+			for(var i = 0; i < numOfColsTD+numOfColsTH;i++){
+				appendTH += "<th>Column</th>";
+			}
+			appendTH += "</thead>";
+			$('#785f1520-53de-4a5a-833d-8e4b9a2dc85a table').prepend(appendTH);
+		}
+		
+		
+
+		//#NOTE-REMOVE
+		if(removeHeading){
+			$('#785f1520-53de-4a5a-833d-8e4b9a2dc85a table thead').remove();
+		}
+		
+	} );
+        </script>
+        <script>
+         $(document).ready(function(){addCoursePopover("#785f1520-53de-4a5a-833d-8e4b9a2dc85a");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="ff60cdff-09d9-4c2a-8d51-df57f9f8f9c4">
+         <p>
+          <strong>
+           LIBERAL STUDIES
+          </strong>
+          :
+          <br/>
+          One course from
+          <a href="http://torontomu.ca/content/ryerson/calendar/2020-2021/liberal-studies/table_a.html">
+           Table A - Lower Level Liberal Studies
+          </a>
+          .
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#ff60cdff-09d9-4c2a-8d51-df57f9f8f9c4");});
+        </script>
+       </div>
+      </div>
+     </div>
+     <div class="clearfix visible-xs-block">
+     </div>
+     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+      <div class="c2 stackparsys">
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="1c511204-7d27-4574-bdbc-6e3437ae49fe">
+         <p>
+          <strong>
+           <span>
+            2nd Semester
+           </span>
+          </strong>
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#1c511204-7d27-4574-bdbc-6e3437ae49fe");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="2b296408-dae7-44f6-a10d-a2080009c48f">
+         <p>
+          <strong>
+           REQUIRED
+          </strong>
+          :
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#2b296408-dae7-44f6-a10d-a2080009c48f");});
+        </script>
+       </div>
+       <div class="resTable parbase section">
+        <div class="scrollIndicator hidden">
+         <i aria-hidden="true" class="fa fa-long-arrow-left">
+         </i>
+         Swipe to see more
+         <i aria-hidden="true" class="fa fa-long-arrow-right">
+         </i>
+        </div>
+        <div class="tableContainer" id="ce13276b-7887-4047-8fca-81819694e2cf">
+         <table border="0" cellpadding="0" cellspacing="0">
+          <colgroup>
+           <col width="20%"/>
+           <col width="80%"/>
+          </colgroup>
+          <tbody>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="CPS 125"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/computer-science/CPS/125.html">
+               CPS 125
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Digital Computation and Programming
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ECN 801"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/economics/ECN/801.html">
+               ECN 801
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Principles of Engineering Economics
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 202"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/202.html">
+               ELE 202
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Electric Circuit Analysis
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="MTH 240"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/mathematics/MTH/240.html">
+               MTH 240
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Calculus II
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="PCS 125"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/physics/PCS/125.html">
+               PCS 125
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Physics: Waves and Fields
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <script>
+         //convert to plugin in pure js....later (soon)
+	$(document).ready(function() {
+		$('#ce13276b-7887-4047-8fca-81819694e2cf table').addClass("table");
+		
+		$('#ce13276b-7887-4047-8fca-81819694e2cf table').addClass("table-bordered");
+		var removeHeading = false;
+		
+		//mandatory to have heading on initialization but remove it after. See #NOTE-REMOVE
+		if($('#ce13276b-7887-4047-8fca-81819694e2cf table thead').eq(0).length == 0){
+			//insert fake row and delete
+			removeHeading = true;
+			var numOfColsTD = $('#ce13276b-7887-4047-8fca-81819694e2cf table tbody tr').eq(0).find('td').length;
+			var numOfColsTH = $('#ce13276b-7887-4047-8fca-81819694e2cf table tbody tr').eq(0).find('th').length;
+
+			var appendTH = "<thead>";
+			for(var i = 0; i < numOfColsTD+numOfColsTH;i++){
+				appendTH += "<th>Column</th>";
+			}
+			appendTH += "</thead>";
+			$('#ce13276b-7887-4047-8fca-81819694e2cf table').prepend(appendTH);
+		}
+		
+		
+
+		//#NOTE-REMOVE
+		if(removeHeading){
+			$('#ce13276b-7887-4047-8fca-81819694e2cf table thead').remove();
+		}
+		
+	} );
+        </script>
+        <script>
+         $(document).ready(function(){addCoursePopover("#ce13276b-7887-4047-8fca-81819694e2cf");});
+        </script>
+       </div>
+      </div>
+     </div>
+     <div class="clearfix visible-lg-block">
+     </div>
+     <div class="clearfix visible-md-block">
+     </div>
+     <div class="clearfix visible-sm-block">
+     </div>
+     <div class="clearfix visible-xs-block">
+     </div>
+    </div>
+   </div>
+   <div class="resText parbase section">
+    <div class="res-text richtextContent background-hidden replica text-font-regular" id="34b2a5a7-e12a-4725-8ec7-8ee683b98bea">
+     <p>
+      <small>
+       *
+       <a class="qTipCourse" data-url="/content/ryerson/calendar/2020-2021/courses/common-engineering/CEN/199/jcr:content/resCalendarCourseEmbed.json" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/common-engineering/CEN/199.html">
+        CEN 199
+       </a>
+       is graded in a pass/fail basis.
+      </small>
+     </p>
+    </div>
+    <script>
+     $(document).ready(function(){addCoursePopover("#34b2a5a7-e12a-4725-8ec7-8ee683b98bea");});
+    </script>
+   </div>
+   <div class="resText parbase section">
+    <div class="res-text richtextContent background-hidden replica text-font-regular" id="c5fb1842-0f28-45de-b03a-5b81113ff085">
+     <p>
+     </p>
+    </div>
+    <script>
+     $(document).ready(function(){addCoursePopover("#c5fb1842-0f28-45de-b03a-5b81113ff085");});
+    </script>
+   </div>
+   <div class="resTitle section">
+    <h2>
+     3rd &amp; 4th Semester
+    </h2>
+   </div>
+   <div class="resTwoColEven section">
+    <div class="row">
+     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+      <div class="c1 stackparsys">
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="fe4624d9-610a-4af0-80bf-e655d5d2fff2">
+         <p>
+          <strong>
+           <span>
+            3rd Semester
+           </span>
+          </strong>
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#fe4624d9-610a-4af0-80bf-e655d5d2fff2");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="1781568f-f2fc-42c7-9513-586c15975ad1">
+         <p>
+          <strong>
+           REQUIRED
+          </strong>
+          :
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#1781568f-f2fc-42c7-9513-586c15975ad1");});
+        </script>
+       </div>
+       <div class="resTable parbase section">
+        <div class="scrollIndicator hidden">
+         <i aria-hidden="true" class="fa fa-long-arrow-left">
+         </i>
+         Swipe to see more
+         <i aria-hidden="true" class="fa fa-long-arrow-right">
+         </i>
+        </div>
+        <div class="tableContainer" id="9007c6d2-add1-400a-863a-497b25eeb222">
+         <table border="0" cellpadding="0" cellspacing="0">
+          <colgroup>
+           <col width="20%"/>
+           <col width="80%"/>
+          </colgroup>
+          <tbody>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="COE 318"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/computer-engineering/COE/318.html">
+               COE 318
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Software Systems
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="COE 328"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/computer-engineering/COE/328.html">
+               COE 328
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Digital Systems
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 302"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/302.html">
+               ELE 302
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Electric Networks
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="MTH 312"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/mathematics/MTH/312.html">
+               MTH 312
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Differential Equations and Vector Calculus
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="PCS 224"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/physics/PCS/224.html">
+               PCS 224
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Solid State Physics
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <script>
+         //convert to plugin in pure js....later (soon)
+	$(document).ready(function() {
+		$('#9007c6d2-add1-400a-863a-497b25eeb222 table').addClass("table");
+		
+		$('#9007c6d2-add1-400a-863a-497b25eeb222 table').addClass("table-bordered");
+		var removeHeading = false;
+		
+		//mandatory to have heading on initialization but remove it after. See #NOTE-REMOVE
+		if($('#9007c6d2-add1-400a-863a-497b25eeb222 table thead').eq(0).length == 0){
+			//insert fake row and delete
+			removeHeading = true;
+			var numOfColsTD = $('#9007c6d2-add1-400a-863a-497b25eeb222 table tbody tr').eq(0).find('td').length;
+			var numOfColsTH = $('#9007c6d2-add1-400a-863a-497b25eeb222 table tbody tr').eq(0).find('th').length;
+
+			var appendTH = "<thead>";
+			for(var i = 0; i < numOfColsTD+numOfColsTH;i++){
+				appendTH += "<th>Column</th>";
+			}
+			appendTH += "</thead>";
+			$('#9007c6d2-add1-400a-863a-497b25eeb222 table').prepend(appendTH);
+		}
+		
+		
+
+		//#NOTE-REMOVE
+		if(removeHeading){
+			$('#9007c6d2-add1-400a-863a-497b25eeb222 table thead').remove();
+		}
+		
+	} );
+        </script>
+        <script>
+         $(document).ready(function(){addCoursePopover("#9007c6d2-add1-400a-863a-497b25eeb222");});
+        </script>
+       </div>
+      </div>
+     </div>
+     <div class="clearfix visible-xs-block">
+     </div>
+     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+      <div class="c2 stackparsys">
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="dfe6c435-a9bf-4f4c-8565-4779dca80ece">
+         <p>
+          <strong>
+           <span>
+            4th Semester
+           </span>
+          </strong>
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#dfe6c435-a9bf-4f4c-8565-4779dca80ece");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="cae2a617-262e-4203-aec2-ca4c79599267">
+         <p>
+          <strong>
+           REQUIRED
+          </strong>
+          :
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#cae2a617-262e-4203-aec2-ca4c79599267");});
+        </script>
+       </div>
+       <div class="resTable parbase section">
+        <div class="scrollIndicator hidden">
+         <i aria-hidden="true" class="fa fa-long-arrow-left">
+         </i>
+         Swipe to see more
+         <i aria-hidden="true" class="fa fa-long-arrow-right">
+         </i>
+        </div>
+        <div class="tableContainer" id="d683aa89-9fae-4f4c-a8a2-d6c3e961c831">
+         <table border="0" cellpadding="0" cellspacing="0">
+          <colgroup>
+           <col width="20%"/>
+           <col width="80%"/>
+          </colgroup>
+          <tbody>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="CMN 432"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/communication/CMN/432.html">
+               CMN 432
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Communication in the Engineering Professions
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="COE 428"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/computer-engineering/COE/428.html">
+               COE 428
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Engineering Algorithms and Data Structures
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 401"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/401.html">
+               ELE 401
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Field Theory
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 404"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/404.html">
+               ELE 404
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Electronic Circuits I
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="MTH 314"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/mathematics/MTH/314.html">
+               MTH 314
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Discrete Mathematics for Engineers
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <script>
+         //convert to plugin in pure js....later (soon)
+	$(document).ready(function() {
+		$('#d683aa89-9fae-4f4c-a8a2-d6c3e961c831 table').addClass("table");
+		
+		$('#d683aa89-9fae-4f4c-a8a2-d6c3e961c831 table').addClass("table-bordered");
+		var removeHeading = false;
+		
+		//mandatory to have heading on initialization but remove it after. See #NOTE-REMOVE
+		if($('#d683aa89-9fae-4f4c-a8a2-d6c3e961c831 table thead').eq(0).length == 0){
+			//insert fake row and delete
+			removeHeading = true;
+			var numOfColsTD = $('#d683aa89-9fae-4f4c-a8a2-d6c3e961c831 table tbody tr').eq(0).find('td').length;
+			var numOfColsTH = $('#d683aa89-9fae-4f4c-a8a2-d6c3e961c831 table tbody tr').eq(0).find('th').length;
+
+			var appendTH = "<thead>";
+			for(var i = 0; i < numOfColsTD+numOfColsTH;i++){
+				appendTH += "<th>Column</th>";
+			}
+			appendTH += "</thead>";
+			$('#d683aa89-9fae-4f4c-a8a2-d6c3e961c831 table').prepend(appendTH);
+		}
+		
+		
+
+		//#NOTE-REMOVE
+		if(removeHeading){
+			$('#d683aa89-9fae-4f4c-a8a2-d6c3e961c831 table thead').remove();
+		}
+		
+	} );
+        </script>
+        <script>
+         $(document).ready(function(){addCoursePopover("#d683aa89-9fae-4f4c-a8a2-d6c3e961c831");});
+        </script>
+       </div>
+      </div>
+     </div>
+     <div class="clearfix visible-lg-block">
+     </div>
+     <div class="clearfix visible-md-block">
+     </div>
+     <div class="clearfix visible-sm-block">
+     </div>
+     <div class="clearfix visible-xs-block">
+     </div>
+    </div>
+   </div>
+   <div class="resText parbase section">
+    <div class="res-text richtextContent background-hidden replica text-font-regular" id="c926b942-94af-4d29-b0bc-d67f19c7ad37">
+     <p>
+      <small>
+       <strong>
+        NOTE:
+       </strong>
+      </small>
+     </p>
+     <p>
+      <small>
+      </small>
+     </p>
+     <ul style="list-style: none; padding-left: 0; margin: 0;">
+      <small>
+       <li>
+        All required courses in 1st and 2nd semesters are prerequisites to all required courses in 3rd semester.
+       </li>
+       <li>
+        Some courses have 3rd semester prerequisites in addition to all 1st and 2nd semester required courses. Please refer to the course description chapter of this calendar.
+       </li>
+      </small>
+     </ul>
+     <small>
+     </small>
+     <p>
+     </p>
+    </div>
+    <script>
+     $(document).ready(function(){addCoursePopover("#c926b942-94af-4d29-b0bc-d67f19c7ad37");});
+    </script>
+   </div>
+   <div class="resText parbase section">
+    <div class="res-text richtextContent background-hidden replica text-font-regular" id="d16c2647-0405-4b33-a745-c74785a243e3">
+     <p>
+     </p>
+    </div>
+    <script>
+     $(document).ready(function(){addCoursePopover("#d16c2647-0405-4b33-a745-c74785a243e3");});
+    </script>
+   </div>
+   <div class="resTitle section">
+    <h2>
+     5th &amp; 6th Semester
+    </h2>
+   </div>
+   <div class="resTwoColEven section">
+    <div class="row">
+     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+      <div class="c1 stackparsys">
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="5972ba42-7197-4251-b349-42923115585e">
+         <p>
+          <strong>
+           <span>
+            5th Semester
+           </span>
+          </strong>
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#5972ba42-7197-4251-b349-42923115585e");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="7597f28a-43d7-4028-bd23-b074722196cc">
+         <p>
+          <strong>
+           REQUIRED
+          </strong>
+          :
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#7597f28a-43d7-4028-bd23-b074722196cc");});
+        </script>
+       </div>
+       <div class="resTable parbase section">
+        <div class="scrollIndicator hidden">
+         <i aria-hidden="true" class="fa fa-long-arrow-left">
+         </i>
+         Swipe to see more
+         <i aria-hidden="true" class="fa fa-long-arrow-right">
+         </i>
+        </div>
+        <div class="tableContainer" id="b55987b3-4058-4a7d-9a88-17867bf805c6">
+         <table border="0" cellpadding="0" cellspacing="0">
+          <colgroup>
+           <col width="20%"/>
+           <col width="80%"/>
+          </colgroup>
+          <tbody>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="COE 538"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/computer-engineering/COE/538.html">
+               COE 538
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Microprocessor Systems
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 504"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/504.html">
+               ELE 504
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Electronic Circuits II
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 531"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/531.html">
+               ELE 531
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Electromagnetics
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 532"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/532.html">
+               ELE 532
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Signals and Systems I
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="MTH 514"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/mathematics/MTH/514.html">
+               MTH 514
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Probability and Stochastic Processes
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <script>
+         //convert to plugin in pure js....later (soon)
+	$(document).ready(function() {
+		$('#b55987b3-4058-4a7d-9a88-17867bf805c6 table').addClass("table");
+		
+		$('#b55987b3-4058-4a7d-9a88-17867bf805c6 table').addClass("table-bordered");
+		var removeHeading = false;
+		
+		//mandatory to have heading on initialization but remove it after. See #NOTE-REMOVE
+		if($('#b55987b3-4058-4a7d-9a88-17867bf805c6 table thead').eq(0).length == 0){
+			//insert fake row and delete
+			removeHeading = true;
+			var numOfColsTD = $('#b55987b3-4058-4a7d-9a88-17867bf805c6 table tbody tr').eq(0).find('td').length;
+			var numOfColsTH = $('#b55987b3-4058-4a7d-9a88-17867bf805c6 table tbody tr').eq(0).find('th').length;
+
+			var appendTH = "<thead>";
+			for(var i = 0; i < numOfColsTD+numOfColsTH;i++){
+				appendTH += "<th>Column</th>";
+			}
+			appendTH += "</thead>";
+			$('#b55987b3-4058-4a7d-9a88-17867bf805c6 table').prepend(appendTH);
+		}
+		
+		
+
+		//#NOTE-REMOVE
+		if(removeHeading){
+			$('#b55987b3-4058-4a7d-9a88-17867bf805c6 table thead').remove();
+		}
+		
+	} );
+        </script>
+        <script>
+         $(document).ready(function(){addCoursePopover("#b55987b3-4058-4a7d-9a88-17867bf805c6");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="ff439b42-9ab1-4ae6-b78f-7168b69f7953">
+         <p>
+          <strong>
+           LIBERAL STUDIES
+          </strong>
+          :
+          <br/>
+          One course from
+          <a href="http://torontomu.ca/content/ryerson/calendar/2020-2021/liberal-studies/table_a.html">
+           Table A - Lower Level Liberal Studies
+          </a>
+          .
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#ff439b42-9ab1-4ae6-b78f-7168b69f7953");});
+        </script>
+       </div>
+      </div>
+     </div>
+     <div class="clearfix visible-xs-block">
+     </div>
+     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+      <div class="c2 stackparsys">
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="774463f3-9e36-4cfd-91a9-127a0d8a628d">
+         <p>
+          <strong>
+           <span>
+            6th Semester
+           </span>
+          </strong>
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#774463f3-9e36-4cfd-91a9-127a0d8a628d");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="81ffc50c-538c-4d3a-95a0-3feae2f05844">
+         <p>
+          <strong>
+           REQUIRED
+          </strong>
+          :
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#81ffc50c-538c-4d3a-95a0-3feae2f05844");});
+        </script>
+       </div>
+       <div class="resTable parbase section">
+        <div class="scrollIndicator hidden">
+         <i aria-hidden="true" class="fa fa-long-arrow-left">
+         </i>
+         Swipe to see more
+         <i aria-hidden="true" class="fa fa-long-arrow-right">
+         </i>
+        </div>
+        <div class="tableContainer" id="285e9f06-5282-47a7-985d-3c23820cf44e">
+         <table border="0" cellpadding="0" cellspacing="0">
+          <colgroup>
+           <col width="20%"/>
+           <col width="80%"/>
+          </colgroup>
+          <tbody>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 632"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/632.html">
+               ELE 632
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Signals and Systems II
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 635"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/635.html">
+               ELE 635
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Communication Systems
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 637"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/637.html">
+               ELE 637
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Energy Conservation
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 639"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/639.html">
+               ELE 639
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Control Systems
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="MEC 511"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/mechanical-engineering/MEC/511.html">
+               MEC 511
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Thermodynamics and Fluids
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <script>
+         //convert to plugin in pure js....later (soon)
+	$(document).ready(function() {
+		$('#285e9f06-5282-47a7-985d-3c23820cf44e table').addClass("table");
+		
+		$('#285e9f06-5282-47a7-985d-3c23820cf44e table').addClass("table-bordered");
+		var removeHeading = false;
+		
+		//mandatory to have heading on initialization but remove it after. See #NOTE-REMOVE
+		if($('#285e9f06-5282-47a7-985d-3c23820cf44e table thead').eq(0).length == 0){
+			//insert fake row and delete
+			removeHeading = true;
+			var numOfColsTD = $('#285e9f06-5282-47a7-985d-3c23820cf44e table tbody tr').eq(0).find('td').length;
+			var numOfColsTH = $('#285e9f06-5282-47a7-985d-3c23820cf44e table tbody tr').eq(0).find('th').length;
+
+			var appendTH = "<thead>";
+			for(var i = 0; i < numOfColsTD+numOfColsTH;i++){
+				appendTH += "<th>Column</th>";
+			}
+			appendTH += "</thead>";
+			$('#285e9f06-5282-47a7-985d-3c23820cf44e table').prepend(appendTH);
+		}
+		
+		
+
+		//#NOTE-REMOVE
+		if(removeHeading){
+			$('#285e9f06-5282-47a7-985d-3c23820cf44e table thead').remove();
+		}
+		
+	} );
+        </script>
+        <script>
+         $(document).ready(function(){addCoursePopover("#285e9f06-5282-47a7-985d-3c23820cf44e");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="f267c538-9686-4af4-9ee7-c2d3dfec089c">
+         <p>
+          <strong>
+           LIBERAL STUDIES
+          </strong>
+          :
+          <br/>
+          One course from
+          <a href="http://torontomu.ca/content/ryerson/calendar/2020-2021/liberal-studies/table_b.html">
+           Table B - Upper Level Liberal Studies
+          </a>
+          .
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#f267c538-9686-4af4-9ee7-c2d3dfec089c");});
+        </script>
+       </div>
+      </div>
+     </div>
+     <div class="clearfix visible-lg-block">
+     </div>
+     <div class="clearfix visible-md-block">
+     </div>
+     <div class="clearfix visible-sm-block">
+     </div>
+     <div class="clearfix visible-xs-block">
+     </div>
+    </div>
+   </div>
+   <div class="resText parbase section">
+    <div class="res-text richtextContent background-hidden replica text-font-regular" id="50720350-543c-4d60-8a92-93ac0d354767">
+     <p>
+     </p>
+    </div>
+    <script>
+     $(document).ready(function(){addCoursePopover("#50720350-543c-4d60-8a92-93ac0d354767");});
+    </script>
+   </div>
+   <div class="resTitle section">
+    <h2>
+     7th &amp; 8th Semester
+    </h2>
+   </div>
+   <div class="resText parbase section">
+    <div class="res-text richtextContent background-hidden replica text-font-regular" id="c8d9256f-d80f-43b8-9aca-c3060c45f5f8">
+     <p>
+      <em>
+       Revised curriculum begins 2020-2021 for students admitted Fall 2017 and after.
+      </em>
+     </p>
+    </div>
+    <script>
+     $(document).ready(function(){addCoursePopover("#c8d9256f-d80f-43b8-9aca-c3060c45f5f8");});
+    </script>
+   </div>
+   <div class="resTwoColEven section">
+    <div class="row">
+     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+      <div class="c1 stackparsys">
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="c0a58fd0-2005-4a69-91d0-050596ee9da3">
+         <p>
+          <strong>
+           <span>
+            7th Semester
+           </span>
+          </strong>
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#c0a58fd0-2005-4a69-91d0-050596ee9da3");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="c687c8a1-e9c0-450d-8f82-6e69a6685c44">
+         <p>
+          <strong>
+           REQUIRED
+          </strong>
+          :
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#c687c8a1-e9c0-450d-8f82-6e69a6685c44");});
+        </script>
+       </div>
+       <div class="resTable parbase section">
+        <div class="scrollIndicator hidden">
+         <i aria-hidden="true" class="fa fa-long-arrow-left">
+         </i>
+         Swipe to see more
+         <i aria-hidden="true" class="fa fa-long-arrow-right">
+         </i>
+        </div>
+        <div class="tableContainer" id="812eea63-83dd-4ca4-ac3e-f6c954c65a4e">
+         <table border="0" cellpadding="0" cellspacing="0">
+          <colgroup>
+           <col width="20%"/>
+           <col width="80%"/>
+          </colgroup>
+          <tbody>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 70A/B"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/70AB.html">
+               ELE 70A/B
+              </a>
+             </label>
+             *
+            </td>
+            <td valign="top">
+             Electrical Engineering Capstone Design
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <script>
+         //convert to plugin in pure js....later (soon)
+	$(document).ready(function() {
+		$('#812eea63-83dd-4ca4-ac3e-f6c954c65a4e table').addClass("table");
+		
+		$('#812eea63-83dd-4ca4-ac3e-f6c954c65a4e table').addClass("table-bordered");
+		var removeHeading = false;
+		
+		//mandatory to have heading on initialization but remove it after. See #NOTE-REMOVE
+		if($('#812eea63-83dd-4ca4-ac3e-f6c954c65a4e table thead').eq(0).length == 0){
+			//insert fake row and delete
+			removeHeading = true;
+			var numOfColsTD = $('#812eea63-83dd-4ca4-ac3e-f6c954c65a4e table tbody tr').eq(0).find('td').length;
+			var numOfColsTH = $('#812eea63-83dd-4ca4-ac3e-f6c954c65a4e table tbody tr').eq(0).find('th').length;
+
+			var appendTH = "<thead>";
+			for(var i = 0; i < numOfColsTD+numOfColsTH;i++){
+				appendTH += "<th>Column</th>";
+			}
+			appendTH += "</thead>";
+			$('#812eea63-83dd-4ca4-ac3e-f6c954c65a4e table').prepend(appendTH);
+		}
+		
+		
+
+		//#NOTE-REMOVE
+		if(removeHeading){
+			$('#812eea63-83dd-4ca4-ac3e-f6c954c65a4e table thead').remove();
+		}
+		
+	} );
+        </script>
+        <script>
+         $(document).ready(function(){addCoursePopover("#812eea63-83dd-4ca4-ac3e-f6c954c65a4e");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="23c1d779-b975-4e98-8bac-2cd2cad4dc49">
+         <p>
+          <strong>
+           LIBERAL STUDIES
+          </strong>
+          : One course from the following:
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#23c1d779-b975-4e98-8bac-2cd2cad4dc49");});
+        </script>
+       </div>
+       <div class="resTable parbase section">
+        <div class="scrollIndicator hidden">
+         <i aria-hidden="true" class="fa fa-long-arrow-left">
+         </i>
+         Swipe to see more
+         <i aria-hidden="true" class="fa fa-long-arrow-right">
+         </i>
+        </div>
+        <div class="tableContainer" id="657f759f-cdfc-4cbe-b114-492876f5f472">
+         <table border="0" cellpadding="0" cellspacing="0">
+          <colgroup>
+           <col width="20%"/>
+           <col width="80%"/>
+          </colgroup>
+          <tbody>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ENG 503"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/english/ENG/503.html">
+               ENG 503
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Science Fiction
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="GEO 702"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/geography/GEO/702.html">
+               GEO 702
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Technology and the Contemporary Environment
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="HST 701"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/history/HST/701.html">
+               HST 701
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Scientific Technology and Modern Society
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="PHL 709"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/philosophy/PHL/709.html">
+               PHL 709
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Religion, Science and Philosophy
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="POL 507"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/politics-and-public-administration/POL/507.html">
+               POL 507
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Power, Change and Technology
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <script>
+         //convert to plugin in pure js....later (soon)
+	$(document).ready(function() {
+		$('#657f759f-cdfc-4cbe-b114-492876f5f472 table').addClass("table");
+		
+		$('#657f759f-cdfc-4cbe-b114-492876f5f472 table').addClass("table-bordered");
+		var removeHeading = false;
+		
+		//mandatory to have heading on initialization but remove it after. See #NOTE-REMOVE
+		if($('#657f759f-cdfc-4cbe-b114-492876f5f472 table thead').eq(0).length == 0){
+			//insert fake row and delete
+			removeHeading = true;
+			var numOfColsTD = $('#657f759f-cdfc-4cbe-b114-492876f5f472 table tbody tr').eq(0).find('td').length;
+			var numOfColsTH = $('#657f759f-cdfc-4cbe-b114-492876f5f472 table tbody tr').eq(0).find('th').length;
+
+			var appendTH = "<thead>";
+			for(var i = 0; i < numOfColsTD+numOfColsTH;i++){
+				appendTH += "<th>Column</th>";
+			}
+			appendTH += "</thead>";
+			$('#657f759f-cdfc-4cbe-b114-492876f5f472 table').prepend(appendTH);
+		}
+		
+		
+
+		//#NOTE-REMOVE
+		if(removeHeading){
+			$('#657f759f-cdfc-4cbe-b114-492876f5f472 table thead').remove();
+		}
+		
+	} );
+        </script>
+        <script>
+         $(document).ready(function(){addCoursePopover("#657f759f-cdfc-4cbe-b114-492876f5f472");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="ab7d21e4-181a-4cd8-b30e-1327e19a7daa">
+         <p>
+          <strong>
+           PROFESSIONAL
+          </strong>
+          : Four courses from
+          <a href="http://torontomu.ca/content/ryerson/calendar/2020-2021/programs/feas/electrical/professional_table.html">
+           Table I
+          </a>
+          .
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#ab7d21e4-181a-4cd8-b30e-1327e19a7daa");});
+        </script>
+       </div>
+      </div>
+     </div>
+     <div class="clearfix visible-xs-block">
+     </div>
+     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+      <div class="c2 stackparsys">
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="cff9294d-29b0-4707-9294-f00663de073a">
+         <p>
+          <strong>
+           <span>
+            8th Semester
+           </span>
+          </strong>
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#cff9294d-29b0-4707-9294-f00663de073a");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="05e4ccab-bc0e-4982-bb20-7bad0327028c">
+         <p>
+          <strong>
+           REQUIRED
+          </strong>
+          :
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#05e4ccab-bc0e-4982-bb20-7bad0327028c");});
+        </script>
+       </div>
+       <div class="resTable parbase section">
+        <div class="scrollIndicator hidden">
+         <i aria-hidden="true" class="fa fa-long-arrow-left">
+         </i>
+         Swipe to see more
+         <i aria-hidden="true" class="fa fa-long-arrow-right">
+         </i>
+        </div>
+        <div class="tableContainer" id="f16edfa6-b278-45ff-b2d0-5f7fa8c4ac65">
+         <table border="0" cellpadding="0" cellspacing="0">
+          <colgroup>
+           <col width="20%"/>
+           <col width="80%"/>
+          </colgroup>
+          <tbody>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="CEN 800"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/common-engineering/CEN/800.html">
+               CEN 800
+              </a>
+             </label>
+            </td>
+            <td valign="top">
+             Law and Ethics in Engineering Practice
+            </td>
+           </tr>
+           <tr>
+            <td valign="top">
+             <label>
+              <input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 70A/B"/>
+              <a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/70AB.html">
+               ELE 70A/B
+              </a>
+             </label>
+             *
+            </td>
+            <td valign="top">
+             Electrical Engineering Capstone Design
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <script>
+         //convert to plugin in pure js....later (soon)
+	$(document).ready(function() {
+		$('#f16edfa6-b278-45ff-b2d0-5f7fa8c4ac65 table').addClass("table");
+		
+		$('#f16edfa6-b278-45ff-b2d0-5f7fa8c4ac65 table').addClass("table-bordered");
+		var removeHeading = false;
+		
+		//mandatory to have heading on initialization but remove it after. See #NOTE-REMOVE
+		if($('#f16edfa6-b278-45ff-b2d0-5f7fa8c4ac65 table thead').eq(0).length == 0){
+			//insert fake row and delete
+			removeHeading = true;
+			var numOfColsTD = $('#f16edfa6-b278-45ff-b2d0-5f7fa8c4ac65 table tbody tr').eq(0).find('td').length;
+			var numOfColsTH = $('#f16edfa6-b278-45ff-b2d0-5f7fa8c4ac65 table tbody tr').eq(0).find('th').length;
+
+			var appendTH = "<thead>";
+			for(var i = 0; i < numOfColsTD+numOfColsTH;i++){
+				appendTH += "<th>Column</th>";
+			}
+			appendTH += "</thead>";
+			$('#f16edfa6-b278-45ff-b2d0-5f7fa8c4ac65 table').prepend(appendTH);
+		}
+		
+		
+
+		//#NOTE-REMOVE
+		if(removeHeading){
+			$('#f16edfa6-b278-45ff-b2d0-5f7fa8c4ac65 table thead').remove();
+		}
+		
+	} );
+        </script>
+        <script>
+         $(document).ready(function(){addCoursePopover("#f16edfa6-b278-45ff-b2d0-5f7fa8c4ac65");});
+        </script>
+       </div>
+       <div class="resText parbase section">
+        <div class="res-text richtextContent background-hidden replica text-font-regular" id="ae3c5328-246d-4b94-9a1d-c39f85b5b6cb">
+         <p>
+          <strong>
+           PROFESSIONAL
+          </strong>
+          : Four courses from
+          <a href="http://torontomu.ca/content/ryerson/calendar/2020-2021/programs/feas/electrical/professional_table.html">
+           Table II
+          </a>
+          .
+         </p>
+        </div>
+        <script>
+         $(document).ready(function(){addCoursePopover("#ae3c5328-246d-4b94-9a1d-c39f85b5b6cb");});
+        </script>
+       </div>
+      </div>
+     </div>
+     <div class="clearfix visible-lg-block">
+     </div>
+     <div class="clearfix visible-md-block">
+     </div>
+     <div class="clearfix visible-sm-block">
+     </div>
+     <div class="clearfix visible-xs-block">
+     </div>
+    </div>
+   </div>
+   <div class="resText parbase section">
+    <div class="res-text richtextContent background-hidden replica text-font-regular" id="849a0539-a3df-4b94-bf54-b47b355c6f30">
+     <p>
+      <small>
+       *
+       <a class="qTipCourse" data-url="/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/70AB/jcr:content/resCalendarCourseEmbed.json" href="http://torontomu.ca/content/ryerson/calendar/2020-2021/courses/electrical-engineering/ELE/70AB.html">
+        ELE 70A/B
+       </a>
+       is a two-term course with a GPA Weight of 2.00.
+      </small>
+     </p>
+    </div>
+    <script>
+     $(document).ready(function(){addCoursePopover("#849a0539-a3df-4b94-bf54-b47b355c6f30");});
+    </script>
+   </div>
+  </div>
+ </div>
+</div>
+<script>
+ document.addEventListener("DOMContentLoaded", () => {
+           const protectedIndex = 0;
+
+           // Tracks change inputs across the layout
+           document.addEventListener("change", (e) => {
+               if (!e.target.classList.contains('course-checkbox') || !e.target.checked) return;
+
+               const currentPanel = parseInt(e.target.dataset.panelOwner);
+
+               // Clear alternate options if changing tracking selections
+               if (currentPanel !== protectedIndex) {
+                   document.querySelectorAll(".course-checkbox").forEach(cb => {
+                       const targetPanel = parseInt(cb.dataset.panelOwner);
+                       if (targetPanel !== protectedIndex && targetPanel !== currentPanel) {
+                           cb.checked = false;
+                       }
+                   });
+                   
+                   // Sync button text headers across hidden/unselected options
+                   if(window.parent && window.parent.document) {
+                      window.parent.document.querySelectorAll('button[data-semester]').forEach(btn => {
+                          const semAttr = btn.getAttribute('data-semester');
+                          if(semAttr && !semAttr.startsWith('panel-' + currentPanel + '-')) {
+                              btn.textContent = 'Select All';
+                          }
+                      });
+                   }
+               }
+           });
+       });
+</script>
+</div>

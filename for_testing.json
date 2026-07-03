@@ -1,0 +1,3398 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link href="/content/dam/tmu_favicon.ico" rel="icon" type="image/x-icon"/>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+  <meta content="website" property="og:type"/>
+  <meta content="Toronto Metropolitan University (TMU)" property="og:site_name"/>
+  <meta content="https://www.torontomu.ca/calendar/2026-2027/programs/feas/aerospace/" property="og:url"/>
+  <meta content="Aerospace Engineering" property="og:title"/>
+  <meta content="The aerospace industry encompasses a broad spectrum of technological activity in aviation and space transportation. This includes manufacturing and support operations related to airframes, propulsion systems, controls and avionics." property="og:description"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta name="twitter:url" value="https://www.torontomu.ca/calendar/2026-2027/programs/feas/aerospace/"/>
+  <meta content="@TorontoMet" name="twitter:site"/>
+  <meta content="Aerospace Engineering" name="twitter:title"/>
+  <meta content="The aerospace industry encompasses a broad spectrum of technological activity in aviation and space transportation. This includes manufacturing and support operations related to airframes, propulsion systems, controls and avionics." name="twitter:description"/>
+  <title>
+   Aerospace Engineering  - 2026-2027 Calendar  - Toronto Metropolitan University (TMU)
+  </title>
+  <meta content="The aerospace industry encompasses a broad spectrum of technological activity in aviation and space transportation. This includes manufacturing and support operations related to airframes, propulsion systems, controls and avionics." name="description"/>
+  <!-- Google Tag Manager -->
+  <script>
+   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MJMHPZ');
+  </script>
+  <!-- End Google Tag Manager -->
+  <script>
+   let cqMode = "DISABLED";
+let cqTemplate = "general";
+let runMode = "publish";
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js">
+  </script>
+ </head>
+ <body class="headers-replica background-EBEBEB">
+  <link href="/etc.clientlibs/ryecms/static/clientlib-all.74f6cd3ed42793fd3dd439af40e57107.css" rel="stylesheet" type="text/css"/>
+  <script src="/etc.clientlibs/ryecms/static/clientlib-all.f8373b18f92b32e852147320a68d32da.js">
+  </script>
+  <link href="/customStyles/color.default.0077C8.FFA300.hash-e00a45f07c55a771bedafc0cd6676aa8ea952567.css" rel="stylesheet" type="text/css"/>
+  <script src="/etc.clientlibs/ryecms/static/customStyles/default.d41d8cd98f00b204e9800998ecf8427e.js">
+  </script>
+  <!-- red -->
+  <div id="AppArmorAlertID_76">
+  </div>
+  <script async="" src="//torontomu.apparmor.com/Notifications/Feeds/Javascript/?AlertID=76" type="text/javascript">
+  </script>
+  <!-- yellow -->
+  <div id="AppArmorAlertID_77">
+  </div>
+  <script async="" src="//torontomu.apparmor.com/Notifications/Feeds/Javascript/?AlertID=77" type="text/javascript">
+  </script>
+  <!-- system -->
+  <div id="systemAlert">
+  </div>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+   <iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MJMHPZ" style="display:none;visibility:hidden" title="Google Tag Manager" width="0">
+   </iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="resGlobalHeader">
+   <div class="global-header-top">
+    <div class="container">
+     <div class="row">
+      <div class="col-xs-12">
+       <div class="res-global-header">
+        <a class="btn btn-default" href="#main-content" id="skip-to-main">
+         Skip to Main Content
+        </a>
+        <nav aria-label="global" class="navbar navbar-default">
+         <div class="container-fluid">
+          <div class="navbar-header">
+           <a class="navbar-brand" href="https://www.torontomu.ca/">
+            <img alt="Toronto Metropolitan University" src="/etc.clientlibs/ryecms/static/clientlib-site/resources/images/tmu_logo.svg" title="Toronto Metropolitan University"/>
+           </a>
+           <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#gh-other-content" data-toggle="collapse" id="gh-other-btn" type="button">
+            <span class="sr-only">
+             Toggle navigation
+            </span>
+            <span class="fa fa-bars">
+            </span>
+           </button>
+           <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#gh-info-content" data-toggle="collapse" id="gh-info-btn" type="button">
+            <span class="sr-only">
+             Toggle information
+            </span>
+            <span class="fa fa-info-circle">
+            </span>
+           </button>
+           <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#gh-search-content" data-toggle="collapse" id="gh-search-btn" type="button">
+            <span class="sr-only">
+             Toggle search
+            </span>
+            <span class="fa fa-search">
+            </span>
+           </button>
+          </div>
+          <div class="navbar-content">
+           <form action="https://www.torontomu.ca/search/" class="resSearch nav navbar-nav collapse navbar-collapse navbar-form" id="gh-search-content" method="GET" role="search">
+            <div class="input-group gh-search-container">
+             <label class="sr-only" for="search">
+              Search Site and People
+             </label>
+             <input autocomplete="off" class="form-control" id="search" name="q" placeholder="Search Site and People" type="text"/>
+             <span class="input-group-btn">
+              <button aria-label="Search" class="btn btn-default" type="submit">
+               <i class="fa fa-search" title="Search Torontomu.ca">
+               </i>
+              </button>
+             </span>
+            </div>
+           </form>
+           <div class="navbar-right">
+            <ul class="nav navbar-nav collapse navbar-collapse navbar-left" id="gh-info-content" role="presentation">
+             <li class="dropdown hidden-xs">
+              <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+               <span class="fa fa-info-circle">
+               </span>
+               <span class="hidden-sm">
+                Info for
+                <span class="caret">
+                </span>
+               </span>
+              </a>
+              <ul class="dropdown-menu">
+               <li>
+                <a href="/future-students/">
+                 Future Students
+                </a>
+               </li>
+               <li>
+                <a href="/current-students/">
+                 Current Students
+                </a>
+               </li>
+               <li>
+                <a href="/faculty-staff/">
+                 Faculty and Staff
+                </a>
+               </li>
+               <li>
+                <a href="/teachers-counsellors/">
+                 Teachers and
+														Counsellors
+                </a>
+               </li>
+               <li>
+                <a href="/alumni/">
+                 Alumni
+                </a>
+               </li>
+               <li>
+                <a href="/media/">
+                 Media
+                </a>
+               </li>
+               <li>
+                <a href="/giving/">
+                 Donors
+                </a>
+               </li>
+              </ul>
+             </li>
+             <li class="visible-xs">
+              <a href="/future-students/">
+               Future
+												Students
+              </a>
+             </li>
+             <li class="visible-xs">
+              <a href="/current-students/">
+               Current
+												Students
+              </a>
+             </li>
+             <li class="visible-xs">
+              <a href="/faculty-staff/">
+               Faculty
+												and Staff
+              </a>
+             </li>
+             <li class="visible-xs">
+              <a href="/teachers-counsellors/">
+               Teachers
+												and Counsellors
+              </a>
+             </li>
+             <li class="visible-xs">
+              <a href="/alumni/">
+               Alumni
+              </a>
+             </li>
+             <li class="visible-xs">
+              <a href="/media/">
+               Media
+              </a>
+             </li>
+             <li class="visible-xs">
+              <a href="/giving/">
+               Donors
+              </a>
+             </li>
+            </ul>
+            <ul class="nav navbar-nav collapse navbar-collapse navbar-left" id="gh-other-content">
+             <li class="visible-xs">
+              <a href="/about/">
+               About
+              </a>
+             </li>
+             <li class="visible-xs">
+              <a href="/programs/">
+               Programs
+              </a>
+             </li>
+             <li class="visible-xs">
+              <a href="/admissions/">
+               Admissions
+              </a>
+             </li>
+             <li class="visible-xs">
+              <a href="/campus-life/">
+               Campus
+												Life
+              </a>
+             </li>
+             <li class="visible-xs">
+              <a href="/research/">
+               Research &amp; Innovation
+              </a>
+             </li>
+             <li class="visible-xs">
+              <a href="/current-students/">
+               Current Students
+              </a>
+             </li>
+             <li class="divider visible-xs">
+             </li>
+             <li class="call-to-action">
+              <a href="/admissions/">
+               Apply
+              </a>
+             </li>
+             <li class="call-to-action">
+              <a href="/admissions/visits-tours/">
+               Visit
+              </a>
+             </li>
+             <li class="call-to-action">
+              <a href="/giving/">
+               Give
+              </a>
+             </li>
+             <li class="divider">
+             </li>
+             <li>
+              <a href="https://my.torontomu.ca/">
+               my.torontomu
+              </a>
+             </li>
+            </ul>
+            <ul class="nav navbar-nav collapse navbar-collapse navbar-left" role="presentation">
+             <li class="dropdown hidden-xs">
+              <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+               <span class="fa fa-bars">
+               </span>
+               <span class="sr-only">
+                Menu
+               </span>
+              </a>
+              <ul class="dropdown-menu">
+               <li>
+                <a href="/about/">
+                 About
+                </a>
+               </li>
+               <li>
+                <a href="/programs/">
+                 Programs
+                </a>
+               </li>
+               <li>
+                <a href="/admissions/">
+                 Admissions
+                </a>
+               </li>
+               <li>
+                <a href="/campus-life/">
+                 Campus Life
+                </a>
+               </li>
+               <li>
+                <a href="/research/">
+                 Research &amp; Innovation
+                </a>
+               </li>
+               <li>
+                <a href="/current-students/">
+                 Current Students
+                </a>
+               </li>
+              </ul>
+             </li>
+            </ul>
+           </div>
+          </div>
+         </div>
+        </nav>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="res-local-header-wrapper" role="banner">
+   <div class="container">
+    <div class="resLocalHeader">
+     <div class="res-local-header">
+      <div class="row template-local-header">
+       <div class="local-header-section col-xs-12">
+        <div class="res-local-header">
+         <div class="row template-local-header">
+          <div class="local-header-section col-xs-12">
+           <div class="site-heading">
+            <a href="/calendar/2026-2027/">
+             2026-2027 Undergraduate Calendar
+            </a>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="resMobileNavigation">
+   <nav class="mobile-menu">
+    <div class="mobile-menu-top">
+     <button class="menu-back" data-back="main">
+      <svg fill="none" height="12" viewbox="0 0 7 12" width="7" xmlns="http://www.w3.org/2000/svg">
+       <path d="M-2.36425e-07 6L5.4902 0.5L7 1.94375L2.95098 6L7 10.0562L5.4902 11.5L-2.36425e-07 6Z" fill="#004C9B">
+       </path>
+      </svg>
+      <span class="menu-label">
+       Back
+      </span>
+     </button>
+     <button aria-expanded="false" class="menu-toggle" data-target="#mobile-menu-container">
+      <span class="menu-label title-close">
+       Close
+       <span class="sr-only">
+        Menu
+       </span>
+      </span>
+      <span class="menu-label title-menu">
+       Menu
+      </span>
+      <svg fill="none" height="12" viewbox="0 0 12 12" width="12" xmlns="http://www.w3.org/2000/svg">
+       <path d="M7 5H12V7H7V12H5V7H0V5H5V0H7V5Z" fill="#004C9B">
+       </path>
+      </svg>
+     </button>
+    </div>
+    <div id="mobile-menu-container">
+     <div class="mobile-menu-screen dropdown-menu" data-screen="main" inert="">
+      <ul>
+       <li>
+        <a class="mobile-menu-item home-link" href="/calendar/2026-2027/">
+         <span class="menu-label">
+          Home
+         </span>
+        </a>
+       </li>
+       <li>
+        <a class="mobile-menu-item" href="/calendar/2026-2027/about/">
+         <span class="menu-label">
+          About
+         </span>
+        </a>
+       </li>
+       <li>
+        <a class="mobile-menu-item" href="/calendar/2026-2027/policies-and-procedures/">
+         <span class="menu-label">
+          Policies and Procedures
+         </span>
+        </a>
+       </li>
+       <li>
+        <a class="mobile-menu-item" href="/calendar/2026-2027/dates/">
+         <span class="menu-label">
+          Dates
+         </span>
+        </a>
+       </li>
+       <li>
+        <a aria-current="page" class="mobile-menu-item current-page" href="/calendar/2026-2027/programs/">
+         <span class="menu-label">
+          Programs
+         </span>
+        </a>
+       </li>
+       <li>
+        <a class="mobile-menu-item" href="/calendar/2026-2027/open-electives/">
+         <span class="menu-label">
+          Open Electives
+         </span>
+        </a>
+       </li>
+       <li>
+        <a class="mobile-menu-item" href="/calendar/2026-2027/faculty-and-administration/">
+         <span class="menu-label">
+          Faculty
+         </span>
+        </a>
+       </li>
+       <li>
+        <a class="mobile-menu-item" href="/calendar/2026-2027/glossary/">
+         <span class="menu-label">
+          Glossary
+         </span>
+        </a>
+       </li>
+       <li>
+        <a class="mobile-menu-item" href="/calendar/2026-2027/az_index/">
+         <span class="menu-label">
+          A-Z Index/Search
+         </span>
+        </a>
+       </li>
+       <li>
+        <a class="mobile-menu-item" href="/calendar/2026-2027/courses/">
+         <span class="menu-label">
+          Courses
+         </span>
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+   </nav>
+   <script>
+    const btn = document.querySelector('.menu-toggle');
+    const container = document.querySelector('#mobile-menu-container');
+    const screens = document.querySelectorAll('.mobile-menu-screen');
+
+    // Set height of dropdown based on active panel
+    function updateContainerHeight() {
+        const activeScreen = document.querySelector('.mobile-menu-screen.active');
+        if (activeScreen) {
+            const height = activeScreen.offsetHeight;
+            container.style.height = height + "px";
+        }
+    }
+
+    // Update the data-back value for the main back button
+    function updateBackButtonTarget() {
+        const activeScreen = document.querySelector('.mobile-menu-screen.active');
+        const backBtn = activeScreen ? activeScreen.querySelector('.mobile-back-btn') : null;
+        const menuBack = document.querySelector('.menu-back');
+
+        if (backBtn && menuBack) {
+            const backTarget = backBtn.getAttribute('data-back');
+            if (backTarget) {
+                menuBack.setAttribute('data-back', backTarget);
+            }
+        }
+    }
+
+    // Close all expanded
+    function closeAll() {
+        container.classList.remove('open');
+        btn.setAttribute('aria-expanded', false);
+        container.style.height = '0px';
+    }
+
+    // Open/close mobile menu
+    btn.addEventListener('click', () => {
+        // Close global nav if open
+        const globalNav = document.querySelector('#gh-other-btn');
+        if (globalNav && globalNav.getAttribute('aria-expanded') === 'true') {
+            globalNav.click();
+        }
+
+        const open = container.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+
+        // Remove .active and apply inert to previous screen
+        const activeScreen = document.querySelector('.mobile-menu-screen.active');
+        if (activeScreen) {
+            activeScreen.setAttribute('inert', '');
+            activeScreen.classList.remove('active');
+        }
+
+        // Find the screen containing the current page when menu is opened
+        let currentLink = document.querySelector('.mobile-menu-item.current-page');
+        let screenToActivate = screens[0]; // default to main
+
+        if (currentLink) {
+            let containingScreen = currentLink.closest('.mobile-menu-screen');
+            if (containingScreen) {
+                screenToActivate = containingScreen;
+            }
+        }
+
+        screenToActivate.classList.add('active');
+        screenToActivate.removeAttribute('inert');
+
+        updateBackButtonTarget();
+
+        if (open) {
+            updateContainerHeight();
+            screenToActivate.querySelector('ul > li:first-child > .mobile-menu-item').focus({ preventScroll: true });
+        } else {
+            container.style.height = '0px'; // Reset height when closing
+        }
+    });
+
+    // Open sub-menu
+    screens.forEach(screen => {
+        screen.querySelectorAll('a[data-target][role="button"]').forEach(a => {
+            a.addEventListener('click', (event) => {
+                event.preventDefault();
+                const to = a.dataset.target;
+                document.querySelectorAll('a[data-target][role="button"]').forEach(button => {
+                    button.setAttribute('aria-expanded', 'false');
+                });
+                a.setAttribute('aria-expanded', 'true')
+                // Remove .active and apply inert to previous screen
+                screen.classList.remove('active');
+                screen.setAttribute('inert', '');
+                const nextScreen = document.querySelector(".mobile-menu-screen[data-screen='" + to + "']");
+                nextScreen.classList.add('active');
+                nextScreen.removeAttribute('inert');
+                nextScreen.querySelector('ul > li:first-child > .mobile-menu-item').focus({ preventScroll: true });
+                updateContainerHeight();
+                updateBackButtonTarget();
+            });
+        });
+    });
+
+    // Transfer active back button value to main back button
+    const menuBack = document.querySelector('.menu-back');
+    if (menuBack) {
+        menuBack.addEventListener('click', () => {
+            const backTarget = menuBack.getAttribute('data-back');
+            if (backTarget) {
+                const current = document.querySelector('.mobile-menu-screen.active');
+                const target = document.querySelector(".mobile-menu-screen[data-screen='" + backTarget + "']");
+                if (current && target) {
+                    // Set aria-expanded of current level to false
+                    const currentScreenId = current.getAttribute('data-screen');
+                    const opener = document.querySelector('a[data-target="' + currentScreenId + '"]');
+                    if (opener) {
+                        opener.setAttribute('aria-expanded', 'false');
+                    }
+                    // Set aria-expanded of parent level to true
+                    const targetScreenId = target.getAttribute('data-screen');
+                    const parentOpener = document.querySelector('a[data-target="' + targetScreenId + '"]');
+                    if (parentOpener) {
+                        parentOpener.setAttribute('aria-expanded', 'true');
+                    }
+                    current.classList.remove('active');
+                    current.setAttribute('inert', '');
+                    target.classList.add('active');
+                    target.removeAttribute('inert');
+                    // Set focus on parent item in previous menu
+                    if (opener) {
+                        opener.focus({ preventScroll: true });
+                    }
+                    updateContainerHeight();
+                    updateBackButtonTarget();
+                }
+            }
+        });
+    }
+
+    // Close menu if global nav is opened
+    const globalNav = document.querySelector('#gh-other-btn');
+    if (globalNav) {
+        globalNav.addEventListener('click', () => {
+            if (container.classList.contains('open')) {
+                closeAll();
+            }
+        });
+    }
+   </script>
+  </div>
+  <div class="resHorizontalNavigation">
+   <div class="container">
+    <div class="row">
+     <div class="col-xs-12">
+      <nav aria-label="primary" class="navbar res-horizontal-navigation">
+       <!-- Navigation For Mobile -->
+       <div class="navbar-header">
+        <span class="navbar-brand visible-xs">
+         <a href="/calendar/2026-2027/">
+          Home
+         </a>
+        </span>
+        <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#a7f525c7-7e93-44b5-87ce-89e694adb1a8" data-toggle="collapse" type="button">
+         <span class="sr-only">
+          Toggle navigation
+         </span>
+         <i class="fa fa-chevron-down">
+         </i>
+        </button>
+       </div>
+       <!-- Navigation for Desktop -->
+       <div class="collapse navbar-collapse" id="a7f525c7-7e93-44b5-87ce-89e694adb1a8">
+        <ul class="nav navbar-nav">
+         <li class="nav-item">
+          <a href="/calendar/2026-2027/about/">
+           About
+          </a>
+         </li>
+         <li class="nav-item">
+          <a href="/calendar/2026-2027/policies-and-procedures/">
+           Policies and Procedures
+          </a>
+         </li>
+         <li class="nav-item">
+          <a href="/calendar/2026-2027/dates/">
+           Dates
+          </a>
+         </li>
+         <li class="nav-item active">
+          <a href="/calendar/2026-2027/programs/">
+           Programs
+          </a>
+         </li>
+         <li class="nav-item">
+          <a href="/calendar/2026-2027/open-electives/">
+           Open Electives
+          </a>
+         </li>
+         <li class="nav-item">
+          <a href="/calendar/2026-2027/faculty-and-administration/">
+           Faculty
+          </a>
+         </li>
+         <li class="nav-item">
+          <a href="/calendar/2026-2027/glossary/">
+           Glossary
+          </a>
+         </li>
+         <li class="nav-item">
+          <a href="/calendar/2026-2027/az_index/">
+           A-Z Index/Search
+          </a>
+         </li>
+         <li class="nav-item">
+          <a href="/calendar/2026-2027/courses/">
+           Courses
+          </a>
+         </li>
+        </ul>
+       </div>
+      </nav>
+     </div>
+    </div>
+   </div>
+   <script>
+    const submenuItems = document.querySelectorAll(".submenu-state a.dropdown-menu-item[role='button']");
+
+    // Set height of dropdown based on active panel
+    function updateDropdownHeight(menu) {
+        const activePanel = menu.classList.contains('active')
+            ? menu.querySelector('.submenu-state')
+            : menu.querySelector('.initial-state');
+        if (activePanel) {
+            menu.style.height = (activePanel.scrollHeight + 3) + 'px';
+        }
+    }
+
+    // Set hidden panel to inert to prevent tabbing to it
+    function setInert(menu) {
+        const isActive = menu.classList.contains('active');
+        const submenu = menu.querySelector('.submenu-state');
+        const initial = menu.querySelector('.initial-state');
+        const activePanel = isActive ? submenu : initial;
+        const hiddenPanel = isActive ? initial : submenu;
+        if (hiddenPanel) {
+            activePanel.removeAttribute('inert');
+            hiddenPanel.setAttribute('inert', '');
+        } else {
+            activePanel.setAttribute('inert', '');
+        }
+    }
+
+    // Show children for a given parentId
+    function showChildren(menu, parentId) {
+        const groups = menu.querySelectorAll('.child-group');
+        let activeGroup = null;
+        groups.forEach(group => {
+            const isActive = group.dataset.childOf === parentId;
+            group.classList.toggle('active', isActive);
+            if (isActive) {
+                activeGroup = group;
+            }
+        });
+        if (activeGroup) {
+            // Find the menu-panel wrapping this group
+            const menuPanel = activeGroup.closest('.menu-panel');
+            if (menuPanel) {
+                const onTransitionEnd = (event) => {
+                    if (event.target !== menuPanel) return;
+                    // Focus on the first grandchild for accessibility
+                    activeGroup.querySelector('.dropdown-menu-item:first-child').focus();
+                    // Remove the listener after it's triggered once
+                    menuPanel.removeEventListener('transitionend', onTransitionEnd);
+                    menuPanel.removeEventListener('animationend', onTransitionEnd);
+                };
+                // Listen for the end of the slide animation
+                menuPanel.addEventListener('transitionend', onTransitionEnd);
+                menuPanel.addEventListener('animationend', onTransitionEnd);
+            }
+        }
+    }
+
+    // Transition from initial panel to submenu panel
+    document.querySelectorAll('.res-horizontal-navigation .dropdown-menu .parent-items .dropdown-menu-list li > a.dropdown-menu-item[role="button"]').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const parentId = item.dataset.parent;
+            const menu = item.closest('.dropdown-menu');
+            showChildren(menu, parentId);
+            menu.classList.add('active');
+            menu.querySelectorAll(".dropdown-menu-item.active").forEach(activeItem => {
+                activeItem.classList.remove("active");
+            });
+            item.classList.add('active');
+
+            // Mark corresponding submenu item
+            menu.querySelectorAll(".submenu-state a.dropdown-menu-item[role='button']").forEach(subItem => {
+                if (subItem.dataset.parent === parentId) {
+                    subItem.classList.add("active");
+                    subItem.setAttribute("aria-expanded", "true");
+                } else {
+                    subItem.setAttribute("aria-expanded", "false");
+                }
+            });
+            setInert(menu);
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    updateDropdownHeight(menu);
+                });
+            });
+        });
+    });
+
+    // Transition from submenu panel back to initial panel (back button)
+    document.querySelectorAll('.res-horizontal-navigation .dropdown-menu .back-button').forEach(item => {
+        item.addEventListener('click', () => {
+            const menu = item.closest('.dropdown-menu');
+            menu.classList.remove('active');
+            setInert(menu); // Set hidden panel to inert to prevent tabbing to it
+            menu.querySelector('.initial-state > .right-column .dropdown-menu-item.active').focus();
+            requestAnimationFrame(() => {
+                requestAnimationFrame(function () {
+                    updateDropdownHeight(menu);
+                });
+            });
+        });
+    });
+
+    // Submenu panel - Click child button to refresh grandchild list
+    document.querySelectorAll('.res-horizontal-navigation .dropdown-menu .submenu-state .left-column a.dropdown-menu-item[role="button"]').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const menu = item.closest('.dropdown-menu');
+            const parentId = item.dataset.parent;
+            showChildren(menu, parentId);
+            setInert(menu); // Set hidden panel to inert to prevent tabbing to it
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    updateDropdownHeight(menu);
+                    // Focus on first item in active grandchild group
+                    const activeGroup = menu.querySelector('.child-group.active');
+                    activeGroup?.querySelector('.submenu-state > .right-column .dropdown-menu-item:first-child')?.focus();
+                });
+            });
+        });
+    });
+
+    // Reset dropdown to default when nav item clicked
+    document.querySelectorAll('.res-horizontal-navigation .dropdown-toggle').forEach(item => {
+        const handleToggle = () => {
+            const menu = item.closest('.navbar-dropdown').querySelector('.dropdown-menu');
+            // Reset state
+            menu.classList.remove('active'); // Show initial panel
+            menu.querySelectorAll('.child-group').forEach(group => {
+                group.classList.remove('active');
+            });
+            menu.querySelectorAll('.dropdown-menu-item.active').forEach(activeItem => {
+                activeItem.classList.remove('active');
+            });
+            setInert(menu);  // Set hidden panel to inert to prevent tabbing to it
+            // Force dropdown height update
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    updateDropdownHeight(menu);
+                });
+            });
+        };
+
+        // Handle click
+        item.addEventListener('click', handleToggle);
+
+        // Handle spacebar keypress
+        item.addEventListener('keydown', (event) => {
+            if (event.code === 'Space' || event.key === ' ') {
+                event.preventDefault(); // Prevent scrolling
+                handleToggle();
+            }
+        });
+    });
+
+    // Disable Bootstrap Dropdown default of closing dropdown on click
+    document.querySelectorAll('.res-horizontal-navigation .dropdown-menu').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    });
+
+    // Submenu items - Update 'active' class and aria-expanded attributes on click
+    submenuItems.forEach((item) => {
+        item.addEventListener("click", function () {
+            // Remove 'active' and aria-expanded from all submenu items
+            submenuItems.forEach(i => {
+                i.classList.remove("active");
+                i.setAttribute("aria-expanded", "false");
+            });
+            // Add 'active' and aria-expanded="true" to clicked item
+            item.classList.add("active");
+            item.setAttribute("aria-expanded", "true");
+        });
+    });
+
+    // Press escape to close dropdown (fixes Mac issue where dropdown doesn't close in submenu view)
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            const openDropdowns = document.querySelectorAll('.dropdown-menu');
+            openDropdowns.forEach(menu => {
+                const toggle = menu.closest('.dropdown').querySelector('[data-toggle="dropdown"][aria-expanded="true"]');
+                if (toggle) toggle.click();
+            });
+        }
+    });
+   </script>
+  </div>
+  <div class="container">
+   <div class="row template-content">
+    <main class="content-area-section col-md-12 col-sm-12" id="mainContent">
+     <div class="sr-only" id="main-content" tabindex="-1">
+      You are now in the main content area
+     </div>
+     <div class="heading resPageHeading">
+      <h1>
+       Aerospace Engineering
+      </h1>
+     </div>
+     <div class="content stackparsys">
+      <div class="resText parbase section">
+       <div class="res-text richtextContent background-hidden replica text-font-regular" id="462f9fb8-5829-4ee5-9e11-ef42880e6e30">
+        <p>
+         <a href="/content/ryerson/calendar/2026-2027/programs/feas.html">
+          Faculty of Engineering and Architectural Science
+         </a>
+        </p>
+       </div>
+       <script>
+        $(document).ready(function(){addCoursePopover("#462f9fb8-5829-4ee5-9e11-ef42880e6e30");});
+       </script>
+      </div>
+      <div class="resTable parbase section">
+       <div class="scrollIndicator hidden">
+        <i aria-hidden="true" class="fa fa-long-arrow-left">
+        </i>
+        Swipe to see more
+        <i aria-hidden="true" class="fa fa-long-arrow-right">
+        </i>
+       </div>
+       <div class="tableContainer" id="28634b22-b2cc-454a-bf65-d8dcf28f72a2">
+        <table border="0" cellpadding="1" cellspacing="1" width="100%">
+         <tbody>
+          <tr>
+           <td valign="top" width="17%">
+            <strong>
+             Degree Awarded:
+            </strong>
+           </td>
+           <td valign="top">
+            Bachelor of Engineering (Honours)
+           </td>
+          </tr>
+          <tr>
+           <td valign="top" width="15%">
+            <strong>
+             Administered by:
+            </strong>
+           </td>
+           <td valign="top">
+            <a href="/content/ryerson/aerospace/">
+             Department of Aerospace Engineering
+            </a>
+           </td>
+          </tr>
+          <tr>
+           <td valign="top" width="15%">
+            <strong>
+             Program Format:
+            </strong>
+           </td>
+           <td valign="top">
+            Full-time, four-year program.
+            <br/>
+            Full-time, five-year co-op program.
+            <br/>
+           </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+       <script>
+        //convert to plugin in pure js....later (soon)
+	$(document).ready(function() {
+		$('#28634b22-b2cc-454a-bf65-d8dcf28f72a2 table').addClass("table");
+		
+		$('#28634b22-b2cc-454a-bf65-d8dcf28f72a2 table').addClass("table-bordered");
+		var removeHeading = false;
+		
+		//mandatory to have heading on initialization but remove it after. See #NOTE-REMOVE
+		if($('#28634b22-b2cc-454a-bf65-d8dcf28f72a2 table thead').eq(0).length == 0){
+			//insert fake row and delete
+			removeHeading = true;
+			var numOfColsTD = $('#28634b22-b2cc-454a-bf65-d8dcf28f72a2 table tbody tr').eq(0).find('td').length;
+			var numOfColsTH = $('#28634b22-b2cc-454a-bf65-d8dcf28f72a2 table tbody tr').eq(0).find('th').length;
+
+			var appendTH = "<thead>";
+			for(var i = 0; i < numOfColsTD+numOfColsTH;i++){
+				appendTH += "<th>Column</th>";
+			}
+			appendTH += "</thead>";
+			$('#28634b22-b2cc-454a-bf65-d8dcf28f72a2 table').prepend(appendTH);
+		}
+		
+		
+
+		//#NOTE-REMOVE
+		if(removeHeading){
+			$('#28634b22-b2cc-454a-bf65-d8dcf28f72a2 table thead').remove();
+		}
+		
+	} );
+       </script>
+       <script>
+        $(document).ready(function(){addCoursePopover("#28634b22-b2cc-454a-bf65-d8dcf28f72a2");});
+       </script>
+      </div>
+      <div class="resAccordion section">
+       <div class="row">
+        <div class="col-xs-12">
+         <div aria-multiselectable="true" class="panel-group accordion background-hidden" id="09aa1cf0-d543-4a2b-8b83-c119946c11ca" role="tablist">
+          <div aria-label="Accordion Actions" class="resAccordionControl" role="group" style="">
+           <button class="resAccordionOpenAll">
+            Open All
+           </button>
+           <button class="resAccordionCloseAll">
+            Close All
+           </button>
+          </div>
+          <script type="text/javascript">
+           $(document).ready(function(){ initResAccordionControl("09aa1cf0-d543-4a2b-8b83-c119946c11ca", true); });
+          </script>
+          <div class="panel panel-default">
+           <!-- Accordion Heading -->
+           <div class="panel-heading container-clipboard">
+            <div class="panel-title">
+             <a aria-controls="accordion-content-1595938900314-admission-information" aria-expanded="false" data-clipboard-text="/content/ryerson/calendar/2026-2027/programs/feas/aerospace#accordion-1595938900314-admission-information" data-parent="#09aa1cf0-d543-4a2b-8b83-c119946c11ca" data-toggle="collapse" href="#accordion-content-1595938900314-admission-information" id="accordion-1595938900314-admission-information" role="tab">
+              Admission Information
+             </a>
+            </div>
+           </div>
+           <!-- Accordion Body -->
+           <div aria-labelledby="accordion-1595938900314-admission-information" class="panel-collapse collapse" id="accordion-content-1595938900314-admission-information" role="tabpanel" tabindex="0">
+            <div class="panel-body">
+             <div class="1595938900314 stackparsys">
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="0306b123-11ad-4b9c-aaab-3810707d72f2">
+                <p>
+                 O.S.S.D. with six Grade 12 U/M courses including Grade 12 U courses in: English, Advanced Functions (MHF4U), Calculus and Vectors (MCV4U), Physics (SPH4U) and Chemistry (SCH4U).
+                </p>
+                <p>
+                 Notes:
+                </p>
+                <ol>
+                 <li>
+                  ENG4U/EAE4U is the preferred English.
+                  <br/>
+                 </li>
+                 <li>
+                  The grade(s) required in subject prerequisites (normally in the 70 percent range) will be determined subject to competition.
+                  <br/>
+                 </li>
+                 <li>
+                  Subject to competition, candidates may be required to present averages/grades above the minimum.
+                 </li>
+                </ol>
+                <p>
+                </p>
+                <p>
+                 The Aerospace Engineering BEng degree program is accredited by the Canadian Engineering Accreditation Board.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#0306b123-11ad-4b9c-aaab-3810707d72f2");});
+               </script>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="panel panel-default">
+           <!-- Accordion Heading -->
+           <div class="panel-heading container-clipboard">
+            <div class="panel-title">
+             <a aria-controls="accordion-content-1595938900327-program-overview-curriculum-information" aria-expanded="false" data-clipboard-text="/content/ryerson/calendar/2026-2027/programs/feas/aerospace#accordion-1595938900327-program-overview-curriculum-information" data-parent="#09aa1cf0-d543-4a2b-8b83-c119946c11ca" data-toggle="collapse" href="#accordion-content-1595938900327-program-overview-curriculum-information" id="accordion-1595938900327-program-overview-curriculum-information" role="tab">
+              Program Overview/Curriculum Information
+             </a>
+            </div>
+           </div>
+           <!-- Accordion Body -->
+           <div aria-labelledby="accordion-1595938900327-program-overview-curriculum-information" class="panel-collapse collapse" id="accordion-content-1595938900327-program-overview-curriculum-information" role="tabpanel" tabindex="0">
+            <div class="panel-body">
+             <div class="1595938900327 stackparsys">
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="8e86926b-df50-4427-b740-72ab99465817">
+                <p>
+                 The Aerospace Engineering program is comprehensive and prepares students for careers in this dynamic industry. The program includes directly related studies in aerodynamics, stress analysis and structural design, flight mechanics, stability and control, and aircraft performance, together with courses in the fields of Mechanical and Electrical Engineering.
+                </p>
+                <p>
+                 The first year of study covers mathematics, basic sciences, computer programming and introductory courses in engineering. Second and third years include a wide range of aerospace and mechanical engineering courses together with courses in communications, advanced mathematics, electronics and electrical engineering. There is a strong emphasis on design and much of the analytical work is reinforced by computer and hardware laboratories. Studies in the humanities and social sciences complement the engineering courses and provide a rounded perspective.
+                </p>
+                <p>
+                 Students are required to choose one of three streams in the sixth semester: Aircraft, Avionics, or Spacecraft. Also included in the fourth year is a capstone design course, a course in professional practice and a course which examines the impact of technology on society.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#8e86926b-df50-4427-b740-72ab99465817");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                Transition Programs
+               </h2>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="0c48faa0-bb69-42f8-b79d-f008d9056f2e">
+                <p>
+                 <strong>
+                  First Year Transition Program
+                 </strong>
+                 : The objective of the
+                 <span>
+                  <a href="/content/ryerson/feas/students/current/transition/" target="_blank">
+                   first year transition program
+                   <span class="sr-only-no-select">
+                    (opens in new window)
+                   </span>
+                  </a>
+                 </span>
+                 is to provide students, who may need more time to adapt to the demanding university curriculum, with an immediate opportunity to upgrade their Academic Standing.
+                </p>
+                <p>
+                 In the second semester, Phase I of the transition program offers all first semester core courses:
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/102/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/102.html">
+                  CHY 102
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/140/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/140.html">
+                  MTH 140
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/141/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/141.html">
+                  MTH 141
+                 </a>
+                 , and
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/physics/PCS/211/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/physics/PCS/211.html">
+                  PCS 211
+                 </a>
+                 in parallel with the second semester regular program courses. Students who have failed and/or are missing any one of these courses at the end of the first semester are required to upgrade their Academic Standing through enrolling in the transition program. During the condensed Spring semester (May-July) Phase II of the transition program offers all second semester core courses:
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/222/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/222.html">
+                  AER 222
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/100/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/100.html">
+                  BME 100
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/200/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/200.html">
+                  CHE 200
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/211/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/211.html">
+                  CHY 211
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/125/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/125.html">
+                  CPS 125
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/188/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/188.html">
+                  CPS 188
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/civil-engineering/CVL/207/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/civil-engineering/CVL/207.html">
+                  CVL 207
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/202/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/202.html">
+                  ELE 202
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/222/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/222.html">
+                  MEC 222
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/240/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/240.html">
+                  MTH 240
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MTL/200/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MTL/200.html">
+                  MTL 200
+                 </a>
+                 , and
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/physics/PCS/125/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/physics/PCS/125.html">
+                  PCS 125
+                 </a>
+                 . These courses represent a repeat of the second semester regular program courses that were not taken by students enrolled in Phase I of the transition program. These courses will be offered subject to adequate enrolment.
+                </p>
+                <p>
+                 <strong>
+                  Second Year
+                 </strong>
+                 : The second year transition program is intended to help students who have failed or dropped the second year courses
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/512/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/512.html">
+                  EES 512
+                 </a>
+                 or
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/410/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/410.html">
+                  MTH 410
+                 </a>
+                 to stay in-phase with their classmates and still have a chance to be promoted to third year in the following academic year. This is accomplished by allowing such students to enrol in any of
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/512/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/512.html">
+                  EES 512
+                 </a>
+                 or
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/410/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/410.html">
+                  MTH 410
+                 </a>
+                 in a condensed Spring/Summer semester (May-July). These courses are offered in the Spring/Summer semester subject to adequate enrolment.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#0c48faa0-bb69-42f8-b79d-f008d9056f2e");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                Early Intervention Program
+               </h2>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="ebd2c8b5-22f7-41d9-9843-b517869d03a4">
+                <p>
+                 Highly innovative and proactive retention strategies play an important role in helping students build the skills for success in a demanding engineering curriculum. Through the
+                 <span>
+                  <a href="/content/ryerson/feas/fyeo/" target="_blank">
+                   First-Year Engineering Office
+                   <span class="sr-only-no-select">
+                    (opens in new window)
+                   </span>
+                  </a>
+                 </span>
+                 , the Faculty of Engineering and Architectural Science has incorporated the Early Intervention Program into the first-year engineering experience. At the semester's mid-point, students who are failing courses in their core curriculum are identified and encouraged to attend an interview with a member of our academic support team (Program Director/Academic Advisor and/or the Student Counsellor). Together, they discuss options to help reduce the chances of academic failure.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#ebd2c8b5-22f7-41d9-9843-b517869d03a4");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                Writing Skills Resource Path
+               </h2>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="00273a08-45d7-401b-bfc7-37a08d8e64ed">
+                <p>
+                 All new engineering students are automatically enrolled in
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199.html">
+                  CEN 199
+                 </a>
+                 : Writing Skills.
+                </p>
+                <p>
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199.html">
+                  CEN 199
+                 </a>
+                 is graded on a Pass/Fail basis, and is used to track the results of the Writing Skills Test (WST).
+                </p>
+                <p>
+                 All students admitted into engineering are required to write the mandatory Writing Skills Test (WST) during Orientation Week. Students who pass the WST (by achieving a grade of ‘B' or higher) will receive a PASS in
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199.html">
+                  CEN 199
+                 </a>
+                 and therefore may enrol in the lower level liberal studies course of their choice (subject to availability).
+                </p>
+                <p>
+                 Students who do not pass the WST will receive an INP (In Progress Grade) in
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199.html">
+                  CEN 199
+                 </a>
+                 and will be required to enrol in one of
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/language/LNG/111/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/language/LNG/111.html">
+                  LNG 111
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/language/LNG/112/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/language/LNG/112.html">
+                  LNG 112
+                 </a>
+                 ,
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/language/LNG/113/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/language/LNG/113.html">
+                  LNG 113
+                 </a>
+                 , or
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/language/LNG/121/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/language/LNG/121.html">
+                  LNG 121
+                 </a>
+                 as their first-year lower level liberal studies course. These courses, which count toward lower level liberal studies requirements, are writing-intensive humanities and social science courses designed to give students the opportunity to strengthen their foundations in communication. These students will then have three additional opportunities to write and pass the WST:
+                </p>
+                <ul>
+                 <li>
+                  In May, following 2nd Semester.
+                 </li>
+                 <li>
+                  During Orientation Week before 3rd Semester.
+                 </li>
+                 <li>
+                  In May, following 4th Semester.
+                 </li>
+                </ul>
+                <p>
+                 A PASS in
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199.html">
+                  CEN 199
+                 </a>
+                 : Writing Skills is required to enrol in all third-year engineering courses. Students with a grade of INP in
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199.html">
+                  CEN 199
+                 </a>
+                 will not be allowed to enrol in any third-year engineering course.
+                </p>
+                <p>
+                 Detailed information is available from the
+                 <span>
+                  <a href="/content/ryerson/feas/fyeo/" target="_blank">
+                   First-Year Engineering Office
+                   <span class="sr-only-no-select">
+                    (opens in new window)
+                   </span>
+                  </a>
+                 </span>
+                 . Room ENG 377 Telephone: 416-979-5000 ext. 4261.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#00273a08-45d7-401b-bfc7-37a08d8e64ed");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                Co-operative Program
+               </h2>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="2b66fff9-81e3-4a54-ab3d-a404682e4eae">
+                <h5>
+                 Curriculum scheduling is noted in the Full-Time, Four-Year and Five-Year Co-op Program section.
+                </h5>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#2b66fff9-81e3-4a54-ab3d-a404682e4eae");});
+               </script>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="fd769b60-fd87-4142-bbec-4e8fed80c7f0">
+                <p>
+                 After completing the first three years of the regular curriculum, a student in the Aerospace Engineering Program with CLEAR academic standing has options of continuing with the regular program or enrolling in the Aerospace Engineering Co-operative program after obtaining a 12 to 16-month Co-op job offer. After completing their co-operative job placement, a student in the Aerospace Engineering Co-operative program will return to the program to complete their degree requirements. The length of the Aerospace Engineering Co-operative Program is five years.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#fd769b60-fd87-4142-bbec-4e8fed80c7f0");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                Optional Internship Program
+               </h2>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="c4cf4a64-b33a-4bd7-b759-6afd1f409080">
+                <p>
+                 After completing the first three years of the regular curriculum, students in the Aerospace Engineering Program with CLEAR Academic Standing may be eligible to enrol in the Optional Internship Program. If they are selected by one of the partner corporations, they spend a period of 8 months as engineering interns at the corresponding corporations. After the completion of the Internship, students return to the academic program to complete their final year of studies. Enrolment in the Internship Program extends the program length to five years.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#c4cf4a64-b33a-4bd7-b759-6afd1f409080");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                Optional Specialization in Engineering Innovation and Entrepreneurship (OS EIE)
+               </h2>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="6f532e06-eede-412a-9ebc-7bbad9ac1fa0">
+                <p>
+                 This option provides students with a solid foundation in innovation and entrepreneurship theory as well as the immersive experience of advancing and shaping an idea into a business. The lecture courses cover principles of engineering economics, entrepreneurship and innovation management, and technology based new venture creation. The practicum will guide students through the process of identifying a new business concept, developing their technology, and preparing their business for market readiness. For eligibility, registration and course information see the
+                 <a href="/content/ryerson/calendar/2026-2027/optional-specializations/engineering_innovation.html">
+                  Optional Specialization in Engineering Innovation and Entrepreneurship (OS EIE)
+                 </a>
+                 .
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#6f532e06-eede-412a-9ebc-7bbad9ac1fa0");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                Optional Specialization in Management Sciences (OS MS)
+               </h2>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="7603c0c3-68ea-4666-a518-99c766cad99f">
+                <p>
+                 Students can enrich their studies and hone their management skills with the Optional Specialization in Management Sciences. Courses within the optional specialization cover four major areas in management sciences: Strategic Engineering Management, Operations Management/Operations Research, Finance, and Organizational Behaviour. For eligibility, registration, and course information see
+                 <a href="/content/ryerson/calendar/2026-2027/optional-specializations/management_sciences.html">
+                  Optional Specialization in Management Sciences (OS MS)
+                 </a>
+                 .
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#7603c0c3-68ea-4666-a518-99c766cad99f");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                Engineering Transfer Credits
+               </h2>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="9702d4ec-71f0-4346-8e64-8fa44ddecf37">
+                <p>
+                 Applicants approved into an Engineering program cannot expect to receive any transfer credits in Engineering discipline or Engineering related discipline courses if their applicable post-secondary education was not completed at a program accredited by the
+                 <span>
+                  <a href="https://engineerscanada.ca/accreditation/accredited-programs" target="_blank">
+                   Canadian Engineering Accreditation Board
+                   <span class="sr-only-no-select">
+                    (external link, opens in new window)
+                   </span>
+                  </a>
+                 </span>
+                 (CEAB).
+                </p>
+                <p>
+                 Core and professional engineering course transfer credits will ONLY be granted at the time of admission. An Offer of Admission will notify the applicant of transfer credit decision(s) subject to acceptance of their Offer.
+                </p>
+                <p>
+                 Liberal studies discipline courses taken at CEAB accredited or non-accredited schools will be considered for either lower- or upper-level liberal studies transfer credit. College courses, in general, are not eligible for transfer credit except in the case of lower-level liberal studies courses.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#9702d4ec-71f0-4346-8e64-8fa44ddecf37");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                Liberal Studies
+               </h2>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="580baccd-f059-4f11-b778-c8443adc3c09">
+                <p>
+                 Students must take two
+                 <a href="/content/ryerson/calendar/2026-2027/liberal-studies/table_a.html">
+                  lower level
+                 </a>
+                 liberal studies courses and two
+                 <a href="/content/ryerson/calendar/2026-2027/liberal-studies/table_b.html">
+                  upper level
+                 </a>
+                 liberal studies courses to graduate. Students must not choose courses that are restricted for their program or major.
+                </p>
+                <p>
+                 Please refer to the
+                 <a href="/content/ryerson/calendar/2026-2027/liberal-studies.html">
+                  liberal studies
+                 </a>
+                 chapter of this calendar for more information on the Liberal Studies Policy. Further information on liberal studies can also be found at the Faculty of Arts'
+                 <span>
+                  <a href="/content/ryerson/liberal-studies/" target="_blank">
+                   Liberal Studies website
+                   <span class="sr-only-no-select">
+                    (opens in new window)
+                   </span>
+                  </a>
+                 </span>
+                 .
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#580baccd-f059-4f11-b778-c8443adc3c09");});
+               </script>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="7ad6dd73-a2e2-4642-8efc-d19d858fd439">
+                <p>
+                 <strong>
+                  Table A - Lower Level Restrictions
+                 </strong>
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#7ad6dd73-a2e2-4642-8efc-d19d858fd439");});
+               </script>
+              </div>
+              <div class="resReference section">
+               <div class="res-reference" id="dc877d13-742c-4afe-ad5e-5f60fcacc5d5">
+                <div class="restext resText parbase">
+                 <div class="res-text richtextContent background-hidden replica text-font-regular" id="a7d991d2-b0a0-4669-a735-959577a03de7">
+                  <p>
+                   <em>
+                    Aerospace, Biomedical, Chemical, Civil, Computer, Electrical, Industrial, Mechanical, Mechatronics, and Undeclared Engineering
+                   </em>
+                  </p>
+                  <p>
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/150/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/150.html">
+                    AER 150
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/architectural-science/ASC/120/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/architectural-science/ASC/120.html">
+                    ASC 120
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/biology/BLG/181/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/biology/BLG/181.html">
+                    BLG 181
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/biomedical-sciences/BMS/150/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/biomedical-sciences/BMS/150.html">
+                    BMS 150
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/182/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/182.html">
+                    CHY 182
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/183/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/183.html">
+                    CHY 183
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/110/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/110.html">
+                    MEC 110
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/physics/PCS/111/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/physics/PCS/111.html">
+                    PCS 111
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/physics/PCS/181/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/physics/PCS/181.html">
+                    PCS 181
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/physics/PCS/182/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/physics/PCS/182.html">
+                    PCS 182
+                   </a>
+                   and SCI courses are not available for credit.
+                  </p>
+                 </div>
+                 <script>
+                  $(document).ready(function(){addCoursePopover("#a7d991d2-b0a0-4669-a735-959577a03de7");});
+                 </script>
+                </div>
+               </div>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="3eae5e94-8288-49d4-b9ae-93c78544b93c">
+                <p>
+                 <strong>
+                  Table B - Upper Level Restrictions
+                 </strong>
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#3eae5e94-8288-49d4-b9ae-93c78544b93c");});
+               </script>
+              </div>
+              <div class="resReference section">
+               <div class="res-reference" id="40217eab-771c-4de9-9972-314432fb821d">
+                <div class="restext_1595939040704 resText parbase">
+                 <div class="res-text richtextContent background-hidden replica text-font-regular" id="db489ec0-c501-4153-9696-a0fa622c5eaa">
+                  <p>
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/biology/BLG/599/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/biology/BLG/599.html">
+                    BLG 599
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/biology/BLG/699/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/biology/BLG/699.html">
+                    BLG 699
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/biology/BLG/850/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/biology/BLG/850.html">
+                    BLG 850
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/583/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/583.html">
+                    CHY 583
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/599/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/599.html">
+                    CHY 599
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/650/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/650.html">
+                    CPS 650
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/900/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/900.html">
+                    ELE 900
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/511/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/511.html">
+                    MTH 511
+                   </a>
+                   ,
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/599/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/599.html">
+                    MTH 599
+                   </a>
+                   and
+                   <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/physics/PCS/581/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/physics/PCS/581.html">
+                    PCS 581
+                   </a>
+                   are not available for credit.
+                  </p>
+                 </div>
+                 <script>
+                  $(document).ready(function(){addCoursePopover("#db489ec0-c501-4153-9696-a0fa622c5eaa");});
+                 </script>
+                </div>
+               </div>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                Minors
+               </h2>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="b5936f05-bd4b-4087-b3d9-bd0f6487ba61">
+                <p>
+                 Students may pursue any Minor offered by Toronto Met (with some exceptions). Please refer to the
+                 <a href="/content/ryerson/calendar/2026-2027/minors.html">
+                  Minors
+                 </a>
+                 chapter of this calendar for further information on individual Minor requirements and exclusions.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#b5936f05-bd4b-4087-b3d9-bd0f6487ba61");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                The G. Raymond Chang School of Continuing Education Certificates
+               </h2>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="b2f5c901-ab61-4197-b45e-8b25f5037332">
+                <p>
+                 Undergraduate students wishing to pursue a continuing education certificate program should be aware of possible program exclusions. Please refer to the Certificate Registration section of the
+                 <span>
+                  <a href="/content/ryerson/curriculum-advising.html" target="_blank">
+                   Curriculum Advising website
+                   <span class="sr-only-no-select">
+                    (opens in new window)
+                   </span>
+                  </a>
+                 </span>
+                 for complete details.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#b2f5c901-ab61-4197-b45e-8b25f5037332");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                Accelerated Master of Applied Science (MASc) Pathway
+               </h2>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="e3e7ff84-0091-4bb9-b7ef-059d06e28433">
+                <p>
+                 The Accelerated Master of Applied Science (MASc) Pathway is open to undergraduate engineering students who have demonstrated academic excellence and/or research potential by the end of the third year of their undergraduate program. Students can enrol in a maximum of two graduate level courses in addition to their regular undergraduate course requirements in the final year of their undergraduate program and commence their Master’s research such that the MASc program can be completed in approximately one year. The Accelerated MASc Pathway does not change the degree requirements for the existing BEng or MASc programs. For more information about and application to this pathway, please contact the Associate Dean, Graduate Studies, Faculty of Engineering and Architectural Science.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#e3e7ff84-0091-4bb9-b7ef-059d06e28433");});
+               </script>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="panel panel-default">
+           <!-- Accordion Heading -->
+           <div class="panel-heading container-clipboard">
+            <div class="panel-title">
+             <a aria-controls="accordion-content-1595938900344-full-time--four-year-program-and-five-year-co-op-program" aria-expanded="false" data-clipboard-text="/content/ryerson/calendar/2026-2027/programs/feas/aerospace#accordion-1595938900344-full-time--four-year-program-and-five-year-co-op-program" data-parent="#09aa1cf0-d543-4a2b-8b83-c119946c11ca" data-toggle="collapse" href="#accordion-content-1595938900344-full-time--four-year-program-and-five-year-co-op-program" id="accordion-1595938900344-full-time--four-year-program-and-five-year-co-op-program" role="tab">
+              Full-Time, Four-Year Program and Five-Year Co-op Program
+             </a>
+            </div>
+           </div>
+           <!-- Accordion Body -->
+           <div aria-labelledby="accordion-1595938900344-full-time--four-year-program-and-five-year-co-op-program" class="panel-collapse collapse" id="accordion-content-1595938900344-full-time--four-year-program-and-five-year-co-op-program" role="tabpanel" tabindex="0">
+            <div class="panel-body">
+             <div class="1595938900344 stackparsys">
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="fa5d1a3d-ec69-44c2-8c7c-7644f54fd999">
+                <h5>
+                 Co-operative students see Sequence of Academic and Work Terms for Co-op Program.
+                </h5>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#fa5d1a3d-ec69-44c2-8c7c-7644f54fd999");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                1st &amp; 2nd Semester
+               </h2>
+              </div>
+              <div class="resTwoColEven section">
+               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+                 <div class="c1 stackparsys">
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-hidden replica text-font-regular" id="368c6d9a-edcd-4139-85b3-4ea07f9e6622">
+                    <p>
+                     <strong>
+                      <span>
+                       1st Semester
+                      </span>
+                     </strong>
+                    </p>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#368c6d9a-edcd-4139-85b3-4ea07f9e6622");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-hidden replica text-font-regular" id="4a034064-1419-49e8-87a7-0d21bee5ccc2">
+                    <p>
+                     <em>
+                      Common to Aerospace, Biomedical, Chemical, Civil, Computer, Electrical, Industrial, Mechanical, and Mechatronics Engineering programs.
+                     </em>
+                    </p>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#4a034064-1419-49e8-87a7-0d21bee5ccc2");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="b2589a5c-de2a-4a3e-8b0c-e636d2d90f32">
+                    <p>
+                     <strong>
+                      REQUIRED
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/100/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/100.html">
+                       CEN 100
+                      </a>
+                      Introduction to Engineering
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199.html">
+                       CEN 199
+                      </a>
+                      * Writing Skills
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/102/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/102.html">
+                       CHY 102
+                      </a>
+                      General Chemistry
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/140/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/140.html">
+                       MTH 140
+                      </a>
+                      Calculus I
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/141/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/141.html">
+                       MTH 141
+                      </a>
+                      Linear Algebra
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/physics/PCS/211/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/physics/PCS/211.html">
+                       PCS 211
+                      </a>
+                      Physics: Mechanics
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#b2589a5c-de2a-4a3e-8b0c-e636d2d90f32");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="7b263267-bc17-41fa-889d-e512a3cf7dcf">
+                    <p>
+                     <strong>
+                      LIBERAL STUDIES:
+                      <br/>
+                     </strong>
+                     One course from
+                     <a href="/content/ryerson/calendar/2026-2027/liberal-studies/table_a.html">
+                      Table A - Lower Level Liberal Studies
+                     </a>
+                     .
+                    </p>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#7b263267-bc17-41fa-889d-e512a3cf7dcf");});
+                   </script>
+                  </div>
+                 </div>
+                </div>
+                <div class="clearfix visible-xs-block">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+                 <div class="c2 stackparsys">
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-hidden replica text-font-regular" id="ed712088-0560-4977-aecb-72d435f85918">
+                    <p>
+                     <strong>
+                      <span>
+                       2nd Semester
+                      </span>
+                     </strong>
+                    </p>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#ed712088-0560-4977-aecb-72d435f85918");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="29549754-fca8-4bbf-bc6a-f40e01232c5b">
+                    <p>
+                     <strong>
+                      REQUIRED
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/222/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/222.html">
+                       AER 222
+                      </a>
+                      Engineering Design and Graphical Communication
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/125/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/125.html">
+                       CPS 125
+                      </a>
+                      Digital Computation and Programming
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/economics/ECN/801/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/economics/ECN/801.html">
+                       ECN 801
+                      </a>
+                      Principles of Engineering Economics
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/240/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/240.html">
+                       MTH 240
+                      </a>
+                      Calculus II
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MTL/200/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MTL/200.html">
+                       MTL 200
+                      </a>
+                      Materials Science Fundamentals
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/physics/PCS/125/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/physics/PCS/125.html">
+                       PCS 125
+                      </a>
+                      Physics: Waves and Fields
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#29549754-fca8-4bbf-bc6a-f40e01232c5b");});
+                   </script>
+                  </div>
+                 </div>
+                </div>
+                <div class="clearfix visible-lg-block">
+                </div>
+                <div class="clearfix visible-md-block">
+                </div>
+                <div class="clearfix visible-sm-block">
+                </div>
+                <div class="clearfix visible-xs-block">
+                </div>
+               </div>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="2084683e-e07c-41db-93e8-28cd45ea643d">
+                <p>
+                 <small>
+                  * This course is graded on a pass/fail basis.
+                 </small>
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#2084683e-e07c-41db-93e8-28cd45ea643d");});
+               </script>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="34f29a9e-e8b1-4eb5-b61a-c254eb143a43">
+                <p>
+                 <img alt=" " class="hr-separator hr-separator-default" loading="lazy" role="presentation" src="/etc.clientlibs/ryecms/static/clientlib-site/resources/images/separators/transparent_separator.png"/>
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#34f29a9e-e8b1-4eb5-b61a-c254eb143a43");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                3rd &amp; 4th Semester
+               </h2>
+              </div>
+              <div class="resTwoColEven section">
+               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+                 <div class="c1 stackparsys">
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-hidden replica text-font-regular" id="0a98424d-1cec-4425-89f1-efe8b167b378">
+                    <p>
+                     <strong>
+                      <span>
+                       3rd Semester
+                      </span>
+                     </strong>
+                    </p>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#0a98424d-1cec-4425-89f1-efe8b167b378");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="cb2747f2-fb51-4c66-96d5-f466ab333ea6">
+                    <p>
+                     <strong>
+                      REQUIRED
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/309/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/309.html">
+                       AER 309
+                      </a>
+                      Basic Thermodynamics
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/316/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/316.html">
+                       AER 316
+                      </a>
+                      Fluid Mechanics
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/318/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/318.html">
+                       AER 318
+                      </a>
+                      Dynamics
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/320/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/320.html">
+                       AER 320
+                      </a>
+                      Statics and Intro to Strength of Materials
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/communication/CMN/432/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/communication/CMN/432.html">
+                       CMN 432
+                      </a>
+                      Communication in the Engineering Professions
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/425/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/425.html">
+                       MTH 425
+                      </a>
+                      Differential Equations and Vector Calculus
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#cb2747f2-fb51-4c66-96d5-f466ab333ea6");});
+                   </script>
+                  </div>
+                 </div>
+                </div>
+                <div class="clearfix visible-xs-block">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+                 <div class="c2 stackparsys">
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-hidden replica text-font-regular" id="18ef2ae3-b55d-43f2-a14e-f55ad0420eab">
+                    <p>
+                     <strong>
+                      <span>
+                       4th Semester
+                      </span>
+                     </strong>
+                    </p>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#18ef2ae3-b55d-43f2-a14e-f55ad0420eab");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="382b4550-3181-479b-9220-a824fa273fec">
+                    <p>
+                     <strong>
+                      REQUIRED:
+                     </strong>
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/403/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/403.html">
+                       AER 403
+                      </a>
+                      Mechanisms and Vibrations
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/404/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/404.html">
+                       AER 404
+                      </a>
+                      Intro to Aerospace Engineering Design
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/416/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/416.html">
+                       AER 416
+                      </a>
+                      Flight Mechanics
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/423/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/423.html">
+                       AER 423
+                      </a>
+                      Thermodynamics and Heat Transfer
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/512/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/512.html">
+                       EES 512
+                      </a>
+                      Electric Circuits
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/410/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/410.html">
+                       MTH 410
+                      </a>
+                      Statistics
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#382b4550-3181-479b-9220-a824fa273fec");});
+                   </script>
+                  </div>
+                 </div>
+                </div>
+                <div class="clearfix visible-lg-block">
+                </div>
+                <div class="clearfix visible-md-block">
+                </div>
+                <div class="clearfix visible-sm-block">
+                </div>
+                <div class="clearfix visible-xs-block">
+                </div>
+               </div>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="d2e5256f-cb75-47a8-b9e3-e5207c5b4970">
+                <p>
+                 <small>
+                  NOTE: All required courses in 1st and 2nd semester are prerequisites to all required courses in 3rd &amp; 4th Semester.
+                 </small>
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#d2e5256f-cb75-47a8-b9e3-e5207c5b4970");});
+               </script>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="9819b9f6-f922-4251-b01d-5c43786c9693">
+                <p>
+                 <img alt=" " class="hr-separator hr-separator-default" loading="lazy" role="presentation" src="/etc.clientlibs/ryecms/static/clientlib-site/resources/images/separators/transparent_separator.png"/>
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#9819b9f6-f922-4251-b01d-5c43786c9693");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                5th &amp; 6th Semester
+               </h2>
+              </div>
+              <div class="resTwoColEven section">
+               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+                 <div class="c1 stackparsys">
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-hidden replica text-font-regular" id="cc009a9f-02b8-43d3-8fe3-eb1346511532">
+                    <p>
+                     <strong>
+                      <span>
+                       5th Semester
+                      </span>
+                     </strong>
+                    </p>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#cc009a9f-02b8-43d3-8fe3-eb1346511532");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="0cb2d8e3-f5e2-4cdf-94df-4f557099e16f">
+                    <p>
+                     <strong>
+                      REQUIRED
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/504/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/504.html">
+                       AER 504
+                      </a>
+                      Aerodynamics
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/507/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/507.html">
+                       AER 507
+                      </a>
+                      Materials and Manufacturing
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/520/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/520.html">
+                       AER 520
+                      </a>
+                      Stress Analysis
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/612/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/612.html">
+                       EES 612
+                      </a>
+                      Electric Machines and Actuators
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/510/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/510.html">
+                       MTH 510
+                      </a>
+                      Numerical Analysis
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#0cb2d8e3-f5e2-4cdf-94df-4f557099e16f");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="4668b1d2-c24f-417f-b7a4-d00075793e2b">
+                    <p>
+                     <strong>
+                      LIBERAL STUDIES
+                     </strong>
+                     :
+                     <br/>
+                     One course from
+                     <a href="/content/ryerson/calendar/2026-2027/liberal-studies/table_a.html">
+                      Table A - Lower Level Liberal Studies
+                     </a>
+                     .
+                    </p>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#4668b1d2-c24f-417f-b7a4-d00075793e2b");});
+                   </script>
+                  </div>
+                 </div>
+                </div>
+                <div class="clearfix visible-xs-block">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+                 <div class="c2 stackparsys">
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-hidden replica text-font-regular" id="6a0fdf36-b545-444a-b24a-ad4d661a00d5">
+                    <p>
+                     <strong>
+                      <span>
+                       6th Semester
+                      </span>
+                     </strong>
+                    </p>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#6a0fdf36-b545-444a-b24a-ad4d661a00d5");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="85584b78-1db0-4c50-9c01-d074dfa7d3e8">
+                    <p>
+                     <strong>
+                      REQUIRED
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/509/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/509.html">
+                       AER 509
+                      </a>
+                      Control Systems
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/606/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/606.html">
+                       AER 606
+                      </a>
+                      Component Design and Material Selection
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/615/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/615.html">
+                       AER 615
+                      </a>
+                      Aircraft Performance
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/621/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/621.html">
+                       AER 621
+                      </a>
+                      Aerospace Structural Design
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/622/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/622.html">
+                       AER 622
+                      </a>
+                      Gas Dynamics
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#85584b78-1db0-4c50-9c01-d074dfa7d3e8");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="d91107f0-ac55-4e50-be0a-d9dd57a1129d">
+                    <p>
+                     <strong>
+                      CORE ELECTIVE
+                     </strong>
+                     : One course from the following. Students must complete the requirements for one of the following Streams:
+                    </p>
+                    <p>
+                     <strong>
+                      Aircraft Stream
+                     </strong>
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/626/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/626.html">
+                       AER 626
+                      </a>
+                      Applied Finite Elements
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#d91107f0-ac55-4e50-be0a-d9dd57a1129d");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="671ef376-0392-41b0-bc15-9c007e05ef13">
+                    <p>
+                     <strong>
+                      Avionics Stream
+                     </strong>
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/699/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/699.html">
+                       AER 699
+                      </a>
+                      Aerospace Sensors
+                      <br/>
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#671ef376-0392-41b0-bc15-9c007e05ef13");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="d273e4cd-b58d-4613-a580-cabe4dd88b8c">
+                    <p>
+                     <b>
+                      Spacecraft Stream
+                     </b>
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/721/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/721.html">
+                       AER 721
+                      </a>
+                      Orbital Dynamics
+                      <br/>
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#d273e4cd-b58d-4613-a580-cabe4dd88b8c");});
+                   </script>
+                  </div>
+                 </div>
+                </div>
+                <div class="clearfix visible-lg-block">
+                </div>
+                <div class="clearfix visible-md-block">
+                </div>
+                <div class="clearfix visible-sm-block">
+                </div>
+                <div class="clearfix visible-xs-block">
+                </div>
+               </div>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="47d93f16-8b5a-46c9-b4db-957d7321c15c">
+                <p>
+                 <small>
+                  All required courses in 1st and 2nd semester are prerequisites to all required courses in 5th &amp; 6th Semester.
+                 </small>
+                </p>
+                <p>
+                 <small>
+                  NOTE: Students after the 6th semester have options of continuing with the regular program (including, if eligible, enrolling in the Optional Internship Program) or, if eligible, enrolling in the Aerospace Engineering Co-operative Program.
+                 </small>
+                </p>
+                <p>
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#47d93f16-8b5a-46c9-b4db-957d7321c15c");});
+               </script>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="b162af0a-5c38-42e5-a5c1-1b5ba23dcafd">
+                <p>
+                 <img alt=" " class="hr-separator hr-separator-default" loading="lazy" role="presentation" src="/etc.clientlibs/ryecms/static/clientlib-site/resources/images/separators/transparent_separator.png"/>
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#b162af0a-5c38-42e5-a5c1-1b5ba23dcafd");});
+               </script>
+              </div>
+              <div class="resTitle section">
+               <h2>
+                7th &amp; 8th Semester
+               </h2>
+              </div>
+              <div class="resTwoColEven section">
+               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+                 <div class="c1 stackparsys">
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-hidden replica text-font-regular" id="4a36ebc6-3e20-4945-9110-827c00aa814f">
+                    <p>
+                     <strong>
+                      <span>
+                       7th Semester
+                      </span>
+                     </strong>
+                    </p>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#4a36ebc6-3e20-4945-9110-827c00aa814f");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="6c34d192-f225-4419-88da-f5bd8ed9808f">
+                    <p>
+                     <strong>
+                      LIBERAL STUDIES:
+                     </strong>
+                     One course from the following:
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/english/ENG/503/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/english/ENG/503.html">
+                       ENG 503
+                      </a>
+                      Science Fiction
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/geography/GEO/702/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/geography/GEO/702.html">
+                       GEO 702
+                      </a>
+                      Technology and the Contemporary Environment
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/history/HST/701/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/history/HST/701.html">
+                       HST 701
+                      </a>
+                      Scientific Technology and Modern Society
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/philosophy/PHL/709/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/philosophy/PHL/709.html">
+                       PHL 709
+                      </a>
+                      Religion, Science and Philosophy
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/politics-and-public-administration/POL/507/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/politics-and-public-administration/POL/507.html">
+                       POL 507
+                      </a>
+                      Power, Change and Technology
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#6c34d192-f225-4419-88da-f5bd8ed9808f");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="daffdb58-191b-4e87-8ee1-de66763df60f">
+                    <p>
+                     <strong>
+                      Aircraft Stream Required
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/715/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/715.html">
+                       AER 715
+                      </a>
+                      Avionics and Systems
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/716/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/716.html">
+                       AER 716
+                      </a>
+                      Aircraft Stability and Control
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/722/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/722.html">
+                       AER 722
+                      </a>
+                      Aeroelasticity
+                     </li>
+                    </ul>
+                    <p>
+                     <strong>
+                      Aircraft Stream Core Elective
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                    </ul>
+                    <p>
+                     One course from the following:
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/817/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/817.html">
+                       AER 817
+                      </a>
+                      Systems Engineering
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/827/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/827.html">
+                       AER 827
+                      </a>
+                      Composite Materials
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/850/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/850.html">
+                       AER 850
+                      </a>
+                      Introduction to Machine Learning
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#daffdb58-191b-4e87-8ee1-de66763df60f");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="5b738afd-9cb8-4f6f-a19d-0328124776f8">
+                    <p>
+                     <strong>
+                      Avionics Stream Required
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/715/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/715.html">
+                       AER 715
+                      </a>
+                      Avionics and Systems
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/716/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/716.html">
+                       AER 716
+                      </a>
+                      Aircraft Stability and Control
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/508/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/508.html">
+                       EES 508
+                      </a>
+                      Digital Systems
+                     </li>
+                    </ul>
+                    <p>
+                     <strong>
+                      Avionics Stream Core Elective
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                    </ul>
+                    <p>
+                     One course from the following:
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/817/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/817.html">
+                       AER 817
+                      </a>
+                      Systems Engineering
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/827/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/827.html">
+                       AER 827
+                      </a>
+                      Composite Materials
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/850/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/850.html">
+                       AER 850
+                      </a>
+                      Introduction to Machine Learning
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#5b738afd-9cb8-4f6f-a19d-0328124776f8");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="1cbc48fd-0e90-4b67-81c6-b78b57fe2d50">
+                    <p>
+                     <strong>
+                      Spacecraft Stream Required
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/723/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/723.html">
+                       AER 723
+                      </a>
+                      Introduction to Space Systems Design
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/817/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/817.html">
+                       AER 817
+                      </a>
+                      Systems Engineering
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/821/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/821.html">
+                       AER 821
+                      </a>
+                      Spacecraft Attitude Dynamics and Control
+                     </li>
+                    </ul>
+                    <p>
+                     <strong>
+                      Spacecraft Stream Core Elective
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                    </ul>
+                    <p>
+                     One course from the following:
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/715/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/715.html">
+                       AER 715
+                      </a>
+                      Avionics and Systems
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/827/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/827.html">
+                       AER 827
+                      </a>
+                      Composite Materials
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/850/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/850.html">
+                       AER 850
+                      </a>
+                      Introduction to Machine Learning
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#1cbc48fd-0e90-4b67-81c6-b78b57fe2d50");});
+                   </script>
+                  </div>
+                 </div>
+                </div>
+                <div class="clearfix visible-xs-block">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 a-b">
+                 <div class="c2 stackparsys">
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-hidden replica text-font-regular" id="7792aa5a-2df7-489b-b2bf-e15583dde9aa">
+                    <p>
+                     <strong>
+                      <span>
+                       8th Semester
+                      </span>
+                     </strong>
+                    </p>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#7792aa5a-2df7-489b-b2bf-e15583dde9aa");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="f0194a24-8c20-45ff-aa46-c4edaa556606">
+                    <p>
+                     <strong>
+                      REQUIRED
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/710/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/710.html">
+                       AER 710
+                      </a>
+                      Propulsion
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/800/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/800.html">
+                       CEN 800
+                      </a>
+                      Law and Ethics in Engineering Practice
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#f0194a24-8c20-45ff-aa46-c4edaa556606");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="c98742f7-3969-483d-9129-b268bf2287b0">
+                    <p>
+                     <b>
+                      LIBERAL STUDIES:
+                      <br/>
+                     </b>
+                     One course from
+                     <a href="/content/ryerson/calendar/2026-2027/liberal-studies/table_b.html">
+                      Table B - Upper Level Liberal Studies
+                     </a>
+                     .
+                     <b>
+                     </b>
+                    </p>
+                    <p>
+                     <b>
+                      CORE ELECTIVE†
+                     </b>
+                     : One course from the following:
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/627/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/627.html">
+                       AER 627
+                      </a>
+                      Introduction to Space Robotics
+                      <br/>
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/818/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/818.html">
+                       AER 818
+                      </a>
+                      Manufacturing Management
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/870/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/870.html">
+                       AER 870
+                      </a>
+                      Aerospace Engineering Thesis
+                     </li>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/810/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/810.html">
+                       CEN 810
+                      </a>
+                      Selected Topics in Engineering
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#c98742f7-3969-483d-9129-b268bf2287b0");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="340aa53a-37e2-460d-97ec-e55a4f26dfce">
+                    <p>
+                     <strong>
+                      Aircraft Stream Required
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/814/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/814.html">
+                       AER 814
+                      </a>
+                      Aircraft Design Project
+                     </li>
+                    </ul>
+                    <p>
+                    </p>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#340aa53a-37e2-460d-97ec-e55a4f26dfce");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="bf763d29-3399-4fce-90b5-d5c16099e52f">
+                    <p>
+                     <strong>
+                      Avionics Stream Required
+                     </strong>
+                     :
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/822/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/822.html">
+                       AER 822
+                      </a>
+                      Avionics Design Project
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#bf763d29-3399-4fce-90b5-d5c16099e52f");});
+                   </script>
+                  </div>
+                  <div class="resText parbase section">
+                   <div class="res-text richtextContent background-opaque replica text-font-regular" id="5d1a9caf-904b-42b1-a4b1-f2e4814c55b6">
+                    <p>
+                     <strong>
+                      Spacecraft Stream Required
+                     </strong>
+                     <span>
+                      :
+                     </span>
+                     <br/>
+                    </p>
+                    <ul>
+                     <li>
+                      <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/813/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/aerospace/AER/813.html">
+                       AER 813
+                      </a>
+                      Space Systems Design Project
+                     </li>
+                    </ul>
+                   </div>
+                   <script>
+                    $(document).ready(function(){addCoursePopover("#5d1a9caf-904b-42b1-a4b1-f2e4814c55b6");});
+                   </script>
+                  </div>
+                 </div>
+                </div>
+                <div class="clearfix visible-lg-block">
+                </div>
+                <div class="clearfix visible-md-block">
+                </div>
+                <div class="clearfix visible-sm-block">
+                </div>
+                <div class="clearfix visible-xs-block">
+                </div>
+               </div>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="dfbfc0b9-9ec0-442a-bac8-a2bc42947ee5">
+                <p>
+                 <small>
+                  NOTE: All required courses in 1st through 4th semester are prerequisites to all required courses in 7th &amp; 8th Semester.
+                 </small>
+                </p>
+                <p>
+                 <small>
+                  NOTE: Students after the 6th semester have options of continuing with the regular program (including, if eligible, enrolling in the Optional Internship Program) or, if eligible, enrolling in the Aerospace Engineering Co-operative Program.
+                 </small>
+                </p>
+                <p>
+                 <small>
+                  † Not every course will be offered every year.
+                 </small>
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#dfbfc0b9-9ec0-442a-bac8-a2bc42947ee5");});
+               </script>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="panel panel-default">
+           <!-- Accordion Heading -->
+           <div class="panel-heading container-clipboard">
+            <div class="panel-title">
+             <a aria-controls="accordion-content-1641922898374-sequence-of-academic-and-work-terms-for-co-op-program" aria-expanded="false" data-clipboard-text="/content/ryerson/calendar/2026-2027/programs/feas/aerospace#accordion-1641922898374-sequence-of-academic-and-work-terms-for-co-op-program" data-parent="#09aa1cf0-d543-4a2b-8b83-c119946c11ca" data-toggle="collapse" href="#accordion-content-1641922898374-sequence-of-academic-and-work-terms-for-co-op-program" id="accordion-1641922898374-sequence-of-academic-and-work-terms-for-co-op-program" role="tab">
+              Sequence of Academic and Work Terms for Co-op Program
+             </a>
+            </div>
+           </div>
+           <!-- Accordion Body -->
+           <div aria-labelledby="accordion-1641922898374-sequence-of-academic-and-work-terms-for-co-op-program" class="panel-collapse collapse" id="accordion-content-1641922898374-sequence-of-academic-and-work-terms-for-co-op-program" role="tabpanel" tabindex="0">
+            <div class="panel-body">
+             <div class="1641922898374 stackparsys">
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="f2e7fe2a-6c8f-4c56-be18-6f811f9068ff">
+                <p>
+                 In addition to the regular Aerospace Engineering curriculum, students can choose to pursue the Aerospace Engineering Co-operative Program. The following table shows the sequence of academic and work terms for this program. Students are expected to follow the sequence prescribed for their program. Graduation with the co-op designation requires successful completion of a minimum of three work terms.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#f2e7fe2a-6c8f-4c56-be18-6f811f9068ff");});
+               </script>
+              </div>
+              <div class="resTable parbase section">
+               <div class="scrollIndicator hidden">
+                <i aria-hidden="true" class="fa fa-long-arrow-left">
+                </i>
+                Swipe to see more
+                <i aria-hidden="true" class="fa fa-long-arrow-right">
+                </i>
+               </div>
+               <div class="tableContainer" id="e6f47b85-a4aa-4ee2-a4d7-baebc528cafd">
+                <table border="1" cellpadding="1" cellspacing="0" width="100%">
+                 <tbody>
+                  <tr>
+                   <td>
+                   </td>
+                   <td>
+                    Fall
+                   </td>
+                   <td>
+                    Winter
+                   </td>
+                   <td>
+                    Spring/Summer
+                   </td>
+                  </tr>
+                  <tr>
+                   <td>
+                    <b>
+                     Year 1
+                    </b>
+                   </td>
+                   <td>
+                    1st Semester
+                   </td>
+                   <td>
+                    2nd Semester
+                   </td>
+                   <td>
+                   </td>
+                  </tr>
+                  <tr>
+                   <td>
+                    <b>
+                     Year 2
+                    </b>
+                   </td>
+                   <td>
+                    3rd Semester
+                   </td>
+                   <td>
+                    4th Semester
+                   </td>
+                   <td>
+                   </td>
+                  </tr>
+                  <tr>
+                   <td>
+                    <b>
+                     Year 3
+                    </b>
+                   </td>
+                   <td>
+                    5th Semester
+                   </td>
+                   <td>
+                    6th Semester
+                   </td>
+                   <td>
+                    Work Term I –
+                    <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/118/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/118.html">
+                     WKT 118
+                    </a>
+                   </td>
+                  </tr>
+                  <tr>
+                   <td>
+                    <b>
+                     Year 4
+                    </b>
+                   </td>
+                   <td>
+                    Work Term I or II
+                    <br>
+                     <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/118/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/118.html">
+                      WKT 118
+                     </a>
+                     or
+                     <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/218/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/218.html">
+                      WKT 218
+                     </a>
+                    </br>
+                   </td>
+                   <td>
+                    Work Term II or III
+                    <br>
+                     <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/218/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/218.html">
+                      WKT 218
+                     </a>
+                     or
+                     <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/318/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/318.html">
+                      WKT 318
+                     </a>
+                    </br>
+                   </td>
+                   <td>
+                    Work Term III or IV
+                    <br>
+                     <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/318/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/318.html">
+                      WKT 318
+                     </a>
+                     or
+                     <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/418/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/418.html">
+                      WKT 418
+                     </a>
+                    </br>
+                   </td>
+                  </tr>
+                  <tr>
+                   <td>
+                    <b>
+                     Year 5
+                    </b>
+                   </td>
+                   <td>
+                    7th Semester
+                   </td>
+                   <td>
+                    8th Semester
+                   </td>
+                   <td>
+                   </td>
+                  </tr>
+                 </tbody>
+                </table>
+               </div>
+               <script>
+                //convert to plugin in pure js....later (soon)
+	$(document).ready(function() {
+		$('#e6f47b85-a4aa-4ee2-a4d7-baebc528cafd table').addClass("table");
+		
+		$('#e6f47b85-a4aa-4ee2-a4d7-baebc528cafd table').addClass("table-striped");
+		
+		$('#e6f47b85-a4aa-4ee2-a4d7-baebc528cafd table').addClass("table-borderless");
+		var removeHeading = false;
+		
+		//mandatory to have heading on initialization but remove it after. See #NOTE-REMOVE
+		if($('#e6f47b85-a4aa-4ee2-a4d7-baebc528cafd table thead').eq(0).length == 0){
+			//insert fake row and delete
+			removeHeading = true;
+			var numOfColsTD = $('#e6f47b85-a4aa-4ee2-a4d7-baebc528cafd table tbody tr').eq(0).find('td').length;
+			var numOfColsTH = $('#e6f47b85-a4aa-4ee2-a4d7-baebc528cafd table tbody tr').eq(0).find('th').length;
+
+			var appendTH = "<thead>";
+			for(var i = 0; i < numOfColsTD+numOfColsTH;i++){
+				appendTH += "<th>Column</th>";
+			}
+			appendTH += "</thead>";
+			$('#e6f47b85-a4aa-4ee2-a4d7-baebc528cafd table').prepend(appendTH);
+		}
+		
+		
+
+		//#NOTE-REMOVE
+		if(removeHeading){
+			$('#e6f47b85-a4aa-4ee2-a4d7-baebc528cafd table thead').remove();
+		}
+		
+	} );
+               </script>
+               <script>
+                $(document).ready(function(){addCoursePopover("#e6f47b85-a4aa-4ee2-a4d7-baebc528cafd");});
+               </script>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="c077bf8a-6b23-4169-ace2-f2086696e13f">
+                <p>
+                 WKT courses are graded on a pass/fail basis.
+                </p>
+                <p>
+                 Students obtaining extensions to placements not previously eligible for co-op may be granted department permission to use
+                 <a class="qTipCourse" data-url="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/298/jcr:content/resCalendarCourseEmbed.json" href="/content/ryerson/calendar/2026-2027/courses/work-term/WKT/298.html">
+                  WKT 298
+                 </a>
+                 towards co-op WKT requirements.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#c077bf8a-6b23-4169-ace2-f2086696e13f");});
+               </script>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="panel panel-default">
+           <!-- Accordion Heading -->
+           <div class="panel-heading container-clipboard">
+            <div class="panel-title">
+             <a aria-controls="accordion-content-1608060829162-academic-standing-variation" aria-expanded="false" data-clipboard-text="/content/ryerson/calendar/2026-2027/programs/feas/aerospace#accordion-1608060829162-academic-standing-variation" data-parent="#09aa1cf0-d543-4a2b-8b83-c119946c11ca" data-toggle="collapse" href="#accordion-content-1608060829162-academic-standing-variation" id="accordion-1608060829162-academic-standing-variation" role="tab">
+              Academic Standing Variation
+             </a>
+            </div>
+           </div>
+           <!-- Accordion Body -->
+           <div aria-labelledby="accordion-1608060829162-academic-standing-variation" class="panel-collapse collapse" id="accordion-content-1608060829162-academic-standing-variation" role="tabpanel" tabindex="0">
+            <div class="panel-body">
+             <div class="1608060829162 stackparsys">
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="727fec80-22a6-4a96-a15d-07adbd3bd661">
+                <p style="text-align: justify;">
+                 In addition to the general criteria used to determine Academic Standing, students in this
+                 <br/>
+                 program must also meet the following conditions:
+                 <br/>
+                 <br/>
+                 All students in undergraduate Engineering programs have an additional condition for Clear
+                 <br/>
+                 academic standing. In addition to students needing a cumulative grade point average
+                 <br/>
+                 (CGPA) of 1.67 or higher, students also need to have a term grade point average (TGPA)
+                 <br/>
+                 of 1.33 or higher, based on at least two reported grades for that term (not including Pass,
+                 <br/>
+                 DEF, INP or AEG grades). Students who have a TGPA less than 1.33 will be given
+                 <br/>
+                 PROBATIONARY Academic Standing. Students with only one reported grade for that
+                 <br/>
+                 term will be evaluated based on CGPA only.
+                 <br/>
+                 <br/>
+                 Students with a cumulative grade point average (CGPA) less than 1.67 will be assigned a
+                 <br/>
+                 Probationary or Required to Withdraw (RTW) standing. See
+                 <a href="/content/ryerson/calendar/2026-2027/policies-and-procedures/enrolment-records/academic-information.html">
+                  Academic Standings
+                 </a>
+                 for
+                 <br/>
+                 information about the process and consequences.
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#727fec80-22a6-4a96-a15d-07adbd3bd661");});
+               </script>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="panel panel-default">
+           <!-- Accordion Heading -->
+           <div class="panel-heading container-clipboard">
+            <div class="panel-title">
+             <a aria-controls="accordion-content-1595938900367-program-advisory-council" aria-expanded="false" data-clipboard-text="/content/ryerson/calendar/2026-2027/programs/feas/aerospace#accordion-1595938900367-program-advisory-council" data-parent="#09aa1cf0-d543-4a2b-8b83-c119946c11ca" data-toggle="collapse" href="#accordion-content-1595938900367-program-advisory-council" id="accordion-1595938900367-program-advisory-council" role="tab">
+              Program Advisory Council
+             </a>
+            </div>
+           </div>
+           <!-- Accordion Body -->
+           <div aria-labelledby="accordion-1595938900367-program-advisory-council" class="panel-collapse collapse" id="accordion-content-1595938900367-program-advisory-council" role="tabpanel" tabindex="0">
+            <div class="panel-body">
+             <div class="1595938900367 stackparsys">
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="08aa5782-8797-4aba-8b6d-d2b1f76b63a3">
+                <p>
+                 A Program Advisory Council (PAC) is a group of volunteers that provides expert advice to a school or department on program related matters such as curriculum, program review, technology and trends in the industry, discipline or profession. For more information, see
+                 <span>
+                  <a href="/content/ryerson/senate/policies/program-advisory-councils-policy-158/">
+                   Senate Policy #158 (Program Advisory Councils)
+                  </a>
+                 </span>
+                 .
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#08aa5782-8797-4aba-8b6d-d2b1f76b63a3");});
+               </script>
+              </div>
+              <div class="resText parbase section">
+               <div class="res-text richtextContent background-hidden replica text-font-regular" id="02a45e31-31c9-4ddd-930b-0390d45e3a80">
+                <p>
+                 <strong>
+                  Phil Arthurs
+                 </strong>
+                 <br/>
+                 <em>
+                  Director of Operations
+                 </em>
+                 <br/>
+                 Downsview Aerospace Innovation and Research (DAIR) Hub
+                </p>
+                <p>
+                 <strong>
+                  Gary Ataman
+                 </strong>
+                 <em>
+                  <br/>
+                  Product Improvement Manager, Engineering
+                 </em>
+                 <br/>
+                 Safran Landing Systems
+                </p>
+                <p>
+                 <strong>
+                  Anthony Burgess
+                 </strong>
+                 <em>
+                  <br/>
+                  President
+                 </em>
+                 <br/>
+                 TDM Technical Services
+                </p>
+                <p>
+                 <strong>
+                  Jeffrey Dunning
+                  <br/>
+                 </strong>
+                 <em>
+                  Associate Director, Development Engineering
+                  <br/>
+                 </em>
+                 Pratt &amp; Whitney Canada
+                </p>
+                <p>
+                 <strong>
+                  Rosa Gordon
+                 </strong>
+                 <br/>
+                 <em>
+                  Research and Technology Program Officer
+                 </em>
+                 <br/>
+                 Bombardier
+                </p>
+                <p>
+                 <strong>
+                  V-Bond Lee
+                 </strong>
+                 <em>
+                  <br/>
+                  President
+                 </em>
+                 <br/>
+                 Advanced Mobility Products Inc.
+                </p>
+                <p>
+                 <strong>
+                  Robert Mobilio
+                 </strong>
+                 <br/>
+                 <em>
+                  Vice President, Engineering
+                 </em>
+                 <br/>
+                 De Havilland Aircraft of Canada Limited
+                 <br/>
+                 <br/>
+                 <strong>
+                  Andrew Shenouda
+                 </strong>
+                 <br/>
+                 <em>
+                  VP Operations
+                 </em>
+                 <br/>
+                 NAVBLUE, an Airbus Company
+                </p>
+                <p>
+                 <strong>
+                  Alex Tsoulis
+                 </strong>
+                 <em>
+                  <br/>
+                  Senior Advisor - Business Development &amp; Advanced Technologies
+                  <br/>
+                 </em>
+                 MHI
+                 <em>
+                  Canada
+                 </em>
+                 Aerospace Inc.
+                 <br/>
+                </p>
+               </div>
+               <script>
+                $(document).ready(function(){addCoursePopover("#02a45e31-31c9-4ddd-930b-0390d45e3a80");});
+               </script>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </main>
+   </div>
+  </div>
+  <footer aria-label="local" class="res-local-footer-wrapper">
+   <div class="container">
+    <div class="resLocalFooter">
+     <div class="res-local-footer">
+      <div class="row template-local-footer">
+       <div class="col-xs-12">
+        <div class="content stackparsys">
+         <div class="resTwoColTwoOne section">
+          <div class="row">
+           <div class="col-md-8 a-b">
+            <div class="c1 stackparsys">
+             <div class="resText parbase section">
+              <div class="res-text richtextContent background-hidden replica text-font-regular" id="f4eca58d-b2db-4c0d-8509-e55f12c4eeec">
+               <h3>
+                See
+                <a href="/content/ryerson/calendar/2026-2027/policies-and-procedures/enrolment-records/curriculum_info.html">
+                 important curriculum interpretation and application information
+                </a>
+                to understand how requirements apply to you.
+               </h3>
+               <p>
+                <a href="/content/ryerson/calendar/2026-2027/addenda-and-errata.html">
+                 Addenda and Errata
+                </a>
+               </p>
+               <p>
+                <a href="/content/ryerson/calendar/2026-2027/sitemap.html">
+                 Sitemap
+                </a>
+                
+               </p>
+              </div>
+              <script>
+               $(document).ready(function(){addCoursePopover("#f4eca58d-b2db-4c0d-8509-e55f12c4eeec");});
+              </script>
+             </div>
+            </div>
+           </div>
+           <div class="clearfix visible-xs-block">
+           </div>
+           <div class="col-md-4 a-b">
+            <div class="c2 stackparsys">
+            </div>
+           </div>
+           <div class="clearfix visible-lg-block">
+           </div>
+           <div class="clearfix visible-md-block">
+           </div>
+           <div class="clearfix visible-sm-block">
+           </div>
+           <div class="clearfix visible-xs-block">
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <div class="resGlobalFooter">
+   <footer aria-label="global" class="resGlobalFooter">
+    <div class="top-middle-container">
+     <!-- top-middle-container starts -->
+     <div class="container">
+      <!-- Footer Top -->
+      <div class="row footer-top">
+       <div class="col-sm-9 col-xs-6">
+        <strong>
+         Toronto Metropolitan University
+        </strong>
+        <br>
+        </br>
+       </div>
+       <div class="col-sm-3 col-xs-6 text-right footer-toggle">
+        <a aria-controls="footer-data" aria-expanded="false" aria-label="expand or hide footer" class="footer-toggle-button" data-toggle="collapse" href="#footer-data" title="Expand/Hide Footer">
+        </a>
+       </div>
+      </div>
+      <!-- Footer Middle -->
+      <div class="row collapse in footer-middle" id="footer-data">
+       <div class="col-sm-7 col-xs-7 text-left">
+        <address>
+         350 Victoria Street
+         <br/>
+         Toronto, ON M5B 2K3
+         <br/>
+         <abbr title="Phone">
+          P:
+         </abbr>
+         416-979-5000
+        </address>
+        <ol class="breadcrumb min">
+         <li>
+          <a href="/contact/">
+           Directory
+          </a>
+         </li>
+         <li>
+          <a href="/maps/">
+           Maps and Directions
+          </a>
+         </li>
+         <li>
+          <a href="/campus-status/">
+           Campus Status
+          </a>
+         </li>
+        </ol>
+       </div>
+       <div class="col-sm-5 col-xs-5 text-right">
+        <p>
+         Follow Us
+        </p>
+        <p>
+         <a href="https://www.facebook.com/torontomet" target="_blank">
+          <i aria-hidden="true" class="fa fa-facebook-f icon-circle" title="Facebook">
+          </i>
+          <span class="sr-only">
+           Facebook, opens new window
+          </span>
+         </a>
+         <a href="https://www.instagram.com/torontomet" target="_blank">
+          <i aria-hidden="true" class="fa fa-instagram icon-circle" title="Instagram">
+          </i>
+          <span class="sr-only">
+           Instagram, opens new window
+          </span>
+         </a>
+         <a href="https://torontomet.bsky.social" target="_blank">
+          <i aria-hidden="true" class="fa fa-bluesky icon-circle" title="Bluesky">
+          </i>
+          <span class="sr-only">
+           Bluesky, opens new window
+          </span>
+         </a>
+         <a href="https://www.youtube.com/TorontoMetropolitanUniversity" target="_blank">
+          <i aria-hidden="true" class="fa fa-youtube icon-circle" title="YouTube">
+          </i>
+          <span class="sr-only">
+           YouTube, opens new window
+          </span>
+         </a>
+         <a href="https://www.linkedin.com/company/torontometropolitanuniversity" target="_blank">
+          <i aria-hidden="true" class="fa fa-linkedin icon-circle" title="LinkedIn">
+          </i>
+          <span class="sr-only">
+           LinkedIn, opens new window
+          </span>
+         </a>
+         <a href="https://www.tiktok.com/@torontomet" target="_blank">
+          <i aria-hidden="true" class="fa fa-tiktok icon-circle" title="Tiktok">
+          </i>
+          <span class="sr-only">
+           Tiktok, opens new window
+          </span>
+         </a>
+        </p>
+        <ol class="breadcrumb min">
+         <li>
+          <a href="/jobs/">
+           Careers
+          </a>
+         </li>
+         <li>
+          <a href="/media/">
+           Media Room
+          </a>
+         </li>
+        </ol>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- top-middle-container ends -->
+    <div class="bottom-container">
+     <!-- bottom-container starts -->
+     <div class="container">
+      <!-- Footer Bottom -->
+      <div class="row footer-bottom">
+       <div class="col-xs-12">
+        <ol class="breadcrumb min">
+         <li>
+          <a href="/privacy/">
+           Privacy Policy
+          </a>
+         </li>
+         <li>
+          <a href="/accessibility/">
+           Accessibility
+          </a>
+         </li>
+         <li>
+          <a href="/terms-conditions/">
+           Terms &amp; Conditions
+          </a>
+         </li>
+        </ol>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- bottom-container ends -->
+   </footer>
+  </div>
+ </body>
+</html>

@@ -33,3 +33,32 @@ Next steps you can ask me to do
 - Add a small index.json listing available program-year files and make the loader use it.
 - Add graceful UI messages when no curriculum file is found.
 - Normalize program names (e.g., spaces/case) so filenames can be more flexible.
+- generate_bundle.py accepts any combination of years from 0000-9999, possibly limit years to follow 2YYY format
+
+Bugs
+- Check that courses checked inside toggles work
+- Check that courses inside toggles are turned off when switching between toggles
+- Scroll inside iFrame isn't smooth
+- Show which branch user picked on top of iFrame? (Not a bug but a QoL addition) - ADDED
+- Remove missing media "?"
+- Add a reset button - ADDED
+- Should liberal studies courseline be displayed? Don't affect summer eng courses I believe.
+ 
+Branch Specific bugs
+- Biomedical: BME 100, CEN 199 graded on a pass fail basis shouldn't have a checkbox. BME 70A/B as well.
+Fixed
+
+- Chemical: CEN 199  is graded on a pass/fail basis remove checkbox
+Fixed
+2024, 2023 WKTs visible at the bottom and have toggles
+
+- Civil: Missing first two year courses
+- Computer: Missing first two year courses. 
+Remove checkbox COE 70A/B  is a two-term course with a GPA Weight of 2.0.
+Fixed
+
+- Electrical: Missing first two year courses. 
+Remove checkbox CEN 199  is graded in a pass/fail basis, ELE 70A/B  is a two-term course with a GPA Weight of 2.00.
+ Fixed
+
+- Mechanical: 2026, 2025, 2024, 2023 incorrect toggles
