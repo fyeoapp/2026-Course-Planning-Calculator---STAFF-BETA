@@ -10,7 +10,7 @@ This will overwrite `index.json` with the discovered files.
 """
 import os, re, json
 
-relative_path = "./Programs"
+relative_path = "./Programs_v2"
 
 pattern = re.compile(r"^([A-Za-z]+)-([0-9]{4})\.json$")
 
