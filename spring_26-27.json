@@ -803,7 +803,10 @@
         "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/514/",
         "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/514/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/514.html\">MTH 514</a>",
         "prereqs": [
-            "MTH312orMTH425"
+            [
+                "MTH312",
+                "MTH425"
+            ]
         ],
         "coreqs": [],
         "antireqs": [],
@@ -827,7 +830,11 @@
         "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/physics/PCS/224/",
         "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/physics/PCS/224/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/physics/PCS/224.html\">PCS 224</a>",
         "prereqs": [
-            "PCS110orPCS125orPCS130"
+            [
+                "PCS110",
+                "PCS125",
+                "PCS130"
+            ]
         ],
         "coreqs": [],
         "antireqs": [],
@@ -881,7 +888,10 @@
         "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/303/",
         "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/303/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/303.html\">EMS 303</a>",
         "prereqs": [
-            "CHE411orECN801"
+            [
+                "CHE411",
+                "ECN801"
+            ]
         ],
         "coreqs": [],
         "antireqs": [],

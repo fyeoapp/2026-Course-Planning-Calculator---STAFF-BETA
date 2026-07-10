@@ -1,8 +1,9 @@
-import json, requests, re
+import json
+import re
+import requests
 from bs4 import BeautifulSoup
 
 response = requests.get("https://www.torontomu.ca/engineering-architectural-science/programs/undergraduate-programs/transition-program/")
-
 response.raise_for_status()
 
 soup = BeautifulSoup(response.text, "html.parser")
@@ -42,30 +43,27 @@ def parse_requisites(requisites_block):
             return []
         
         result = []
-        or_groups = {}
-        placeholder_idx = 0
         
-        def replace_or_group(match):
-            nonlocal placeholder_idx
-            inner = match.group(1)
-            parts = re.split(r'\bor\b', inner, flags=re.IGNORECASE)
-            parts = [p.strip().replace(' ', '') for p in parts if p.strip()]
-            key = f'__OR{placeholder_idx}__'
-            or_groups[key] = parts
-            placeholder_idx += 1
-            return key
+        # Remove parentheses to keep string extraction linear and flat
+        text = text.replace('(', '').replace(')', '')
         
-        text = re.sub(r'\(([^)]+)\)', replace_or_group, text)
-        
+        # Split logical requirements apart by "and" or commas
         and_parts = re.split(r'\band\b|,', text, flags=re.IGNORECASE)
         
         for part in and_parts:
             part = part.strip()
             if not part:
                 continue
-            if part in or_groups:
-                result.append(or_groups[part])
+                
+            # Check if this sub-segment contains an alternative "or" condition
+            if re.search(r'\bor\b', part, flags=re.IGNORECASE):
+                or_choices = re.split(r'\bor\b', part, flags=re.IGNORECASE)
+                # Compress spaces entirely to match JS format: ["CHE411", "ECN801"]
+                cleaned_choices = [c.strip().replace(' ', '') for c in or_choices if c.strip()]
+                if cleaned_choices:
+                    result.append(cleaned_choices)
             else:
+                # Regular course prerequisite assignment
                 course = part.replace(' ', '')
                 if course:
                     result.append(course)
@@ -86,8 +84,6 @@ def parse_requisites(requisites_block):
         result[key] = parse_req_text(p)
     
     return result
-
-
 
 
 def extract_courses(heading, filename):
@@ -126,11 +122,15 @@ def extract_courses(heading, filename):
     # Extract courses
     course_links = target_container.find_all("a", class_="qTipCourse")
     
-
     for idx, course in enumerate(course_links, start=1):
         url = f'https://www.torontomu.ca{course.get("href", "").replace(".html", "/")}'
-        #extracting course requisites
-        resp = requests.get(url)
+        
+        try:
+            resp = requests.get(url, timeout=(5, 10))
+            resp.raise_for_status()
+        except Exception as e:
+            print(f"Error fetching course details at: {url} | {e}")
+            continue
     
         soup_req = BeautifulSoup(resp.text, "html.parser")
         requisites = soup_req.find(class_="requisitesBlock")
@@ -147,20 +147,14 @@ def extract_courses(heading, filename):
             "custom_reqs": reqs["custom_reqs"]
         })
         
-
     print(f"Successfully extracted {len(extracted_data)} courses.")
 
-    
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(extracted_data, f, ensure_ascii=False, indent=4)
         
-
     print(f"Saved data to {filename}")
 
 
-# Run extraction
+# Run extraction passes
 extract_courses(summer_heading, summer_filename)
 extract_courses(spring_heading, spring_filename)
-
-
-
