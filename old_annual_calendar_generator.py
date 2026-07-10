@@ -32,7 +32,10 @@ SEMESTER_RANGE_PATTERN = re.compile(
     re.IGNORECASE,
 )
 SEMESTER_KEY_PATTERN = re.compile(r"(1st|3rd|5th|7th)", re.IGNORECASE)
-COURSE_CODE_PATTERN = re.compile(r"^[A-Z]{2,4}\s+\d{3}[A-Z]?(/[A-Z])?$", re.IGNORECASE)
+COURSE_CODE_PATTERN = re.compile(
+    r"^[A-Z]{2,4}\s+\d{2,3}[A-Z]?(\/[A-Z])?$",
+    re.IGNORECASE,
+)
 WKT_PATTERN = re.compile(r"WKT", re.IGNORECASE)
 SEMESTER_ORDER = ["1st", "3rd", "5th", "7th"]
 BASE_URL = "http://torontomu.ca"

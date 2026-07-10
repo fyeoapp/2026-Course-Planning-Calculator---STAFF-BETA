@@ -611,8 +611,69 @@
     });
   }
 
-  function injectSemesterSelectAllButtons(iframeDoc) {
+  function injectSemesterSelectAllButtons(iframeDoc, useOldLayoutFormat) {
+    if (useOldLayoutFormat) {
+      injectSemesterSelectAllButtonsOld(iframeDoc);
+    } else {
+      injectSemesterSelectAllButtonsV2(iframeDoc);
+    }
+  }
+
+  function injectSemesterSelectAllButtonsV2(iframeDoc) {
     const semesterPattern = /^(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+Semester$/i;
+    const btnStyle = (
+      'font-size: 11px; padding: 2px 8px; margin-left: 8px; ' +
+      'cursor: pointer; border: 1px solid #aaa; border-radius: 3px; ' +
+      'background: #f0f0f0; vertical-align: middle;'
+    );
+
+    iframeDoc.querySelectorAll('div[data-panel-container-id]').forEach(panelDiv => {
+      const panelId = panelDiv.getAttribute('data-panel-container-id');
+
+      panelDiv.querySelectorAll('strong span').forEach(span => {
+        const text = span.textContent.trim();
+        if (!semesterPattern.test(text)) return;
+
+        const semId = `panel-${panelId}-${text.replace(/\s+/g, '_').toLowerCase()}`;
+        const headingResText = span.closest('div.resText');
+        if (!headingResText) return;
+
+        const checkboxes = [];
+        let sib = headingResText.nextElementSibling;
+        while (sib) {
+          const sibSpan = sib.querySelector('strong span');
+          if (sibSpan && semesterPattern.test(sibSpan.textContent.trim())) break;
+          sib.querySelectorAll('input.course-checkbox').forEach(cb => {
+            cb.dataset.semester = semId;
+            checkboxes.push(cb);
+          });
+          sib = sib.nextElementSibling;
+        }
+
+        if (checkboxes.length === 0) return;
+
+        const btn = iframeDoc.createElement('button');
+        btn.type = 'button';
+        btn.textContent = 'Select All';
+        btn.dataset.semester = semId;
+        btn.style.cssText = btnStyle;
+        btn.addEventListener('click', () => {
+          const boxes = iframeDoc.querySelectorAll(`input.course-checkbox[data-semester="${semId}"]`);
+          const allChecked = Array.from(boxes).every(cb => cb.checked);
+          boxes.forEach(cb => { cb.checked = !allChecked; });
+          btn.textContent = allChecked ? 'Select All' : 'Deselect All';
+          if (boxes.length > 0) {
+            boxes[0].dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        });
+
+        const p = span.closest('p');
+        if (p) p.appendChild(btn);
+      });
+    });
+  }
+
+  function injectSemesterSelectAllButtonsOld(iframeDoc) {
     const oldSemesterPattern = /^(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+SEMESTER$/i;
     const btnStyle = (
       'font-size: 11px; padding: 2px 8px; margin-left: 8px; ' +
@@ -664,6 +725,10 @@
         const text = el.textContent.trim();
         if (!oldSemesterPattern.test(text)) return;
 
+        // Programs_v2 headings use <strong><span>1st Semester</span></strong>.
+        const spanHeading = el.querySelector(':scope > span');
+        if (spanHeading && oldSemesterPattern.test(spanHeading.textContent.trim())) return;
+
         const hasChildHeading = Array.from(el.querySelectorAll('strong, b, font')).some(child =>
           child !== el && oldSemesterPattern.test(child.textContent.trim())
         );
@@ -687,26 +752,6 @@
 
     iframeDoc.querySelectorAll('div[data-panel-container-id]').forEach(panelDiv => {
       const panelId = panelDiv.getAttribute('data-panel-container-id') || '0';
-
-      panelDiv.querySelectorAll('strong span').forEach(span => {
-        const text = span.textContent.trim();
-        if (!semesterPattern.test(text)) return;
-
-        const semId = `panel-${panelId}-${text.replace(/\s+/g, '_').toLowerCase()}`;
-        const headingResText = span.closest('div.resText');
-        if (!headingResText) return;
-
-        const checkboxes = [];
-        let sib = headingResText.nextElementSibling;
-        while (sib) {
-          const sibSpan = sib.querySelector('strong span');
-          if (sibSpan && semesterPattern.test(sibSpan.textContent.trim())) break;
-          sib.querySelectorAll('input.course-checkbox').forEach(cb => checkboxes.push(cb));
-          sib = sib.nextElementSibling;
-        }
-
-        attachSemesterButton(span, semId, checkboxes, iframeDoc);
-      });
 
       const oldHeadings = findIndividualSemesterHeadings(panelDiv);
       oldHeadings.forEach((heading, index) => {
@@ -732,7 +777,8 @@
       style: 'width: 100%; border: none; overflow: hidden;',
       onload: function () {
         const iframeDoc = this.contentWindow.document;
-        injectSemesterSelectAllButtons(iframeDoc);
+        const admitYear = document.getElementById('admitYearSelect').value;
+        injectSemesterSelectAllButtons(iframeDoc, OLD_PROGRAM_YEARS.includes(String(admitYear)));
         this.style.height = iframeDoc.body.scrollHeight + 'px';
       }
     });
