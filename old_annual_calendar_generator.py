@@ -420,4 +420,7 @@ def save_program_layouts_flat(programs_list, calendar_year):
 
 # Run script targeting 2013 configurations
 if __name__ == "__main__":
-    save_program_layouts_flat(programs, "2015")
+    for year in ["2010", "2011", "2012", "2013", "2014", "2015"]:
+        print(f"Processing calendar year: {year}")
+        save_program_layouts_flat(programs, year)
+    # save_program_layouts_flat(programs, "2015")
