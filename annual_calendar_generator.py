@@ -101,7 +101,7 @@ def save_program_layouts_flat(programs_list, calendar_year):
            for a_tag in panel_body.find_all('a', class_='qTipCourse'):
                
             #    Filter out any qTipCourses which are either Workterms (WKT) or are used as notes (e.g., something like * CEN 199 is graded in a pass/fail basis, usually enclosed in small tags on the website) since we do not want to put a checkbox next to these
-               if a_tag.find_parent('small') or re.compile(".*WKT.*", re.IGNORECASE).search(a_tag.text):
+               if a_tag.find_parent('small') or a_tag.find_parent('p') or re.compile(".*WKT.*", re.IGNORECASE).search(a_tag.text):
                    continue
 
                course_code = a_tag.get_text(strip=True)
@@ -204,5 +204,6 @@ def save_program_layouts_flat(programs_list, calendar_year):
 
        print(f"Successfully created file: {file_name} (from program '{program}')")
 
-for year in range(2026, 2015, -1):
-    save_program_layouts_flat(programs, year)
+# for year in range(2026, 2015, -1):
+#     save_program_layouts_flat(programs, year)
+save_program_layouts_flat(programs, 2026)
