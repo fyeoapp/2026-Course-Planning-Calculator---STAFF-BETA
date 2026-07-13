@@ -187,6 +187,12 @@
     <label for="admitYearSelect" style="display:block;margin-bottom:6px;">Admit year</label>
     <select id="admitYearSelect" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc">
       <option value="">-- Select admit year --</option>
+      <option value="2010">2010</option>
+      <option value="2011">2011</option>
+      <option value="2012">2012</option>
+      <option value="2013">2013</option>
+      <option value="2014">2014</option>
+      <option value="2015">2015</option>
       <option value="2016">2016</option>
       <option value="2017">2017</option>
       <option value="2018">2018</option>
@@ -207,6 +213,19 @@
           <button onclick="showCourses()">Continue</button>
           
           
+        </div>
+
+        <!-- STEP 2b: stream/option picker for Programs_old (2010–2015) only -->
+        <div id="step2b" class="section hidden">
+          <h2>Select Your Program Option</h2>
+          <p style="color:#555">This admit year has more than one curriculum path. Choose Regular Program or an option to continue.</p>
+          <label for="streamSelect" style="display:block;margin-bottom:6px;">Option</label>
+          <select id="streamSelect" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc">
+            <option value="">-- Choose an option --</option>
+          </select>
+          <div style="margin-top:16px;text-align:center;">
+            <button onclick="continueFromStreamSelect()">Continue</button>
+          </div>
         </div>
 
         <!-- STEP 3 -->
@@ -273,26 +292,48 @@
   }
   function updateBackButtonVisibility(){
     const backBtn = document.getElementById('backButton');
-    // show back button if we're on step2, step3, or step4
+    // show back button if we're on step2, step2b, step3, or step4
     const guidanceVisible = !document.getElementById('contactDept').classList.contains('hidden');
     const step2Visible = !document.getElementById('step2').classList.contains('hidden');
+    const step2b = document.getElementById('step2b');
+    const step2bVisible = step2b && !step2b.classList.contains('hidden');
     const step3Visible = !document.getElementById('step3').classList.contains('hidden');
     const step4Visible = !document.getElementById('step4').classList.contains('hidden');
-    if(guidanceVisible || step2Visible || step3Visible || step4Visible){
+    if(guidanceVisible || step2Visible || step2bVisible || step3Visible || step4Visible){
       backBtn.classList.remove('hidden');
     } else {
       backBtn.classList.add('hidden');
     }
   }
 
+  function clearCurriculumState(){
+    const step3 = document.getElementById('step3');
+    if(step3) step3.replaceChildren();
+    const eligible = document.getElementById('eligibleCourses');
+    if(eligible) eligible.innerHTML = '';
+    window.__currentLayoutPath = null;
+  }
+
+  function resetStreamPicker(){
+    const streamSelect = document.getElementById('streamSelect');
+    if(streamSelect){
+      streamSelect.innerHTML = '<option value="">-- Choose an option --</option>';
+      streamSelect.value = '';
+    }
+    window.__cameFromOldStreamPicker = false;
+    window.__selectedOldStreamId = null;
+  }
+
   function goBack(){
     try {
-      // If step4 is visible, go back to step3
       const step4 = document.getElementById('step4');
       const step3 = document.getElementById('step3');
+      const step2b = document.getElementById('step2b');
       const step2 = document.getElementById('step2');
       const guidanceVisible = document.getElementById('contactDept');
       const step1 = document.getElementById('step1');
+
+      // If step4 is visible, go back to step3 (keep curriculum selections)
       if(step4 && !step4.classList.contains('hidden')){
         step4.classList.add('hidden');
         const step5 = document.getElementById('step5');
@@ -301,9 +342,29 @@
         updateBackButtonVisibility();
         return;
       }
-      // If step3 is visible, go back to step2
+
+      // If step3 is visible, wipe selections and return to stream picker or program/year
       if(step3 && !step3.classList.contains('hidden')){
         step3.classList.add('hidden');
+        clearCurriculumState();
+        if(window.__cameFromOldStreamPicker && step2b){
+          // Keep stream dropdown options, but clear the chosen value so a new pick is required
+          const streamSelect = document.getElementById('streamSelect');
+          if(streamSelect) streamSelect.value = '';
+          window.__selectedOldStreamId = null;
+          step2b.classList.remove('hidden');
+        } else {
+          window.__cameFromOldStreamPicker = false;
+          if(step2) step2.classList.remove('hidden');
+        }
+        updateBackButtonVisibility();
+        return;
+      }
+
+      // If step2b (option picker) is visible, wipe and return to program/year
+      if(step2b && !step2b.classList.contains('hidden')){
+        step2b.classList.add('hidden');
+        resetStreamPicker();
         if(step2) step2.classList.remove('hidden');
         updateBackButtonVisibility();
         return;
@@ -331,138 +392,266 @@
     }
   }
 
-//   async function showCourses() {
-//     // advance to step 3 and hide step 2 so previous content disappears
-//     const program = document.getElementById('programSelect').value.split(" ")[0];
-//     const admitYear = document.getElementById('admitYearSelect').value;
+// 
+  // ── Programs_old (2010–2015) support — does not affect Programs_v2 flow ──
+  const OLD_PROGRAM_YEARS = ['2010', '2011', '2012', '2013', '2014', '2015'];
+  const OLD_PROGRAM_STREAMS = {"Aerospace": {"2010": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2015_layout.html"}]}, "Biomedical": {"2010": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2015_layout.html"}]}, "Chemical": {"2010": [{"id": "base", "label": "Regular Program", "file": "Chemical-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Chemical-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Chemical-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Chemical-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Chemical-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Chemical-2015_layout.html"}]}, "Civil": {"2010": [{"id": "base", "label": "Regular Program", "file": "Civil-2010_layout.html"}, {"id": "engineering_geomatics_engineering_option", "label": "Engineering Geomatics Engineering Option", "file": "Civil-2010_engineering_geomatics_engineering_option_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Civil-2011_layout.html"}, {"id": "engineering_geomatics_engineering_option", "label": "Engineering Geomatics Engineering Option", "file": "Civil-2011_engineering_geomatics_engineering_option_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Civil-2012_layout.html"}, {"id": "engineering_geomatics_engineering_option", "label": "Engineering Geomatics Engineering Option", "file": "Civil-2012_engineering_geomatics_engineering_option_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Civil-2013_layout.html"}, {"id": "engineering_geomatics_engineering_option", "label": "Engineering Geomatics Engineering Option", "file": "Civil-2013_engineering_geomatics_engineering_option_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Civil-2014_layout.html"}, {"id": "structural_engineering_option", "label": "Structural Engineering Option", "file": "Civil-2014_structural_engineering_option_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Civil-2015_layout.html"}, {"id": "structural_engineering_option", "label": "Structural Engineering Option", "file": "Civil-2015_structural_engineering_option_layout.html"}]}, "Computer": {"2010": [{"id": "base", "label": "Regular Program", "file": "Computer-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Computer-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Computer-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Computer-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Computer-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Computer-2015_layout.html"}]}, "Electrical": {"2010": [{"id": "base", "label": "Regular Program", "file": "Electrical-2010_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2010_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2010_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2010_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2010_robotics_and_control_systems_option_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Electrical-2011_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2011_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2011_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2011_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2011_robotics_and_control_systems_option_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Electrical-2012_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2012_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2012_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2012_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2012_robotics_and_control_systems_option_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Electrical-2013_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2013_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2013_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2013_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2013_robotics_and_control_systems_option_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Electrical-2014_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2014_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2014_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2014_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2014_robotics_and_control_systems_option_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Electrical-2015_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2015_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2015_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2015_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2015_robotics_and_control_systems_option_layout.html"}]}, "Industrial": {"2010": [{"id": "base", "label": "Regular Program", "file": "Industrial-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Industrial-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Industrial-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Industrial-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Industrial-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Industrial-2015_layout.html"}]}, "Mechanical": {"2010": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2010_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2010_mechatronics_option_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2011_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2011_mechatronics_option_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2012_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2012_mechatronics_option_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2013_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2013_mechatronics_option_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2014_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2014_mechatronics_option_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2015_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2015_mechatronics_option_layout.html"}]}};
+  window.__cameFromOldStreamPicker = false;
+  window.__selectedOldStreamId = null;
+  window.__currentLayoutPath = null;
 
-//     // Require a program selection so we don't silently fall back to the static checklist
-//     // Working updated and this isn't needed
-//     if(!program){
-//       alert('Please select your program from the dropdown before continuing.');
-//       return;
-//     }
+  function isOldAdmitYear(year) {
+    return OLD_PROGRAM_YEARS.includes(String(year));
+  }
 
-    
-//     const programNameYear = Object.assign(
-//       document.createElement('h2'),{
-//         textContent: program + "-" + admitYear,
-//         id: "programNameYear"
-//       }
-//     );
-    
-//     const iframe = Object.assign(
-//     document.createElement('iframe'), {
-//         id: "curriculumIframe",
-//         src: `Programs_v2/${program}/${program}-${admitYear}_layout.html`,
-//         style: "width: 100%; border: none; overflow: hidden;",
+  function getOldStreams(program, year) {
+    const byProgram = OLD_PROGRAM_STREAMS[program];
+    if (!byProgram) return null;
+    return byProgram[String(year)] || null;
+  }
 
-//         onload: function () {
-//             const iframeDoc = this.contentWindow.document;
+  function getOldLayoutPath(program, year, streamId) {
+    const streams = getOldStreams(program, year);
+    if (streams && streams.length) {
+      const match = streams.find(s => s.id === streamId) || streams[0];
+      return `Programs_old/${program}/${match.file}`;
+    }
+    return `Programs_old/${program}/${program}-${year}_layout.html`;
+  }
 
-//             // ── Inject Select All buttons ─────────────────────────────────
-//             const semesterPattern = /^(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+Semester$/i;
+  function injectSemesterSelectAllButtonsOld(iframeDoc) {
+    const semesterPattern = /^(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+SEMESTER$/i;
+    const root = iframeDoc.querySelector('[data-panel-container-id]') || iframeDoc.body;
+    if (!root) return;
 
-//             iframeDoc.querySelectorAll('strong span').forEach(span => {
-//                 const text = span.textContent.trim();
-//                 if (!semesterPattern.test(text)) return;
+    const headings = [];
+    root.querySelectorAll('font, strong, b').forEach(el => {
+      const text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+      if (!semesterPattern.test(text)) return;
+      // Prefer innermost match (e.g. skip <strong> when child <font> already matches)
+      const hasMatchingChild = Array.from(el.children).some(child =>
+        semesterPattern.test((child.textContent || '').replace(/\s+/g, ' ').trim())
+      );
+      if (hasMatchingChild) return;
+      headings.push({ el, text });
+    });
 
-//                 const semId = text.replace(/\s+/g, '_').toLowerCase(); // e.g. "3rd_semester"
+    const allCheckboxes = Array.from(root.querySelectorAll('input.course-checkbox'));
 
-//                 // Collect all checkboxes from the next sibling resText divs
-//                 // until the next semester heading
-//                 const headingResText = span.closest('div.resText');
-//                 if (!headingResText) return;
+    headings.forEach(({ el, text }, idx) => {
+      const semId = `old-${text.replace(/\s+/g, '_').toLowerCase()}`;
+      const nextEl = headings[idx + 1] ? headings[idx + 1].el : null;
 
-//                 const checkboxes = [];
-//                 let sib = headingResText.nextElementSibling;
-//                 while (sib) {
-//                     const sibSpan = sib.querySelector('strong span');
-//                     if (sibSpan && semesterPattern.test(sibSpan.textContent.trim())) break;
-//                     sib.querySelectorAll('input.course-checkbox').forEach(cb => {
-//                         cb.dataset.semester = semId;
-//                         checkboxes.push(cb);
-//                     });
-//                     sib = sib.nextElementSibling;
-//                 }
+      const checkboxes = allCheckboxes.filter(cb => {
+        // Must appear after this semester heading in document order
+        if (!(el.compareDocumentPosition(cb) & Node.DOCUMENT_POSITION_FOLLOWING)) return false;
+        if (!nextEl) return true;
+        // And before the next semester heading
+        return !!(cb.compareDocumentPosition(nextEl) & Node.DOCUMENT_POSITION_FOLLOWING);
+      });
 
-//                 if (checkboxes.length === 0) return;
+      if (!checkboxes.length) return;
+      if (el.parentElement && el.parentElement.querySelector(`button[data-semester="${semId}"]`)) return;
 
-//                 // Build the button
-//                 const btn = document.createElement('button');
-//                 btn.type = 'button';
-//                 btn.textContent = 'Select All';
-//                 btn.dataset.semester = semId;
-//                 btn.style.cssText = (
-//                     'font-size: 11px; padding: 2px 8px; margin-left: 8px; ' +
-//                     'cursor: pointer; border: 1px solid #aaa; border-radius: 3px; ' +
-//                     'background: #f0f0f0; vertical-align: middle;'
-//                 );
+      checkboxes.forEach(cb => { cb.dataset.semester = semId; });
 
-//                 btn.addEventListener('click', () => {
-//                     const boxes = iframeDoc.querySelectorAll(`input.course-checkbox[data-semester="${semId}"]`);
-//                     const allChecked = Array.from(boxes).every(cb => cb.checked);
-//                     boxes.forEach(cb => { cb.checked = !allChecked; });
-//                     btn.textContent = allChecked ? 'Select All' : 'Deselect All';
-//                 });
+      const btn = iframeDoc.createElement('button');
+      btn.type = 'button';
+      btn.textContent = 'Select All';
+      btn.dataset.semester = semId;
+      btn.style.cssText = (
+        'font-size: 11px; padding: 2px 8px; margin-left: 8px; ' +
+        'cursor: pointer; border: 1px solid #aaa; border-radius: 3px; ' +
+        'background: #f0f0f0; vertical-align: middle;'
+      );
+      btn.addEventListener('click', () => {
+        const boxes = iframeDoc.querySelectorAll(`input.course-checkbox[data-semester="${semId}"]`);
+        const allChecked = Array.from(boxes).every(cb => cb.checked);
+        boxes.forEach(cb => { cb.checked = !allChecked; });
+        btn.textContent = allChecked ? 'Select All' : 'Deselect All';
+      });
 
-//                 // Append button into the <p> that wraps the semester heading span
-//                 const p = span.closest('p');
-//                 if (p) p.appendChild(btn);
-//             });
+      const host = el.closest('strong, b, font, p, div') || el.parentElement || el;
+      host.appendChild(btn);
+    });
+  }
 
-//             // ── Auto resize ───────────────────────────────────────────────
-//             this.style.height = iframeDoc.body.scrollHeight + 'px';
-//         }
-//     }
-// );
+  function buildCurriculumControls(layoutPath, titleText, useOldSelectAll) {
+    const programNameYear = Object.assign(
+      document.createElement('h2'), {
+        textContent: titleText,
+        id: 'programNameYear'
+      }
+    );
 
-    
-//     const eligibilityBtn = Object.assign(
-//       document.createElement('button'),{
-//         id: "eligibilityBtn",
-//         textContent: "Calculate Spring/Summer Eligibility",
-//         // style: "display: block; margin: 0 auto;",
-//         onclick: calculateEligibility
-//       }
-//     )
-    
-//     //Reset button to uncheck checkboxes 
-//     const resetBtn = Object.assign(
-//       document.createElement('button'),{
-//         textContent: 'Reset Selections',
-//         // style: "display: block; margin: 0 auto;",
-//         onclick: function(){
-//           const iframe = document.getElementById('curriculumIframe');
-//           if (iframe) {
-//             const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-//             const checkboxes = iframeDoc.querySelectorAll('input[type="checkbox"]');
-//             checkboxes.forEach(cb => cb.checked = false);
+    const iframe = Object.assign(
+      document.createElement('iframe'), {
+        id: 'curriculumIframe',
+        src: layoutPath,
+        style: 'width: 100%; border: none; overflow: hidden;',
+        onload: function () {
+          const iframeDoc = this.contentWindow.document;
+          if (useOldSelectAll) {
+            injectSemesterSelectAllButtonsOld(iframeDoc);
+          } else {
+            // Existing Programs_v2 Select All injection (unchanged logic)
+            const semesterPattern = /^(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+Semester$/i;
+            iframeDoc.querySelectorAll('div[data-panel-container-id]').forEach(panelDiv => {
+              const panelId = panelDiv.getAttribute('data-panel-container-id');
+              panelDiv.querySelectorAll('strong span').forEach(span => {
+                const text = span.textContent.trim();
+                if (!semesterPattern.test(text)) return;
+                const semId = `panel-${panelId}-${text.replace(/\s+/g, '_').toLowerCase()}`;
+                const headingResText = span.closest('div.resText');
+                if (!headingResText) return;
+                const checkboxes = [];
+                let sib = headingResText.nextElementSibling;
+                while (sib) {
+                  const sibSpan = sib.querySelector('strong span');
+                  if (sibSpan && semesterPattern.test(sibSpan.textContent.trim())) break;
+                  sib.querySelectorAll('input.course-checkbox').forEach(cb => {
+                    cb.dataset.semester = semId;
+                    checkboxes.push(cb);
+                  });
+                  sib = sib.nextElementSibling;
+                }
+                if (checkboxes.length === 0) return;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.textContent = 'Select All';
+                btn.dataset.semester = semId;
+                btn.style.cssText = (
+                  'font-size: 11px; padding: 2px 8px; margin-left: 8px; ' +
+                  'cursor: pointer; border: 1px solid #aaa; border-radius: 3px; ' +
+                  'background: #f0f0f0; vertical-align: middle;'
+                );
+                btn.addEventListener('click', () => {
+                  const boxes = iframeDoc.querySelectorAll(`input.course-checkbox[data-semester="${semId}"]`);
+                  const allChecked = Array.from(boxes).every(cb => cb.checked);
+                  boxes.forEach(cb => { cb.checked = !allChecked; });
+                  btn.textContent = allChecked ? 'Select All' : 'Deselect All';
+                  if (boxes.length > 0) {
+                    boxes[0].dispatchEvent(new Event('change', { bubbles: true }));
+                  }
+                });
+                const p = span.closest('p');
+                if (p) p.appendChild(btn);
+              });
+            });
+          }
+          this.style.height = iframeDoc.body.scrollHeight + 'px';
+        }
+      }
+    );
 
-//           }
-//         }
-//       }
-//     )
+    const eligibilityBtn = Object.assign(
+      document.createElement('button'), {
+        id: 'eligibilityBtn',
+        textContent: 'Calculate Spring/Summer Eligibility',
+        onclick: calculateEligibility
+      }
+    );
 
-//     const buttonContainer = Object.assign(
-//       document.createElement('div'),{
-//         style: "display: flex; justify-content: center; gap: 10px; margin: 10px 0;"
-//       }
-//     ); 
-//     buttonContainer.append(eligibilityBtn, resetBtn);
+    const deselectAllBtn = Object.assign(
+      document.createElement('button'), {
+        textContent: 'Deselect All',
+        onclick: function () {
+          const frame = document.getElementById('curriculumIframe');
+          if (!frame) return;
+          const iframeDoc = frame.contentDocument || frame.contentWindow.document;
+          iframeDoc.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+          iframeDoc.querySelectorAll('button[data-semester]').forEach(btn => {
+            btn.textContent = 'Select All';
+          });
+        }
+      }
+    );
 
-//     const step3 = document.getElementById('step3');
-//     // Remove existing content before updating with new program's curriculum
-//     if (step3) step3.replaceChildren();
-//     step3.append(programNameYear, buttonContainer, iframe);
+    const selectAllBtn = Object.assign(
+      document.createElement('button'), {
+        textContent: 'Select All',
+        onclick: function () {
+          const frame = document.getElementById('curriculumIframe');
+          if (!frame) return;
+          const iframeDoc = frame.contentDocument || frame.contentWindow.document;
+          iframeDoc.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = true; });
+          iframeDoc.querySelectorAll('button[data-semester]').forEach(btn => {
+            btn.textContent = 'Deselect All';
+          });
+        }
+      }
+    );
 
+    const buttonContainer = Object.assign(
+      document.createElement('div'), {
+        style: 'display: flex; justify-content: center; gap: 10px; margin: 10px 0;'
+      }
+    );
+    buttonContainer.append(eligibilityBtn, deselectAllBtn, selectAllBtn);
 
-//     // hide step2 and show updated step3 
-//     document.getElementById("step2").classList.add("hidden");
-//     step3.classList.remove("hidden");
-//     updateBackButtonVisibility();
-//   }
-  
+    const step3 = document.getElementById('step3');
+    if (step3) step3.replaceChildren();
+    step3.append(programNameYear, buttonContainer, iframe);
+    step3.classList.remove('hidden');
+    updateBackButtonVisibility();
+  }
+
+  function showOldStreamPicker(program, admitYear, streams) {
+    const streamSelect = document.getElementById('streamSelect');
+    streamSelect.innerHTML = '<option value="">-- Choose an option --</option>';
+    streams.forEach(stream => {
+      const opt = document.createElement('option');
+      opt.value = stream.id;
+      opt.textContent = stream.label;
+      streamSelect.appendChild(opt);
+    });
+    window.__cameFromOldStreamPicker = true;
+    window.__selectedOldStreamId = null;
+    document.getElementById('step2').classList.add('hidden');
+    document.getElementById('step2b').classList.remove('hidden');
+    updateBackButtonVisibility();
+  }
+
+  function showOldCurriculum(program, admitYear, streamId) {
+    const streams = getOldStreams(program, admitYear);
+    const stream = streams ? (streams.find(s => s.id === streamId) || streams[0]) : null;
+    const layoutPath = getOldLayoutPath(program, admitYear, streamId);
+    window.__currentLayoutPath = layoutPath;
+    window.__selectedOldStreamId = streamId || (stream && stream.id) || 'base';
+
+    const programLabel = document.getElementById('programSelect').value || program;
+    const streamLabel = stream && stream.id !== 'base' ? ` — ${stream.label}` : (stream ? ' — Regular Program' : '');
+    const titleText = `${programLabel}-${admitYear}${streamLabel}`;
+
+    document.getElementById('step2').classList.add('hidden');
+    const step2b = document.getElementById('step2b');
+    if (step2b) step2b.classList.add('hidden');
+
+    buildCurriculumControls(layoutPath, titleText, true);
+  }
+
+  function handleOldProgramContinue(program, admitYear) {
+    const streams = getOldStreams(program, admitYear);
+    if (streams && streams.length > 1) {
+      showOldStreamPicker(program, admitYear, streams);
+      return;
+    }
+    window.__cameFromOldStreamPicker = false;
+    const streamId = streams && streams[0] ? streams[0].id : 'base';
+    showOldCurriculum(program, admitYear, streamId);
+  }
+
+  function continueFromStreamSelect() {
+    const streamId = document.getElementById('streamSelect').value;
+    if (!streamId) {
+      alert('Please select Regular Program or an option before continuing.');
+      return;
+    }
+    const program = document.getElementById('programSelect').value.split(' ')[0];
+    const admitYear = document.getElementById('admitYearSelect').value;
+    showOldCurriculum(program, admitYear, streamId);
+  }
+
   async function showCourses() {
     // advance to step 3 and hide step 2 so previous content disappears
     const program = document.getElementById('programSelect').value.split(" ")[0];
@@ -473,6 +662,20 @@
       alert('Please select your program from the dropdown before continuing.');
       return;
     }
+    if(!admitYear){
+      alert('Please select your admit year before continuing.');
+      return;
+    }
+
+    // 2010–2015 use Programs_old exclusively (option picker when needed)
+    if (isOldAdmitYear(admitYear)) {
+      handleOldProgramContinue(program, admitYear);
+      return;
+    }
+
+    // 2016+ Programs_v2 path (unchanged)
+    window.__cameFromOldStreamPicker = false;
+    window.__currentLayoutPath = `Programs_v2/${program}/${program}-${admitYear}_layout.html`;
 
     const programNameYear = Object.assign(
       document.createElement('h2'),{
@@ -486,7 +689,7 @@
     document.createElement('iframe'), {
         id: "curriculumIframe",
         
-        src: `Programs_v2/${program}/${program}-${admitYear}_layout.html`,
+        src: window.__currentLayoutPath,
         style: "width: 100%; border: none; overflow: hidden;",
         
         onload: function () {
@@ -653,7 +856,9 @@
     // ── Load program layout HTML and extract visible panel courses ──────────
     const program = document.getElementById('programSelect').value.split(" ")[0];
     const admitYear = document.getElementById('admitYearSelect').value;
-    const layoutPath = `Programs_v2/${program}/${program}-${admitYear}_layout.html`;
+    // Prefer the layout actually displayed (supports Programs_old option files for 2010–2015)
+    const layoutPath = window.__currentLayoutPath
+        || `Programs_v2/${program}/${program}-${admitYear}_layout.html`;
 
     let programCourseSet = null; // null = no secondary filter applied (fail-open)
     try {
