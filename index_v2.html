@@ -107,7 +107,7 @@
         <button class="blue" onclick="window.open('https://www.torontomu.ca/myservicehub-support/students/academics/unofficial-transcript/','_blank')">How to Generate Your Unofficial Transcript</button>
 
         
-        <div style="height:10px"></div>
+        <!-- <div style="height:10px"></div> -->
           <button class="blue" onclick="window.open('https://www.torontomu.ca/myservicehub-support/students/academics/how-to-enrol/','_blank')">How to Add a Course</button>
           <button class="blue" onclick="window.open('https://www.torontomu.ca/senate/policies/undergraduate-course-grading-academic-program-standing-and-eligibility-to-graduate-policy-170-a/?utm_source=chatgpt.com', '_blank')">Undergraduate Course Grading, Academic Program Standing, and Eligibility to Graduate
           </button>
@@ -462,13 +462,16 @@
       btn.style.cssText = (
         'font-size: 11px; padding: 2px 8px; margin-left: 8px; ' +
         'cursor: pointer; border: 1px solid #aaa; border-radius: 3px; ' +
-        'background: #f0f0f0; vertical-align: middle;'
+        'background: #f0f0f0; vertical-align: middle;' +
+        'color: #333'
       );
       btn.addEventListener('click', () => {
         const boxes = iframeDoc.querySelectorAll(`input.course-checkbox[data-semester="${semId}"]`);
-        const allChecked = Array.from(boxes).every(cb => cb.checked);
-        boxes.forEach(cb => { cb.checked = !allChecked; });
-        btn.textContent = allChecked ? 'Select All' : 'Deselect All';
+        // Follow the button label, not current checkbox state — otherwise
+        // manually unchecking one course makes "Deselect All" select again.
+        const shouldSelect = btn.textContent.trim() === 'Select All';
+        boxes.forEach(cb => { cb.checked = shouldSelect; });
+        btn.textContent = shouldSelect ? 'Deselect All' : 'Select All';
       });
 
       const host = el.closest('strong, b, font, p, div') || el.parentElement || el;
@@ -527,9 +530,11 @@
                 );
                 btn.addEventListener('click', () => {
                   const boxes = iframeDoc.querySelectorAll(`input.course-checkbox[data-semester="${semId}"]`);
-                  const allChecked = Array.from(boxes).every(cb => cb.checked);
-                  boxes.forEach(cb => { cb.checked = !allChecked; });
-                  btn.textContent = allChecked ? 'Select All' : 'Deselect All';
+                  // Follow the button label, not current checkbox state — otherwise
+                  // manually unchecking one course makes "Deselect All" select again.
+                  const shouldSelect = btn.textContent.trim() === 'Select All';
+                  boxes.forEach(cb => { cb.checked = shouldSelect; });
+                  btn.textContent = shouldSelect ? 'Deselect All' : 'Select All';
                   if (boxes.length > 0) {
                     boxes[0].dispatchEvent(new Event('change', { bubbles: true }));
                   }
@@ -742,9 +747,11 @@
                     btn.addEventListener('click', () => {
                         // Scope selection explicitly to this unique combination identifier
                         const boxes = iframeDoc.querySelectorAll(`input.course-checkbox[data-semester="${semId}"]`);
-                        const allChecked = Array.from(boxes).every(cb => cb.checked);
-                        boxes.forEach(cb => { cb.checked = !allChecked; });
-                        btn.textContent = allChecked ? 'Select All' : 'Deselect All';
+                        // Follow the button label, not current checkbox state — otherwise
+                        // manually unchecking one course makes "Deselect All" select again.
+                        const shouldSelect = btn.textContent.trim() === 'Select All';
+                        boxes.forEach(cb => { cb.checked = shouldSelect; });
+                        btn.textContent = shouldSelect ? 'Deselect All' : 'Select All';
                         
                         // Fire a custom change event so the cross-panel cleaner script can catch changes
                         if (boxes.length > 0) {
@@ -925,7 +932,7 @@
     function renderList(courses) {
         if (courses.length === 0) return '<li>No eligible courses found.</li>';
         return courses.map(c =>
-            `<li><a href="${c.url}" target="_blank" rel="noopener noreferrer" style="color: inherit;">
+            `<li><a href="${c.url}" target="_blank" rel="noopener noreferrer" style="color:#337ab7;">
                 <strong>${c.code}</strong>${c.title ? ' — ' + c.title : ''}
             </a></li>`
         ).join('');
