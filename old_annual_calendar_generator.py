@@ -1,3 +1,4 @@
+"""This script is available as a reference only. This script was used to generate old curriculum layout files from 2010-2015, script should not be used again since there are manual changes made inside the curriculum files."""
 import os
 import re
 import requests

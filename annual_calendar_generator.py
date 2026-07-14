@@ -189,8 +189,8 @@ def save_program_layouts_flat(programs_list, calendar_year):
        legible_html = inner_soup.prettify()
 
        program_name = program.split(" ")[0]
-       os.makedirs(f"Programs_v2/{program_name}", exist_ok=True)
-       file_name = f"Programs_v2/{program_name}/{program_name}-{calendar_year}_layout.html"
+       os.makedirs(f"Programs/{program_name}", exist_ok=True)
+       file_name = f"Programs/{program_name}/{program_name}-{calendar_year}_layout.html"
 
        with open(file_name, "w", encoding="utf-8") as html_file:
         html_file.write(f'<!--This file was generated using {Path(__file__).name} -->\n')
@@ -204,5 +204,5 @@ def save_program_layouts_flat(programs_list, calendar_year):
 
        print(f"Successfully created file: {file_name} (from program '{program}')")
 
-for year in range(2026, 2015, -1):
-    save_program_layouts_flat(programs, year)
+
+# save_program_layouts_flat(programs, 2026)

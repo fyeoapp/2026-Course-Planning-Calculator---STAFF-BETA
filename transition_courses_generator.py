@@ -1,3 +1,10 @@
+"""Scrapes Engineering Transition Program spring/summer course offerings from the
+TMU website, including prerequisites and other requisites for each course, and
+writes them to JSON files (e.g. Spring_2026.json, Summer_2026.json) used by the
+course planning calculator."""
+
+from pathlib import Path
+import os
 import json
 import re
 import requests
@@ -7,14 +14,6 @@ response = requests.get("https://www.torontomu.ca/engineering-architectural-scie
 response.raise_for_status()
 
 soup = BeautifulSoup(response.text, "html.parser")
-
-# Configuration
-summer_filename = "summer_26-27.json"
-summer_heading = r"Summer 2026 - Engineering.*Architectural Science Transition"
-
-spring_filename = "spring_26-27.json"
-spring_heading = r"Spring 2026 - Engineering.*Architectural Science Transition.*"
-
 
 def parse_requisites(requisites_block):
     result = {
@@ -85,8 +84,31 @@ def parse_requisites(requisites_block):
     
     return result
 
+def extract_courses(season, transition_year):
+    """Extract courses for the given season and transition year.
 
-def extract_courses(heading, filename):
+    Writes a JSON file named ``{season}_{transition_year}.json`` (e.g.
+    ``spring_2026.json``) with course codes, links, and requisites scraped
+    from the Engineering Transition Program page.
+
+    Example:
+        extract_courses("spring", "2026")
+        extract_courses("summer", "2026")
+    """
+ 
+    season = season.strip()
+    transition_year = str(transition_year).strip()
+
+    if season.lower() not in ["spring", "summer"]:
+        raise ValueError(f"Invalid season: {season}")
+    # if not isinstance(transition_year, int) or transition_year < 2026:
+    #     raise ValueError(f"Invalid transition year: {transition_year}. Must be an integer greater than or equal to 2026.")
+    
+
+    filename = f"{season.lower()}_{transition_year}.json"
+    # Accordion titles look like:
+    #   "Spring 2026 - Engineering & Architectural Science Transition ..."
+    heading = rf"{season}\s+{transition_year}.*Engineering.*Architectural Science Transition"
     extracted_data = []
 
     # Find the heading text
@@ -149,12 +171,15 @@ def extract_courses(heading, filename):
         
     print(f"Successfully extracted {len(extracted_data)} courses.")
 
+    os.makedirs(f"Transition_courses/{season.lower()}", exist_ok=True)
+    filename = os.path.join(f"Transition_courses/{season.lower()}", filename)
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(extracted_data, f, ensure_ascii=False, indent=4)
         
     print(f"Saved data to {filename}")
 
 
+
 # Run extraction passes
-extract_courses(summer_heading, summer_filename)
-extract_courses(spring_heading, spring_filename)
+extract_courses("Spring", "2026")
+extract_courses("Summer", "2026")
