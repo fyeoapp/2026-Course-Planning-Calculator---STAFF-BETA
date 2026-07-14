@@ -1,0 +1,916 @@
+[
+    {
+        "id": 1,
+        "anchor_text": "AER 222",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/aerospace/AER/222/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/222/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/222.html\">AER 222</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 2,
+        "anchor_text": "BME 100",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/100/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/100/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/100.html\">BME 100</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 3,
+        "anchor_text": "CEN 100",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/100/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/100/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/100.html\">CEN 100</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": [
+            "AvailableonlytoEngineering",
+            "EngineeringSpecialstudents."
+        ]
+    },
+    {
+        "id": 4,
+        "anchor_text": "CHY 211",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/211/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/211/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/211.html\">CHY 211</a>",
+        "prereqs": [
+            "CHY102"
+        ],
+        "coreqs": [],
+        "antireqs": [
+            "CHY113",
+            "CHY123"
+        ],
+        "custom_reqs": []
+    },
+    {
+        "id": 5,
+        "anchor_text": "CHE 200",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/200/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/200/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/200.html\">CHE 200</a>",
+        "prereqs": [
+            "CHY102"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 6,
+        "anchor_text": "CPS 125",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/125/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/125/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/125.html\">CPS 125</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [
+            "CPS188"
+        ],
+        "custom_reqs": []
+    },
+    {
+        "id": 7,
+        "anchor_text": "CPS 188",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/188/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/188/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/188.html\">CPS 188</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [
+            "CPS125"
+        ],
+        "custom_reqs": []
+    },
+    {
+        "id": 8,
+        "anchor_text": "CVL 207",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/civil-engineering/CVL/207/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/civil-engineering/CVL/207/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/civil-engineering/CVL/207.html\">CVL 207</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 9,
+        "anchor_text": "CHY 113",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/113/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/113/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/113.html\">CHY 113</a>",
+        "prereqs": [
+            "CHY103"
+        ],
+        "coreqs": [],
+        "antireqs": [
+            "CHY123",
+            "CHY211"
+        ],
+        "custom_reqs": []
+    },
+    {
+        "id": 10,
+        "anchor_text": "ELE 202",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/202/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/202/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/202.html\">ELE 202</a>",
+        "prereqs": [
+            "MTH140",
+            "MTH141"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 11,
+        "anchor_text": "MEC 222",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/222/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/222/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/222.html\">MEC 222</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 12,
+        "anchor_text": "MTH 140",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/140/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/140/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/140.html\">MTH 140</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [
+            "MTH207",
+            "MTH131",
+            "AvailableonlytoEngineering",
+            "EngineeringSpecialStudents."
+        ],
+        "custom_reqs": []
+    },
+    {
+        "id": 13,
+        "anchor_text": "MTH 141",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/141/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/141/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/141.html\">MTH 141</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [
+            "MTH108"
+        ],
+        "custom_reqs": [
+            "AvailableonlytoEngineering",
+            "EngineeringSpecialstudents."
+        ]
+    },
+    {
+        "id": 14,
+        "anchor_text": "MTH 240",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/240/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/240/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/240.html\">MTH 240</a>",
+        "prereqs": [
+            "MTH140"
+        ],
+        "coreqs": [],
+        "antireqs": [
+            "MTH310",
+            "MTH231"
+        ],
+        "custom_reqs": [
+            "AvailableonlytoEngineering",
+            "EngineeringSpecialStudents."
+        ]
+    },
+    {
+        "id": 15,
+        "anchor_text": "MTL 200",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MTL/200/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MTL/200/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MTL/200.html\">MTL 200</a>",
+        "prereqs": [
+            "CHY102"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 16,
+        "anchor_text": "PCS 211",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/physics/PCS/211/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/physics/PCS/211/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/physics/PCS/211.html\">PCS 211</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": [
+            "AvailableonlytoEngineeringstudents."
+        ]
+    },
+    {
+        "id": 17,
+        "anchor_text": "AER 309",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/aerospace/AER/309/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/309/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/309.html\">AER 309</a>",
+        "prereqs": [
+            "CPS125",
+            "MTH240",
+            "PCS211"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 18,
+        "anchor_text": "AER 318",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/aerospace/AER/318/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/318/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/318.html\">AER 318</a>",
+        "prereqs": [
+            "AER222",
+            "MTH141",
+            "MTH240",
+            "PCS211"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 19,
+        "anchor_text": "AER 320",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/aerospace/AER/320/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/320/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/320.html\">AER 320</a>",
+        "prereqs": [
+            "AER222",
+            "MTH141",
+            "MTH240",
+            "MTL200",
+            "PCS211"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 20,
+        "anchor_text": "AER 509",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/aerospace/AER/509/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/509/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/509.html\">AER 509</a>",
+        "prereqs": [
+            "AER403",
+            "CMN432",
+            "EES612"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 21,
+        "anchor_text": "AER 520",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/aerospace/AER/520/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/520/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/520.html\">AER 520</a>",
+        "prereqs": [
+            "AER320",
+            "CEN199",
+            "CMN432",
+            "MTH410",
+            "MTH425"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 22,
+        "anchor_text": "AER 615",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/aerospace/AER/615/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/615/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/aerospace/AER/615.html\">AER 615</a>",
+        "prereqs": [
+            "AER504"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 23,
+        "anchor_text": "BME 323",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/323/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/323/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/323.html\">BME 323</a>",
+        "prereqs": [
+            "BME100",
+            "CHY102",
+            "CPS188",
+            "ELE202",
+            "MTH240",
+            "PCS125",
+            "PCS211"
+        ],
+        "coreqs": [],
+        "antireqs": [
+            "MEC323"
+        ],
+        "custom_reqs": []
+    },
+    {
+        "id": 24,
+        "anchor_text": "BME 328",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/328/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/328/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/328.html\">BME 328</a>",
+        "prereqs": [
+            "CPS188",
+            "ELE202",
+            "MTH240"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 25,
+        "anchor_text": "BME 639",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/639/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/639/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/639.html\">BME 639</a>",
+        "prereqs": [
+            "BME532",
+            "CEN199"
+        ],
+        "coreqs": [],
+        "antireqs": [
+            "ELE639"
+        ],
+        "custom_reqs": []
+    },
+    {
+        "id": 26,
+        "anchor_text": "BME 674",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/674/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/674/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/biomedical-engineering/BME/674.html\">BME 674</a>",
+        "prereqs": [
+            "BLG601",
+            "BLG701",
+            "BME506",
+            "BME538",
+            "CEN199"
+        ],
+        "coreqs": [
+            "BME532"
+        ],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 27,
+        "anchor_text": "CHE 308",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/308/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/308/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/308.html\">CHE 308</a>",
+        "prereqs": [
+            "CEN199",
+            "CHE214",
+            "CHE220"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 28,
+        "anchor_text": "CHE 312",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/312/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/312/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/312.html\">CHE 312</a>",
+        "prereqs": [
+            "CHE318"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 29,
+        "anchor_text": "CHE 319",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/319/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/319/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/319.html\">CHE 319</a>",
+        "prereqs": [
+            "CHE318",
+            "CHE338"
+        ],
+        "coreqs": [
+            "CHE312"
+        ],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 30,
+        "anchor_text": "CHE 338",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/338/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/338/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/338.html\">CHE 338</a>",
+        "prereqs": [
+            "CEN199",
+            "CHE200",
+            "CHE214",
+            "CHE220",
+            "CPS125"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 31,
+        "anchor_text": "CHE 474",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/474/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/474/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/chemical-engineering/CHE/474.html\">CHE 474</a>",
+        "prereqs": [
+            "CHE307"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 32,
+        "anchor_text": "COE 318",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/318/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/318/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/318.html\">COE 318</a>",
+        "prereqs": [
+            "CHY102",
+            "CPS188",
+            "ELE202",
+            "MTH240",
+            "PCS211"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 33,
+        "anchor_text": "COE 328",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/328/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/328/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/328.html\">COE 328</a>",
+        "prereqs": [
+            "CPS188",
+            "ELE202",
+            "MTH240"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 34,
+        "anchor_text": "CPS 688",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/688/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/688/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/688.html\">CPS 688</a>",
+        "prereqs": [
+            "COE428"
+        ],
+        "coreqs": [],
+        "antireqs": [
+            "CPS616"
+        ],
+        "custom_reqs": []
+    },
+    {
+        "id": 35,
+        "anchor_text": "CVL 320",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/civil-engineering/CVL/320/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/civil-engineering/CVL/320/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/civil-engineering/CVL/320.html\">CVL 320</a>",
+        "prereqs": [
+            "CEN100",
+            "MTH141",
+            "MTH240",
+            "MTL200",
+            "PCS125",
+            "PCS211"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 36,
+        "anchor_text": "CVL 500",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/civil-engineering/CVL/500/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/civil-engineering/CVL/500/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/civil-engineering/CVL/500.html\">CVL 500</a>",
+        "prereqs": [
+            "CEN199",
+            "CVL420"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 37,
+        "anchor_text": "EES 512",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/512/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/512/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/512.html\">EES 512</a>",
+        "prereqs": [
+            "MTH140",
+            "MTH141"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 38,
+        "anchor_text": "EES 612",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/612/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/612/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/electrical-engineering/EES/612.html\">EES 612</a>",
+        "prereqs": [
+            "CEN199",
+            [
+                "EES512",
+                "MTE401"
+            ]
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 39,
+        "anchor_text": "ELE 639",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/639/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/639/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/639.html\">ELE 639</a>",
+        "prereqs": [
+            "ELE532",
+            "CEN199"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 40,
+        "anchor_text": "IND 832",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/industrial-engineering/IND/832/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/industrial-engineering/IND/832/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/industrial-engineering/IND/832.html\">IND 832</a>",
+        "prereqs": [
+            "MEC325",
+            "MTH410",
+            "MTH510"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 41,
+        "anchor_text": "MEC 309",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/309/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/309/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/309.html\">MEC 309</a>",
+        "prereqs": [
+            "MTH240",
+            "MTL200",
+            "PCS211"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 42,
+        "anchor_text": "MEC 311",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/311/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/311/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/311.html\">MEC 311</a>",
+        "prereqs": [
+            "PCS211",
+            "MTH141",
+            "MTH240"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 43,
+        "anchor_text": "MEC 323",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/323/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/323/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/323.html\">MEC 323</a>",
+        "prereqs": [
+            "PCS211",
+            "MTH240",
+            "MTH141"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 44,
+        "anchor_text": "MEC 430",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/430/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/430/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/430.html\">MEC 430</a>",
+        "prereqs": [
+            "CEN199",
+            "MEC323",
+            "MTL200",
+            "MTH425"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 45,
+        "anchor_text": "MEC 511",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/511/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/511/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/511.html\">MEC 511</a>",
+        "prereqs": [
+            "CEN199",
+            "CHY102",
+            "PCS211",
+            [
+                "CPS125",
+                "CPS188"
+            ],
+            [
+                "ELE202",
+                "MTE301"
+            ],
+            [
+                "PCS224",
+                "MEC323"
+            ],
+            [
+                "MTH312",
+                "MTH425"
+            ]
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 46,
+        "anchor_text": "MEC 522",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/522/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/522/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/522.html\">MEC 522</a>",
+        "prereqs": [
+            "MTH141",
+            "PCS211",
+            "CPS125",
+            "CVL207",
+            "MTH240",
+            "MTL200"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 47,
+        "anchor_text": "MEC 701",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/701/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/701/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/701.html\">MEC 701</a>",
+        "prereqs": [
+            "MEC309",
+            "MEC516"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 48,
+        "anchor_text": "MEC 709",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/709/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/709/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/709.html\">MEC 709</a>",
+        "prereqs": [
+            [
+                "EES512",
+                "MTE401"
+            ],
+            "MEC311",
+            "MEC325",
+            "MTH425"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 49,
+        "anchor_text": "MEC 832",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/832/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/832/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/832.html\">MEC 832</a>",
+        "prereqs": [
+            "MEC325",
+            "MTH410",
+            "MTH510"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 50,
+        "anchor_text": "MTE 301",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechatronics/MTE/301/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechatronics/MTE/301/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechatronics/MTE/301.html\">MTE 301</a>",
+        "prereqs": [
+            "CPS188"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 51,
+        "anchor_text": "MTE 501",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechatronics/MTE/501/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechatronics/MTE/501/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechatronics/MTE/501.html\">MTE 501</a>",
+        "prereqs": [
+            "CEN199",
+            "MTH425",
+            "MTE401",
+            "MTE301"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 52,
+        "anchor_text": "MTE 502",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechatronics/MTE/502/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mechatronics/MTE/502/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mechatronics/MTE/502.html\">MTE 502</a>",
+        "prereqs": [
+            "MEC325",
+            "MTE301",
+            "MTH425"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 53,
+        "anchor_text": "MTH 410",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/410/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/410/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/410.html\">MTH 410</a>",
+        "prereqs": [
+            "MTH141",
+            "MTH240"
+        ],
+        "coreqs": [],
+        "antireqs": [
+            "MTH304",
+            "MTH380",
+            "MTH404"
+        ],
+        "custom_reqs": []
+    },
+    {
+        "id": 54,
+        "anchor_text": "MTH 425",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/425/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/425/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/425.html\">MTH 425</a>",
+        "prereqs": [
+            "MTH140",
+            "MTH141",
+            "MTH240"
+        ],
+        "coreqs": [],
+        "antireqs": [
+            "MTH312",
+            "MTH330",
+            "MTH430",
+            "MTH350"
+        ],
+        "custom_reqs": []
+    },
+    {
+        "id": 55,
+        "anchor_text": "MTH 510",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/510/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/510/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/510.html\">MTH 510</a>",
+        "prereqs": [
+            "MTH141",
+            "MTH240"
+        ],
+        "coreqs": [],
+        "antireqs": [
+            "MTH501"
+        ],
+        "custom_reqs": []
+    },
+    {
+        "id": 56,
+        "anchor_text": "MTH 514",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/514/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/514/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/514.html\">MTH 514</a>",
+        "prereqs": [
+            [
+                "MTH312",
+                "MTH425"
+            ]
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 57,
+        "anchor_text": "PCS 213",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/physics/PCS/213/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/physics/PCS/213/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/physics/PCS/213.html\">PCS 213</a>",
+        "prereqs": [
+            "PCS125"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 58,
+        "anchor_text": "PCS 224",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/physics/PCS/224/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/physics/PCS/224/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/physics/PCS/224.html\">PCS 224</a>",
+        "prereqs": [
+            [
+                "PCS110",
+                "PCS125",
+                "PCS130"
+            ]
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 59,
+        "anchor_text": "EMS 201",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/201/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/201/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/201.html\">EMS 201</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 60,
+        "anchor_text": "EMS 202",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/202/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/202/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/202.html\">EMS 202</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 61,
+        "anchor_text": "EMS 204",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/204/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/204/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/204.html\">EMS 204</a>",
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 62,
+        "anchor_text": "EMS 301",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/301/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/301/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/301.html\">EMS 301</a>",
+        "prereqs": [
+            "EMS201"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 63,
+        "anchor_text": "EMS 303",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/303/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/303/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/303.html\">EMS 303</a>",
+        "prereqs": [
+            [
+                "CHE411",
+                "ECN801"
+            ]
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 64,
+        "anchor_text": "EMS 304",
+        "url": "https://www.torontomu.ca/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/304/",
+        "raw_html_snippet": "<a class=\"qTipCourse\" data-url=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/304/jcr:content/resCalendarCourseEmbed.json\" href=\"/content/ryerson/calendar/2026-2027/courses/engineering-management-science/EMS/304.html\">EMS 304</a>",
+        "prereqs": [
+            "EMS204"
+        ],
+        "coreqs": [],
+        "antireqs": [
+            "CVL742",
+            "IND713",
+            "MEC713"
+        ],
+        "custom_reqs": []
+    }
+]
