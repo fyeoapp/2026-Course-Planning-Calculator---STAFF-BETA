@@ -470,7 +470,7 @@ def save_program_layouts_flat(programs_list, calendar_year):
             print(f"Successfully created file: {variant['file_name']} (from program '{program}')")
 
 
-if __name__ == "__main__":
-    for year in ["2014", "2015"]:
-        print(f"Processing calendar year: {year}")
-        save_program_layouts_flat(programs, year)
+# if __name__ == "__main__":
+#     for year in ["2014", "2015"]:
+#         print(f"Processing calendar year: {year}")
+#         save_program_layouts_flat(programs, year)
