@@ -1,0 +1,12 @@
+{
+  "description": "Course code equivalences for spring/summer eligibility. When a curriculum used an older code but the current transition JSON lists a renamed code (or the reverse), list them together here so completing either counts for prereq checks.",
+  "howToAdd": "Add an object under equivalences with: codes (2+ interchangeable course codes), admitYears (inclusive from/to; omit a bound for open-ended), optional programs (list of program dropdown values, or omit/null for all programs), and a short note.",
+  "equivalences": [
+    {
+      "codes": ["CPS 125", "CPS 188"],
+      "admitYears": { "from": 2010, "to": 2020 },
+      "programs": null,
+      "note": "Electrical/Computer (and related) layouts used CPS 125 through 2020; CPS 188 from 2021. Transition 2026 prereqs often list CPS 188 only."
+    }
+  ]
+}

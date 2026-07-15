@@ -824,6 +824,10 @@
   async function calculateEligibility() {
     document.getElementById('eligibleCourses').innerHTML = '';
 
+    const program = document.getElementById('programSelect').value.split(" ")[0];
+    const admitYear = document.getElementById('admitYearSelect').value;
+    const admitYearNum = parseInt(admitYear, 10);
+
     const iframe = document.querySelector('#step3 iframe');
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
     const checked = iframeDoc.querySelectorAll('input[type="checkbox"]:checked');
@@ -832,62 +836,128 @@
         Array.from(checked).map(cb => cb.value.toUpperCase().replace(/\s+/g, ''))
     );
 
-    // ── Load spring/summer JSON ─────────────────────────────────────────────
-    let springCourses, summerCourses;
+    // ── Load spring/summer JSON + optional course alias map ─────────────────
+    let springCourses, summerCourses, aliasConfig = { equivalences: [] };
     try {
-        const [springRes, summerRes] = await Promise.all([
+        const [springRes, summerRes, aliasRes] = await Promise.all([
             fetch('Transition_courses/spring/spring_2026.json'),
-            fetch('Transition_courses/summer/summer_2026.json')
+            fetch('Transition_courses/summer/summer_2026.json'),
+            fetch('course_aliases.json')
         ]);
         springCourses = await springRes.json();
         summerCourses = await summerRes.json();
+        if (aliasRes.ok) {
+            aliasConfig = await aliasRes.json();
+        }
     } catch (e) {
         console.error('Failed to load course JSON files', e);
         return;
     }
 
-    // ── Load program layout HTML and extract visible panel courses ──────────
-    const program = document.getElementById('programSelect').value.split(" ")[0];
-    const admitYear = document.getElementById('admitYearSelect').value;
-    // Prefer the layout actually displayed (supports Programs_old option files for 2010–2015)
-    const layoutPath = window.__currentLayoutPath
-        || `Programs/${program}/${program}-${admitYear}_layout.html`;
+    // Expand completed codes with year/program-scoped equivalences (course_aliases.json)
+    function admitYearInRange(range) {
+        if (!range || Number.isNaN(admitYearNum)) return true; // no range / no year → apply
+        if (range.from != null && admitYearNum < Number(range.from)) return false;
+        if (range.to != null && admitYearNum > Number(range.to)) return false;
+        return true;
+    }
 
-    let programCourseSet = null; // null = no secondary filter applied (fail-open)
+    function programMatches(programs) {
+        if (programs == null || (Array.isArray(programs) && programs.length === 0)) return true;
+        const p = String(program || '').toLowerCase();
+        return programs.some(x => String(x).toLowerCase() === p);
+    }
+
+    function normalizeCode(s) {
+        return (s || '').toUpperCase().replace(/\s+/g, '');
+    }
+
+    const effectiveCompleted = new Set(completedSet);
+    (aliasConfig.equivalences || []).forEach(rule => {
+        if (!admitYearInRange(rule.admitYears)) return;
+        if (!programMatches(rule.programs)) return;
+        const group = (rule.codes || []).map(normalizeCode).filter(Boolean);
+        if (!group.length) return;
+        if (group.some(code => completedSet.has(code))) {
+            group.forEach(code => effectiveCompleted.add(code));
+        }
+    });
+
+    // ── Build allowed program courses from the ACTIVE curriculum panels ─────
+    // DEVELOPER NOTE (manual maintenance):
+    // Eligibility only suggests transition courses that appear as qTipCourse links on
+    // the student's active curriculum panel(s). Courses that exist only as open
+    // electives / liberal studies / "not on the main calendar checklist" (e.g. CHE 474
+    // when only CHE 307 is on the Chemical layout) will NOT appear automatically.
+    // To support those, manually add the course link to the relevant Programs/
+    // (or Programs_old/) layout HTML, or add a special-case in this function.
+    // Do not broaden the filter to "any course whose prereqs are on the layout" —
+    // that falsely unlocks many cross-program transition courses.
+    //
+    // Course renames across admit years: add an entry to course_aliases.json
+    // (codes + admitYears from/to + optional programs). See that file's howToAdd.
+    let programCourseSet = null; // null = fail-open (no filter)
     try {
-        const layoutRes = await fetch(layoutPath);
-        const layoutText = await layoutRes.text();
+        const panels = iframeDoc.querySelectorAll('[data-panel-container-id]');
+        if (panels.length > 0) {
+            // Multi-stream layouts (Computer/Civil/Mechanical): common panel 0 is
+            // always included; also include any option panel the student checked.
+            const activePanelIds = new Set(['0']);
+            checked.forEach(cb => {
+                const owner = cb.getAttribute('data-panel-owner');
+                if (owner !== null && owner !== '') activePanelIds.add(String(owner));
+            });
 
-        const parser = new DOMParser();
-        const layoutDoc = parser.parseFromString(layoutText, 'text/html');
-
-        // Get the visible panel — data-panel with display:block, or no data-panel attr (single panel programs)
-        const visiblePanel = layoutDoc.querySelector('[data-panel][style*="display: block"]')
-            || layoutDoc.querySelector('[data-panel]')   // fallback: first panel if none explicitly visible
-            || layoutDoc.body;                           // fallback: no toggle at all (single stream programs)
-
-        const programAnchors = visiblePanel.querySelectorAll('a.qTipCourse');
-        programCourseSet = new Set(
-            Array.from(programAnchors).map(a => a.textContent.toUpperCase().replace(/\s+/g, ''))
-        );
+            programCourseSet = new Set();
+            activePanelIds.forEach(id => {
+                const panel = iframeDoc.querySelector(`[data-panel-container-id="${id}"]`);
+                if (!panel) return;
+                panel.querySelectorAll('a.qTipCourse').forEach(a => {
+                    programCourseSet.add(a.textContent.toUpperCase().replace(/\s+/g, ''));
+                });
+            });
+        } else {
+            // Single-panel / Programs_old layouts: use the whole iframe curriculum
+            programCourseSet = new Set(
+                Array.from(iframeDoc.querySelectorAll('a.qTipCourse'))
+                    .map(a => a.textContent.toUpperCase().replace(/\s+/g, ''))
+            );
+        }
     } catch (e) {
-        console.error('Failed to load program layout file — skipping secondary filter', e);
-        // programCourseSet stays null, only condition 1 applies
+        console.error('Failed to build program course set from iframe — skipping secondary filter', e);
+        programCourseSet = null;
     }
 
     // ── Helpers ─────────────────────────────────────────────────────────────
-    function normalizeCode(s) {
-        return (s || '').toUpperCase().replace(/\s+/g, '');
+    function formatCourseCode(s) {
+        const n = normalizeCode(s);
+        const m = n.match(/^([A-Z]{2,4})(\d{2,3}[A-Z]?(?:\/[A-Z])?)$/);
+        return m ? `${m[1]} ${m[2]}` : (s || n);
     }
 
     function checkPrereqs(prereqs) {
         if (!prereqs || prereqs.length === 0) return true;
         return prereqs.every(req => {
             if (Array.isArray(req)) {
-                return req.some(r => completedSet.has(normalizeCode(r)));
+                return req.some(r => effectiveCompleted.has(normalizeCode(r)));
             }
-            return completedSet.has(normalizeCode(req));
+            return effectiveCompleted.has(normalizeCode(req));
         });
+    }
+
+    function missingCoreqs(coreqs) {
+        if (!coreqs || coreqs.length === 0) return [];
+        const missing = [];
+        for (const req of coreqs) {
+            if (Array.isArray(req)) {
+                if (!req.some(r => effectiveCompleted.has(normalizeCode(r)))) {
+                    missing.push(req.map(formatCourseCode).join(' or '));
+                }
+            } else if (!effectiveCompleted.has(normalizeCode(req))) {
+                missing.push(formatCourseCode(req));
+            }
+        }
+        return missing;
     }
 
     function isInProgram(code) {
@@ -899,13 +969,15 @@
         const eligible = [];
         for (const course of courseList) {
             const code = normalizeCode(course.anchor_text);
-            if (completedSet.has(code)) continue;           // already completed
+            if (effectiveCompleted.has(code)) continue;     // already completed (incl. aliases)
             if (!checkPrereqs(course.prereqs)) continue;    // condition 1: prereqs not met
-            if (!isInProgram(course.anchor_text)) continue; // condition 2: not in program layout
+            if (!isInProgram(course.anchor_text)) continue; // condition 2: not in active panels
+            const coreqWarnings = missingCoreqs(course.coreqs);
             eligible.push({
                 code: course.anchor_text,
                 title: course.title || '',
-                url: course.url || ''
+                url: course.url || '',
+                coreqWarnings
             });
         }
         return eligible;
@@ -917,11 +989,14 @@
 
     function renderList(courses) {
         if (courses.length === 0) return '<li>No eligible courses found.</li>';
-        return courses.map(c =>
-            `<li><a href="${c.url}" target="_blank" rel="noopener noreferrer" style="color:#337ab7;">
+        return courses.map(c => {
+            const warning = (c.coreqWarnings && c.coreqWarnings.length)
+                ? `<br><span style="color:#a65c00;font-size:0.92em;">Also needs corequisite(s): ${c.coreqWarnings.join(', ')} (not selected)</span>`
+                : '';
+            return `<li><a href="${c.url}" target="_blank" rel="noopener noreferrer" style="color:#337ab7;">
                 <strong>${c.code}</strong>${c.title ? ' — ' + c.title : ''}
-            </a></li>`
-        ).join('');
+            </a>${warning}</li>`;
+        }).join('');
     }
 
     document.getElementById('eligibleCourses').innerHTML = `
