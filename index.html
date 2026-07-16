@@ -165,6 +165,24 @@
         </div>
         <div id="contactDept" style="text-align:center;" class="hidden">Please consult with your program department for further guidance.</div>
 
+        <!-- STEP 1b: semester selection -->
+        <div id="step1b" class="section hidden">
+          <h2>Semester Selection</h2>
+
+          <p style="text-align:center;font-weight:600">Which semester are you planning courses for?</p>
+
+          <div style="text-align:center;">
+            <button onclick="semesterCheck('fall')">Fall</button>
+            <button onclick="semesterCheck('winter')">Winter</button>
+            <button onclick="semesterCheck('transition')">Spring/Summer (Transition)</button>
+          </div>
+        </div>
+
+        <!-- Unused placeholder (Fall/Winter now share step2→step3 with Transition) -->
+        <div id="fallWinterNotice" style="text-align:center;" class="hidden">
+          <p id="fallWinterNoticeText" style="font-weight:600"></p>
+        </div>
+
         <!-- STEP 2 -->
         <div id="step2" class="section hidden">
           <h2>Program Identification</h2>
@@ -244,7 +262,7 @@
         <!-- STEP 5 -->
         <div id="step5" class="section hidden">
           <h2>Course Load Guidance</h2>
-          <div class="popup">Spring/Summer courses run in a 6-week compressed format. Students are strongly encouraged to take no more than 2 courses per term due to intensity.</div>
+          <div id="courseLoadGuidance" class="popup">Spring/Summer courses run in a 6-week compressed format. Students are strongly encouraged to take no more than 2 courses per term due to intensity.</div>
         </div>
 
         <!-- Transition Courses section removed as requested -->
@@ -266,23 +284,51 @@
     document.getElementById("step1").classList.add("hidden");
     if (!isClear) {
       document.getElementById("contactDept").classList.remove("hidden");
+      document.getElementById("step1b").classList.add("hidden");
       document.getElementById("step2").classList.add("hidden");
     } else {
       document.getElementById("contactDept").classList.add("hidden");
-      document.getElementById("step2").classList.remove("hidden");
+      document.getElementById("step1b").classList.remove("hidden");
     }
+    updateBackButtonVisibility();
+  }
+
+  function eligibilityButtonLabel() {
+    const s = window.__selectedSemester;
+    if (s === 'fall') return 'Calculate Fall Eligibility';
+    if (s === 'winter') return 'Calculate Winter Eligibility';
+    return 'Calculate Spring/Summer Eligibility';
+  }
+
+  function semesterCheck(semester) {
+    window.__selectedSemester = semester;
+    document.getElementById("step1b").classList.add("hidden");
+    document.getElementById("fallWinterNotice").classList.add("hidden");
+    const guidance = document.getElementById("courseLoadGuidance");
+    if (guidance) {
+      guidance.textContent = semester === 'transition'
+        ? 'Spring/Summer courses run in a 6-week compressed format. Students are strongly encouraged to take no more than 2 courses per term due to intensity.'
+        : 'For Fall and Winter semesters, we recommend taking a maximum of 5 courses per semester.';
+    }
+    // Fall, Winter, and Transition all use the same program → curriculum steps;
+    // only calculateEligibility branches on window.__selectedSemester.
+    document.getElementById("step2").classList.remove("hidden");
     updateBackButtonVisibility();
   }
   function updateBackButtonVisibility(){
     const backBtn = document.getElementById('backButton');
-    // show back button if we're on step2, step2b, step3, or step4
+    // show back button if we're on step1b, step2, step2b, step3, or step4
     const guidanceVisible = !document.getElementById('contactDept').classList.contains('hidden');
+    const step1b = document.getElementById('step1b');
+    const step1bVisible = step1b && !step1b.classList.contains('hidden');
+    const fallWinterNotice = document.getElementById('fallWinterNotice');
+    const fallWinterVisible = fallWinterNotice && !fallWinterNotice.classList.contains('hidden');
     const step2Visible = !document.getElementById('step2').classList.contains('hidden');
     const step2b = document.getElementById('step2b');
     const step2bVisible = step2b && !step2b.classList.contains('hidden');
     const step3Visible = !document.getElementById('step3').classList.contains('hidden');
     const step4Visible = !document.getElementById('step4').classList.contains('hidden');
-    if(guidanceVisible || step2Visible || step2bVisible || step3Visible || step4Visible){
+    if(guidanceVisible || step1bVisible || fallWinterVisible || step2Visible || step2bVisible || step3Visible || step4Visible){
       backBtn.classList.remove('hidden');
     } else {
       backBtn.classList.add('hidden');
@@ -313,6 +359,8 @@
       const step3 = document.getElementById('step3');
       const step2b = document.getElementById('step2b');
       const step2 = document.getElementById('step2');
+      const step1b = document.getElementById('step1b');
+      const fallWinterNotice = document.getElementById('fallWinterNotice');
       const guidanceVisible = document.getElementById('contactDept');
       const step1 = document.getElementById('step1');
 
@@ -361,9 +409,27 @@
         return;
       }
 
-      // If step2 is visible, go back to step1
+      // If step2 is visible, go back to semester selection (step1b)
       if(step2 && !step2.classList.contains('hidden')){
         step2.classList.add('hidden');
+        if(step1b) step1b.classList.remove('hidden');
+        updateBackButtonVisibility();
+        return;
+      }
+
+      // If the Fall/Winter notice is visible, go back to semester selection (step1b)
+      if(fallWinterNotice && !fallWinterNotice.classList.contains('hidden')){
+        fallWinterNotice.classList.add('hidden');
+        window.__selectedSemester = null;
+        if(step1b) step1b.classList.remove('hidden');
+        updateBackButtonVisibility();
+        return;
+      }
+
+      // If step1b (semester selection) is visible, go back to step1
+      if(step1b && !step1b.classList.contains('hidden')){
+        step1b.classList.add('hidden');
+        window.__selectedSemester = null;
         if(step1) step1.classList.remove('hidden');
         updateBackButtonVisibility();
         return;
@@ -381,6 +447,7 @@
   const OLD_PROGRAM_STREAMS = {"Aerospace": {"2010": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2015_layout.html"}]}, "Biomedical": {"2010": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2015_layout.html"}]}, "Chemical": {"2010": [{"id": "base", "label": "Regular Program", "file": "Chemical-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Chemical-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Chemical-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Chemical-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Chemical-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Chemical-2015_layout.html"}]}, "Civil": {"2010": [{"id": "base", "label": "Regular Program", "file": "Civil-2010_layout.html"}, {"id": "engineering_geomatics_engineering_option", "label": "Engineering Geomatics Engineering Option", "file": "Civil-2010_engineering_geomatics_engineering_option_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Civil-2011_layout.html"}, {"id": "engineering_geomatics_engineering_option", "label": "Engineering Geomatics Engineering Option", "file": "Civil-2011_engineering_geomatics_engineering_option_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Civil-2012_layout.html"}, {"id": "engineering_geomatics_engineering_option", "label": "Engineering Geomatics Engineering Option", "file": "Civil-2012_engineering_geomatics_engineering_option_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Civil-2013_layout.html"}, {"id": "engineering_geomatics_engineering_option", "label": "Engineering Geomatics Engineering Option", "file": "Civil-2013_engineering_geomatics_engineering_option_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Civil-2014_layout.html"}, {"id": "structural_engineering_option", "label": "Structural Engineering Option", "file": "Civil-2014_structural_engineering_option_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Civil-2015_layout.html"}, {"id": "structural_engineering_option", "label": "Structural Engineering Option", "file": "Civil-2015_structural_engineering_option_layout.html"}]}, "Computer": {"2010": [{"id": "base", "label": "Regular Program", "file": "Computer-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Computer-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Computer-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Computer-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Computer-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Computer-2015_layout.html"}]}, "Electrical": {"2010": [{"id": "base", "label": "Regular Program", "file": "Electrical-2010_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2010_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2010_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2010_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2010_robotics_and_control_systems_option_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Electrical-2011_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2011_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2011_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2011_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2011_robotics_and_control_systems_option_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Electrical-2012_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2012_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2012_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2012_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2012_robotics_and_control_systems_option_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Electrical-2013_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2013_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2013_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2013_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2013_robotics_and_control_systems_option_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Electrical-2014_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2014_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2014_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2014_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2014_robotics_and_control_systems_option_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Electrical-2015_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2015_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2015_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2015_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2015_robotics_and_control_systems_option_layout.html"}]}, "Industrial": {"2010": [{"id": "base", "label": "Regular Program", "file": "Industrial-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Industrial-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Industrial-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Industrial-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Industrial-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Industrial-2015_layout.html"}]}, "Mechanical": {"2010": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2010_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2010_mechatronics_option_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2011_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2011_mechatronics_option_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2012_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2012_mechatronics_option_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2013_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2013_mechatronics_option_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2014_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2014_mechatronics_option_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2015_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2015_mechatronics_option_layout.html"}]}};
   window.__cameFromOldStreamPicker = false;
   window.__selectedOldStreamId = null;
+  window.__selectedSemester = null;
   window.__currentLayoutPath = null;
 
   function isOldAdmitYear(year) {
@@ -535,7 +602,7 @@
     const eligibilityBtn = Object.assign(
       document.createElement('button'), {
         id: 'eligibilityBtn',
-        textContent: 'Calculate Spring/Summer Eligibility',
+        textContent: eligibilityButtonLabel(),
         onclick: calculateEligibility
       }
     );
@@ -760,7 +827,7 @@
     const eligibilityBtn = Object.assign(
       document.createElement('button'),{
         id: "eligibilityBtn",
-        textContent: "Calculate Spring/Summer Eligibility",
+        textContent: eligibilityButtonLabel(),
         onclick: calculateEligibility
       }
     )
@@ -827,6 +894,7 @@
     const program = document.getElementById('programSelect').value.split(" ")[0];
     const admitYear = document.getElementById('admitYearSelect').value;
     const admitYearNum = parseInt(admitYear, 10);
+    const selectedSemester = window.__selectedSemester || 'transition';
 
     const iframe = document.querySelector('#step3 iframe');
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
@@ -836,22 +904,31 @@
         Array.from(checked).map(cb => cb.value.toUpperCase().replace(/\s+/g, ''))
     );
 
-    // ── Load spring/summer JSON + optional course alias map ─────────────────
-    let springCourses, summerCourses, aliasConfig = { equivalences: [] };
+    // ── Load course JSON + optional course alias map ────────────────────────
+    let springCourses, summerCourses, fallWinterRequisites = [];
+    let aliasConfig = { equivalences: [] };
     try {
-        const [springRes, summerRes, aliasRes] = await Promise.all([
-            fetch('Transition_courses/spring/spring_2026.json'),
-            fetch('Transition_courses/summer/summer_2026.json'),
-            fetch('course_aliases.json')
-        ]);
-        springCourses = await springRes.json();
-        summerCourses = await summerRes.json();
-        if (aliasRes.ok) {
-            aliasConfig = await aliasRes.json();
+        if (selectedSemester === 'fall' || selectedSemester === 'winter') {
+            const fwRes = await fetch('Fall_Winter_courses/requisites_2026.json');
+            fallWinterRequisites = await fwRes.json();
+        } else {
+            const [springRes, summerRes] = await Promise.all([
+                fetch('Transition_courses/spring/spring_2026.json'),
+                fetch('Transition_courses/summer/summer_2026.json')
+            ]);
+            springCourses = await springRes.json();
+            summerCourses = await summerRes.json();
         }
     } catch (e) {
         console.error('Failed to load course JSON files', e);
         return;
+    }
+
+    try {
+        const aliasRes = await fetch('course_aliases.json');
+        if (aliasRes.ok) aliasConfig = await aliasRes.json();
+    } catch (e) {
+        console.warn('course_aliases.json not loaded — continuing without equivalences', e);
     }
 
     // Expand completed codes with year/program-scoped equivalences (course_aliases.json)
@@ -896,13 +973,17 @@
     //
     // Course renames across admit years: add an entry to course_aliases.json
     // (codes + admitYears from/to + optional programs). See that file's howToAdd.
+    //
+    // Fall/Winter requisites: regenerate with fall_winter_requisites_generator.py
+    // → Fall_Winter_courses/requisites_2026.json (current calendar rules for all admit years).
     let programCourseSet = null; // null = fail-open (no filter)
+    let activePanelIds = null;
     try {
         const panels = iframeDoc.querySelectorAll('[data-panel-container-id]');
         if (panels.length > 0) {
             // Multi-stream layouts (Computer/Civil/Mechanical): common panel 0 is
             // always included; also include any option panel the student checked.
-            const activePanelIds = new Set(['0']);
+            activePanelIds = new Set(['0']);
             checked.forEach(cb => {
                 const owner = cb.getAttribute('data-panel-owner');
                 if (owner !== null && owner !== '') activePanelIds.add(String(owner));
@@ -983,10 +1064,55 @@
         return eligible;
     }
 
-    // ── Render ───────────────────────────────────────────────────────────────
-    const springEligible = getEligible(springCourses);
-    const summerEligible = getEligible(summerCourses);
+    function semesterNumberFromDataset(sem) {
+        const m = String(sem || '').match(/(\d)(?:st|nd|rd|th)_semester/i);
+        return m ? parseInt(m[1], 10) : null;
+    }
 
+    function checkboxInActivePanels(cb) {
+        if (!activePanelIds) return true;
+        const owner = cb.getAttribute('data-panel-owner');
+        if (owner === null || owner === '') return activePanelIds.has('0');
+        return activePanelIds.has(String(owner));
+    }
+
+    function buildFallWinterCandidates(season) {
+        const wantOdd = season === 'fall';
+        const reqByCode = new Map();
+        (fallWinterRequisites || []).forEach(c => {
+            reqByCode.set(normalizeCode(c.anchor_text), c);
+        });
+
+        const candidates = [];
+        const seen = new Set();
+        iframeDoc.querySelectorAll('input.course-checkbox[data-semester]').forEach(cb => {
+            if (!checkboxInActivePanels(cb)) return;
+            const semNum = semesterNumberFromDataset(cb.dataset.semester);
+            if (semNum == null) return;
+            if (wantOdd && semNum % 2 === 0) return;
+            if (!wantOdd && semNum % 2 === 1) return;
+
+            const code = normalizeCode(cb.value);
+            if (!code || seen.has(code)) return;
+            seen.add(code);
+
+            const label = cb.closest('label');
+            const link = label ? label.querySelector('a.qTipCourse') : null;
+            const scraped = reqByCode.get(code);
+            candidates.push({
+                anchor_text: scraped ? scraped.anchor_text : (cb.value || formatCourseCode(code)),
+                url: (scraped && scraped.url) || (link && link.href) || '',
+                prereqs: scraped ? scraped.prereqs : [],
+                coreqs: scraped ? scraped.coreqs : [],
+                antireqs: scraped ? scraped.antireqs : [],
+                custom_reqs: scraped ? scraped.custom_reqs : [],
+                title: ''
+            });
+        });
+        return candidates;
+    }
+
+    // ── Render ───────────────────────────────────────────────────────────────
     function renderList(courses) {
         if (courses.length === 0) return '<li>No eligible courses found.</li>';
         return courses.map(c => {
@@ -999,12 +1125,40 @@
         }).join('');
     }
 
-    document.getElementById('eligibleCourses').innerHTML = `
-        <h3>Spring Eligible Courses</h3>
-        <ul>${renderList(springEligible)}</ul>
-        <h3>Summer Eligible Courses</h3>
-        <ul>${renderList(summerEligible)}</ul>
-    `;
+    let resultsHtml = '';
+    if (selectedSemester === 'fall' || selectedSemester === 'winter') {
+        const label = selectedSemester === 'fall' ? 'Fall' : 'Winter';
+        const candidates = buildFallWinterCandidates(selectedSemester);
+        // Candidates are already drawn from the active layout/panels — skip isInProgram
+        const eligible = [];
+        for (const course of candidates) {
+            const code = normalizeCode(course.anchor_text);
+            if (effectiveCompleted.has(code)) continue;
+            if (!checkPrereqs(course.prereqs)) continue;
+            eligible.push({
+                code: course.anchor_text,
+                title: course.title || '',
+                url: course.url || '',
+                coreqWarnings: missingCoreqs(course.coreqs)
+            });
+        }
+        resultsHtml = `
+            <h3>${label} Eligible Courses</h3>
+            <ul>${renderList(eligible)}</ul>
+        `;
+    } else {
+        // Transition path — unchanged spring/summer lists
+        const springEligible = getEligible(springCourses);
+        const summerEligible = getEligible(summerCourses);
+        resultsHtml = `
+            <h3>Spring Eligible Courses</h3>
+            <ul>${renderList(springEligible)}</ul>
+            <h3>Summer Eligible Courses</h3>
+            <ul>${renderList(summerEligible)}</ul>
+        `;
+    }
+
+    document.getElementById('eligibleCourses').innerHTML = resultsHtml;
 
     // Carry the curriculum title onto the eligibility results screen
     const step3Title = document.getElementById('programNameYear');
