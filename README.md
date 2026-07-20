@@ -208,6 +208,27 @@ The manifest builder does **not** cause any of this — it only lists files. The
 
 `Programs_old/` layouts especially should **not** be regenerated without a full review. That generator is kept as reference only.
 
+### After generating a layout — review and hand-fix
+
+The calendar scrape is a starting point, not a finished UI. After `annual_calendar_generator.py` (or any layout refresh), open the new `Programs/<Program>/<Program>-<Year>_layout.html` and expect to edit it by hand.
+
+**Formatting**
+
+- Spacing and headings often need cleanup. Insert `<br>` (or small structural tweaks) where semester blocks, notes, or columns run together.
+- Do not rely on the generator to produce polished layout HTML.
+
+**Duplicate semester / curriculum blocks**
+
+TMU sometimes publishes **two versions of the same semester** on one calendar page — e.g. an older “7th & 8th Semester” block (“last offered … to students admitted Fall 2021 and before”) and a revised block (“first offered … to students admitted Fall 2022 and after”). The scraper will pull **both** into the layout HTML.
+
+When you see that:
+
+1. **Consult staff** on which block belongs in *this* admit-year file (or whether both should stay for a transition year).
+2. **Manually remove** the incorrect block from the layout HTML — delete its surrounding `div` / section in the file, not just hide it with CSS.
+3. Re-check checkboxes and course links in what remains so eligibility still matches the intended curriculum.
+
+Leaving both copies in place confuses students and can double-count or offer the wrong elective counts (e.g. “three courses from Table I” vs “two”).
+
 ### Manual fixes still required in some cases
 
 The app will **not** automatically suggest every course a student might realistically take. Common gaps:
@@ -236,7 +257,7 @@ That runs transition spring + summer, `Course_requisites/requisites_<YYYY>.json`
 
 **Still separate on purpose:**
 
-1. **Layouts** — `python3 annual_calendar_generator.py --year <YYYY>` (overwrites manual HTML edits; do not bundle into the default refresh).
+1. **Layouts** — `python3 annual_calendar_generator.py --year <YYYY>` (overwrites manual HTML edits; do not bundle into the default refresh). **Then** review the HTML: fix formatting (`<br>` etc.) and remove duplicate semester blocks after staff confirm which curriculum version to keep (see above).
 2. **App config** — update `programs_config.json` planning defaults and `index.html` transition JSON paths if the planning year changed.
 3. **Aliases** — review `course_aliases.json` for renames.
 4. Keep older `Course_requisites/requisites_*.json` files for prior admit years (do not delete them when adding a new year).
