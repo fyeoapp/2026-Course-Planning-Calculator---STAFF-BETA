@@ -1,0 +1,7 @@
+# Generated deploy tree (rebuild with: python3 build_public.py --clean)
+public/
+
+# Python
+__pycache__/
+*.py[cod]
+.DS_Store

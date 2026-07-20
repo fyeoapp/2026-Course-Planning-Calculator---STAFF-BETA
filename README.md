@@ -27,6 +27,48 @@ http://localhost:8000/index.html
 
 > Opening `index.html` directly via `file://` may fail when the app tries to load JSON or layout files due to browser security restrictions. Use a local server.
 
+### Deploying to the web (minimal public tree)
+
+Do **not** serve the whole git repo from GitHub Pages. Maintainer scripts (`.py`), README, `Retired_scripts/`, etc. would be downloadable by anyone who guesses the URL.
+
+**Production deploy (recommended):** GitHub Actions builds a runtime-only tree and publishes **only** that to Pages.
+
+1. In the GitHub repo: **Settings → Pages → Build and deployment → Source: GitHub Actions** (not “Deploy from a branch”).
+2. Push to `main` (or run the **Deploy GitHub Pages** workflow manually under the Actions tab).
+
+The workflow (`.github/workflows/deploy-pages.yml`) runs:
+
+```bash
+python3 build_public.py --clean --out public
+```
+
+…then deploys the `public/` folder. That folder is gitignored and never needs to be committed.
+
+**What gets hosted**
+
+| Included | Purpose |
+|----------|---------|
+| `index.html` | Calculator UI |
+| `curriculum_manifest.json` | Program / year / layout index |
+| `course_aliases.json` | Code equivalences |
+| `Assets/` | Logos |
+| `Programs/`, `Programs_old/` | Curriculum layout HTML |
+| `Course_requisites/` | Admit-year prereq/coreq JSON |
+| `Transition_courses/` | Spring/summer offerings |
+
+**Not** hosted: all `*.py` generators, `README.md`, `Retired_scripts/`, `Programs_misc/`, `course_correction.html`, `programs_config.json`, `__pycache__/`.
+
+Local preview of the same tree:
+
+```bash
+python3 build_public.py --clean
+python3 -m http.server 8000 --directory public
+```
+
+Full-repo `python3 -m http.server` is fine for development only. After data refreshes on `main`, the Actions deploy updates the live site automatically.
+
+> Note: on a **public** GitHub repo, source files are still visible on github.com. Pages only controls what is on the **website**. Use a private repo if maintainer tooling must not be visible at all.
+
 ### Python dependencies (maintainers only)
 
 Generator scripts require:
@@ -88,6 +130,8 @@ pip install requests beautifulsoup4
 ├── course_requisites_generator.py          # Builds Course_requisites/requisites_<year>.json
 ├── legacy_course_requisites_generator.py   # Legacy 2010–2015 calendar requisites parser
 ├── setup_year.py                           # One-shot safe yearly refresh (orchestrator)
+├── build_public.py                         # Builds runtime-only tree for Pages (used by Actions)
+├── .github/workflows/deploy-pages.yml      # Deploys public/ to GitHub Pages
 ├── annual_calendar_generator.py            # Builds Programs/* layout HTML
 │
 ├── Assets/                                 # Logos and static images
