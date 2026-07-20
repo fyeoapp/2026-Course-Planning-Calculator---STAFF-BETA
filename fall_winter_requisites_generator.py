@@ -28,6 +28,8 @@ from urllib.parse import urljoin, urlparse, urlunparse
 import requests
 from bs4 import BeautifulSoup
 
+from script_utils import JSON_OVERWRITE_WARNING, confirm_overwrite
+
 ROOT = Path(__file__).resolve().parent
 LAYOUT_ROOTS = [ROOT / "Programs", ROOT / "Programs_old"]
 SESSION = requests.Session()
@@ -279,10 +281,20 @@ def save_requisites(courses: list[dict], year: int) -> Path:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Scrape Fall/Winter course requisites.")
+    parser = argparse.ArgumentParser(
+        description="Scrape Fall/Winter course requisites into Fall_Winter_courses/requisites_<year>.json",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=JSON_OVERWRITE_WARNING,
+    )
     parser.add_argument("--year", type=int, default=2026, help="Calendar start year (default 2026)")
     parser.add_argument("--delay", type=float, default=0.15, help="Delay between requests (seconds)")
+    parser.add_argument("--yes", "-y", action="store_true", help="Skip overwrite confirmation prompt")
     args = parser.parse_args()
+
+    out_path = ROOT / "Fall_Winter_courses" / f"requisites_{args.year}.json"
+    if not confirm_overwrite([out_path], reason=JSON_OVERWRITE_WARNING, force=args.yes):
+        print("Cancelled.")
+        return
 
     courses = scrape_requisites(args.year, delay_s=args.delay)
     save_requisites(courses, args.year)

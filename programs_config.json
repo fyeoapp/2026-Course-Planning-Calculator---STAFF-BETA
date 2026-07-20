@@ -1,0 +1,63 @@
+{
+  "planningDefaults": {
+    "transitionYear": 2026,
+    "requisitesYear": 2026,
+    "defaultAdmitYear": "2026"
+  },
+  "programs": [
+    {
+      "id": "Aerospace",
+      "label": "Aerospace Engineering",
+      "calendarName": "Aerospace Engineering",
+      "calendarSlug": "aerospace"
+    },
+    {
+      "id": "Biomedical",
+      "label": "Biomedical Engineering",
+      "calendarName": "Biomedical Engineering",
+      "calendarSlug": "biomedical_eng"
+    },
+    {
+      "id": "Chemical",
+      "label": "Chemical Engineering Co-op",
+      "calendarName": "Chemical Engineering",
+      "calendarSlug": "chemical"
+    },
+    {
+      "id": "Civil",
+      "label": "Civil Engineering",
+      "calendarName": "Civil Engineering",
+      "calendarSlug": "civil"
+    },
+    {
+      "id": "Computer",
+      "label": "Computer Engineering",
+      "calendarName": "Computer Engineering",
+      "calendarSlug": "computer_eng"
+    },
+    {
+      "id": "Electrical",
+      "label": "Electrical Engineering",
+      "calendarName": "Electrical Engineering",
+      "calendarSlug": "electrical"
+    },
+    {
+      "id": "Industrial",
+      "label": "Industrial Engineering",
+      "calendarName": "Industrial Engineering",
+      "calendarSlug": "industrial"
+    },
+    {
+      "id": "Mechanical",
+      "label": "Mechanical Engineering",
+      "calendarName": "Mechanical Engineering",
+      "calendarSlug": "mechanical"
+    },
+    {
+      "id": "Mechatronics",
+      "label": "Mechatronics Engineering",
+      "calendarName": "Mechatronics Engineering",
+      "calendarSlug": "mechatronics-engineering"
+    }
+  ]
+}

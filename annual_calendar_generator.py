@@ -1,139 +1,143 @@
+"""Scrape TMU calendar pages and generate modern curriculum layout HTML (Programs/).
+
+WARNING: Re-running overwrites existing layout files and removes manual edits
+made directly in the HTML (checkbox tweaks, added courses, URL fixes, etc.).
+See script_utils.LAYOUT_OVERWRITE_WARNING and README maintainer notes.
+
+Examples:
+    python3 annual_calendar_generator.py --year 2027
+    python3 annual_calendar_generator.py --year 2027 --program Computer
+    python3 annual_calendar_generator.py --year 2027 --yes
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
 import os
 import re
+import subprocess
+import sys
+from pathlib import Path
+from urllib.parse import urljoin
+
 import requests
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin
-from pathlib import Path
 
-# Mapping of program names to their corresponding URL slugs on TMU website
-programs = {
-   "Aerospace Engineering": "aerospace",
-   "Biomedical Engineering": "biomedical_eng",
-   "Chemical Engineering": "chemical",
-   "Civil Engineering": "civil",
-   "Computer Engineering": "computer_eng",
-   "Electrical Engineering": "electrical",
-   "Industrial Engineering": "industrial",
-   "Mechanical Engineering": "mechanical",
-   "Mechatronics Engineering": "mechatronics-engineering"
-}
+from script_utils import LAYOUT_OVERWRITE_WARNING, confirm_overwrite
 
-def save_program_layouts_flat(programs_list, calendar_year):
-   """Generates files for each program's curriculum layout for a given academic year.
-   Programs list is a hashmap of program names to their corresponding URL slugs on TMU website (e.g., "Computer Engineering": "computer_eng").
-   Calendar year is expected to be the starting year of the academic session (e.g., 2026 for 2026-2027).
-   """
-   calendar_link = f"https://www.torontomu.ca/calendar/{calendar_year}-{calendar_year + 1}/programs/feas/"
-
-    # Regex pattern to identify semester ranges (e.g., 1st & 2nd Semester)
-   semester_range_pattern = re.compile(
-       r"((1st\s*&\s*2nd)|(3rd\s*&\s*4th)|(5th\s*&\s*6th)|(7th\s*&\s*8th))\s*Semester",
-       re.IGNORECASE
-   )
-#    Regex pattern to further filter down into single semester panels (e.g., 1st Semester, 2nd Semester)
-   semester_pattern = re.compile(
-       r"(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+Semester",
-       re.IGNORECASE
-   )
-
-   for program in programs_list:
-       
-       url_slug = programs_list[program]
-       try:
-           response = requests.get(f"{calendar_link}{url_slug}", timeout=(5, 10))
-           response.raise_for_status()
-       except Exception as e:
-           print(f"Error fetching data for program '{program}' at URL: {calendar_link}{url_slug}")
-           print(e)
-           continue
-       
-
-       soup = BeautifulSoup(response.text, "html.parser")
-       all_panels = soup.find_all("div", class_=["panel", "panel-default"])
-       
-       final_parts = []
-       
-       panel_counter = 0
-       common_panel_index = None
-
-    #  Creating a regex pattern to match the program name   
-       program_keywords = f"{program.split(' ')[0]}.*{program.split(' ')[-1]}"
-       program_pattern = re.compile(program_keywords, re.IGNORECASE)
-
-    #  Creating a regex pattern to match the common panels (e.g., "Common First Year Courses")
-       common_pattern = re.compile("common.*first", re.IGNORECASE)
-
-       # Process and append panels directly as they are encountered
-       for panel in all_panels:
-        #    Remove images from panel since they're not locally saved
-           for img in panel.select('p img[src]'): img.decompose()
+ROOT = Path(__file__).resolve().parent
+CONFIG_PATH = ROOT / "programs_config.json"
 
 
-           heading_zone = panel.find("div", class_="panel-heading")
-           panel_body = panel.find("div", class_="panel-body")
+def load_programs_config() -> dict:
+    with open(CONFIG_PATH, encoding="utf-8") as f:
+        return json.load(f)
 
-           if not heading_zone or not panel_body:
-               continue
 
-           body_text = panel_body.get_text(" ", strip=True)
+def programs_for_generator(config: dict, program_id: str | None) -> dict[str, str]:
+    """Map calendar display name → URL slug for selected program(s)."""
+    selected = []
+    for program in config["programs"]:
+        if program_id is None or program["id"] == program_id:
+            selected.append(program)
+    if program_id and not selected:
+        raise ValueError(f"Unknown program id: {program_id}")
+    return {p["calendarName"]: p["calendarSlug"] for p in selected}
 
-           # Validate if it is a structured curriculum semester panel
-           is_valid_course_panel = (
-               semester_range_pattern.search(body_text)
-               and len(semester_pattern.findall(body_text)) >= 2
-            #    qTipCourse class existence indicates a course link is present
-               and panel_body.find("a", class_="qTipCourse")
-           )
 
-           if not is_valid_course_panel:
-               continue
+def layout_output_path(program_id: str, calendar_year: int) -> Path:
+    return ROOT / "Programs" / program_id / f"{program_id}-{calendar_year}_layout.html"
 
-           heading_text = heading_zone.get_text(strip=True)
 
-           
-           # Identify and save the index of the primary/common curriculum panel.
-           # This runs only once ('common_panel_index is None') when it finds the first heading 
-           # matching either a general common panel layout or the specific engineering program name.
-           if common_panel_index is None and (common_pattern.search(heading_text) or program_pattern.search(heading_text)):
-               common_panel_index = panel_counter
+def save_program_layouts_flat(programs_list: dict[str, str], calendar_year: int) -> list[Path]:
+    """Generate layout HTML for each program. Returns paths written."""
+    calendar_link = f"https://www.torontomu.ca/calendar/{calendar_year}-{calendar_year + 1}/programs/feas/"
+    semester_range_pattern = re.compile(
+        r"((1st\s*&\s*2nd)|(3rd\s*&\s*4th)|(5th\s*&\s*6th)|(7th\s*&\s*8th))\s*Semester",
+        re.IGNORECASE,
+    )
+    semester_pattern = re.compile(
+        r"(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+Semester",
+        re.IGNORECASE,
+    )
 
-           # Build checkboxes out on the links
-           for a_tag in panel_body.find_all('a', class_='qTipCourse'):
-               
-            #    Filter out any qTipCourses which are either Workterms (WKT) or are used as notes (e.g., something like * CEN 199 is graded in a pass/fail basis, usually enclosed in small tags on the website) since we do not want to put a checkbox next to these
-               if a_tag.find_parent('small') or re.compile(".*WKT.*", re.IGNORECASE).search(a_tag.text):
-                   continue
+    written: list[Path] = []
 
-               course_code = a_tag.get_text(strip=True)
+    for program, url_slug in programs_list.items():
+        try:
+            response = requests.get(f"{calendar_link}{url_slug}", timeout=(5, 10))
+            response.raise_for_status()
+        except Exception as e:
+            print(f"Error fetching data for program '{program}' at URL: {calendar_link}{url_slug}")
+            print(e)
+            continue
 
-               checkbox = soup.new_tag('input', type='checkbox', value=course_code)
-               checkbox['class'] = 'course-checkbox'
-               checkbox['data-panel-owner'] = str(panel_counter)
+        soup = BeautifulSoup(response.text, "html.parser")
+        all_panels = soup.find_all("div", class_=["panel", "panel-default"])
 
-               label = soup.new_tag('label')
-               label.append(checkbox)
+        final_parts = []
+        panel_counter = 0
+        common_panel_index = None
 
-               new_a = soup.new_tag('a', href=a_tag.get('href'))
-               new_a['class'] = a_tag.get('class', [])
-               new_a.string = course_code
+        program_keywords = f"{program.split(' ')[0]}.*{program.split(' ')[-1]}"
+        program_pattern = re.compile(program_keywords, re.IGNORECASE)
+        common_pattern = re.compile("common.*first", re.IGNORECASE)
 
-               label.append(new_a)
-               a_tag.replace_with(label)
+        for panel in all_panels:
+            for img in panel.select("p img[src]"):
+                img.decompose()
 
-           # Apply basic styling to lists
-           for ul in panel_body.find_all('ul'):
-               ul['style'] = 'list-style: none; padding-left: 0; margin: 0;'
+            heading_zone = panel.find("div", class_="panel-heading")
+            panel_body = panel.find("div", class_="panel-body")
+            if not heading_zone or not panel_body:
+                continue
 
-           # Fix relative hyper-links
-           BASE_URL = "http://torontomu.ca"
-           for tag in panel_body.find_all(href=True):
-               href = tag.get("href")
-               if not href or href.startswith(("#", "mailto:", "http://", "https://")):
-                   continue
-               tag["href"] = urljoin(BASE_URL, href)
+            body_text = panel_body.get_text(" ", strip=True)
+            is_valid_course_panel = (
+                semester_range_pattern.search(body_text)
+                and len(semester_pattern.findall(body_text)) >= 2
+                and panel_body.find("a", class_="qTipCourse")
+            )
+            if not is_valid_course_panel:
+                continue
 
-           # Wrapped back up with clean tracking attribute targets
-           panel_html = f"""
+            heading_text = heading_zone.get_text(strip=True)
+            if common_panel_index is None and (
+                common_pattern.search(heading_text) or program_pattern.search(heading_text)
+            ):
+                common_panel_index = panel_counter
+
+            for a_tag in panel_body.find_all("a", class_="qTipCourse"):
+                if a_tag.find_parent("small") or re.compile(".*WKT.*", re.IGNORECASE).search(a_tag.text):
+                    continue
+
+                course_code = a_tag.get_text(strip=True)
+                checkbox = soup.new_tag("input", type="checkbox", value=course_code)
+                checkbox["class"] = "course-checkbox"
+                checkbox["data-panel-owner"] = str(panel_counter)
+
+                label = soup.new_tag("label")
+                label.append(checkbox)
+
+                new_a = soup.new_tag("a", href=a_tag.get("href"))
+                new_a["class"] = a_tag.get("class", [])
+                new_a.string = course_code
+
+                label.append(new_a)
+                a_tag.replace_with(label)
+
+            for ul in panel_body.find_all("ul"):
+                ul["style"] = "list-style: none; padding-left: 0; margin: 0;"
+
+            base_url = "http://torontomu.ca"
+            for tag in panel_body.find_all(href=True):
+                href = tag.get("href")
+                if not href or href.startswith(("#", "mailto:", "http://", "https://")):
+                    continue
+                tag["href"] = urljoin(base_url, href)
+
+            panel_html = f"""
            <div class="panel panel-default" data-panel-container-id="{panel_counter}">
                <div class="panel-heading"><h4>{heading_text}</h4></div>
                <div class="panel-body">
@@ -141,24 +145,20 @@ def save_program_layouts_flat(programs_list, calendar_year):
                </div>
            </div>
            """
-           final_parts.append(panel_html)
-           panel_counter += 1
+            final_parts.append(panel_html)
+            panel_counter += 1
 
-       # Cross-Panel Clearing State Engine
-       protected_idx = common_panel_index if common_panel_index is not None else 0
-       
-       script_tag = f"""
+        protected_idx = common_panel_index if common_panel_index is not None else 0
+        script_tag = f"""
        <script>
        document.addEventListener("DOMContentLoaded", () => {{
            const protectedIndex = {protected_idx};
 
-           // Tracks change inputs across the layout
            document.addEventListener("change", (e) => {{
                if (!e.target.classList.contains('course-checkbox') || !e.target.checked) return;
 
                const currentPanel = parseInt(e.target.dataset.panelOwner);
 
-               // Clear alternate options if changing tracking selections
                if (currentPanel !== protectedIndex) {{
                    document.querySelectorAll(".course-checkbox").forEach(cb => {{
                        const targetPanel = parseInt(cb.dataset.panelOwner);
@@ -166,8 +166,7 @@ def save_program_layouts_flat(programs_list, calendar_year):
                            cb.checked = false;
                        }}
                    }});
-                   
-                   // Sync button text headers across hidden/unselected options
+
                    if(window.parent && window.parent.document) {{
                       window.parent.document.querySelectorAll('button[data-semester]').forEach(btn => {{
                           const semAttr = btn.getAttribute('data-semester');
@@ -181,28 +180,81 @@ def save_program_layouts_flat(programs_list, calendar_year):
        }});
        </script>
        """
-       final_parts.append(script_tag)
+        final_parts.append(script_tag)
 
-       # Combine everything together sequentially
-       combined_html = "".join(final_parts)
-       inner_soup = BeautifulSoup(combined_html, "html.parser")
-       legible_html = inner_soup.prettify()
+        combined_html = "".join(final_parts)
+        inner_soup = BeautifulSoup(combined_html, "html.parser")
+        legible_html = inner_soup.prettify()
 
-       program_name = program.split(" ")[0]
-       os.makedirs(f"Programs/{program_name}", exist_ok=True)
-       file_name = f"Programs/{program_name}/{program_name}-{calendar_year}_layout.html"
+        program_name = program.split(" ")[0]
+        out_path = layout_output_path(program_name, calendar_year)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
 
-       with open(file_name, "w", encoding="utf-8") as html_file:
-        html_file.write(f'<!--This file was generated using {Path(__file__).name} -->\n')
-        html_file.write('<!DOCTYPE html>\n')
-        html_file.write('<meta charset="UTF-8">\n')
-        html_file.write('<base target="_blank">\n')
-        html_file.write('<div class="scoped bootstrap" style="padding: 20px;">\n')
-        html_file.write('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">\n')
-        html_file.write(legible_html)
-        html_file.write('</div>')
+        with open(out_path, "w", encoding="utf-8") as html_file:
+            html_file.write(f"<!--This file was generated using {Path(__file__).name} -->\n")
+            html_file.write("<!DOCTYPE html>\n")
+            html_file.write('<meta charset="UTF-8">\n')
+            html_file.write('<base target="_blank">\n')
+            html_file.write('<div class="scoped bootstrap" style="padding: 20px;">\n')
+            html_file.write(
+                '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">\n'
+            )
+            html_file.write(legible_html)
+            html_file.write("</div>")
 
-       print(f"Successfully created file: {file_name} (from program '{program}')")
+        written.append(out_path)
+        print(f"Successfully created file: {out_path} (from program '{program}')")
+
+    return written
 
 
-# save_program_layouts_flat(programs, 2026)
+def refresh_manifest(quiet: bool = True) -> None:
+    cmd = [sys.executable, str(ROOT / "build_curriculum_manifest.py")]
+    if quiet:
+        cmd.append("--quiet")
+    subprocess.run(cmd, check=True, cwd=ROOT)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Generate modern curriculum layout HTML under Programs/.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=LAYOUT_OVERWRITE_WARNING,
+    )
+    parser.add_argument("--year", type=int, required=True, help="Calendar start year (e.g. 2027 for 2027-2028)")
+    parser.add_argument(
+        "--program",
+        help="Program id to generate (e.g. Computer). Omit to generate all programs in programs_config.json.",
+    )
+    parser.add_argument(
+        "--yes", "-y",
+        action="store_true",
+        help="Skip overwrite confirmation prompt",
+    )
+    parser.add_argument(
+        "--no-refresh-manifest",
+        action="store_true",
+        help="Do not rebuild curriculum_manifest.json after generation",
+    )
+    args = parser.parse_args()
+
+    config = load_programs_config()
+    programs_list = programs_for_generator(config, args.program)
+    target_paths = [
+        layout_output_path(program.split(" ")[0], args.year)
+        for program in programs_list
+    ]
+
+    if not confirm_overwrite(target_paths, reason=LAYOUT_OVERWRITE_WARNING, force=args.yes):
+        print("Cancelled.")
+        return
+
+    save_program_layouts_flat(programs_list, args.year)
+
+    if not args.no_refresh_manifest:
+        refresh_manifest()
+        print("Refreshed curriculum_manifest.json")
+
+
+if __name__ == "__main__":
+    main()

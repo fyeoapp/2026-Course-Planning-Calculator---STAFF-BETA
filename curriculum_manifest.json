@@ -1,0 +1,1802 @@
+{
+  "generatedAt": "2026-07-20T14:37:00+00:00",
+  "planningDefaults": {
+    "transitionYear": 2026,
+    "requisitesYear": 2026,
+    "defaultAdmitYear": "2026"
+  },
+  "programs": [
+    {
+      "id": "Aerospace",
+      "label": "Aerospace Engineering",
+      "calendarName": "Aerospace Engineering",
+      "calendarSlug": "aerospace",
+      "years": {
+        "2026": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2026_layout.html"
+            }
+          ]
+        },
+        "2025": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2025_layout.html"
+            }
+          ]
+        },
+        "2024": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2024_layout.html"
+            }
+          ]
+        },
+        "2023": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2023_layout.html"
+            }
+          ]
+        },
+        "2022": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2022_layout.html"
+            }
+          ]
+        },
+        "2021": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2021_layout.html"
+            }
+          ]
+        },
+        "2020": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2020_layout.html"
+            }
+          ]
+        },
+        "2019": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2019_layout.html"
+            }
+          ]
+        },
+        "2018": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2018_layout.html"
+            }
+          ]
+        },
+        "2017": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2017_layout.html"
+            }
+          ]
+        },
+        "2016": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2016_layout.html"
+            }
+          ]
+        },
+        "2015": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2015_layout.html"
+            }
+          ]
+        },
+        "2014": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2014_layout.html"
+            }
+          ]
+        },
+        "2013": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2013_layout.html"
+            }
+          ]
+        },
+        "2012": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2012_layout.html"
+            }
+          ]
+        },
+        "2011": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2011_layout.html"
+            }
+          ]
+        },
+        "2010": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Aerospace-2010_layout.html"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Biomedical",
+      "label": "Biomedical Engineering",
+      "calendarName": "Biomedical Engineering",
+      "calendarSlug": "biomedical_eng",
+      "years": {
+        "2026": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2026_layout.html"
+            }
+          ]
+        },
+        "2025": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2025_layout.html"
+            }
+          ]
+        },
+        "2024": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2024_layout.html"
+            }
+          ]
+        },
+        "2023": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2023_layout.html"
+            }
+          ]
+        },
+        "2022": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2022_layout.html"
+            }
+          ]
+        },
+        "2021": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2021_layout.html"
+            }
+          ]
+        },
+        "2020": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2020_layout.html"
+            }
+          ]
+        },
+        "2019": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2019_layout.html"
+            }
+          ]
+        },
+        "2018": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2018_layout.html"
+            }
+          ]
+        },
+        "2017": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2017_layout.html"
+            }
+          ]
+        },
+        "2016": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2016_layout.html"
+            }
+          ]
+        },
+        "2015": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2015_layout.html"
+            }
+          ]
+        },
+        "2014": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2014_layout.html"
+            }
+          ]
+        },
+        "2013": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2013_layout.html"
+            }
+          ]
+        },
+        "2012": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2012_layout.html"
+            }
+          ]
+        },
+        "2011": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2011_layout.html"
+            }
+          ]
+        },
+        "2010": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Biomedical-2010_layout.html"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Chemical",
+      "label": "Chemical Engineering Co-op",
+      "calendarName": "Chemical Engineering",
+      "calendarSlug": "chemical",
+      "years": {
+        "2026": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2026_layout.html"
+            }
+          ]
+        },
+        "2025": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2025_layout.html"
+            }
+          ]
+        },
+        "2024": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2024_layout.html"
+            }
+          ]
+        },
+        "2023": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2023_layout.html"
+            }
+          ]
+        },
+        "2022": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2022_layout.html"
+            }
+          ]
+        },
+        "2021": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2021_layout.html"
+            }
+          ]
+        },
+        "2020": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2020_layout.html"
+            }
+          ]
+        },
+        "2019": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2019_layout.html"
+            }
+          ]
+        },
+        "2018": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2018_layout.html"
+            }
+          ]
+        },
+        "2017": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2017_layout.html"
+            }
+          ]
+        },
+        "2016": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2016_layout.html"
+            }
+          ]
+        },
+        "2015": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2015_layout.html"
+            }
+          ]
+        },
+        "2014": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2014_layout.html"
+            }
+          ]
+        },
+        "2013": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2013_layout.html"
+            }
+          ]
+        },
+        "2012": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2012_layout.html"
+            }
+          ]
+        },
+        "2011": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2011_layout.html"
+            }
+          ]
+        },
+        "2010": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Chemical-2010_layout.html"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Civil",
+      "label": "Civil Engineering",
+      "calendarName": "Civil Engineering",
+      "calendarSlug": "civil",
+      "years": {
+        "2026": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2026_layout.html"
+            }
+          ]
+        },
+        "2025": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2025_layout.html"
+            }
+          ]
+        },
+        "2024": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2024_layout.html"
+            }
+          ]
+        },
+        "2023": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2023_layout.html"
+            }
+          ]
+        },
+        "2022": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2022_layout.html"
+            }
+          ]
+        },
+        "2021": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2021_layout.html"
+            }
+          ]
+        },
+        "2020": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2020_layout.html"
+            }
+          ]
+        },
+        "2019": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2019_layout.html"
+            }
+          ]
+        },
+        "2018": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2018_layout.html"
+            }
+          ]
+        },
+        "2017": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2017_layout.html"
+            }
+          ]
+        },
+        "2016": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2016_layout.html"
+            }
+          ]
+        },
+        "2015": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2015_layout.html"
+            },
+            {
+              "id": "structural_engineering_option",
+              "label": "Structural Engineering Option",
+              "file": "Civil-2015_structural_engineering_option_layout.html"
+            }
+          ]
+        },
+        "2014": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2014_layout.html"
+            },
+            {
+              "id": "structural_engineering_option",
+              "label": "Structural Engineering Option",
+              "file": "Civil-2014_structural_engineering_option_layout.html"
+            }
+          ]
+        },
+        "2013": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2013_layout.html"
+            },
+            {
+              "id": "engineering_geomatics_engineering_option",
+              "label": "Engineering Geomatics Engineering Option",
+              "file": "Civil-2013_engineering_geomatics_engineering_option_layout.html"
+            }
+          ]
+        },
+        "2012": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2012_layout.html"
+            },
+            {
+              "id": "engineering_geomatics_engineering_option",
+              "label": "Engineering Geomatics Engineering Option",
+              "file": "Civil-2012_engineering_geomatics_engineering_option_layout.html"
+            }
+          ]
+        },
+        "2011": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2011_layout.html"
+            },
+            {
+              "id": "engineering_geomatics_engineering_option",
+              "label": "Engineering Geomatics Engineering Option",
+              "file": "Civil-2011_engineering_geomatics_engineering_option_layout.html"
+            }
+          ]
+        },
+        "2010": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Civil-2010_layout.html"
+            },
+            {
+              "id": "engineering_geomatics_engineering_option",
+              "label": "Engineering Geomatics Engineering Option",
+              "file": "Civil-2010_engineering_geomatics_engineering_option_layout.html"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Computer",
+      "label": "Computer Engineering",
+      "calendarName": "Computer Engineering",
+      "calendarSlug": "computer_eng",
+      "years": {
+        "2026": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2026_layout.html"
+            }
+          ]
+        },
+        "2025": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2025_layout.html"
+            }
+          ]
+        },
+        "2024": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2024_layout.html"
+            }
+          ]
+        },
+        "2023": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2023_layout.html"
+            }
+          ]
+        },
+        "2022": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2022_layout.html"
+            }
+          ]
+        },
+        "2021": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2021_layout.html"
+            }
+          ]
+        },
+        "2020": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2020_layout.html"
+            }
+          ]
+        },
+        "2019": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2019_layout.html"
+            }
+          ]
+        },
+        "2018": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2018_layout.html"
+            }
+          ]
+        },
+        "2017": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2017_layout.html"
+            }
+          ]
+        },
+        "2016": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2016_layout.html"
+            }
+          ]
+        },
+        "2015": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2015_layout.html"
+            }
+          ]
+        },
+        "2014": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2014_layout.html"
+            }
+          ]
+        },
+        "2013": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2013_layout.html"
+            }
+          ]
+        },
+        "2012": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2012_layout.html"
+            }
+          ]
+        },
+        "2011": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2011_layout.html"
+            }
+          ]
+        },
+        "2010": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Computer-2010_layout.html"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Electrical",
+      "label": "Electrical Engineering",
+      "calendarName": "Electrical Engineering",
+      "calendarSlug": "electrical",
+      "years": {
+        "2026": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2026_layout.html"
+            }
+          ]
+        },
+        "2025": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2025_layout.html"
+            }
+          ]
+        },
+        "2024": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2024_layout.html"
+            }
+          ]
+        },
+        "2023": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2023_layout.html"
+            }
+          ]
+        },
+        "2022": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2022_layout.html"
+            }
+          ]
+        },
+        "2021": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2021_layout.html"
+            }
+          ]
+        },
+        "2020": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2020_layout.html"
+            }
+          ]
+        },
+        "2019": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2019_layout.html"
+            }
+          ]
+        },
+        "2018": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2018_layout.html"
+            }
+          ]
+        },
+        "2017": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2017_layout.html"
+            }
+          ]
+        },
+        "2016": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2016_layout.html"
+            }
+          ]
+        },
+        "2015": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2015_layout.html"
+            },
+            {
+              "id": "energy_systems_option",
+              "label": "Energy Systems Option",
+              "file": "Electrical-2015_energy_systems_option_layout.html"
+            },
+            {
+              "id": "microsystems_option",
+              "label": "Microsystems Option",
+              "file": "Electrical-2015_microsystems_option_layout.html"
+            },
+            {
+              "id": "multimedia_systems_option",
+              "label": "Multimedia Systems Option",
+              "file": "Electrical-2015_multimedia_systems_option_layout.html"
+            },
+            {
+              "id": "robotics_and_control_systems_option",
+              "label": "Robotics And Control Systems Option",
+              "file": "Electrical-2015_robotics_and_control_systems_option_layout.html"
+            }
+          ]
+        },
+        "2014": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2014_layout.html"
+            },
+            {
+              "id": "energy_systems_option",
+              "label": "Energy Systems Option",
+              "file": "Electrical-2014_energy_systems_option_layout.html"
+            },
+            {
+              "id": "microsystems_option",
+              "label": "Microsystems Option",
+              "file": "Electrical-2014_microsystems_option_layout.html"
+            },
+            {
+              "id": "multimedia_systems_option",
+              "label": "Multimedia Systems Option",
+              "file": "Electrical-2014_multimedia_systems_option_layout.html"
+            },
+            {
+              "id": "robotics_and_control_systems_option",
+              "label": "Robotics And Control Systems Option",
+              "file": "Electrical-2014_robotics_and_control_systems_option_layout.html"
+            }
+          ]
+        },
+        "2013": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2013_layout.html"
+            },
+            {
+              "id": "energy_systems_option",
+              "label": "Energy Systems Option",
+              "file": "Electrical-2013_energy_systems_option_layout.html"
+            },
+            {
+              "id": "microsystems_option",
+              "label": "Microsystems Option",
+              "file": "Electrical-2013_microsystems_option_layout.html"
+            },
+            {
+              "id": "multimedia_systems_option",
+              "label": "Multimedia Systems Option",
+              "file": "Electrical-2013_multimedia_systems_option_layout.html"
+            },
+            {
+              "id": "robotics_and_control_systems_option",
+              "label": "Robotics And Control Systems Option",
+              "file": "Electrical-2013_robotics_and_control_systems_option_layout.html"
+            }
+          ]
+        },
+        "2012": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2012_layout.html"
+            },
+            {
+              "id": "energy_systems_option",
+              "label": "Energy Systems Option",
+              "file": "Electrical-2012_energy_systems_option_layout.html"
+            },
+            {
+              "id": "microsystems_option",
+              "label": "Microsystems Option",
+              "file": "Electrical-2012_microsystems_option_layout.html"
+            },
+            {
+              "id": "multimedia_systems_option",
+              "label": "Multimedia Systems Option",
+              "file": "Electrical-2012_multimedia_systems_option_layout.html"
+            },
+            {
+              "id": "robotics_and_control_systems_option",
+              "label": "Robotics And Control Systems Option",
+              "file": "Electrical-2012_robotics_and_control_systems_option_layout.html"
+            }
+          ]
+        },
+        "2011": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2011_layout.html"
+            },
+            {
+              "id": "energy_systems_option",
+              "label": "Energy Systems Option",
+              "file": "Electrical-2011_energy_systems_option_layout.html"
+            },
+            {
+              "id": "microsystems_option",
+              "label": "Microsystems Option",
+              "file": "Electrical-2011_microsystems_option_layout.html"
+            },
+            {
+              "id": "multimedia_systems_option",
+              "label": "Multimedia Systems Option",
+              "file": "Electrical-2011_multimedia_systems_option_layout.html"
+            },
+            {
+              "id": "robotics_and_control_systems_option",
+              "label": "Robotics And Control Systems Option",
+              "file": "Electrical-2011_robotics_and_control_systems_option_layout.html"
+            }
+          ]
+        },
+        "2010": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Electrical-2010_layout.html"
+            },
+            {
+              "id": "energy_systems_option",
+              "label": "Energy Systems Option",
+              "file": "Electrical-2010_energy_systems_option_layout.html"
+            },
+            {
+              "id": "microsystems_option",
+              "label": "Microsystems Option",
+              "file": "Electrical-2010_microsystems_option_layout.html"
+            },
+            {
+              "id": "multimedia_systems_option",
+              "label": "Multimedia Systems Option",
+              "file": "Electrical-2010_multimedia_systems_option_layout.html"
+            },
+            {
+              "id": "robotics_and_control_systems_option",
+              "label": "Robotics And Control Systems Option",
+              "file": "Electrical-2010_robotics_and_control_systems_option_layout.html"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Industrial",
+      "label": "Industrial Engineering",
+      "calendarName": "Industrial Engineering",
+      "calendarSlug": "industrial",
+      "years": {
+        "2026": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2026_layout.html"
+            }
+          ]
+        },
+        "2025": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2025_layout.html"
+            }
+          ]
+        },
+        "2024": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2024_layout.html"
+            }
+          ]
+        },
+        "2023": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2023_layout.html"
+            }
+          ]
+        },
+        "2022": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2022_layout.html"
+            }
+          ]
+        },
+        "2021": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2021_layout.html"
+            }
+          ]
+        },
+        "2020": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2020_layout.html"
+            }
+          ]
+        },
+        "2019": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2019_layout.html"
+            }
+          ]
+        },
+        "2018": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2018_layout.html"
+            }
+          ]
+        },
+        "2017": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2017_layout.html"
+            }
+          ]
+        },
+        "2016": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2016_layout.html"
+            }
+          ]
+        },
+        "2015": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2015_layout.html"
+            }
+          ]
+        },
+        "2014": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2014_layout.html"
+            }
+          ]
+        },
+        "2013": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2013_layout.html"
+            }
+          ]
+        },
+        "2012": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2012_layout.html"
+            }
+          ]
+        },
+        "2011": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2011_layout.html"
+            }
+          ]
+        },
+        "2010": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Industrial-2010_layout.html"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Mechanical",
+      "label": "Mechanical Engineering",
+      "calendarName": "Mechanical Engineering",
+      "calendarSlug": "mechanical",
+      "years": {
+        "2026": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2026_layout.html"
+            }
+          ]
+        },
+        "2025": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2025_layout.html"
+            }
+          ]
+        },
+        "2024": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2024_layout.html"
+            }
+          ]
+        },
+        "2023": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2023_layout.html"
+            }
+          ]
+        },
+        "2022": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2022_layout.html"
+            }
+          ]
+        },
+        "2021": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2021_layout.html"
+            }
+          ]
+        },
+        "2020": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2020_layout.html"
+            }
+          ]
+        },
+        "2019": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2019_layout.html"
+            }
+          ]
+        },
+        "2018": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2018_layout.html"
+            }
+          ]
+        },
+        "2017": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2017_layout.html"
+            }
+          ]
+        },
+        "2016": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2016_layout.html"
+            }
+          ]
+        },
+        "2015": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2015_layout.html"
+            },
+            {
+              "id": "mechatronics_option",
+              "label": "Mechatronics Option",
+              "file": "Mechanical-2015_mechatronics_option_layout.html"
+            }
+          ]
+        },
+        "2014": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2014_layout.html"
+            },
+            {
+              "id": "mechatronics_option",
+              "label": "Mechatronics Option",
+              "file": "Mechanical-2014_mechatronics_option_layout.html"
+            }
+          ]
+        },
+        "2013": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2013_layout.html"
+            },
+            {
+              "id": "mechatronics_option",
+              "label": "Mechatronics Option",
+              "file": "Mechanical-2013_mechatronics_option_layout.html"
+            }
+          ]
+        },
+        "2012": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2012_layout.html"
+            },
+            {
+              "id": "mechatronics_option",
+              "label": "Mechatronics Option",
+              "file": "Mechanical-2012_mechatronics_option_layout.html"
+            }
+          ]
+        },
+        "2011": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2011_layout.html"
+            },
+            {
+              "id": "mechatronics_option",
+              "label": "Mechatronics Option",
+              "file": "Mechanical-2011_mechatronics_option_layout.html"
+            }
+          ]
+        },
+        "2010": {
+          "calendar": "legacy",
+          "layoutDir": "Programs_old",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechanical-2010_layout.html"
+            },
+            {
+              "id": "mechatronics_option",
+              "label": "Mechatronics Option",
+              "file": "Mechanical-2010_mechatronics_option_layout.html"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Mechatronics",
+      "label": "Mechatronics Engineering",
+      "calendarName": "Mechatronics Engineering",
+      "calendarSlug": "mechatronics-engineering",
+      "years": {
+        "2026": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechatronics-2026_layout.html"
+            }
+          ]
+        },
+        "2025": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechatronics-2025_layout.html"
+            }
+          ]
+        },
+        "2024": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechatronics-2024_layout.html"
+            }
+          ]
+        },
+        "2023": {
+          "calendar": "modern",
+          "layoutDir": "Programs",
+          "layouts": [
+            {
+              "id": "base",
+              "label": "Regular Program",
+              "file": "Mechatronics-2023_layout.html"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

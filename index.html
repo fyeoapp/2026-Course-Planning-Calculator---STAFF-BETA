@@ -190,38 +190,12 @@
           <h3>Select your program:</h3>
           <select id="programSelect" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc">
             <option value="">-- Choose your program --</option>
-            <option value="Aerospace">Aerospace Engineering</option>
-            <option value="Biomedical">Biomedical Engineering</option>
-            <option value="Chemical">Chemical Engineering Co-op</option>
-            <option value="Civil">Civil Engineering</option>
-            <option value="Computer">Computer Engineering</option>
-            <option value="Electrical">Electrical Engineering</option>
-            <option value="Industrial">Industrial Engineering</option>
-            <option value="Mechanical">Mechanical Engineering</option>
-            <option value="Mechatronics">Mechatronics Engineering</option>
           </select>
 
     <h3 style="margin-top:20px;">Select your admit year</h3>
     <label for="admitYearSelect" style="display:block;margin-bottom:6px;">Admit year</label>
     <select id="admitYearSelect" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc">
       <option value="">-- Select admit year --</option>
-      <option value="2010">2010</option>
-      <option value="2011">2011</option>
-      <option value="2012">2012</option>
-      <option value="2013">2013</option>
-      <option value="2014">2014</option>
-      <option value="2015">2015</option>
-      <option value="2016">2016</option>
-      <option value="2017">2017</option>
-      <option value="2018">2018</option>
-      <option value="2019">2019</option>
-      <option value="2020">2020</option>
-      <option value="2021">2021</option>
-      <option value="2022">2022</option>
-      <option value="2023">2023</option>
-      <option value="2024">2024</option>
-      <option value="2025">2025</option>
-      <option value="2026" selected>2026</option>
     </select>
 
           <!-- local file input removed: automatic/embedded loading or manifest-driven flow is used instead -->
@@ -442,31 +416,98 @@
   }
 
 // 
-  // ── Programs_old (2010–2015) support — does not affect Programs flow ──
-  const OLD_PROGRAM_YEARS = ['2010', '2011', '2012', '2013', '2014', '2015'];
-  const OLD_PROGRAM_STREAMS = {"Aerospace": {"2010": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Aerospace-2015_layout.html"}]}, "Biomedical": {"2010": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Biomedical-2015_layout.html"}]}, "Chemical": {"2010": [{"id": "base", "label": "Regular Program", "file": "Chemical-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Chemical-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Chemical-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Chemical-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Chemical-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Chemical-2015_layout.html"}]}, "Civil": {"2010": [{"id": "base", "label": "Regular Program", "file": "Civil-2010_layout.html"}, {"id": "engineering_geomatics_engineering_option", "label": "Engineering Geomatics Engineering Option", "file": "Civil-2010_engineering_geomatics_engineering_option_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Civil-2011_layout.html"}, {"id": "engineering_geomatics_engineering_option", "label": "Engineering Geomatics Engineering Option", "file": "Civil-2011_engineering_geomatics_engineering_option_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Civil-2012_layout.html"}, {"id": "engineering_geomatics_engineering_option", "label": "Engineering Geomatics Engineering Option", "file": "Civil-2012_engineering_geomatics_engineering_option_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Civil-2013_layout.html"}, {"id": "engineering_geomatics_engineering_option", "label": "Engineering Geomatics Engineering Option", "file": "Civil-2013_engineering_geomatics_engineering_option_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Civil-2014_layout.html"}, {"id": "structural_engineering_option", "label": "Structural Engineering Option", "file": "Civil-2014_structural_engineering_option_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Civil-2015_layout.html"}, {"id": "structural_engineering_option", "label": "Structural Engineering Option", "file": "Civil-2015_structural_engineering_option_layout.html"}]}, "Computer": {"2010": [{"id": "base", "label": "Regular Program", "file": "Computer-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Computer-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Computer-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Computer-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Computer-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Computer-2015_layout.html"}]}, "Electrical": {"2010": [{"id": "base", "label": "Regular Program", "file": "Electrical-2010_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2010_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2010_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2010_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2010_robotics_and_control_systems_option_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Electrical-2011_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2011_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2011_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2011_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2011_robotics_and_control_systems_option_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Electrical-2012_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2012_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2012_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2012_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2012_robotics_and_control_systems_option_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Electrical-2013_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2013_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2013_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2013_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2013_robotics_and_control_systems_option_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Electrical-2014_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2014_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2014_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2014_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2014_robotics_and_control_systems_option_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Electrical-2015_layout.html"}, {"id": "energy_systems_option", "label": "Energy Systems Option", "file": "Electrical-2015_energy_systems_option_layout.html"}, {"id": "microsystems_option", "label": "Microsystems Option", "file": "Electrical-2015_microsystems_option_layout.html"}, {"id": "multimedia_systems_option", "label": "Multimedia Systems Option", "file": "Electrical-2015_multimedia_systems_option_layout.html"}, {"id": "robotics_and_control_systems_option", "label": "Robotics and Control Systems Option", "file": "Electrical-2015_robotics_and_control_systems_option_layout.html"}]}, "Industrial": {"2010": [{"id": "base", "label": "Regular Program", "file": "Industrial-2010_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Industrial-2011_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Industrial-2012_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Industrial-2013_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Industrial-2014_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Industrial-2015_layout.html"}]}, "Mechanical": {"2010": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2010_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2010_mechatronics_option_layout.html"}], "2011": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2011_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2011_mechatronics_option_layout.html"}], "2012": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2012_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2012_mechatronics_option_layout.html"}], "2013": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2013_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2013_mechatronics_option_layout.html"}], "2014": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2014_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2014_mechatronics_option_layout.html"}], "2015": [{"id": "base", "label": "Regular Program", "file": "Mechanical-2015_layout.html"}, {"id": "mechatronics_option", "label": "Mechatronics Option", "file": "Mechanical-2015_mechatronics_option_layout.html"}]}};
+  // ── Curriculum manifest (program/year/layout index) ──
+  window.__curriculumManifest = null;
+
+  async function loadCurriculumManifest() {
+    const res = await fetch('curriculum_manifest.json');
+    if (!res.ok) throw new Error(`Could not load curriculum_manifest.json (${res.status})`);
+    window.__curriculumManifest = await res.json();
+    populateProgramSelect();
+  }
+
+  function getProgramManifestEntry(programId) {
+    if (!window.__curriculumManifest) return null;
+    return window.__curriculumManifest.programs.find(p => p.id === programId) || null;
+  }
+
+  function getYearManifestEntry(programId, year) {
+    const program = getProgramManifestEntry(programId);
+    if (!program) return null;
+    return program.years[String(year)] || null;
+  }
+
+  function populateProgramSelect() {
+    const programSelect = document.getElementById('programSelect');
+    if (!programSelect || !window.__curriculumManifest) return;
+
+    programSelect.innerHTML = '<option value="">-- Choose your program --</option>';
+    window.__curriculumManifest.programs.forEach(program => {
+      const opt = document.createElement('option');
+      opt.value = program.id;
+      opt.textContent = program.label;
+      programSelect.appendChild(opt);
+    });
+
+    programSelect.onchange = populateAdmitYearSelect;
+    populateAdmitYearSelect();
+  }
+
+  function populateAdmitYearSelect() {
+    const programSelect = document.getElementById('programSelect');
+    const admitYearSelect = document.getElementById('admitYearSelect');
+    if (!programSelect || !admitYearSelect) return;
+
+    const programId = programSelect.value.split(' ')[0];
+    admitYearSelect.innerHTML = '<option value="">-- Select admit year --</option>';
+    if (!programId) return;
+
+    const program = getProgramManifestEntry(programId);
+    if (!program) return;
+
+    const defaultYear = window.__curriculumManifest.planningDefaults?.defaultAdmitYear;
+    Object.keys(program.years)
+      .sort((a, b) => Number(b) - Number(a))
+      .forEach(year => {
+        const opt = document.createElement('option');
+        opt.value = year;
+        opt.textContent = year;
+        if (year === defaultYear) opt.selected = true;
+        admitYearSelect.appendChild(opt);
+      });
+  }
+
   window.__cameFromOldStreamPicker = false;
   window.__selectedOldStreamId = null;
   window.__selectedSemester = null;
   window.__currentLayoutPath = null;
 
+  function isLegacyYear(programId, year) {
+    const yearEntry = getYearManifestEntry(programId, year);
+    return yearEntry?.calendar === 'legacy';
+  }
+
   function isOldAdmitYear(year) {
-    return OLD_PROGRAM_YEARS.includes(String(year));
+    const program = document.getElementById('programSelect')?.value?.split(' ')[0];
+    if (!program) return Number(year) <= 2015;
+    return isLegacyYear(program, year);
   }
 
   function getOldStreams(program, year) {
-    const byProgram = OLD_PROGRAM_STREAMS[program];
-    if (!byProgram) return null;
-    return byProgram[String(year)] || null;
+    const yearEntry = getYearManifestEntry(program, year);
+    if (!yearEntry || yearEntry.calendar !== 'legacy') return null;
+    return yearEntry.layouts;
+  }
+
+  function getLayoutPath(program, year, streamId) {
+    const yearEntry = getYearManifestEntry(program, year);
+    if (!yearEntry || !yearEntry.layouts?.length) return null;
+    const match = yearEntry.layouts.find(s => s.id === streamId) || yearEntry.layouts[0];
+    return `${yearEntry.layoutDir}/${program}/${match.file}`;
   }
 
   function getOldLayoutPath(program, year, streamId) {
-    const streams = getOldStreams(program, year);
-    if (streams && streams.length) {
-      const match = streams.find(s => s.id === streamId) || streams[0];
-      return `Programs_old/${program}/${match.file}`;
-    }
-    return `Programs_old/${program}/${program}-${year}_layout.html`;
+    return getLayoutPath(program, year, streamId);
   }
 
   function injectSemesterSelectAllButtonsOld(iframeDoc) {
@@ -724,16 +765,26 @@
       alert('Please select your admit year before continuing.');
       return;
     }
+    if (!window.__curriculumManifest) {
+      alert('Curriculum data is still loading. Please wait a moment and try again.');
+      return;
+    }
 
-    // 2010–2015 use Programs_old exclusively (option picker when needed)
+    const layoutPath = getLayoutPath(program, admitYear, 'base');
+    if (!layoutPath) {
+      alert(`No curriculum layout found for ${program} (${admitYear}).`);
+      return;
+    }
+
+    // Legacy calendars (Programs_old): option picker when needed
     if (isOldAdmitYear(admitYear)) {
       handleOldProgramContinue(program, admitYear);
       return;
     }
 
-    // 2016+ Programs path (unchanged)
+    // Modern calendars (Programs/)
     window.__cameFromOldStreamPicker = false;
-    window.__currentLayoutPath = `Programs/${program}/${program}-${admitYear}_layout.html`;
+    window.__currentLayoutPath = layoutPath;
 
     const programNameYear = Object.assign(
       document.createElement('h2'),{
@@ -1174,6 +1225,13 @@
     document.getElementById('step5').classList.remove('hidden');
     updateBackButtonVisibility();
 }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadCurriculumManifest().catch(err => {
+      console.error(err);
+      alert('Could not load curriculum_manifest.json. Run the app through a local server from the repo root (see README).');
+    });
+  });
 
 </script>
 </body>
