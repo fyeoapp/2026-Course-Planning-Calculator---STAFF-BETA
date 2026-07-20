@@ -247,6 +247,7 @@ Common manual edits that would be lost:
 - **Adding course links or checkboxes** for offerings missing from the calendar layout but needed for eligibility (some electives, transition-only courses)
 - **Fixing broken calendar URLs** (especially `Programs_old` 2010–2015 links)
 - **Adjusting stream/option panels** for multi-path programs (Computer, Civil, Electrical, Mechanical)
+- **Stripping leftover TMU scripts** — the live calendar injects jQuery `addCoursePopover(...)` snippets; they are useless in this app (no `$` loaded) and only produce console errors. The modern layout generator strips them on scrape; existing files were cleaned the same way. Do **not** remove the vanilla panel-clearing `<script>` at the bottom of multi-panel layouts.
 
 The manifest builder does **not** cause any of this — it only lists files. The risk is specifically from re-running **`annual_calendar_generator.py`** (or the retired old generator in `Retired_scripts/`).
 

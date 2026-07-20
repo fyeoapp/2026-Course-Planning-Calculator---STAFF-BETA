@@ -130,6 +130,13 @@ def save_program_layouts_flat(programs_list: dict[str, str], calendar_year: int)
             for ul in panel_body.find_all("ul"):
                 ul["style"] = "list-style: none; padding-left: 0; margin: 0;"
 
+            # Drop TMU calendar jQuery popover leftovers — they need $ / addCoursePopover
+            # from the live calendar site and only spam the console in our iframe.
+            for script in list(panel_body.find_all("script")):
+                text = script.get_text() or ""
+                if "addCoursePopover" in text or "$(document)" in text or "jQuery" in text:
+                    script.decompose()
+
             base_url = "http://torontomu.ca"
             for tag in panel_body.find_all(href=True):
                 href = tag.get("href")
