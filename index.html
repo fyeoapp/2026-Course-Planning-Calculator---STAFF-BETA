@@ -1067,13 +1067,27 @@
     try {
         const panels = iframeDoc.querySelectorAll('[data-panel-container-id]');
         if (panels.length > 0) {
-            // Multi-stream layouts (Computer/Civil/Mechanical): common panel 0 is
-            // always included; also include any option panel the student checked.
+            // Multi-stream layouts (Computer/Civil/Mechanical):
+            // • Panel 0 = common years (always included)
+            // • Panels 1+ = program options/streams
+            // If the student has only checked common-year courses, include EVERY
+            // option panel so courses that first appear there (e.g. Civil CVL 500)
+            // can still be suggested. Once they check a course in an option panel,
+            // lock to that option (+ panel 0). Layout scripts already clear other
+            // option panels when one is selected.
             activePanelIds = new Set(['0']);
             checked.forEach(cb => {
                 const owner = cb.getAttribute('data-panel-owner');
                 if (owner !== null && owner !== '') activePanelIds.add(String(owner));
             });
+
+            const optionPanelIds = Array.from(panels)
+                .map(p => p.getAttribute('data-panel-container-id'))
+                .filter(id => id !== null && id !== '' && id !== '0');
+            const hasOptionSelection = [...activePanelIds].some(id => id !== '0');
+            if (!hasOptionSelection) {
+                optionPanelIds.forEach(id => activePanelIds.add(id));
+            }
 
             programCourseSet = new Set();
             activePanelIds.forEach(id => {

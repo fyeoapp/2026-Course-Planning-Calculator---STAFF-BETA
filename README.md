@@ -242,7 +242,7 @@ That runs transition spring + summer, `Course_requisites/requisites_<YYYY>.json`
 - Antirequisites are scraped but not enforced in eligibility logic.
 - Eligibility uses **admit-year** requisites from `Course_requisites/`; if that file is missing, admit years before 2016 fall back to 2016.
 - ~40+ legacy or retired course codes may fail to scrape and will have empty prereq data.
-- Multi-stream programs (Computer, Civil, Mechanical, etc.) filter Transition results to the student's active panel(s); Fall/Winter uses semester checkboxes from active panels.
+- Multi-stream programs (Computer, Civil, Mechanical, etc.): if only common-year (panel 0) courses are checked, eligibility includes all option panels; once a course is checked in an option panel, results lock to that option (+ common). Fall/Winter uses semester checkboxes from those same active panels.
 
 ---
 
