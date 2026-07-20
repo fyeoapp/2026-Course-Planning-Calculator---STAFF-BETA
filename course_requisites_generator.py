@@ -4,17 +4,18 @@ Used by Fall, Winter, and Spring/Summer (Transition) eligibility so prereq/
 coreq checks follow the student's admit-year calendar — not only the current
 planning year's course pages.
 
-Collects course codes from:
-  • Programs/ and Programs_old/ layout files for that year
-  • Transition spring/summer offering JSON (so transition-only codes are included)
+  • 2016+  — modern calendar course pages (Programs/ + transition codes)
+  • 2010–2015 — legacy calendar subject pages (Programs_old/) via
+    legacy_course_requisites_generator.py
 
-Resolves each code to that year's TMU course page, scrapes requisites, and writes:
+Writes:
 
     Course_requisites/requisites_<year>.json
 
 Examples:
     python3 course_requisites_generator.py --year 2024
-    python3 course_requisites_generator.py --year 2026 --yes
+    python3 course_requisites_generator.py --year 2014
+    python3 course_requisites_generator.py --years 2010-2015 --yes
     python3 course_requisites_generator.py --years 2016-2026 --yes
 """
 
@@ -287,6 +288,11 @@ def fetch_requisites(url: str) -> dict:
 
 
 def scrape_requisites(year: int, delay_s: float = 0.15) -> list[dict]:
+    if year <= 2015:
+        from legacy_course_requisites_generator import scrape_legacy_requisites
+
+        return scrape_legacy_requisites(year, delay_s=delay_s)
+
     collected = collect_courses_for_year(year)
     extracted: list[dict] = []
     failures: list[tuple[str, str]] = []

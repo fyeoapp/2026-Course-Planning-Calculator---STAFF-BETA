@@ -86,6 +86,7 @@ pip install requests beautifulsoup4
 ├── script_utils.py                         # Shared overwrite confirmation for generators
 ├── transition_courses_generator.py         # Builds Transition_courses/*.json
 ├── course_requisites_generator.py          # Builds Course_requisites/requisites_<year>.json
+├── legacy_course_requisites_generator.py   # Legacy 2010–2015 calendar requisites parser
 ├── setup_year.py                           # One-shot safe yearly refresh (orchestrator)
 ├── annual_calendar_generator.py            # Builds Programs/* layout HTML
 │
@@ -107,7 +108,7 @@ pip install requests beautifulsoup4
 - **`Programs_old/`** — Generated HTML curriculum checklists for admit years **2010–2015**. May include stream-specific files and `common_to_*` shared blocks. Course links use `/calendar/<year>-<year+1>/` paths.
 - **`Programs_misc/`** — Older JSON curriculum representations (semester-grouped course lists). Retained for reference; the live app loads HTML layouts from `Programs/` and `Programs_old/`.
 - **`Transition_courses/`** — Scraped transition *offerings* for Spring/Summer mode, e.g. `spring/spring_2026.json` and `summer/summer_2026.json`. These files list which courses are offered; prereq/coreq fields are empty placeholders. Eligibility always loads requisites from `Course_requisites/` for the student's admit year.
-- **`Course_requisites/`** — Per admit-year requisites (`requisites_<year>.json`) used by Fall, Winter, **and** Transition eligibility. A 2024 admit is checked against the 2024–2025 calendar rules.
+- **`Course_requisites/`** — Per admit-year requisites (`requisites_<year>.json`) used by Fall, Winter, **and** Transition eligibility. A 2014 admit is checked against the 2014–2015 calendar; a 2024 admit against 2024–2025. Years **2010–2015** come from legacy `pg*.html` subject pages; **2016+** from modern course pages.
 - **`Assets/`** — Static assets such as the FYEO logo shown in the app header.
 
 ### Generator scripts
@@ -116,7 +117,8 @@ pip install requests beautifulsoup4
 |--------|---------|--------|
 | `build_curriculum_manifest.py` | Scans `Programs/` + `Programs_old/` and writes the manifest | `curriculum_manifest.json` |
 | `transition_courses_generator.py` | Scrapes Engineering Transition Program spring/summer sections | `Transition_courses/spring/*.json`, `Transition_courses/summer/*.json` |
-| `course_requisites_generator.py` | Scrapes admit-year prereqs/coreqs from layout + transition course codes | `Course_requisites/requisites_<year>.json` |
+| `course_requisites_generator.py` | Scrapes admit-year prereqs/coreqs (modern 2016+ or legacy 2010–2015) | `Course_requisites/requisites_<year>.json` |
+| `legacy_course_requisites_generator.py` | Legacy calendar page parser used by the requisites generator for 2010–2015 | (called internally) |
 | `setup_year.py` | Runs the safe yearly refresh steps (transition + requisites + manifest) | Same as the scripts it calls |
 | `annual_calendar_generator.py` | Scrapes the TMU calendar and builds modern curriculum layouts | `Programs/<Program>/...` |
 
@@ -136,6 +138,8 @@ All generator scripts support `--help`. Layout and JSON generators prompt **y/n*
 | `python3 setup_year.py --year 2027 --steps requisites,manifest` | Requisites + manifest only (any comma-separated subset of `transition,requisites,manifest`) |
 
 Layouts are **not** included. Run `annual_calendar_generator.py` separately when you intentionally want new `Programs/*` HTML.
+
+For admit years **2010–2015**, `course_requisites_generator.py` routes to `legacy_course_requisites_generator.py`, which scrapes the old `/calendar/YYYY-YYYY/pg*.html#…` subject pages linked from `Programs_old/` (one fetch per page, many courses per page).
 
 Example maintainer commands:
 
@@ -240,7 +244,7 @@ That runs transition spring + summer, `Course_requisites/requisites_<YYYY>.json`
 ### Known limitations
 
 - Antirequisites are scraped but not enforced in eligibility logic.
-- Eligibility uses **admit-year** requisites from `Course_requisites/`; if that file is missing, admit years before 2016 fall back to 2016.
+- Eligibility uses **admit-year** requisites from `Course_requisites/` (legacy scrape for 2010–2015, modern for 2016+). If a pre-2016 file is missing, the app falls back to 2016 as a last resort.
 - ~40+ legacy or retired course codes may fail to scrape and will have empty prereq data.
 - Multi-stream programs (Computer, Civil, Mechanical, etc.): if only common-year (panel 0) courses are checked, eligibility includes all option panels; once a course is checked in an option panel, results lock to that option (+ common). Fall/Winter uses semester checkboxes from those same active panels.
 

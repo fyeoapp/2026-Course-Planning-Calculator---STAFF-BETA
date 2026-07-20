@@ -958,7 +958,8 @@
     // ── Load offerings + admit-year requisites + aliases ────────────────────
     // Transition: course *offerings* come from spring/summer 2026 JSON.
     // Requisites (prereqs/coreqs) always come from Course_requisites/requisites_<admitYear>.json
-    // so a 2024 student is checked against the 2024–2025 calendar rules.
+    // (2010–2015 = legacy calendar scrape; 2016+ = modern). Fallback to 2016 only if
+    // a legacy year file is missing.
     let springCourses, summerCourses, admitYearRequisites = [];
     let aliasConfig = { equivalences: [] };
     let requisitesYearUsed = admitYear;
@@ -973,13 +974,14 @@
 
     try {
         let reqBundle = await loadAdmitYearRequisites(admitYear);
-        // Legacy years (2010–2015) often lack modern course pages; fall back to 2016.
+        // Last-resort fallback if a legacy year was never scraped.
         if (!reqBundle && admitYearNum < 2016) {
             reqBundle = await loadAdmitYearRequisites(2016);
             if (reqBundle) {
                 requisitesYearUsed = '2016';
                 console.warn(
-                    `No Course_requisites/requisites_${admitYear}.json — using 2016 requisites as fallback`
+                    `No Course_requisites/requisites_${admitYear}.json — using 2016 requisites as fallback. ` +
+                    `Generate the admit-year file with: python3 course_requisites_generator.py --year ${admitYear}`
                 );
             }
         }
