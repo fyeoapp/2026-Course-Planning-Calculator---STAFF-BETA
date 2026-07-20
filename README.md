@@ -33,8 +33,8 @@ Do **not** serve the whole git repo from GitHub Pages. Maintainer scripts (`.py`
 
 **Production deploy (recommended):** GitHub Actions builds a runtime-only tree and publishes **only** that to Pages.
 
-1. In the GitHub repo: **Settings → Pages → Build and deployment → Source: GitHub Actions** (not “Deploy from a branch”).
-2. Push to `main` (or run the **Deploy GitHub Pages** workflow manually under the Actions tab).
+1. In the GitHub repo: **Settings → Pages → Build and deployment → Source: GitHub Actions** (not “Deploy from a branch”). Until you flip this, GitHub keeps publishing the **entire branch** and `/setup_year.py` will still download.
+2. Push to `main` or `intelli` (or run the **Deploy GitHub Pages** workflow manually under the Actions tab).
 
 The workflow (`.github/workflows/deploy-pages.yml`) runs:
 
