@@ -955,13 +955,46 @@
         Array.from(checked).map(cb => cb.value.toUpperCase().replace(/\s+/g, ''))
     );
 
-    // ── Load course JSON + optional course alias map ────────────────────────
-    let springCourses, summerCourses, fallWinterRequisites = [];
+    // ── Load offerings + admit-year requisites + aliases ────────────────────
+    // Transition: course *offerings* come from spring/summer 2026 JSON.
+    // Requisites (prereqs/coreqs) always come from Course_requisites/requisites_<admitYear>.json
+    // so a 2024 student is checked against the 2024–2025 calendar rules.
+    let springCourses, summerCourses, admitYearRequisites = [];
     let aliasConfig = { equivalences: [] };
+    let requisitesYearUsed = admitYear;
+
+    async function loadAdmitYearRequisites(year) {
+        // Cache-bust so a prior 404 (before a year file existed) cannot stick.
+        const path = `Course_requisites/requisites_${year}.json?v=${Date.now()}`;
+        const res = await fetch(path);
+        if (res.ok) return { year, data: await res.json(), path };
+        return null;
+    }
+
     try {
+        let reqBundle = await loadAdmitYearRequisites(admitYear);
+        // Legacy years (2010–2015) often lack modern course pages; fall back to 2016.
+        if (!reqBundle && admitYearNum < 2016) {
+            reqBundle = await loadAdmitYearRequisites(2016);
+            if (reqBundle) {
+                requisitesYearUsed = '2016';
+                console.warn(
+                    `No Course_requisites/requisites_${admitYear}.json — using 2016 requisites as fallback`
+                );
+            }
+        }
+        if (!reqBundle) {
+            alert(
+                `Missing Course_requisites/requisites_${admitYear}.json.\n\n` +
+                `Generate it with:\npython3 course_requisites_generator.py --year ${admitYear}`
+            );
+            return;
+        }
+        admitYearRequisites = reqBundle.data;
+        requisitesYearUsed = String(reqBundle.year);
+
         if (selectedSemester === 'fall' || selectedSemester === 'winter') {
-            const fwRes = await fetch('Fall_Winter_courses/requisites_2026.json');
-            fallWinterRequisites = await fwRes.json();
+            // Fall/Winter candidates use admit-year requisites directly
         } else {
             const [springRes, summerRes] = await Promise.all([
                 fetch('Transition_courses/spring/spring_2026.json'),
@@ -1025,8 +1058,10 @@
     // Course renames across admit years: add an entry to course_aliases.json
     // (codes + admitYears from/to + optional programs). See that file's howToAdd.
     //
-    // Fall/Winter requisites: regenerate with fall_winter_requisites_generator.py
-    // → Fall_Winter_courses/requisites_2026.json (current calendar rules for all admit years).
+    // Fall/Winter / Transition requisites: Course_requisites/requisites_<admitYear>.json
+    // (regenerate with course_requisites_generator.py --year <admitYear>).
+    // Transition *offerings* still come from Transition_courses/*_2026.json; only
+    // prereq/coreq text is taken from the admit-year requisites file.
     let programCourseSet = null; // null = fail-open (no filter)
     let activePanelIds = null;
     try {
@@ -1097,9 +1132,47 @@
         return programCourseSet.has(normalizeCode(code));
     }
 
+    function requisitesByCode() {
+        const map = new Map();
+        (admitYearRequisites || []).forEach(c => {
+            map.set(normalizeCode(c.anchor_text), c);
+        });
+        return map;
+    }
+
+    const admitReqByCode = requisitesByCode();
+
+    function withAdmitYearRequisites(course) {
+        // Offerings may come from Transition_courses/* (planning-year list), but
+        // prereqs/coreqs MUST come from Course_requisites for the admit year.
+        // Never fall back to transition JSON requisites (those are planning-year).
+        const scraped = admitReqByCode.get(normalizeCode(course.anchor_text));
+        if (!scraped) {
+            console.warn(
+                `No ${requisitesYearUsed} requisites for ${course.anchor_text}; ` +
+                'treating as no prereqs/coreqs (not using transition JSON rules)'
+            );
+            return {
+                ...course,
+                prereqs: [],
+                coreqs: [],
+                antireqs: [],
+                custom_reqs: [],
+            };
+        }
+        return {
+            ...course,
+            prereqs: scraped.prereqs || [],
+            coreqs: scraped.coreqs || [],
+            antireqs: scraped.antireqs || [],
+            custom_reqs: scraped.custom_reqs || [],
+        };
+    }
+
     function getEligible(courseList) {
         const eligible = [];
-        for (const course of courseList) {
+        for (const raw of courseList) {
+            const course = withAdmitYearRequisites(raw);
             const code = normalizeCode(course.anchor_text);
             if (effectiveCompleted.has(code)) continue;     // already completed (incl. aliases)
             if (!checkPrereqs(course.prereqs)) continue;    // condition 1: prereqs not met
@@ -1129,11 +1202,6 @@
 
     function buildFallWinterCandidates(season) {
         const wantOdd = season === 'fall';
-        const reqByCode = new Map();
-        (fallWinterRequisites || []).forEach(c => {
-            reqByCode.set(normalizeCode(c.anchor_text), c);
-        });
-
         const candidates = [];
         const seen = new Set();
         iframeDoc.querySelectorAll('input.course-checkbox[data-semester]').forEach(cb => {
@@ -1149,7 +1217,7 @@
 
             const label = cb.closest('label');
             const link = label ? label.querySelector('a.qTipCourse') : null;
-            const scraped = reqByCode.get(code);
+            const scraped = admitReqByCode.get(code);
             candidates.push({
                 anchor_text: scraped ? scraped.anchor_text : (cb.value || formatCourseCode(code)),
                 url: (scraped && scraped.url) || (link && link.href) || '',

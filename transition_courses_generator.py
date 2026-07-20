@@ -1,6 +1,10 @@
-"""Scrapes Engineering Transition Program spring/summer course offerings from the
-TMU website, including prerequisites and other requisites for each course, and
-writes them to JSON files under Transition_courses/ used by the calculator.
+"""Scrapes Engineering Transition Program spring/summer course *offerings*
+from the TMU website and writes them under Transition_courses/.
+
+Eligibility prereqs/coreqs are NOT taken from these files. The calculator
+loads admit-year rules from Course_requisites/requisites_<admitYear>.json
+(see course_requisites_generator.py). This scraper only records which
+courses are offered in Spring/Summer for the planning year.
 
 Important — what --year does:
   • Selects which accordion block to scrape on TMU's live transition page
@@ -27,7 +31,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 from pathlib import Path
 
@@ -43,63 +46,6 @@ TRANSITION_URL = (
 )
 
 
-def parse_requisites(requisites_block):
-    result = {
-        "prereqs": [],
-        "coreqs": [],
-        "antireqs": [],
-        "custom_reqs": [],
-    }
-
-    if not requisites_block:
-        return result
-
-    key_map = {
-        "Prerequisites": "prereqs",
-        "Co-Requisites": "coreqs",
-        "Antirequisites": "antireqs",
-        "Custom Requisites": "custom_reqs",
-    }
-
-    def parse_req_text(p_tag):
-        if not p_tag:
-            return []
-
-        text = p_tag.get_text(separator=" ", strip=True)
-        if text.lower() == "none" or not text:
-            return []
-
-        text = text.replace("(", "").replace(")", "")
-        and_parts = re.split(r"\band\b|,", text, flags=re.IGNORECASE)
-        parsed = []
-
-        for part in and_parts:
-            part = part.strip()
-            if not part:
-                continue
-            if re.search(r"\bor\b", part, flags=re.IGNORECASE):
-                or_choices = re.split(r"\bor\b", part, flags=re.IGNORECASE)
-                cleaned = [c.strip().replace(" ", "") for c in or_choices if c.strip()]
-                if cleaned:
-                    parsed.append(cleaned)
-            else:
-                course = part.replace(" ", "")
-                if course:
-                    parsed.append(course)
-        return parsed
-
-    for div in requisites_block.find_all(class_="requisites"):
-        heading = div.find("h3")
-        if not heading:
-            continue
-        key = key_map.get(heading.get_text(strip=True))
-        if not key:
-            continue
-        result[key] = parse_req_text(div.find("p"))
-
-    return result
-
-
 def output_path(season: str, transition_year: str | int) -> Path:
     season = season.strip().lower()
     year = str(transition_year).strip()
@@ -107,7 +53,7 @@ def output_path(season: str, transition_year: str | int) -> Path:
 
 
 def extract_courses(season: str, transition_year: str | int) -> Path | None:
-    """Extract courses for the given season and transition year."""
+    """Extract offering list for the given season and transition year."""
     season = season.strip().lower()
     transition_year = str(transition_year).strip()
 
@@ -142,30 +88,21 @@ def extract_courses(season: str, transition_year: str | int) -> Path | None:
         return None
 
     for idx, course in enumerate(target_container.find_all("a", class_="qTipCourse"), start=1):
-        url = f"https://www.torontomu.ca{course.get('href', '').replace('.html', '/')}"
-        try:
-            resp = requests.get(url, timeout=(5, 10))
-            resp.raise_for_status()
-        except Exception as e:
-            print(f"Error fetching course details at: {url} | {e}")
-            continue
-
-        soup_req = BeautifulSoup(resp.text, "html.parser")
-        requisites = soup_req.find(class_="requisitesBlock")
-        reqs = parse_requisites(requisites)
-
+        href_course = course.get("href", "") or ""
+        url = f"https://www.torontomu.ca{href_course.replace('.html', '/')}"
+        # Offerings only — requisites come from Course_requisites/ by admit year.
         extracted_data.append({
             "id": idx,
             "anchor_text": course.get_text(strip=True),
             "url": url,
             "raw_html_snippet": str(course),
-            "prereqs": reqs["prereqs"],
-            "coreqs": reqs["coreqs"],
-            "antireqs": reqs["antireqs"],
-            "custom_reqs": reqs["custom_reqs"],
+            "prereqs": [],
+            "coreqs": [],
+            "antireqs": [],
+            "custom_reqs": [],
         })
 
-    print(f"Successfully extracted {len(extracted_data)} courses.")
+    print(f"Successfully extracted {len(extracted_data)} course offerings.")
 
     out_path = output_path(season, transition_year)
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -178,10 +115,12 @@ def extract_courses(season: str, transition_year: str | int) -> Path | None:
 
 TRANSITION_SCRAPE_NOTE = """
 What gets scraped:
-  Courses come ONLY from TMU's live Engineering Transition Program page (see
-  TRANSITION_URL in this file). The --year flag picks the accordion section
-  whose heading matches "<Season> <year> … Transition" on that page — it does
-  not pull from local files or invent offerings.
+  Course *offerings* come ONLY from TMU's live Engineering Transition Program
+  page (see TRANSITION_URL). The --year flag picks the accordion section whose
+  heading matches "<Season> <year> … Transition" — it does not invent offerings.
+
+  Requisites are intentionally left empty here. The calculator applies
+  Course_requisites/requisites_<admitYear>.json for prereq/coreq checks.
 
   Check the TMU page yourself before running. If that section is not published
   yet, the script will fail with "Could not find a section matching …".
@@ -193,7 +132,7 @@ What gets scraped:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Scrape spring/summer transition courses to Transition_courses/*.json",
+        description="Scrape spring/summer transition offerings to Transition_courses/*.json",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=f"{TRANSITION_SCRAPE_NOTE}\n\n{JSON_OVERWRITE_WARNING}",
     )

@@ -1,6 +1,6 @@
 # TMU Engineering Course Planning Calculator
 
-A static web tool for Toronto Metropolitan University (TMU) Faculty of Engineering and Architectural Science students and staff. It helps students identify which courses they may be eligible to take based on completed coursework, program curriculum, and current calendar requisites.
+A static web tool for Toronto Metropolitan University (TMU) Faculty of Engineering and Architectural Science students and staff. It helps students identify which courses they may be eligible to take based on completed coursework, program curriculum, and **admit-year** calendar requisites.
 
 Supports three planning modes:
 
@@ -56,12 +56,12 @@ pip install requests beautifulsoup4
 ### How eligibility works (high level)
 
 - **Completed courses** come from checkboxes on the student's curriculum layout.
-- **Prerequisites** are checked against those completed courses.
+- **Prerequisites / corequisites** come from `Course_requisites/requisites_<admitYear>.json` (the student's admit-year calendar), for Fall, Winter, **and** Transition.
 - **Corequisites** do not block a course from appearing, but the results show a warning if a required corequisite was not selected.
 - **Antirequisites** not used in our calculations
 - **Course aliases** (`course_aliases.json`) let renamed/equivalent codes count toward prereqs across admit years (e.g. CPS 125 ↔ CPS 188).
 - **Fall/Winter** candidate courses are drawn from checkbox courses under the relevant odd/even semester blocks on the layout. Liberal studies tables and open-ended elective groups are not expanded automatically.
-- **Spring/Summer (Transition)** candidate courses come from scraped transition JSON and must also appear on the student's active curriculum panel(s). This is a dual filter and can miss out on courses that exist on transition JSON but not on program calendar. (e.g. CHE 474 is offered in transition but not on program calendar. It is however listed as a core elective, nevertheless for now this is being dealt with manually.)
+- **Spring/Summer (Transition)** candidate courses come from scraped transition *offerings* JSON and must also appear on the student's active curriculum panel(s). Transition JSON does not supply prereq rules. This dual filter can miss courses that exist on transition JSON but not on the program calendar (e.g. CHE 474).
 
 ---
 
@@ -79,13 +79,14 @@ pip install requests beautifulsoup4
 ├── Programs_old/                           # Curriculum layouts, admit years 2010–2015
 ├── Programs_misc/                          # Legacy JSON curriculum snapshots
 │
-├── Transition_courses/                     # Scraped spring/summer transition data
-├── Fall_Winter_courses/                    # Scraped fall/winter requisites data
+├── Transition_courses/                     # Scraped spring/summer transition offerings
+├── Course_requisites/                      # Admit-year prereq/coreq scrapes (all seasons)
 │
 ├── build_curriculum_manifest.py            # Scans layout folders → curriculum_manifest.json
 ├── script_utils.py                         # Shared overwrite confirmation for generators
 ├── transition_courses_generator.py         # Builds Transition_courses/*.json
-├── fall_winter_requisites_generator.py     # Builds Fall_Winter_courses/*.json
+├── course_requisites_generator.py          # Builds Course_requisites/requisites_<year>.json
+├── setup_year.py                           # One-shot safe yearly refresh (orchestrator)
 ├── annual_calendar_generator.py            # Builds Programs/* layout HTML
 │
 ├── Assets/                                 # Logos and static images
@@ -105,8 +106,8 @@ pip install requests beautifulsoup4
 - **`Programs/`** — Generated HTML curriculum checklists for admit years **2016–2026**. Each file is named like `Programs/<Program>/<Program>-<Year>_layout.html`, with optional suffixes for streams/options (e.g. `_software_engineering_option_layout.html`).
 - **`Programs_old/`** — Generated HTML curriculum checklists for admit years **2010–2015**. May include stream-specific files and `common_to_*` shared blocks. Course links use `/calendar/<year>-<year+1>/` paths.
 - **`Programs_misc/`** — Older JSON curriculum representations (semester-grouped course lists). Retained for reference; the live app loads HTML layouts from `Programs/` and `Programs_old/`.
-- **`Transition_courses/`** — Scraped transition offerings used by Spring/Summer mode, e.g. `spring/spring_2026.json` and `summer/summer_2026.json`.
-- **`Fall_Winter_courses/`** — Scraped current-calendar requisites used by Fall/Winter mode, e.g. `requisites_2026.json`.
+- **`Transition_courses/`** — Scraped transition *offerings* for Spring/Summer mode, e.g. `spring/spring_2026.json` and `summer/summer_2026.json`. These files list which courses are offered; prereq/coreq fields are empty placeholders. Eligibility always loads requisites from `Course_requisites/` for the student's admit year.
+- **`Course_requisites/`** — Per admit-year requisites (`requisites_<year>.json`) used by Fall, Winter, **and** Transition eligibility. A 2024 admit is checked against the 2024–2025 calendar rules.
 - **`Assets/`** — Static assets such as the FYEO logo shown in the app header.
 
 ### Generator scripts
@@ -114,31 +115,46 @@ pip install requests beautifulsoup4
 | Script | Purpose | Output |
 |--------|---------|--------|
 | `build_curriculum_manifest.py` | Scans `Programs/` + `Programs_old/` and writes the manifest | `curriculum_manifest.json` |
-| `annual_calendar_generator.py` | Scrapes the TMU calendar and builds modern curriculum layouts | `Programs/<Program>/...` |
 | `transition_courses_generator.py` | Scrapes Engineering Transition Program spring/summer sections | `Transition_courses/spring/*.json`, `Transition_courses/summer/*.json` |
-| `fall_winter_requisites_generator.py` | Collects unique course links from layout files and scrapes current requisites | `Fall_Winter_courses/requisites_<year>.json` |
+| `course_requisites_generator.py` | Scrapes admit-year prereqs/coreqs from layout + transition course codes | `Course_requisites/requisites_<year>.json` |
+| `setup_year.py` | Runs the safe yearly refresh steps (transition + requisites + manifest) | Same as the scripts it calls |
+| `annual_calendar_generator.py` | Scrapes the TMU calendar and builds modern curriculum layouts | `Programs/<Program>/...` |
 
 All generator scripts support `--help`. Layout and JSON generators prompt **y/n** before overwriting existing files (use `--yes` to skip). See **Why re-running layout generators is risky** below.
+
+### `setup_year.py` — what it runs under the hood
+
+`setup_year.py` does not scrape anything itself. It shells out to the other scripts. If you omit `--year`, it uses `planningDefaults.transitionYear` from `programs_config.json`. Passing `--yes` / `-y` forwards `--yes` to each scraper that supports it (skips overwrite prompts).
+
+| You run | Under the hood |
+|---------|----------------|
+| `python3 setup_year.py --year 2027` | `transition_courses_generator.py --season spring --year 2027`<br>`transition_courses_generator.py --season summer --year 2027`<br>`course_requisites_generator.py --year 2027`<br>`build_curriculum_manifest.py` |
+| `python3 setup_year.py --year 2027 --yes` | Same four commands as above, but each scraper gets `--yes` |
+| `python3 setup_year.py --year 2027 --only transition` | Spring + summer transition scrapers only |
+| `python3 setup_year.py --year 2027 --only requisites` | `course_requisites_generator.py --year 2027` only |
+| `python3 setup_year.py --year 2027 --only manifest` | `build_curriculum_manifest.py` only |
+| `python3 setup_year.py --year 2027 --steps requisites,manifest` | Requisites + manifest only (any comma-separated subset of `transition,requisites,manifest`) |
+
+Layouts are **not** included. Run `annual_calendar_generator.py` separately when you intentionally want new `Programs/*` HTML.
 
 Example maintainer commands:
 
 ```bash
-# Refresh manifest after adding/removing layout files (safe — read-only scan)
+python3 setup_year.py --year 2027
+python3 setup_year.py --year 2027 --yes
+python3 setup_year.py --year 2027 --only transition
+python3 setup_year.py --year 2027 --steps requisites,manifest
+
+# Same steps by hand:
+python3 transition_courses_generator.py --season spring --year 2027
+python3 transition_courses_generator.py --season summer --year 2027
+python3 course_requisites_generator.py --year 2027
 python3 build_curriculum_manifest.py
 
-# Refresh spring/summer transition offerings
-python3 transition_courses_generator.py --season spring --year 2026
-python3 transition_courses_generator.py --season summer --year 2026
-
-# Refresh fall/winter requisites (uses 2026–2027 calendar by default)
-python3 fall_winter_requisites_generator.py --year 2026
-
-# Regenerate a modern curriculum layout (prompts before overwrite)
+# Layouts stay separate (destructive to manual HTML edits)
 python3 annual_calendar_generator.py --year 2027 --program Computer
-python3 annual_calendar_generator.py --year 2027          # all programs
+python3 annual_calendar_generator.py --year 2027
 ```
-
-Add `--yes` to any generator command to skip the confirmation prompt.
 
 ### Transition courses scraper — what `--year` actually does
 
@@ -146,7 +162,7 @@ Add `--yes` to any generator command to skip the confirmation prompt.
 
 1. Fetches TMU’s live [Engineering Transition Program](https://www.torontomu.ca/engineering-architectural-science/programs/undergraduate-programs/transition-program/) page.
 2. Looks for an accordion heading matching `"<Season> <year> … Engineering … Transition"` (e.g. `Spring 2026`).
-3. Scrapes whatever course links appear in **that** section only.
+3. Scrapes whatever course links appear in **that** section only (offerings — no per-course requisites).
 4. Writes `Transition_courses/<season>/<season>_<year>.json`.
 
 **The script does not decide which courses are offered** — it only copies what TMU has published. Before running:
@@ -154,7 +170,7 @@ Add `--yes` to any generator command to skip the confirmation prompt.
 - Open the transition page and confirm the Spring/Summer block for that year exists.
 - If the heading isn’t there yet, the script will fail with `Could not find a section matching …`.
 
-After scraping a new year, update `index.html` (currently hardcoded to `spring_2026.json` / `summer_2026.json`) so the calculator loads the new files.
+After scraping a new year, update `index.html` (currently hardcoded to `spring_2026.json` / `summer_2026.json`) so the calculator loads the new files. Also ensure `Course_requisites/requisites_<admitYear>.json` exists for each admit year you support.
 
 ### Other
 
@@ -206,19 +222,25 @@ Developer notes for this behavior are also documented inline above the eligibili
 
 ### Updating for a new calendar year
 
-Typical yearly refresh:
+**Safe data refresh** (one command):
 
-1. Regenerate or hand-update layout HTML in `Programs/` as needed (confirm overwrite prompts carefully).
-2. Run `python3 build_curriculum_manifest.py` if layouts changed outside `annual_calendar_generator.py`.
-3. Re-run `transition_courses_generator.py --season spring --year <YYYY>` and `--season summer --year <YYYY>`.
-4. Re-run `fall_winter_requisites_generator.py --year <YYYY>`.
-5. Update `programs_config.json` / hardcoded year references in `index.html` (titles, JSON fetch paths) if the planning year changes.
-6. Review `course_aliases.json` for new course renames.
+```bash
+python3 setup_year.py --year <YYYY>
+```
+
+That runs transition spring + summer, `Course_requisites/requisites_<YYYY>.json`, and the curriculum manifest. Use `--only` / `--steps` to run a subset.
+
+**Still separate on purpose:**
+
+1. **Layouts** — `python3 annual_calendar_generator.py --year <YYYY>` (overwrites manual HTML edits; do not bundle into the default refresh).
+2. **App config** — update `programs_config.json` planning defaults and `index.html` transition JSON paths if the planning year changed.
+3. **Aliases** — review `course_aliases.json` for renames.
+4. Keep older `Course_requisites/requisites_*.json` files for prior admit years (do not delete them when adding a new year).
 
 ### Known limitations
 
 - Antirequisites are scraped but not enforced in eligibility logic.
-- Fall/Winter uses **current calendar** requisites for all admit years.
+- Eligibility uses **admit-year** requisites from `Course_requisites/`; if that file is missing, admit years before 2016 fall back to 2016.
 - ~40+ legacy or retired course codes may fail to scrape and will have empty prereq data.
 - Multi-stream programs (Computer, Civil, Mechanical, etc.) filter Transition results to the student's active panel(s); Fall/Winter uses semester checkboxes from active panels.
 
