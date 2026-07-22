@@ -192,7 +192,7 @@
             <option value="">-- Choose your program --</option>
           </select>
 
-    <h3 style="margin-top:20px;">Select your admit year</h3>
+    <h3 style="margin-top:20px;">Select your admit year:</h3>
     <label for="admitYearSelect" style="display:block;margin-bottom:6px;">Admit year</label>
     <select id="admitYearSelect" style="width:100%;padding:8px;border-radius:6px;border:1px solid #ccc">
       <option value="">-- Select admit year --</option>
@@ -235,8 +235,8 @@
 
         <!-- STEP 5 -->
         <div id="step5" class="section hidden">
-          <h2>Course Load Guidance</h2>
-          <div id="courseLoadGuidance" class="popup">Spring/Summer courses run in a 6-week compressed format. Students are strongly encouraged to take no more than 2 courses per term due to intensity.</div>
+          <h2>Important Notes</h2>
+          <div id="courseLoadGuidance" class="popup"></div>
         </div>
 
         <!-- Transition Courses section removed as requested -->
@@ -274,16 +274,34 @@
     return 'Calculate Spring/Summer Eligibility';
   }
 
+  function updateImportantNotes(semester) {
+    const heading = document.querySelector('#step5 h2');
+    if (heading) heading.textContent = 'Important Notes';
+
+    const box = document.getElementById('courseLoadGuidance');
+    if (!box) return;
+
+    const curriculumNote =
+      'Curriculum changes may affect course options. The courses shown may not reflect recent changes to your program requirements or required course replacements. Consult your department if you are unsure.';
+    const springSummerNote =
+      'Spring/Summer courses run in a six-week compressed format. Students are encouraged to consult with their department to determine a realistic and manageable course load.';
+
+    const items = [curriculumNote];
+    if (semester === 'transition') items.push(springSummerNote);
+
+    box.innerHTML =
+      '<ul style="margin:0;padding-left:1.25em;font-weight:600;">' +
+      items.map((t, i) =>
+        `<li style="${i ? 'margin-top:0.75em;' : ''}">${t}</li>`
+      ).join('') +
+      '</ul>';
+  }
+
   function semesterCheck(semester) {
     window.__selectedSemester = semester;
     document.getElementById("step1b").classList.add("hidden");
     document.getElementById("fallWinterNotice").classList.add("hidden");
-    const guidance = document.getElementById("courseLoadGuidance");
-    if (guidance) {
-      guidance.textContent = semester === 'transition'
-        ? 'Spring/Summer courses run in a 6-week compressed format. Students are strongly encouraged to take no more than 2 courses per term due to intensity.'
-        : 'For Fall and Winter semesters, we recommend taking a maximum of 5 courses per semester.';
-    }
+    updateImportantNotes(semester);
     // Fall, Winter, and Transition all use the same program → curriculum steps;
     // only calculateEligibility branches on window.__selectedSemester.
     document.getElementById("step2").classList.remove("hidden");
@@ -510,6 +528,75 @@
     return getLayoutPath(program, year, streamId);
   }
 
+  /** Odd semesters (1st/3rd/5th/7th) → Fall; even (2nd/4th/6th/8th) → Winter */
+  function seasonLabelForSemester(text) {
+    const m = String(text || '').trim().match(/^(1st|2nd|3rd|4th|5th|6th|7th|8th)\b/i);
+    if (!m) return null;
+    const n = ({ '1st': 1, '2nd': 2, '3rd': 3, '4th': 4, '5th': 5, '6th': 6, '7th': 7, '8th': 8 })[m[1].toLowerCase()];
+    if (!n) return null;
+    return n % 2 === 1 ? 'Fall' : 'Winter';
+  }
+
+  function appendSemesterSeasonLabel(doc, host, semesterText) {
+    const season = seasonLabelForSemester(semesterText);
+    if (!season || !host) return null;
+    if (host.querySelector('.semester-season-label')) return null;
+    const label = doc.createElement('span');
+    label.className = 'semester-season-label';
+    label.textContent = season;
+    label.style.cssText =
+      'margin-left: 8px; font-weight: 600; color: #555; vertical-align: middle;';
+    host.appendChild(label);
+    return label;
+  }
+
+  function normalizeSemesterHeadingText(text) {
+    return String(text || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function isSemesterHeadingText(text, allowAllCaps) {
+    const t = normalizeSemesterHeadingText(text);
+    // Allow trailing notes, e.g. "5th Semester (Offered in Winter Term Only)".
+    if (allowAllCaps) {
+      return /^(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+SEMESTER\b/i.test(t);
+    }
+    return /^(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+Semester\b/i.test(t);
+  }
+
+  /** True when a curriculum block starts another semester heading (strong/b ± span). */
+  function elementContainsSemesterHeading(el) {
+    if (!el || !el.querySelector) return false;
+    const span = el.querySelector('strong span, b span');
+    if (span && isSemesterHeadingText(span.textContent)) return true;
+    for (const tag of el.querySelectorAll('strong, b')) {
+      const text = normalizeSemesterHeadingText(tag.textContent);
+      if (!isSemesterHeadingText(text)) continue;
+      const hasMatchingChild = Array.from(tag.children).some(child =>
+        isSemesterHeadingText(child.textContent)
+      );
+      if (!hasMatchingChild) return true;
+    }
+    return false;
+  }
+
+  /**
+   * Collect semester heading elements inside a panel.
+   * Layouts use either <strong><span>Nth Semester</span></strong> or <b><span>…</span></b>
+   * (Chemical often uses the latter for 5th/6th).
+   */
+  function collectModernSemesterHeadings(panelDiv) {
+    const headings = [];
+    const seen = new Set();
+    panelDiv.querySelectorAll('strong span, b span').forEach(span => {
+      const text = normalizeSemesterHeadingText(span.textContent);
+      if (!isSemesterHeadingText(text)) return;
+      if (seen.has(span)) return;
+      seen.add(span);
+      headings.push({ el: span, text });
+    });
+    return headings;
+  }
+
   function injectSemesterSelectAllButtonsOld(iframeDoc) {
     const semesterPattern = /^(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+SEMESTER$/i;
     const root = iframeDoc.querySelector('[data-panel-container-id]') || iframeDoc.body;
@@ -530,7 +617,8 @@
     const allCheckboxes = Array.from(root.querySelectorAll('input.course-checkbox'));
 
     headings.forEach(({ el, text }, idx) => {
-      const semId = `old-${text.replace(/\s+/g, '_').toLowerCase()}`;
+      // Include occurrence index so duplicate "7th SEMESTER" blocks stay independent.
+      const semId = `old-${text.replace(/\s+/g, '_').toLowerCase()}-${idx}`;
       const nextEl = headings[idx + 1] ? headings[idx + 1].el : null;
 
       const checkboxes = allCheckboxes.filter(cb => {
@@ -545,6 +633,9 @@
       if (el.parentElement && el.parentElement.querySelector(`button[data-semester="${semId}"]`)) return;
 
       checkboxes.forEach(cb => { cb.dataset.semester = semId; });
+
+      const host = el.closest('strong, b, font, p, div') || el.parentElement || el;
+      appendSemesterSeasonLabel(iframeDoc, host, text);
 
       const btn = iframeDoc.createElement('button');
       btn.type = 'button';
@@ -565,8 +656,64 @@
         btn.textContent = shouldSelect ? 'Deselect All' : 'Select All';
       });
 
-      const host = el.closest('strong, b, font, p, div') || el.parentElement || el;
       host.appendChild(btn);
+    });
+  }
+
+  function injectSemesterSelectAllButtonsModern(iframeDoc) {
+    iframeDoc.querySelectorAll('div[data-panel-container-id]').forEach(panelDiv => {
+      const panelId = panelDiv.getAttribute('data-panel-container-id');
+      const headings = collectModernSemesterHeadings(panelDiv);
+
+      headings.forEach(({ el: span, text }, occurrenceIdx) => {
+        // Occurrence index keeps duplicate "7th Semester" headings in the same
+        // panel from sharing one Select All scope (Chemical/Civil/Aerospace calendars).
+        const semId =
+          `panel-${panelId}-${text.replace(/\s+/g, '_').toLowerCase()}-${occurrenceIdx}`;
+
+        const headingResText = span.closest('div.resText');
+        if (!headingResText) return;
+
+        const checkboxes = [];
+        let sib = headingResText.nextElementSibling;
+        while (sib) {
+          if (elementContainsSemesterHeading(sib)) break;
+          sib.querySelectorAll('input.course-checkbox').forEach(cb => {
+            cb.dataset.semester = semId;
+            checkboxes.push(cb);
+          });
+          sib = sib.nextElementSibling;
+        }
+        if (checkboxes.length === 0) return;
+
+        const p = span.closest('p');
+        const host = p || span.closest('strong, b') || span.parentElement;
+        if (host) appendSemesterSeasonLabel(iframeDoc, host, text);
+
+        if (host && host.querySelector(`button[data-semester="${semId}"]`)) return;
+
+        const btn = iframeDoc.createElement('button');
+        btn.type = 'button';
+        btn.textContent = 'Select All';
+        btn.dataset.semester = semId;
+        btn.style.cssText = (
+          'font-size: 11px; padding: 2px 8px; margin-left: 8px; ' +
+          'cursor: pointer; border: 1px solid #aaa; border-radius: 3px; ' +
+          'background: #f0f0f0; vertical-align: middle;'
+        );
+        btn.addEventListener('click', () => {
+          const boxes = iframeDoc.querySelectorAll(`input.course-checkbox[data-semester="${semId}"]`);
+          // Follow the button label, not current checkbox state — otherwise
+          // manually unchecking one course makes "Deselect All" select again.
+          const shouldSelect = btn.textContent.trim() === 'Select All';
+          boxes.forEach(cb => { cb.checked = shouldSelect; });
+          btn.textContent = shouldSelect ? 'Deselect All' : 'Select All';
+          if (boxes.length > 0) {
+            boxes[0].dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        });
+        if (host) host.appendChild(btn);
+      });
     });
   }
 
@@ -588,52 +735,7 @@
           if (useOldSelectAll) {
             injectSemesterSelectAllButtonsOld(iframeDoc);
           } else {
-            // Existing Programs Select All injection (unchanged logic)
-            const semesterPattern = /^(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+Semester$/i;
-            iframeDoc.querySelectorAll('div[data-panel-container-id]').forEach(panelDiv => {
-              const panelId = panelDiv.getAttribute('data-panel-container-id');
-              panelDiv.querySelectorAll('strong span').forEach(span => {
-                const text = span.textContent.trim();
-                if (!semesterPattern.test(text)) return;
-                const semId = `panel-${panelId}-${text.replace(/\s+/g, '_').toLowerCase()}`;
-                const headingResText = span.closest('div.resText');
-                if (!headingResText) return;
-                const checkboxes = [];
-                let sib = headingResText.nextElementSibling;
-                while (sib) {
-                  const sibSpan = sib.querySelector('strong span');
-                  if (sibSpan && semesterPattern.test(sibSpan.textContent.trim())) break;
-                  sib.querySelectorAll('input.course-checkbox').forEach(cb => {
-                    cb.dataset.semester = semId;
-                    checkboxes.push(cb);
-                  });
-                  sib = sib.nextElementSibling;
-                }
-                if (checkboxes.length === 0) return;
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.textContent = 'Select All';
-                btn.dataset.semester = semId;
-                btn.style.cssText = (
-                  'font-size: 11px; padding: 2px 8px; margin-left: 8px; ' +
-                  'cursor: pointer; border: 1px solid #aaa; border-radius: 3px; ' +
-                  'background: #f0f0f0; vertical-align: middle;'
-                );
-                btn.addEventListener('click', () => {
-                  const boxes = iframeDoc.querySelectorAll(`input.course-checkbox[data-semester="${semId}"]`);
-                  // Follow the button label, not current checkbox state — otherwise
-                  // manually unchecking one course makes "Deselect All" select again.
-                  const shouldSelect = btn.textContent.trim() === 'Select All';
-                  boxes.forEach(cb => { cb.checked = shouldSelect; });
-                  btn.textContent = shouldSelect ? 'Deselect All' : 'Select All';
-                  if (boxes.length > 0) {
-                    boxes[0].dispatchEvent(new Event('change', { bubbles: true }));
-                  }
-                });
-                const p = span.closest('p');
-                if (p) p.appendChild(btn);
-              });
-            });
+            injectSemesterSelectAllButtonsModern(iframeDoc);
           }
           this.style.height = iframeDoc.body.scrollHeight + 'px';
         }
@@ -804,70 +906,7 @@
         onload: function () {
             
           const iframeDoc = this.contentWindow.document;
-
-            // ── Inject Select All buttons per Unique Panel ─────────────────
-            const semesterPattern = /^(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+Semester$/i;
-
-            // Loop through each panel container to isolate semesters cleanly
-            iframeDoc.querySelectorAll('div[data-panel-container-id]').forEach(panelDiv => {
-                const panelId = panelDiv.getAttribute('data-panel-container-id');
-
-                panelDiv.querySelectorAll('strong span').forEach(span => {
-                    const text = span.textContent.trim();
-                    if (!semesterPattern.test(text)) return;
-
-                    // Combine panel ID with semester name to build an un-collidable key
-                    const semId = `panel-${panelId}-${text.replace(/\s+/g, '_').toLowerCase()}`; 
-
-                    // Collect all checkboxes from the next sibling resText divs within this specific panel
-                    const headingResText = span.closest('div.resText');
-                    if (!headingResText) return;
-
-                    const checkboxes = [];
-                    let sib = headingResText.nextElementSibling;
-                    while (sib) {
-                        const sibSpan = sib.querySelector('strong span');
-                        if (sibSpan && semesterPattern.test(sibSpan.textContent.trim())) break;
-                        sib.querySelectorAll('input.course-checkbox').forEach(cb => {
-                            cb.dataset.semester = semId;
-                            checkboxes.push(cb);
-                        });
-                        sib = sib.nextElementSibling;
-                    }
-
-                    if (checkboxes.length === 0) return;
-
-                    // Build the isolated button
-                    const btn = document.createElement('button');
-                    btn.type = 'button';
-                    btn.textContent = 'Select All';
-                    btn.dataset.semester = semId;
-                    btn.style.cssText = (
-                        'font-size: 11px; padding: 2px 8px; margin-left: 8px; ' +
-                        'cursor: pointer; border: 1px solid #aaa; border-radius: 3px; ' +
-                        'background: #f0f0f0; vertical-align: middle;'
-                    );
-
-                    btn.addEventListener('click', () => {
-                        // Scope selection explicitly to this unique combination identifier
-                        const boxes = iframeDoc.querySelectorAll(`input.course-checkbox[data-semester="${semId}"]`);
-                        // Follow the button label, not current checkbox state — otherwise
-                        // manually unchecking one course makes "Deselect All" select again.
-                        const shouldSelect = btn.textContent.trim() === 'Select All';
-                        boxes.forEach(cb => { cb.checked = shouldSelect; });
-                        btn.textContent = shouldSelect ? 'Deselect All' : 'Select All';
-                        
-                        // Fire a custom change event so the cross-panel cleaner script can catch changes
-                        if (boxes.length > 0) {
-                            boxes[0].dispatchEvent(new Event('change', { bubbles: true }));
-                        }
-                    });
-
-                    // Append button into the <p> that wraps the semester heading span
-                    const p = span.closest('p');
-                    if (p) p.appendChild(btn);
-                });
-            });
+            injectSemesterSelectAllButtonsModern(iframeDoc);
 
             // ── Auto resize ───────────────────────────────────────────────
             this.style.height = iframeDoc.body.scrollHeight + 'px';
@@ -1128,21 +1167,6 @@
         });
     }
 
-    function missingCoreqs(coreqs) {
-        if (!coreqs || coreqs.length === 0) return [];
-        const missing = [];
-        for (const req of coreqs) {
-            if (Array.isArray(req)) {
-                if (!req.some(r => effectiveCompleted.has(normalizeCode(r)))) {
-                    missing.push(req.map(formatCourseCode).join(' or '));
-                }
-            } else if (!effectiveCompleted.has(normalizeCode(req))) {
-                missing.push(formatCourseCode(req));
-            }
-        }
-        return missing;
-    }
-
     function isInProgram(code) {
         if (programCourseSet === null) return true; // fail-open if layout didn't load
         return programCourseSet.has(normalizeCode(code));
@@ -1193,12 +1217,10 @@
             if (effectiveCompleted.has(code)) continue;     // already completed (incl. aliases)
             if (!checkPrereqs(course.prereqs)) continue;    // condition 1: prereqs not met
             if (!isInProgram(course.anchor_text)) continue; // condition 2: not in active panels
-            const coreqWarnings = missingCoreqs(course.coreqs);
             eligible.push({
                 code: course.anchor_text,
                 title: course.title || '',
-                url: course.url || '',
-                coreqWarnings
+                url: course.url || ''
             });
         }
         return eligible;
@@ -1251,12 +1273,9 @@
     function renderList(courses) {
         if (courses.length === 0) return '<li>No eligible courses found.</li>';
         return courses.map(c => {
-            const warning = (c.coreqWarnings && c.coreqWarnings.length)
-                ? `<br><span style="color:#a65c00;font-size:0.92em;">Also needs corequisite(s): ${c.coreqWarnings.join(', ')} (not selected)</span>`
-                : '';
             return `<li><a href="${c.url}" target="_blank" rel="noopener noreferrer" style="color:#337ab7;">
                 <strong>${c.code}</strong>${c.title ? ' — ' + c.title : ''}
-            </a>${warning}</li>`;
+            </a></li>`;
         }).join('');
     }
 
@@ -1273,8 +1292,7 @@
             eligible.push({
                 code: course.anchor_text,
                 title: course.title || '',
-                url: course.url || '',
-                coreqWarnings: missingCoreqs(course.coreqs)
+                url: course.url || ''
             });
         }
         resultsHtml = `
@@ -1304,6 +1322,7 @@
         : (`${program}-${admitYear}`);
     }
 
+    updateImportantNotes(selectedSemester);
     document.getElementById('step3').classList.add('hidden');
     document.getElementById('step4').classList.remove('hidden');
     document.getElementById('step5').classList.remove('hidden');

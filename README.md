@@ -88,18 +88,20 @@ pip install requests beautifulsoup4
 5. On the curriculum checklist, mark courses you have **already completed**.
 6. Click **Calculate Eligibility** to see suggested courses for that term.
 
-### Course load guidance
+### Important notes (results screen)
 
-| Term | Recommendation |
-|------|----------------|
-| Fall / Winter | Recommended maximum of **5 courses** per semester |
-| Spring / Summer (Transition) | Recommended maximum of **2 courses** per term (6-week compressed format) |
+After eligibility results, students see an **Important Notes** yellow box:
+
+- **All terms:** curriculum-change disclaimer (consult department if unsure).
+- **Spring/Summer only:** additional note that courses run in a six-week compressed format and to consult the department on a manageable load.
+
+Corequisites are scraped into the data files but are **not** shown as warnings on results.
 
 ### How eligibility works (high level)
 
 - **Completed courses** come from checkboxes on the student's curriculum layout.
-- **Prerequisites / corequisites** come from `Course_requisites/requisites_<admitYear>.json` (the student's admit-year calendar), for Fall, Winter, **and** Transition.
-- **Corequisites** do not block a course from appearing, but the results show a warning if a required corequisite was not selected.
+- **Prerequisites** come from `Course_requisites/requisites_<admitYear>.json` (the student's admit-year calendar), for Fall, Winter, **and** Transition.
+- **Corequisites** are stored in the requisites JSON but are not shown or enforced in the student UI.
 - **Antirequisites** not used in our calculations
 - **Course aliases** (`course_aliases.json`) let renamed/equivalent codes count toward prereqs across admit years (e.g. CPS 125 ↔ CPS 188).
 - **Fall/Winter** candidate courses are drawn from checkbox courses under the relevant odd/even semester blocks on the layout. Liberal studies tables and open-ended elective groups are not expanded automatically.
@@ -273,6 +275,19 @@ When you see that:
 3. Re-check checkboxes and course links in what remains so eligibility still matches the intended curriculum.
 
 Leaving both copies in place confuses students and can double-count or offer the wrong elective counts (e.g. “three courses from Table I” vs “two”).
+
+**Note:** Duplicate headings are not always identical course lists — they are separate curriculum versions that share the same semester labels. The app scopes each Select All control to a single heading instance, but the preferred long-term fix is still to remove the version that does not apply to that admit year.
+
+**Shared third-year courses across Regular and Options (common bug)**
+
+Programs with options (for example Mechanical with a Mechatronics option) often list 5th and 6th semester courses only under the Regular panel, even when the option follows the same third-year curriculum. Because those checkboxes are owned by the Regular panel, selecting any Option-year course clears the Regular panel — and students in the option effectively cannot keep third-year courses selected.
+
+After generating or editing such a layout, maintainers must choose one of these hand-fixes:
+
+1. **Preferred:** Move the shared 5th/6th semester blocks into the **common** panel (`data-panel-container-id="0"`) and set every course checkbox in those blocks to `data-panel-owner="0"`; or
+2. **Alternative:** Duplicate those third-year courses into the option panel with that option’s `data-panel-owner`, and keep class / Fall–Winter tagging consistent.
+
+Do not leave shared third-year courses listed only under Regular when an option also requires them.
 
 ### Manual fixes still required in some cases
 
