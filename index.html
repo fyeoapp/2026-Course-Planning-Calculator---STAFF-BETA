@@ -550,6 +550,248 @@
     return label;
   }
 
+  /** Variant B course rows: large hit target + isolated Outline link (AODA / mobile). */
+  const COURSE_ROW_STYLE = `
+.course-row {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 0.35rem 0.5rem;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0.55rem;
+  margin: 0.35rem 0;
+  border: 1px solid #d9d6cf;
+  border-radius: 8px;
+  background: #fafafa;
+}
+.course-row:has(input.course-checkbox:checked) {
+  background: #dceee8;
+  border-color: #2a7a66;
+}
+.course-row-check {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  cursor: pointer;
+}
+.course-row-check input.course-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: #003d4d;
+  margin: 0;
+}
+.course-row-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  align-items: baseline;
+  min-width: 0;
+  margin: 0;
+  cursor: pointer;
+  font-weight: normal;
+}
+.course-row-code { font-weight: 700; color: #1a1a1a; }
+.course-row-title { color: #1a1a1a; }
+.course-row-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.55rem;
+  border: 1px solid #d9d6cf;
+  border-radius: 6px;
+  background: #fff;
+  color: #003d4d !important;
+  text-decoration: none !important;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.course-row-outline:hover { background: #e6f1f3; }
+.course-row-outline:focus-visible,
+.course-row-check input.course-checkbox:focus-visible {
+  outline: 3px solid #0b57d0;
+  outline-offset: 2px;
+}
+ul:has(> li > .course-row) {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+`;
+
+  function injectCourseRowStyles(iframeDoc) {
+    if (!iframeDoc || iframeDoc.getElementById('course-row-a11y-style')) return;
+    const style = iframeDoc.createElement('style');
+    style.id = 'course-row-a11y-style';
+    style.textContent = COURSE_ROW_STYLE;
+    (iframeDoc.head || iframeDoc.documentElement).appendChild(style);
+  }
+
+  function courseCodeFromCheckbox(cb) {
+    return String(cb && cb.value || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function extractCourseTitle(cb, label, anchor) {
+    const li = cb.closest('li');
+    if (li) {
+      const parts = [];
+      Array.from(li.childNodes).forEach(node => {
+        if (label && (node === label || (label.contains && label.contains(node)))) return;
+        if (node.nodeType === Node.TEXT_NODE) {
+          const t = node.textContent.replace(/\s+/g, ' ').trim();
+          if (t) parts.push(t);
+        } else if (node.nodeType === Node.ELEMENT_NODE && !node.querySelector?.('input.course-checkbox')) {
+          const t = node.textContent.replace(/\s+/g, ' ').trim();
+          if (t) parts.push(t);
+        }
+      });
+      if (parts.length) return parts.join(' ');
+    }
+    const td = cb.closest('td');
+    if (td) {
+      const titleTd = td.nextElementSibling;
+      if (titleTd && titleTd.tagName === 'TD') {
+        return titleTd.textContent.replace(/\s+/g, ' ').trim();
+      }
+    }
+    if (anchor) {
+      const after = anchor.parentElement;
+      if (after) {
+        let text = after.textContent.replace(anchor.textContent, '').replace(/\s+/g, ' ').trim();
+        if (text) return text;
+      }
+    }
+    return '';
+  }
+
+  function buildCourseRow(iframeDoc, cb, code, title, href) {
+    const uid = cb.id || `course-row-${Math.random().toString(36).slice(2, 9)}-${code.replace(/[^A-Za-z0-9]+/g, '-').toLowerCase()}`;
+    cb.id = uid;
+
+    const row = iframeDoc.createElement('div');
+    row.className = 'course-row';
+
+    const checkLabel = iframeDoc.createElement('label');
+    checkLabel.className = 'course-row-check';
+    checkLabel.htmlFor = uid;
+
+    const mainLabel = iframeDoc.createElement('label');
+    mainLabel.className = 'course-row-main';
+    mainLabel.htmlFor = uid;
+
+    const codeSpan = iframeDoc.createElement('span');
+    codeSpan.className = 'course-row-code';
+    const strong = iframeDoc.createElement('strong');
+    strong.textContent = code;
+    codeSpan.appendChild(strong);
+    mainLabel.appendChild(codeSpan);
+
+    if (title) {
+      const titleSpan = iframeDoc.createElement('span');
+      titleSpan.className = 'course-row-title';
+      titleSpan.textContent = title;
+      mainLabel.appendChild(titleSpan);
+    }
+
+    const outline = iframeDoc.createElement('a');
+    outline.className = 'course-row-outline qTipCourse';
+    outline.href = href || '#';
+    outline.textContent = 'Outline';
+    outline.setAttribute('data-course-code', code);
+    outline.setAttribute('aria-label', `${code} course outline (opens in new tab)`);
+
+    checkLabel.appendChild(cb);
+    row.appendChild(checkLabel);
+    row.appendChild(mainLabel);
+    row.appendChild(outline);
+    return row;
+  }
+
+  /**
+   * Upgrade scraped course checkboxes to Variant B rows (full-row select + Outline).
+   * Preserves input.course-checkbox / data-panel-owner / value for eligibility.
+   */
+  function enhanceCourseRows(iframeDoc) {
+    if (!iframeDoc) return;
+    injectCourseRowStyles(iframeDoc);
+
+    // Repair already-converted rows (e.g. Computer-2026 static prototype)
+    iframeDoc.querySelectorAll('.course-row').forEach(row => {
+      const cb = row.querySelector('input.course-checkbox');
+      const outline = row.querySelector('a.course-row-outline, a.qTipCourse');
+      if (cb && outline && !outline.getAttribute('data-course-code')) {
+        const code = courseCodeFromCheckbox(cb);
+        if (code) outline.setAttribute('data-course-code', code);
+        if (outline.textContent.trim().toUpperCase() === 'OUTLINE' || !outline.textContent.trim()) {
+          outline.textContent = 'Outline';
+        }
+        if (!outline.getAttribute('aria-label') && code) {
+          outline.setAttribute('aria-label', `${code} course outline (opens in new tab)`);
+        }
+      }
+    });
+
+    const checkboxes = Array.from(iframeDoc.querySelectorAll('input.course-checkbox'));
+    checkboxes.forEach((cb) => {
+      if (cb.closest('.course-row')) return;
+
+      // Capture hosts BEFORE moving the checkbox into the new row (detached nodes
+      // lose closest('li') / closest('tr'), which left titles sitting outside the row).
+      const label = cb.closest('label');
+      const li = cb.closest('li');
+      const tr = cb.closest('tr');
+      const anchor = (label && label.querySelector('a')) || cb.parentElement?.querySelector?.('a');
+      const code = courseCodeFromCheckbox(cb) || (anchor ? anchor.textContent.replace(/\s+/g, ' ').trim() : '');
+      if (!code) return;
+
+      const href = anchor ? anchor.getAttribute('href') : '#';
+      const title = extractCourseTitle(cb, label, anchor);
+      const row = buildCourseRow(iframeDoc, cb, code, title, href);
+
+      if (li) {
+        li.replaceChildren(row);
+        return;
+      }
+
+      if (tr) {
+        const table = tr.closest('table');
+        const colCount = tr.children.length || 2;
+        tr.replaceChildren();
+        const td = iframeDoc.createElement('td');
+        td.colSpan = colCount;
+        td.appendChild(row);
+        tr.appendChild(td);
+        if (table && !table.dataset.courseRowsEnhanced) {
+          table.dataset.courseRowsEnhanced = '1';
+          table.style.width = '100%';
+        }
+        return;
+      }
+
+      // Footnote / loose label: replace the original label (or parent) entirely
+      const host = label || cb.parentElement;
+      if (host && host.parentElement) {
+        host.replaceWith(row);
+      } else if (host) {
+        host.replaceChildren(row);
+      }
+    });
+  }
+
+  /** Course code from a curriculum outline link (Variant B uses data-course-code). */
+  function courseCodeFromOutlineLink(a) {
+    if (!a) return '';
+    const fromData = (a.getAttribute('data-course-code') || '').trim();
+    if (fromData) return fromData;
+    const text = (a.textContent || '').replace(/\s+/g, ' ').trim();
+    if (!text || /^outline$/i.test(text)) return '';
+    return text;
+  }
+
   function normalizeSemesterHeadingText(text) {
     return String(text || '').replace(/\s+/g, ' ').trim();
   }
@@ -733,6 +975,7 @@
         style: 'width: 100%; border: none; overflow: hidden;',
         onload: function () {
           const iframeDoc = this.contentWindow.document;
+          enhanceCourseRows(iframeDoc);
           if (useOldSelectAll) {
             injectSemesterSelectAllButtonsOld(iframeDoc);
           } else {
@@ -907,6 +1150,7 @@
         onload: function () {
             
           const iframeDoc = this.contentWindow.document;
+            enhanceCourseRows(iframeDoc);
             injectSemesterSelectAllButtonsModern(iframeDoc);
 
             // ── Auto resize ───────────────────────────────────────────────
@@ -1088,8 +1332,9 @@
 
     // ── Build allowed program courses from the ACTIVE curriculum panels ─────
     // DEVELOPER NOTE (manual maintenance):
-    // Eligibility only suggests transition courses that appear as qTipCourse links on
-    // the student's active curriculum panel(s). Courses that exist only as open
+    // Eligibility only suggests transition courses that appear on the student's
+    // active curriculum panel(s) (checkbox values and outline links with
+    // data-course-code / course-code text). Courses that exist only as open
     // electives / liberal studies / "not on the main calendar checklist" (e.g. CHE 474
     // when only CHE 307 is on the Chemical layout) will NOT appear automatically.
     // To support those, manually add the course link to the relevant Programs/
@@ -1135,16 +1380,27 @@
             activePanelIds.forEach(id => {
                 const panel = iframeDoc.querySelector(`[data-panel-container-id="${id}"]`);
                 if (!panel) return;
+                // Prefer checkbox values (stable under Variant B Outline links).
+                panel.querySelectorAll('input.course-checkbox').forEach(cb => {
+                    const code = normalizeCode(cb.value);
+                    if (code) programCourseSet.add(code);
+                });
                 panel.querySelectorAll('a.qTipCourse').forEach(a => {
-                    programCourseSet.add(a.textContent.toUpperCase().replace(/\s+/g, ''));
+                    const code = normalizeCode(courseCodeFromOutlineLink(a));
+                    if (code) programCourseSet.add(code);
                 });
             });
         } else {
             // Single-panel / Programs_old layouts: use the whole iframe curriculum
-            programCourseSet = new Set(
-                Array.from(iframeDoc.querySelectorAll('a.qTipCourse'))
-                    .map(a => a.textContent.toUpperCase().replace(/\s+/g, ''))
-            );
+            programCourseSet = new Set();
+            iframeDoc.querySelectorAll('input.course-checkbox').forEach(cb => {
+                const code = normalizeCode(cb.value);
+                if (code) programCourseSet.add(code);
+            });
+            iframeDoc.querySelectorAll('a.qTipCourse').forEach(a => {
+                const code = normalizeCode(courseCodeFromOutlineLink(a));
+                if (code) programCourseSet.add(code);
+            });
         }
     } catch (e) {
         console.error('Failed to build program course set from iframe — skipping secondary filter', e);
@@ -1254,8 +1510,11 @@
             if (!code || seen.has(code)) return;
             seen.add(code);
 
+            const row = cb.closest('.course-row');
             const label = cb.closest('label');
-            const link = label ? label.querySelector('a.qTipCourse') : null;
+            const link = row
+                ? row.querySelector('a.course-row-outline, a.qTipCourse')
+                : (label ? label.querySelector('a.qTipCourse') : null);
             const scraped = admitReqByCode.get(code);
             candidates.push({
                 anchor_text: scraped ? scraped.anchor_text : (cb.value || formatCourseCode(code)),

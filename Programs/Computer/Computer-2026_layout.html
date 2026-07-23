@@ -4,7 +4,85 @@
 <meta charset="utf-8"/>
 <base target="_blank"/>
 <div class="scoped bootstrap" style="padding: 20px;">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/><style>
+/* Variant B course rows — prototype on Computer 2026 only */
+.course-row {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 0.35rem 0.5rem;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0.55rem;
+  margin: 0.35rem 0;
+  border: 1px solid #d9d6cf;
+  border-radius: 8px;
+  background: #fafafa;
+}
+.course-row:has(input.course-checkbox:checked) {
+  background: #dceee8;
+  border-color: #2a7a66;
+}
+.course-row-check {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  cursor: pointer;
+}
+.course-row-check input.course-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: #003d4d;
+  margin: 0;
+}
+.course-row-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  align-items: baseline;
+  min-width: 0;
+  margin: 0;
+  cursor: pointer;
+  font-weight: normal;
+}
+.course-row-code {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.course-row-title {
+  color: #1a1a1a;
+}
+.course-row-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.55rem;
+  border: 1px solid #d9d6cf;
+  border-radius: 6px;
+  background: #fff;
+  color: #003d4d !important;
+  text-decoration: none !important;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.course-row-outline:hover {
+  background: #e6f1f3;
+}
+.course-row-outline:focus-visible,
+.course-row-check input.course-checkbox:focus-visible {
+  outline: 3px solid #0b57d0;
+  outline-offset: 2px;
+}
+ul:has(> li > .course-row) {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+</style>
 <div class="panel panel-default" data-panel-container-id="0">
 <div class="panel-heading">
 <h4>
@@ -51,60 +129,12 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="CEN 100"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/100.html">
-             CEN 100
-            </a>
-</label>
-           Introduction to Engineering
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="CEN 199"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199.html">
-             CEN 199
-            </a>
-</label>
-           * Writing Skills
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="CHY 102"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/102.html">
-             CHY 102
-            </a>
-</label>
-           General Chemistry
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="MTH 140"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/140.html">
-             MTH 140
-            </a>
-</label>
-           Calculus I
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="MTH 141"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/141.html">
-             MTH 141
-            </a>
-</label>
-           Linear Algebra
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="PCS 211"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/physics/PCS/211.html">
-             PCS 211
-            </a>
-</label>
-           Physics: Mechanics
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-0-cen-100"><input class="course-checkbox" data-panel-owner="0" id="course-row-0-cen-100" type="checkbox" value="CEN 100"/></label><label class="course-row-main" for="course-row-0-cen-100"><span class="course-row-code"><strong>CEN 100</strong></span><span class="course-row-title">Introduction to Engineering</span></label><a aria-label="CEN 100 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CEN 100" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/100.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-1-cen-199"><input class="course-checkbox" data-panel-owner="0" id="course-row-1-cen-199" type="checkbox" value="CEN 199"/></label><label class="course-row-main" for="course-row-1-cen-199"><span class="course-row-code"><strong>CEN 199</strong></span><span class="course-row-title">* Writing Skills</span></label><a aria-label="CEN 199 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CEN 199" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/199.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-2-chy-102"><input class="course-checkbox" data-panel-owner="0" id="course-row-2-chy-102" type="checkbox" value="CHY 102"/></label><label class="course-row-main" for="course-row-2-chy-102"><span class="course-row-code"><strong>CHY 102</strong></span><span class="course-row-title">General Chemistry</span></label><a aria-label="CHY 102 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CHY 102" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/chemistry/CHY/102.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-3-mth-140"><input class="course-checkbox" data-panel-owner="0" id="course-row-3-mth-140" type="checkbox" value="MTH 140"/></label><label class="course-row-main" for="course-row-3-mth-140"><span class="course-row-code"><strong>MTH 140</strong></span><span class="course-row-title">Calculus I</span></label><a aria-label="MTH 140 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="MTH 140" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/140.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-4-mth-141"><input class="course-checkbox" data-panel-owner="0" id="course-row-4-mth-141" type="checkbox" value="MTH 141"/></label><label class="course-row-main" for="course-row-4-mth-141"><span class="course-row-code"><strong>MTH 141</strong></span><span class="course-row-title">Linear Algebra</span></label><a aria-label="MTH 141 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="MTH 141" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/141.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-5-pcs-211"><input class="course-checkbox" data-panel-owner="0" id="course-row-5-pcs-211" type="checkbox" value="PCS 211"/></label><label class="course-row-main" for="course-row-5-pcs-211"><span class="course-row-code"><strong>PCS 211</strong></span><span class="course-row-title">Physics: Mechanics</span></label><a aria-label="PCS 211 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="PCS 211" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/physics/PCS/211.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -159,51 +189,11 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="CPS 188"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/188.html">
-             CPS 188
-            </a>
-</label>
-           Computer Programming Fundamentals
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ECN 801"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/economics/ECN/801.html">
-             ECN 801
-            </a>
-</label>
-           Principles of Engineering Economics
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 202"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/202.html">
-             ELE 202
-            </a>
-</label>
-           Electric Circuit Analysis
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="MTH 240"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/240.html">
-             MTH 240
-            </a>
-</label>
-           Calculus II
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="PCS 125"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/physics/PCS/125.html">
-             PCS 125
-            </a>
-</label>
-           Physics: Waves and Fields
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-6-cps-188"><input class="course-checkbox" data-panel-owner="0" id="course-row-6-cps-188" type="checkbox" value="CPS 188"/></label><label class="course-row-main" for="course-row-6-cps-188"><span class="course-row-code"><strong>CPS 188</strong></span><span class="course-row-title">Computer Programming Fundamentals</span></label><a aria-label="CPS 188 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CPS 188" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/188.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-7-ecn-801"><input class="course-checkbox" data-panel-owner="0" id="course-row-7-ecn-801" type="checkbox" value="ECN 801"/></label><label class="course-row-main" for="course-row-7-ecn-801"><span class="course-row-code"><strong>ECN 801</strong></span><span class="course-row-title">Principles of Engineering Economics</span></label><a aria-label="ECN 801 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ECN 801" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/economics/ECN/801.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-8-ele-202"><input class="course-checkbox" data-panel-owner="0" id="course-row-8-ele-202" type="checkbox" value="ELE 202"/></label><label class="course-row-main" for="course-row-8-ele-202"><span class="course-row-code"><strong>ELE 202</strong></span><span class="course-row-title">Electric Circuit Analysis</span></label><a aria-label="ELE 202 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ELE 202" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/202.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-9-mth-240"><input class="course-checkbox" data-panel-owner="0" id="course-row-9-mth-240" type="checkbox" value="MTH 240"/></label><label class="course-row-main" for="course-row-9-mth-240"><span class="course-row-code"><strong>MTH 240</strong></span><span class="course-row-title">Calculus II</span></label><a aria-label="MTH 240 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="MTH 240" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/240.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-10-pcs-125"><input class="course-checkbox" data-panel-owner="0" id="course-row-10-pcs-125" type="checkbox" value="PCS 125"/></label><label class="course-row-main" for="course-row-10-pcs-125"><span class="course-row-code"><strong>PCS 125</strong></span><span class="course-row-title">Physics: Waves and Fields</span></label><a aria-label="PCS 125 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="PCS 125" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/physics/PCS/125.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -274,51 +264,11 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="COE 318"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/318.html">
-             COE 318
-            </a>
-</label>
-           Software Systems
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="COE 328"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/328.html">
-             COE 328
-            </a>
-</label>
-           Digital Systems
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 302"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/302.html">
-             ELE 302
-            </a>
-</label>
-           Electric Networks
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="MTH 425"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/425.html">
-             MTH 425
-            </a>
-</label>
-           Differential Equations and Vector Calculus
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="PCS 224"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/physics/PCS/224.html">
-             PCS 224
-            </a>
-</label>
-           Solid State Physics
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-11-coe-318"><input class="course-checkbox" data-panel-owner="0" id="course-row-11-coe-318" type="checkbox" value="COE 318"/></label><label class="course-row-main" for="course-row-11-coe-318"><span class="course-row-code"><strong>COE 318</strong></span><span class="course-row-title">Software Systems</span></label><a aria-label="COE 318 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 318" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/318.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-12-coe-328"><input class="course-checkbox" data-panel-owner="0" id="course-row-12-coe-328" type="checkbox" value="COE 328"/></label><label class="course-row-main" for="course-row-12-coe-328"><span class="course-row-code"><strong>COE 328</strong></span><span class="course-row-title">Digital Systems</span></label><a aria-label="COE 328 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 328" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/328.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-13-ele-302"><input class="course-checkbox" data-panel-owner="0" id="course-row-13-ele-302" type="checkbox" value="ELE 302"/></label><label class="course-row-main" for="course-row-13-ele-302"><span class="course-row-code"><strong>ELE 302</strong></span><span class="course-row-title">Electric Networks</span></label><a aria-label="ELE 302 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ELE 302" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/302.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-14-mth-425"><input class="course-checkbox" data-panel-owner="0" id="course-row-14-mth-425" type="checkbox" value="MTH 425"/></label><label class="course-row-main" for="course-row-14-mth-425"><span class="course-row-code"><strong>MTH 425</strong></span><span class="course-row-title">Differential Equations and Vector Calculus</span></label><a aria-label="MTH 425 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="MTH 425" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/425.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-15-pcs-224"><input class="course-checkbox" data-panel-owner="0" id="course-row-15-pcs-224" type="checkbox" value="PCS 224"/></label><label class="course-row-main" for="course-row-15-pcs-224"><span class="course-row-code"><strong>PCS 224</strong></span><span class="course-row-title">Solid State Physics</span></label><a aria-label="PCS 224 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="PCS 224" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/physics/PCS/224.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -348,51 +298,11 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="CMN 432"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/communication/CMN/432.html">
-             CMN 432
-            </a>
-</label>
-           Communication in the Engineering Professions
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="COE 428"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/428.html">
-             COE 428
-            </a>
-</label>
-           Engineering Algorithms and Data Structures
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="COE 528"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/528.html">
-             COE 528
-            </a>
-</label>
-           Object Oriented Eng Analysis and Design
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="ELE 404"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/404.html">
-             ELE 404
-            </a>
-</label>
-           Electronic Circuits I
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="0" type="checkbox" value="MTH 314"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/314.html">
-             MTH 314
-            </a>
-</label>
-           Discrete Mathematics for Engineers
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-16-cmn-432"><input class="course-checkbox" data-panel-owner="0" id="course-row-16-cmn-432" type="checkbox" value="CMN 432"/></label><label class="course-row-main" for="course-row-16-cmn-432"><span class="course-row-code"><strong>CMN 432</strong></span><span class="course-row-title">Communication in the Engineering Professions</span></label><a aria-label="CMN 432 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CMN 432" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/communication/CMN/432.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-17-coe-428"><input class="course-checkbox" data-panel-owner="0" id="course-row-17-coe-428" type="checkbox" value="COE 428"/></label><label class="course-row-main" for="course-row-17-coe-428"><span class="course-row-code"><strong>COE 428</strong></span><span class="course-row-title">Engineering Algorithms and Data Structures</span></label><a aria-label="COE 428 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 428" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/428.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-18-coe-528"><input class="course-checkbox" data-panel-owner="0" id="course-row-18-coe-528" type="checkbox" value="COE 528"/></label><label class="course-row-main" for="course-row-18-coe-528"><span class="course-row-code"><strong>COE 528</strong></span><span class="course-row-title">Object Oriented Eng Analysis and Design</span></label><a aria-label="COE 528 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 528" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/528.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-19-ele-404"><input class="course-checkbox" data-panel-owner="0" id="course-row-19-ele-404" type="checkbox" value="ELE 404"/></label><label class="course-row-main" for="course-row-19-ele-404"><span class="course-row-code"><strong>ELE 404</strong></span><span class="course-row-title">Electronic Circuits I</span></label><a aria-label="ELE 404 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ELE 404" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/404.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-20-mth-314"><input class="course-checkbox" data-panel-owner="0" id="course-row-20-mth-314" type="checkbox" value="MTH 314"/></label><label class="course-row-main" for="course-row-20-mth-314"><span class="course-row-code"><strong>MTH 314</strong></span><span class="course-row-title">Discrete Mathematics for Engineers</span></label><a aria-label="MTH 314 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="MTH 314" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/314.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -455,51 +365,11 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="COE 501"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/501.html">
-             COE 501
-            </a>
-</label>
-           Electromagnetism
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="COE 538"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/538.html">
-             COE 538
-            </a>
-</label>
-           Microprocessor Systems
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="ELE 532"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/532.html">
-             ELE 532
-            </a>
-</label>
-           Signals and Systems I
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="MEC 511"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/511.html">
-             MEC 511
-            </a>
-</label>
-           Thermodynamics and Fluids
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="MTH 514"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/514.html">
-             MTH 514
-            </a>
-</label>
-           Probability and Stochastic Processes
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-21-coe-501"><input class="course-checkbox" data-panel-owner="1" id="course-row-21-coe-501" type="checkbox" value="COE 501"/></label><label class="course-row-main" for="course-row-21-coe-501"><span class="course-row-code"><strong>COE 501</strong></span><span class="course-row-title">Electromagnetism</span></label><a aria-label="COE 501 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 501" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/501.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-22-coe-538"><input class="course-checkbox" data-panel-owner="1" id="course-row-22-coe-538" type="checkbox" value="COE 538"/></label><label class="course-row-main" for="course-row-22-coe-538"><span class="course-row-code"><strong>COE 538</strong></span><span class="course-row-title">Microprocessor Systems</span></label><a aria-label="COE 538 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 538" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/538.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-23-ele-532"><input class="course-checkbox" data-panel-owner="1" id="course-row-23-ele-532" type="checkbox" value="ELE 532"/></label><label class="course-row-main" for="course-row-23-ele-532"><span class="course-row-code"><strong>ELE 532</strong></span><span class="course-row-title">Signals and Systems I</span></label><a aria-label="ELE 532 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ELE 532" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/532.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-24-mec-511"><input class="course-checkbox" data-panel-owner="1" id="course-row-24-mec-511" type="checkbox" value="MEC 511"/></label><label class="course-row-main" for="course-row-24-mec-511"><span class="course-row-code"><strong>MEC 511</strong></span><span class="course-row-title">Thermodynamics and Fluids</span></label><a aria-label="MEC 511 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="MEC 511" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/511.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-25-mth-514"><input class="course-checkbox" data-panel-owner="1" id="course-row-25-mth-514" type="checkbox" value="MTH 514"/></label><label class="course-row-main" for="course-row-25-mth-514"><span class="course-row-code"><strong>MTH 514</strong></span><span class="course-row-title">Probability and Stochastic Processes</span></label><a aria-label="MTH 514 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="MTH 514" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/514.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -545,33 +415,9 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="COE 608"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/608.html">
-             COE 608
-            </a>
-</label>
-           Computer Organization and Architecture
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="COE 628"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/628.html">
-             COE 628
-            </a>
-</label>
-           Operating Systems
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="ELE 632"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/632.html">
-             ELE 632
-            </a>
-</label>
-           Signals and Systems II
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-26-coe-608"><input class="course-checkbox" data-panel-owner="1" id="course-row-26-coe-608" type="checkbox" value="COE 608"/></label><label class="course-row-main" for="course-row-26-coe-608"><span class="course-row-code"><strong>COE 608</strong></span><span class="course-row-title">Computer Organization and Architecture</span></label><a aria-label="COE 608 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 608" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/608.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-27-coe-628"><input class="course-checkbox" data-panel-owner="1" id="course-row-27-coe-628" type="checkbox" value="COE 628"/></label><label class="course-row-main" for="course-row-27-coe-628"><span class="course-row-code"><strong>COE 628</strong></span><span class="course-row-title">Operating Systems</span></label><a aria-label="COE 628 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 628" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/628.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-28-ele-632"><input class="course-checkbox" data-panel-owner="1" id="course-row-28-ele-632" type="checkbox" value="ELE 632"/></label><label class="course-row-main" for="course-row-28-ele-632"><span class="course-row-code"><strong>ELE 632</strong></span><span class="course-row-title">Signals and Systems II</span></label><a aria-label="ELE 632 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ELE 632" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/632.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -584,33 +430,9 @@
           : Two courses from the following:
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="ELE 635"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/635.html">
-             ELE 635
-            </a>
-</label>
-           Communication Systems
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="ELE 639"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/639.html">
-             ELE 639
-            </a>
-</label>
-           Control Systems
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="CPS 688"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/688.html">
-             CPS 688
-            </a>
-</label>
-           Advanced Algorithms
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-29-ele-635"><input class="course-checkbox" data-panel-owner="1" id="course-row-29-ele-635" type="checkbox" value="ELE 635"/></label><label class="course-row-main" for="course-row-29-ele-635"><span class="course-row-code"><strong>ELE 635</strong></span><span class="course-row-title">Communication Systems</span></label><a aria-label="ELE 635 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ELE 635" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/635.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-30-ele-639"><input class="course-checkbox" data-panel-owner="1" id="course-row-30-ele-639" type="checkbox" value="ELE 639"/></label><label class="course-row-main" for="course-row-30-ele-639"><span class="course-row-code"><strong>ELE 639</strong></span><span class="course-row-title">Control Systems</span></label><a aria-label="ELE 639 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ELE 639" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/639.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-31-cps-688"><input class="course-checkbox" data-panel-owner="1" id="course-row-31-cps-688" type="checkbox" value="CPS 688"/></label><label class="course-row-main" for="course-row-31-cps-688"><span class="course-row-code"><strong>CPS 688</strong></span><span class="course-row-title">Advanced Algorithms</span></label><a aria-label="CPS 688 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CPS 688" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/688.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -695,33 +517,9 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="COE 70A/B"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">
-             COE 70A/B
-            </a>
-</label>
-           * Computer Engineering Capstone Design
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="COE 758"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/758.html">
-             COE 758
-            </a>
-</label>
-           Digital Systems Engineering
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="COE 768"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/768.html">
-             COE 768
-            </a>
-</label>
-           Computer Networks
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-32-coe-70a-b"><input class="course-checkbox" data-panel-owner="1" id="course-row-32-coe-70a-b" type="checkbox" value="COE 70A/B"/></label><label class="course-row-main" for="course-row-32-coe-70a-b"><span class="course-row-code"><strong>COE 70A/B</strong></span><span class="course-row-title">* Computer Engineering Capstone Design</span></label><a aria-label="COE 70A/B course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 70A/B" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-33-coe-758"><input class="course-checkbox" data-panel-owner="1" id="course-row-33-coe-758" type="checkbox" value="COE 758"/></label><label class="course-row-main" for="course-row-33-coe-758"><span class="course-row-code"><strong>COE 758</strong></span><span class="course-row-title">Digital Systems Engineering</span></label><a aria-label="COE 758 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 758" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/758.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-34-coe-768"><input class="course-checkbox" data-panel-owner="1" id="course-row-34-coe-768" type="checkbox" value="COE 768"/></label><label class="course-row-main" for="course-row-34-coe-768"><span class="course-row-code"><strong>COE 768</strong></span><span class="course-row-title">Computer Networks</span></label><a aria-label="COE 768 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 768" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/768.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -744,51 +542,11 @@
           : One course from the following:
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="ENG 503"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/english/ENG/503.html">
-             ENG 503
-            </a>
-</label>
-           Science Fiction
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="GEO 702"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/geography/GEO/702.html">
-             GEO 702
-            </a>
-</label>
-           Technology and the Contemporary Environment
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="HST 701"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/history/HST/701.html">
-             HST 701
-            </a>
-</label>
-           Scientific Technology and Modern Society
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="PHL 709"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/philosophy/PHL/709.html">
-             PHL 709
-            </a>
-</label>
-           Religion, Science and Philosophy
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="POL 507"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/politics-and-public-administration/POL/507.html">
-             POL 507
-            </a>
-</label>
-           Power, Change and Technology
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-35-eng-503"><input class="course-checkbox" data-panel-owner="1" id="course-row-35-eng-503" type="checkbox" value="ENG 503"/></label><label class="course-row-main" for="course-row-35-eng-503"><span class="course-row-code"><strong>ENG 503</strong></span><span class="course-row-title">Science Fiction</span></label><a aria-label="ENG 503 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ENG 503" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/english/ENG/503.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-36-geo-702"><input class="course-checkbox" data-panel-owner="1" id="course-row-36-geo-702" type="checkbox" value="GEO 702"/></label><label class="course-row-main" for="course-row-36-geo-702"><span class="course-row-code"><strong>GEO 702</strong></span><span class="course-row-title">Technology and the Contemporary Environment</span></label><a aria-label="GEO 702 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="GEO 702" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/geography/GEO/702.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-37-hst-701"><input class="course-checkbox" data-panel-owner="1" id="course-row-37-hst-701" type="checkbox" value="HST 701"/></label><label class="course-row-main" for="course-row-37-hst-701"><span class="course-row-code"><strong>HST 701</strong></span><span class="course-row-title">Scientific Technology and Modern Society</span></label><a aria-label="HST 701 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="HST 701" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/history/HST/701.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-38-phl-709"><input class="course-checkbox" data-panel-owner="1" id="course-row-38-phl-709" type="checkbox" value="PHL 709"/></label><label class="course-row-main" for="course-row-38-phl-709"><span class="course-row-code"><strong>PHL 709</strong></span><span class="course-row-title">Religion, Science and Philosophy</span></label><a aria-label="PHL 709 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="PHL 709" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/philosophy/PHL/709.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-39-pol-507"><input class="course-checkbox" data-panel-owner="1" id="course-row-39-pol-507" type="checkbox" value="POL 507"/></label><label class="course-row-main" for="course-row-39-pol-507"><span class="course-row-code"><strong>POL 507</strong></span><span class="course-row-title">Power, Change and Technology</span></label><a aria-label="POL 507 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="POL 507" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/politics-and-public-administration/POL/507.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -818,24 +576,8 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="CEN 800"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/800.html">
-             CEN 800
-            </a>
-</label>
-           Law and Ethics in Engineering Practice
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="COE 70A/B"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">
-             COE 70A/B
-            </a>
-</label>
-           * Computer Engineering Capstone Design
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-40-cen-800"><input class="course-checkbox" data-panel-owner="1" id="course-row-40-cen-800" type="checkbox" value="CEN 800"/></label><label class="course-row-main" for="course-row-40-cen-800"><span class="course-row-code"><strong>CEN 800</strong></span><span class="course-row-title">Law and Ethics in Engineering Practice</span></label><a aria-label="CEN 800 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CEN 800" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/800.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-41-coe-70a-b"><input class="course-checkbox" data-panel-owner="1" id="course-row-41-coe-70a-b" type="checkbox" value="COE 70A/B"/></label><label class="course-row-main" for="course-row-41-coe-70a-b"><span class="course-row-code"><strong>COE 70A/B</strong></span><span class="course-row-title">* Computer Engineering Capstone Design</span></label><a aria-label="COE 70A/B course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 70A/B" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -917,15 +659,7 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="COE 70A/B"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">
-             COE 70A/B
-            </a>
-</label>
-           * Computer Engineering Capstone Design
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-42-coe-70a-b"><input class="course-checkbox" data-panel-owner="1" id="course-row-42-coe-70a-b" type="checkbox" value="COE 70A/B"/></label><label class="course-row-main" for="course-row-42-coe-70a-b"><span class="course-row-code"><strong>COE 70A/B</strong></span><span class="course-row-title">* Computer Engineering Capstone Design</span></label><a aria-label="COE 70A/B course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 70A/B" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -948,51 +682,11 @@
           : One course from the following:
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="ENG 503"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/english/ENG/503.html">
-             ENG 503
-            </a>
-</label>
-           Science Fiction
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="GEO 702"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/geography/GEO/702.html">
-             GEO 702
-            </a>
-</label>
-           Technology and the Contemporary Environment
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="HST 701"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/history/HST/701.html">
-             HST 701
-            </a>
-</label>
-           Scientific Technology and Modern Society
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="PHL 709"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/philosophy/PHL/709.html">
-             PHL 709
-            </a>
-</label>
-           Religion, Science and Philosophy
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="POL 507"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/politics-and-public-administration/POL/507.html">
-             POL 507
-            </a>
-</label>
-           Power, Change and Technology
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-43-eng-503"><input class="course-checkbox" data-panel-owner="1" id="course-row-43-eng-503" type="checkbox" value="ENG 503"/></label><label class="course-row-main" for="course-row-43-eng-503"><span class="course-row-code"><strong>ENG 503</strong></span><span class="course-row-title">Science Fiction</span></label><a aria-label="ENG 503 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ENG 503" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/english/ENG/503.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-44-geo-702"><input class="course-checkbox" data-panel-owner="1" id="course-row-44-geo-702" type="checkbox" value="GEO 702"/></label><label class="course-row-main" for="course-row-44-geo-702"><span class="course-row-code"><strong>GEO 702</strong></span><span class="course-row-title">Technology and the Contemporary Environment</span></label><a aria-label="GEO 702 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="GEO 702" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/geography/GEO/702.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-45-hst-701"><input class="course-checkbox" data-panel-owner="1" id="course-row-45-hst-701" type="checkbox" value="HST 701"/></label><label class="course-row-main" for="course-row-45-hst-701"><span class="course-row-code"><strong>HST 701</strong></span><span class="course-row-title">Scientific Technology and Modern Society</span></label><a aria-label="HST 701 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="HST 701" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/history/HST/701.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-46-phl-709"><input class="course-checkbox" data-panel-owner="1" id="course-row-46-phl-709" type="checkbox" value="PHL 709"/></label><label class="course-row-main" for="course-row-46-phl-709"><span class="course-row-code"><strong>PHL 709</strong></span><span class="course-row-title">Religion, Science and Philosophy</span></label><a aria-label="PHL 709 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="PHL 709" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/philosophy/PHL/709.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-47-pol-507"><input class="course-checkbox" data-panel-owner="1" id="course-row-47-pol-507" type="checkbox" value="POL 507"/></label><label class="course-row-main" for="course-row-47-pol-507"><span class="course-row-code"><strong>POL 507</strong></span><span class="course-row-title">Power, Change and Technology</span></label><a aria-label="POL 507 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="POL 507" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/politics-and-public-administration/POL/507.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -1022,24 +716,8 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="CEN 800"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/800.html">
-             CEN 800
-            </a>
-</label>
-           Law and Ethics in Engineering Practice
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="1" type="checkbox" value="COE 70A/B"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">
-             COE 70A/B
-            </a>
-</label>
-           * Computer Engineering Capstone Design
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-48-cen-800"><input class="course-checkbox" data-panel-owner="1" id="course-row-48-cen-800" type="checkbox" value="CEN 800"/></label><label class="course-row-main" for="course-row-48-cen-800"><span class="course-row-code"><strong>CEN 800</strong></span><span class="course-row-title">Law and Ethics in Engineering Practice</span></label><a aria-label="CEN 800 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CEN 800" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/800.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-49-coe-70a-b"><input class="course-checkbox" data-panel-owner="1" id="course-row-49-coe-70a-b" type="checkbox" value="COE 70A/B"/></label><label class="course-row-main" for="course-row-49-coe-70a-b"><span class="course-row-code"><strong>COE 70A/B</strong></span><span class="course-row-title">* Computer Engineering Capstone Design</span></label><a aria-label="COE 70A/B course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 70A/B" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -1130,51 +808,11 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="CPS 510"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/510.html">
-             CPS 510
-            </a>
-</label>
-           Database Systems I
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 538"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/538.html">
-             COE 538
-            </a>
-</label>
-           Microprocessor Systems
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="ELE 532"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/532.html">
-             ELE 532
-            </a>
-</label>
-           Signals and Systems I
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="MEC 511"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/511.html">
-             MEC 511
-            </a>
-</label>
-           Thermodynamics and Fluids
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="MTH 514"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/514.html">
-             MTH 514
-            </a>
-</label>
-           Probability and Stochastic Processes
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-50-cps-510"><input class="course-checkbox" data-panel-owner="2" id="course-row-50-cps-510" type="checkbox" value="CPS 510"/></label><label class="course-row-main" for="course-row-50-cps-510"><span class="course-row-code"><strong>CPS 510</strong></span><span class="course-row-title">Database Systems I</span></label><a aria-label="CPS 510 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CPS 510" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/510.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-51-coe-538"><input class="course-checkbox" data-panel-owner="2" id="course-row-51-coe-538" type="checkbox" value="COE 538"/></label><label class="course-row-main" for="course-row-51-coe-538"><span class="course-row-code"><strong>COE 538</strong></span><span class="course-row-title">Microprocessor Systems</span></label><a aria-label="COE 538 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 538" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/538.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-52-ele-532"><input class="course-checkbox" data-panel-owner="2" id="course-row-52-ele-532" type="checkbox" value="ELE 532"/></label><label class="course-row-main" for="course-row-52-ele-532"><span class="course-row-code"><strong>ELE 532</strong></span><span class="course-row-title">Signals and Systems I</span></label><a aria-label="ELE 532 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ELE 532" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/electrical-engineering/ELE/532.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-53-mec-511"><input class="course-checkbox" data-panel-owner="2" id="course-row-53-mec-511" type="checkbox" value="MEC 511"/></label><label class="course-row-main" for="course-row-53-mec-511"><span class="course-row-code"><strong>MEC 511</strong></span><span class="course-row-title">Thermodynamics and Fluids</span></label><a aria-label="MEC 511 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="MEC 511" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mechanical-engineering/MEC/511.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-54-mth-514"><input class="course-checkbox" data-panel-owner="2" id="course-row-54-mth-514" type="checkbox" value="MTH 514"/></label><label class="course-row-main" for="course-row-54-mth-514"><span class="course-row-code"><strong>MTH 514</strong></span><span class="course-row-title">Probability and Stochastic Processes</span></label><a aria-label="MTH 514 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="MTH 514" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/mathematics/MTH/514.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -1220,51 +858,11 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 608"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/608.html">
-             COE 608
-            </a>
-</label>
-           Computer Organization and Architecture
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 628"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/628.html">
-             COE 628
-            </a>
-</label>
-           Operating Systems
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="CPS 688"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/688.html">
-             CPS 688
-            </a>
-</label>
-           Advanced Algorithms
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 691"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/691.html">
-             COE 691
-            </a>
-</label>
-           Software Requirement Analysis and SPEC
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 692"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/692.html">
-             COE 692
-            </a>
-</label>
-           Software Design and Architecture
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-55-coe-608"><input class="course-checkbox" data-panel-owner="2" id="course-row-55-coe-608" type="checkbox" value="COE 608"/></label><label class="course-row-main" for="course-row-55-coe-608"><span class="course-row-code"><strong>COE 608</strong></span><span class="course-row-title">Computer Organization and Architecture</span></label><a aria-label="COE 608 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 608" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/608.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-56-coe-628"><input class="course-checkbox" data-panel-owner="2" id="course-row-56-coe-628" type="checkbox" value="COE 628"/></label><label class="course-row-main" for="course-row-56-coe-628"><span class="course-row-code"><strong>COE 628</strong></span><span class="course-row-title">Operating Systems</span></label><a aria-label="COE 628 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 628" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/628.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-57-cps-688"><input class="course-checkbox" data-panel-owner="2" id="course-row-57-cps-688" type="checkbox" value="CPS 688"/></label><label class="course-row-main" for="course-row-57-cps-688"><span class="course-row-code"><strong>CPS 688</strong></span><span class="course-row-title">Advanced Algorithms</span></label><a aria-label="CPS 688 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CPS 688" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/688.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-58-coe-691"><input class="course-checkbox" data-panel-owner="2" id="course-row-58-coe-691" type="checkbox" value="COE 691"/></label><label class="course-row-main" for="course-row-58-coe-691"><span class="course-row-code"><strong>COE 691</strong></span><span class="course-row-title">Software Requirement Analysis and SPEC</span></label><a aria-label="COE 691 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 691" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/691.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-59-coe-692"><input class="course-checkbox" data-panel-owner="2" id="course-row-59-coe-692" type="checkbox" value="COE 692"/></label><label class="course-row-main" for="course-row-59-coe-692"><span class="course-row-code"><strong>COE 692</strong></span><span class="course-row-title">Software Design and Architecture</span></label><a aria-label="COE 692 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 692" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/692.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -1347,33 +945,9 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 70A/B"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">
-             COE 70A/B
-            </a>
-</label>
-           * Computer Engineering Capstone Design
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 768"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/768.html">
-             COE 768
-            </a>
-</label>
-           Computer Networks
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="CPS 714"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/714.html">
-             CPS 714
-            </a>
-</label>
-           Software Project Management
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-60-coe-70a-b"><input class="course-checkbox" data-panel-owner="2" id="course-row-60-coe-70a-b" type="checkbox" value="COE 70A/B"/></label><label class="course-row-main" for="course-row-60-coe-70a-b"><span class="course-row-code"><strong>COE 70A/B</strong></span><span class="course-row-title">* Computer Engineering Capstone Design</span></label><a aria-label="COE 70A/B course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 70A/B" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-61-coe-768"><input class="course-checkbox" data-panel-owner="2" id="course-row-61-coe-768" type="checkbox" value="COE 768"/></label><label class="course-row-main" for="course-row-61-coe-768"><span class="course-row-code"><strong>COE 768</strong></span><span class="course-row-title">Computer Networks</span></label><a aria-label="COE 768 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 768" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/768.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-62-cps-714"><input class="course-checkbox" data-panel-owner="2" id="course-row-62-cps-714" type="checkbox" value="CPS 714"/></label><label class="course-row-main" for="course-row-62-cps-714"><span class="course-row-code"><strong>CPS 714</strong></span><span class="course-row-title">Software Project Management</span></label><a aria-label="CPS 714 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CPS 714" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/714.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -1399,51 +973,11 @@
           : One course from the following:
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="ENG 503"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/english/ENG/503.html">
-             ENG 503
-            </a>
-</label>
-           Science Fiction
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="GEO 702"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/geography/GEO/702.html">
-             GEO 702
-            </a>
-</label>
-           Technology and the Contemporary Environment
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="HST 701"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/history/HST/701.html">
-             HST 701
-            </a>
-</label>
-           Scientific Technology and Modern Society
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="PHL 709"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/philosophy/PHL/709.html">
-             PHL 709
-            </a>
-</label>
-           Religion, Science and Philosophy
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="POL 507"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/politics-and-public-administration/POL/507.html">
-             POL 507
-            </a>
-</label>
-           Power, Change and Technology
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-63-eng-503"><input class="course-checkbox" data-panel-owner="2" id="course-row-63-eng-503" type="checkbox" value="ENG 503"/></label><label class="course-row-main" for="course-row-63-eng-503"><span class="course-row-code"><strong>ENG 503</strong></span><span class="course-row-title">Science Fiction</span></label><a aria-label="ENG 503 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ENG 503" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/english/ENG/503.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-64-geo-702"><input class="course-checkbox" data-panel-owner="2" id="course-row-64-geo-702" type="checkbox" value="GEO 702"/></label><label class="course-row-main" for="course-row-64-geo-702"><span class="course-row-code"><strong>GEO 702</strong></span><span class="course-row-title">Technology and the Contemporary Environment</span></label><a aria-label="GEO 702 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="GEO 702" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/geography/GEO/702.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-65-hst-701"><input class="course-checkbox" data-panel-owner="2" id="course-row-65-hst-701" type="checkbox" value="HST 701"/></label><label class="course-row-main" for="course-row-65-hst-701"><span class="course-row-code"><strong>HST 701</strong></span><span class="course-row-title">Scientific Technology and Modern Society</span></label><a aria-label="HST 701 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="HST 701" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/history/HST/701.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-66-phl-709"><input class="course-checkbox" data-panel-owner="2" id="course-row-66-phl-709" type="checkbox" value="PHL 709"/></label><label class="course-row-main" for="course-row-66-phl-709"><span class="course-row-code"><strong>PHL 709</strong></span><span class="course-row-title">Religion, Science and Philosophy</span></label><a aria-label="PHL 709 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="PHL 709" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/philosophy/PHL/709.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-67-pol-507"><input class="course-checkbox" data-panel-owner="2" id="course-row-67-pol-507" type="checkbox" value="POL 507"/></label><label class="course-row-main" for="course-row-67-pol-507"><span class="course-row-code"><strong>POL 507</strong></span><span class="course-row-title">Power, Change and Technology</span></label><a aria-label="POL 507 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="POL 507" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/politics-and-public-administration/POL/507.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -1473,42 +1007,10 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="CEN 800"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/800.html">
-             CEN 800
-            </a>
-</label>
-           Law and Ethics in Engineering Practice
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 70A/B"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">
-             COE 70A/B
-            </a>
-</label>
-           * Computer Engineering Capstone Design
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 891"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/891.html">
-             COE 891
-            </a>
-</label>
-           Software Testing and Quality Assurance
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 892"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/892.html">
-             COE 892
-            </a>
-</label>
-           Distributed &amp; Cloud Computing
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-68-cen-800"><input class="course-checkbox" data-panel-owner="2" id="course-row-68-cen-800" type="checkbox" value="CEN 800"/></label><label class="course-row-main" for="course-row-68-cen-800"><span class="course-row-code"><strong>CEN 800</strong></span><span class="course-row-title">Law and Ethics in Engineering Practice</span></label><a aria-label="CEN 800 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CEN 800" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/800.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-69-coe-70a-b"><input class="course-checkbox" data-panel-owner="2" id="course-row-69-coe-70a-b" type="checkbox" value="COE 70A/B"/></label><label class="course-row-main" for="course-row-69-coe-70a-b"><span class="course-row-code"><strong>COE 70A/B</strong></span><span class="course-row-title">* Computer Engineering Capstone Design</span></label><a aria-label="COE 70A/B course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 70A/B" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-70-coe-891"><input class="course-checkbox" data-panel-owner="2" id="course-row-70-coe-891" type="checkbox" value="COE 891"/></label><label class="course-row-main" for="course-row-70-coe-891"><span class="course-row-code"><strong>COE 891</strong></span><span class="course-row-title">Software Testing and Quality Assurance</span></label><a aria-label="COE 891 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 891" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/891.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-71-coe-892"><input class="course-checkbox" data-panel-owner="2" id="course-row-71-coe-892" type="checkbox" value="COE 892"/></label><label class="course-row-main" for="course-row-71-coe-892"><span class="course-row-code"><strong>COE 892</strong></span><span class="course-row-title">Distributed &amp; Cloud Computing</span></label><a aria-label="COE 892 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 892" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/892.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -1599,33 +1101,9 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 70A/B"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">
-             COE 70A/B
-            </a>
-</label>
-           * Computer Engineering Capstone Design
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 768"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/768.html">
-             COE 768
-            </a>
-</label>
-           Computer Networks
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="CPS 714"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/714.html">
-             CPS 714
-            </a>
-</label>
-           Software Project Management
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-72-coe-70a-b"><input class="course-checkbox" data-panel-owner="2" id="course-row-72-coe-70a-b" type="checkbox" value="COE 70A/B"/></label><label class="course-row-main" for="course-row-72-coe-70a-b"><span class="course-row-code"><strong>COE 70A/B</strong></span><span class="course-row-title">* Computer Engineering Capstone Design</span></label><a aria-label="COE 70A/B course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 70A/B" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-73-coe-768"><input class="course-checkbox" data-panel-owner="2" id="course-row-73-coe-768" type="checkbox" value="COE 768"/></label><label class="course-row-main" for="course-row-73-coe-768"><span class="course-row-code"><strong>COE 768</strong></span><span class="course-row-title">Computer Networks</span></label><a aria-label="COE 768 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 768" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/768.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-74-cps-714"><input class="course-checkbox" data-panel-owner="2" id="course-row-74-cps-714" type="checkbox" value="CPS 714"/></label><label class="course-row-main" for="course-row-74-cps-714"><span class="course-row-code"><strong>CPS 714</strong></span><span class="course-row-title">Software Project Management</span></label><a aria-label="CPS 714 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CPS 714" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-science/CPS/714.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -1651,51 +1129,11 @@
           : One course from the following:
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="ENG 503"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/english/ENG/503.html">
-             ENG 503
-            </a>
-</label>
-           Science Fiction
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="GEO 702"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/geography/GEO/702.html">
-             GEO 702
-            </a>
-</label>
-           Technology and the Contemporary Environment
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="HST 701"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/history/HST/701.html">
-             HST 701
-            </a>
-</label>
-           Scientific Technology and Modern Society
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="PHL 709"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/philosophy/PHL/709.html">
-             PHL 709
-            </a>
-</label>
-           Religion, Science and Philosophy
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="POL 507"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/politics-and-public-administration/POL/507.html">
-             POL 507
-            </a>
-</label>
-           Power, Change and Technology
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-75-eng-503"><input class="course-checkbox" data-panel-owner="2" id="course-row-75-eng-503" type="checkbox" value="ENG 503"/></label><label class="course-row-main" for="course-row-75-eng-503"><span class="course-row-code"><strong>ENG 503</strong></span><span class="course-row-title">Science Fiction</span></label><a aria-label="ENG 503 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="ENG 503" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/english/ENG/503.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-76-geo-702"><input class="course-checkbox" data-panel-owner="2" id="course-row-76-geo-702" type="checkbox" value="GEO 702"/></label><label class="course-row-main" for="course-row-76-geo-702"><span class="course-row-code"><strong>GEO 702</strong></span><span class="course-row-title">Technology and the Contemporary Environment</span></label><a aria-label="GEO 702 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="GEO 702" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/geography/GEO/702.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-77-hst-701"><input class="course-checkbox" data-panel-owner="2" id="course-row-77-hst-701" type="checkbox" value="HST 701"/></label><label class="course-row-main" for="course-row-77-hst-701"><span class="course-row-code"><strong>HST 701</strong></span><span class="course-row-title">Scientific Technology and Modern Society</span></label><a aria-label="HST 701 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="HST 701" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/history/HST/701.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-78-phl-709"><input class="course-checkbox" data-panel-owner="2" id="course-row-78-phl-709" type="checkbox" value="PHL 709"/></label><label class="course-row-main" for="course-row-78-phl-709"><span class="course-row-code"><strong>PHL 709</strong></span><span class="course-row-title">Religion, Science and Philosophy</span></label><a aria-label="PHL 709 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="PHL 709" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/philosophy/PHL/709.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-79-pol-507"><input class="course-checkbox" data-panel-owner="2" id="course-row-79-pol-507" type="checkbox" value="POL 507"/></label><label class="course-row-main" for="course-row-79-pol-507"><span class="course-row-code"><strong>POL 507</strong></span><span class="course-row-title">Power, Change and Technology</span></label><a aria-label="POL 507 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="POL 507" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/politics-and-public-administration/POL/507.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
@@ -1725,24 +1163,8 @@
           :
          </p>
 <ul style="list-style: none; padding-left: 0; margin: 0;">
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="CEN 800"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/800.html">
-             CEN 800
-            </a>
-</label>
-           Law and Ethics in Engineering Practice
-          </li>
-<li>
-<label>
-<input class="course-checkbox" data-panel-owner="2" type="checkbox" value="COE 70A/B"/>
-<a class="qTipCourse" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">
-             COE 70A/B
-            </a>
-</label>
-           * Computer Engineering Capstone Design
-          </li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-80-cen-800"><input class="course-checkbox" data-panel-owner="2" id="course-row-80-cen-800" type="checkbox" value="CEN 800"/></label><label class="course-row-main" for="course-row-80-cen-800"><span class="course-row-code"><strong>CEN 800</strong></span><span class="course-row-title">Law and Ethics in Engineering Practice</span></label><a aria-label="CEN 800 course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="CEN 800" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/common-engineering/CEN/800.html">Outline</a></div></li>
+<li><div class="course-row"><label class="course-row-check" for="course-row-81-coe-70a-b"><input class="course-checkbox" data-panel-owner="2" id="course-row-81-coe-70a-b" type="checkbox" value="COE 70A/B"/></label><label class="course-row-main" for="course-row-81-coe-70a-b"><span class="course-row-code"><strong>COE 70A/B</strong></span><span class="course-row-title">* Computer Engineering Capstone Design</span></label><a aria-label="COE 70A/B course outline (opens in new tab)" class="course-row-outline qTipCourse" data-course-code="COE 70A/B" href="http://torontomu.ca/content/ryerson/calendar/2026-2027/courses/computer-engineering/COE/70A.html">Outline</a></div></li>
 </ul>
 </div>
 </div>
