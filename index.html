@@ -598,7 +598,8 @@
   }
 
   function injectSemesterSelectAllButtonsOld(iframeDoc) {
-    const semesterPattern = /^(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+SEMESTER$/i;
+    // Allow trailing notes, e.g. "5th SEMESTER (Offered in Winter Term Only)".
+    const semesterPattern = /^(1st|2nd|3rd|4th|5th|6th|7th|8th)\s+SEMESTER\b/i;
     const root = iframeDoc.querySelector('[data-panel-container-id]') || iframeDoc.body;
     if (!root) return;
 
