@@ -383,22 +383,43 @@
     padding:0;
     background:transparent;
   }
+  /* One link per row — cloned sidebar buttons are otherwise inline */
   .drawer-body button.yellow,
   .drawer-body button.blue{
+    display:block;
+    width:100%;
+    box-sizing:border-box;
+    margin:8px 0;
+    padding:10px 12px;
     font-size:0.88rem;
     line-height:1.3;
+    text-align:center;
   }
   body.drawer-open{overflow:hidden}
+
+  .main-column{flex:1;min-width:0;width:100%}
 
   /* Responsive */
   @media (max-width:980px){
     body{padding:10px}
-    .layout{flex-direction:column;padding:0;gap:0}
+    .layout{
+      flex-direction:column;
+      align-items:stretch;
+      padding:0;
+      gap:0;
+      width:100%;
+      max-width:none;
+    }
     .left-sidebar{display:none}
+    .main-column{width:100%;max-width:100%}
+    .main-container{width:100%;box-sizing:border-box}
     .topbar{
       padding:10px 12px;
       margin-bottom:10px;
       gap:10px;
+      width:100%;
+      box-sizing:border-box;
+      max-width:none;
     }
     .topbar .site-title{gap:10px;min-width:0;flex:1}
     .topbar-logo{width:40px;height:40px}
@@ -414,6 +435,7 @@
     .menu-btn{display:block}
     .main-container{padding:16px 14px}
     .main-header h1{display:none}
+    #curriculumIframe{max-width:100%}
     .curriculum-action-bar{
       flex-direction:column;
       align-items:stretch;
@@ -520,7 +542,7 @@
       </div>
     </aside>
 
-    <div>
+    <div class="main-column">
       <main class="main-container">
         <div class="main-header" style="display:flex;align-items:center;gap:12px;justify-content:flex-start;">
           <button id="backButton" class="back-btn hidden" onclick="goBack()">← Back</button>
