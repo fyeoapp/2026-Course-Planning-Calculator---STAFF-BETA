@@ -4,19 +4,22 @@ The calculator only needs HTML, layouts, JSON data, and Assets. Python
 generators, README, Retired_scripts, etc. must stay in the git repo and
 should not be uploaded to the web server.
 
+Each build also writes app_version.json and stamps index.html so browsers
+can detect a new deploy and load the latest UI without a hard refresh.
+
 Usage:
     python3 build_public.py
     python3 build_public.py --out public
     python3 build_public.py --clean   # wipe out dir first
-
-Then upload the contents of public/ (or the folder itself, depending on
-your host) — e.g. rsync, SCP, or your CMS static upload.
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import shutil
+import subprocess
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -37,6 +40,8 @@ PUBLIC_ITEMS = [
 #   *.py, README.md, Retired_scripts/, Programs_misc/, course_correction.html,
 #   programs_config.json, __pycache__/, .git/, .DS_Store
 
+APP_VERSION_MARKER = "window.__APP_VERSION__ = 'dev';"
+
 
 def copy_item(src: Path, dest: Path) -> None:
     if src.is_dir():
@@ -54,6 +59,48 @@ def copy_item(src: Path, dest: Path) -> None:
     else:
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dest)
+
+
+def resolve_app_version() -> str:
+    """Unique per build: short git SHA + UTC timestamp (same commit can redeploy)."""
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
+    try:
+        sha = subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=ROOT,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+        if sha:
+            return f"{sha}-{stamp}"
+    except (OSError, subprocess.CalledProcessError):
+        pass
+    return stamp
+
+
+def stamp_app_version(out_dir: Path, version: str) -> None:
+    """Write app_version.json and inject the version into the published index.html."""
+    built_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    version_path = out_dir / "app_version.json"
+    version_path.write_text(
+        json.dumps({"version": version, "builtAt": built_at}, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    print(f"  + app_version.json ({version})")
+
+    index_path = out_dir / "index.html"
+    html = index_path.read_text(encoding="utf-8")
+    replacement = f"window.__APP_VERSION__ = {json.dumps(version)};"
+    if APP_VERSION_MARKER not in html:
+        raise SystemExit(
+            "index.html is missing the app version marker "
+            f"({APP_VERSION_MARKER}). Cannot stamp deploy version."
+        )
+    index_path.write_text(
+        html.replace(APP_VERSION_MARKER, replacement, 1),
+        encoding="utf-8",
+    )
+    print(f"  ~ index.html stamped with version {version}")
 
 
 def build(out_dir: Path, clean: bool) -> None:
@@ -78,6 +125,8 @@ def build(out_dir: Path, clean: bool) -> None:
 
     if missing:
         raise SystemExit(f"Missing required paths: {', '.join(missing)}")
+
+    stamp_app_version(out_dir, resolve_app_version())
 
     # Small marker so hosts/people know this folder is generated
     (out_dir / ".public_build").write_text(

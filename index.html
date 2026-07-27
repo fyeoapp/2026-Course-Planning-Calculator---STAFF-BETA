@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <title>Engineering Spring/Summer 2026 Course Planning Calculator</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 
   <style>
   :root{
@@ -655,6 +658,49 @@
   </div> <!-- end layout -->
 
 <script>
+  // Stamped by build_public.py on deploy. Keep the 'dev' marker text stable.
+  window.__APP_VERSION__ = 'dev';
+
+  /** Append deploy version so JSON/layout URLs refresh after a new publish. */
+  function appAssetUrl(path) {
+    const raw = String(path || '');
+    if (!raw || /^https?:\/\//i.test(raw)) return raw;
+    const version = window.__APP_VERSION__ || 'dev';
+    const hashIndex = raw.indexOf('#');
+    const withoutHash = hashIndex >= 0 ? raw.slice(0, hashIndex) : raw;
+    const hash = hashIndex >= 0 ? raw.slice(hashIndex) : '';
+    const sep = withoutHash.includes('?') ? '&' : '?';
+    return `${withoutHash}${sep}_v=${encodeURIComponent(version)}${hash}`;
+  }
+
+  /**
+   * If this tab is on a cached older build, reload once onto the newest deploy.
+   * app_version.json is always fetched with cache: 'no-store'.
+   * @returns {Promise<boolean>} true if a reload was triggered
+   */
+  async function ensureLatestAppVersion() {
+    try {
+      const res = await fetch('app_version.json', { cache: 'no-store' });
+      if (!res.ok) return false;
+      const data = await res.json();
+      const remote = String(data && data.version ? data.version : '');
+      const local = String(window.__APP_VERSION__ || '');
+      if (!remote || !local || remote === local) return false;
+
+      const guardKey = `fyeo_reloaded_${remote}`;
+      if (sessionStorage.getItem(guardKey) === '1') return false;
+      sessionStorage.setItem(guardKey, '1');
+
+      const url = new URL(window.location.href);
+      url.searchParams.set('_v', remote);
+      window.location.replace(url.toString());
+      return true;
+    } catch (e) {
+      // Local file:// / missing file during development — ignore.
+      return false;
+    }
+  }
+
   function standingCheck(isClear) {
     // hide the first step when making a choice so the flow progresses to a dedicated screen
     document.getElementById("step1").classList.add("hidden");
@@ -889,7 +935,7 @@
   window.__curriculumManifest = null;
 
   async function loadCurriculumManifest() {
-    const res = await fetch('curriculum_manifest.json');
+    const res = await fetch(appAssetUrl('curriculum_manifest.json'), { cache: 'no-store' });
     if (!res.ok) throw new Error(`Could not load curriculum_manifest.json (${res.status})`);
     window.__curriculumManifest = await res.json();
     populateProgramSelect();
@@ -1437,7 +1483,7 @@ button[data-semester]:focus-visible {
     const iframe = Object.assign(
       document.createElement('iframe'), {
         id: 'curriculumIframe',
-        src: layoutPath,
+        src: appAssetUrl(layoutPath),
         title: `Curriculum checklist for ${titleText}`,
         style: 'width: 100%; border: none; overflow: hidden;',
         onload: function () {
@@ -1568,7 +1614,7 @@ button[data-semester]:focus-visible {
     document.createElement('iframe'), {
         id: "curriculumIframe",
         title: `Curriculum checklist for ${program}-${admitYear}`,
-        src: window.__currentLayoutPath,
+        src: appAssetUrl(window.__currentLayoutPath),
         style: "width: 100%; border: none; overflow: hidden;",
         
         onload: function () {
@@ -1621,8 +1667,8 @@ button[data-semester]:focus-visible {
 
     async function loadAdmitYearRequisites(year) {
         // Cache-bust so a prior 404 (before a year file existed) cannot stick.
-        const path = `Course_requisites/requisites_${year}.json?v=${Date.now()}`;
-        const res = await fetch(path);
+        const path = appAssetUrl(`Course_requisites/requisites_${year}.json`);
+        const res = await fetch(path, { cache: 'no-store' });
         if (res.ok) return { year, data: await res.json(), path };
         return null;
     }
@@ -1654,8 +1700,8 @@ button[data-semester]:focus-visible {
             // Fall/Winter candidates use admit-year requisites directly
         } else {
             const [springRes, summerRes] = await Promise.all([
-                fetch('Transition_courses/spring/spring_2026.json'),
-                fetch('Transition_courses/summer/summer_2026.json')
+                fetch(appAssetUrl('Transition_courses/spring/spring_2026.json'), { cache: 'no-store' }),
+                fetch(appAssetUrl('Transition_courses/summer/summer_2026.json'), { cache: 'no-store' })
             ]);
             springCourses = await springRes.json();
             summerCourses = await summerRes.json();
@@ -1666,7 +1712,7 @@ button[data-semester]:focus-visible {
     }
 
     try {
-        const aliasRes = await fetch('course_aliases.json');
+        const aliasRes = await fetch(appAssetUrl('course_aliases.json'), { cache: 'no-store' });
         if (aliasRes.ok) aliasConfig = await aliasRes.json();
     } catch (e) {
         console.warn('course_aliases.json not loaded — continuing without equivalences', e);
@@ -2096,10 +2142,13 @@ button[data-semester]:focus-visible {
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    initMobileResourceDrawer();
-    loadCurriculumManifest().catch(err => {
-      console.error(err);
-      alert('Could not load curriculum_manifest.json. Run the app through a local server from the repo root (see README).');
+    ensureLatestAppVersion().then((reloading) => {
+      if (reloading) return;
+      initMobileResourceDrawer();
+      loadCurriculumManifest().catch(err => {
+        console.error(err);
+        alert('Could not load curriculum_manifest.json. Run the app through a local server from the repo root (see README).');
+      });
     });
   });
 
