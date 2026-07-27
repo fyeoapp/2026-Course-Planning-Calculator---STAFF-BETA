@@ -53,6 +53,8 @@
   .support-box{margin-top:14px;padding:12px;background:#fff;border-radius:8px}
 
   /* AODA: visible keyboard focus */
+  .menu-btn:focus-visible,
+  .drawer-close:focus-visible,
   button:focus-visible,
   .pill:focus-visible,
   .back-btn:focus-visible,
@@ -81,7 +83,7 @@
   #step4{text-align:left}
   #programNameYearStep4{
     margin:0 0 0.35rem;
-    font-size:1.15rem;
+    /* font-size:1.15rem; */
     font-weight:700;
     color:#1a1a1a;
     text-align:center;
@@ -267,10 +269,167 @@
   }
   #eligibilityBtn:hover{filter:brightness(1.08)}
 
+  /* Mobile resource drawer */
+  .menu-btn{
+    display:none;
+    width:44px;
+    height:44px;
+    flex-shrink:0;
+    border:1px solid rgba(255,255,255,0.35);
+    border-radius:10px;
+    background:rgba(255,255,255,0.12);
+    color:#fff;
+    font-size:1.25rem;
+    line-height:1;
+    cursor:pointer;
+    margin:0;
+    padding:0;
+  }
+  .topbar-logo{
+    width:96px;
+    height:96px;
+    border-radius:8px;
+    object-fit:contain;
+    display:block;
+    flex-shrink:0;
+  }
+  .title-sub{
+    display:none;
+    font-size:0.75rem;
+    font-weight:600;
+    opacity:0.92;
+    margin-top:2px;
+    line-height:1.25;
+  }
+  .title-mobile{display:none}
+  .drawer-backdrop{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+    z-index:200;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.2s ease;
+  }
+  .drawer-backdrop.open{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .mobile-drawer{
+    position:fixed;
+    top:0;
+    right:0;
+    width:min(88vw,320px);
+    height:100%;
+    background:#fff;
+    z-index:210;
+    transform:translateX(100%);
+    transition:transform 0.25s ease;
+    display:flex;
+    flex-direction:column;
+    box-shadow:-8px 0 24px rgba(0,0,0,0.15);
+    color:#222;
+  }
+  .mobile-drawer.open{transform:translateX(0)}
+  .drawer-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:14px;
+    background:var(--purple);
+    color:#fff;
+  }
+  .drawer-head h2{
+    margin:0;
+    font-size:1.05rem;
+    text-align:left;
+  }
+  .drawer-close{
+    width:44px;
+    height:44px;
+    border:1px solid rgba(255,255,255,0.35);
+    border-radius:10px;
+    background:rgba(0,0,0,0.15);
+    color:#fff;
+    font-size:1.1rem;
+    cursor:pointer;
+    margin:0;
+    padding:0;
+    flex-shrink:0;
+  }
+  .drawer-quick{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    padding:12px 12px 0;
+  }
+  .drawer-quick .pill{
+    width:100%;
+    font-size:0.72rem;
+    line-height:1.2;
+    min-height:44px;
+    padding:8px 10px;
+    margin:0;
+  }
+  .drawer-body{
+    overflow:auto;
+    padding:12px;
+    flex:1;
+    -webkit-overflow-scrolling:touch;
+  }
+  .drawer-body .sidebar-section{
+    box-shadow:none;
+    padding:0;
+    background:transparent;
+  }
+  .drawer-body button.yellow,
+  .drawer-body button.blue{
+    font-size:0.88rem;
+    line-height:1.3;
+  }
+  body.drawer-open{overflow:hidden}
+
   /* Responsive */
   @media (max-width:980px){
-    .layout{flex-direction:column;padding:0 12px}
-    .left-sidebar,.right-sidebar{width:100%}
+    body{padding:10px}
+    .layout{flex-direction:column;padding:0;gap:0}
+    .left-sidebar{display:none}
+    .topbar{
+      padding:10px 12px;
+      margin-bottom:10px;
+      gap:10px;
+    }
+    .topbar .site-title{gap:10px;min-width:0;flex:1}
+    .topbar-logo{width:40px;height:40px}
+    .topbar .site-title .title-text{
+      font-size:0.92rem;
+      line-height:1.25;
+      min-width:0;
+    }
+    .title-desktop{display:none}
+    .title-mobile{display:block}
+    .title-sub{display:block}
+    .top-buttons--desktop{display:none}
+    .menu-btn{display:block}
+    .main-container{padding:16px 14px}
+    .main-header h1{display:none}
+    .curriculum-action-bar{
+      flex-direction:column;
+      align-items:stretch;
+    }
+    .curriculum-action-bar #eligibilityBtn{width:100%}
+    .curriculum-action-bar button:not(#eligibilityBtn){
+      flex:1;
+      min-width:0;
+    }
+    .result-card{
+      grid-template-columns:1fr;
+    }
+    .result-card .outline{
+      justify-self:start;
+      margin-top:0.25rem;
+    }
   }
   </style>
 </head>
@@ -278,14 +437,32 @@
 
   <div class="topbar">
     <div class="site-title">
-  <img src="Assets/FYEO_LOGO.png" alt="FYEO Logo" style="width:96px;height:96px;border-radius:8px;object-fit:contain;display:block;margin-right:8px" />
-      <div class="title-text">Engineering Spring/Summer 2026 Course Planning Calculator</div>
+      <img class="topbar-logo" src="Assets/FYEO_LOGO.png" alt="FYEO Logo" />
+      <div class="title-text">
+        <span class="title-desktop">Engineering Spring/Summer 2026 Course Planning Calculator</span>
+        <span class="title-mobile">Course Planning Calculator</span>
+        <div class="title-sub">Spring/Summer 2026 · TMU Engineering</div>
+      </div>
     </div>
-    <div class="top-buttons">
-      <button class="pill" onclick="window.open('https://www.torontomu.ca/calendar/2026-2027/dates/', '_blank')">Significant Dates Calendar</button>
-      <button class="pill" onclick="window.open('https://www.torontomu.ca/first-year-engineering-office/', '_blank')">First-Year Engineering Office</button>
+    <div class="top-buttons top-buttons--desktop">
+      <button class="pill" type="button" onclick="window.open('https://www.torontomu.ca/calendar/2026-2027/dates/', '_blank')">Significant Dates Calendar</button>
+      <button class="pill" type="button" onclick="window.open('https://www.torontomu.ca/first-year-engineering-office/', '_blank')">First-Year Engineering Office</button>
     </div>
+    <button type="button" class="menu-btn" id="openResourceDrawer" aria-label="Open resources menu" aria-expanded="false" aria-controls="mobileResourceDrawer">☰</button>
   </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobileResourceDrawer" aria-label="Resources" aria-hidden="true" inert>
+    <div class="drawer-head">
+      <h2>Resources</h2>
+      <button type="button" class="drawer-close" id="closeResourceDrawer" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer-quick">
+      <button class="pill" type="button" onclick="window.open('https://www.torontomu.ca/calendar/2026-2027/dates/', '_blank')">Significant Dates</button>
+      <button class="pill" type="button" onclick="window.open('https://www.torontomu.ca/first-year-engineering-office/', '_blank')">FYEO website</button>
+    </div>
+    <div class="drawer-body" id="mobileDrawerBody"></div>
+  </aside>
 
   <!-- Debug info (visible) -->
   <!-- <div style="max-width:100px;margin:8px auto 0 auto;text-align:right;font-size:12px;color:#fff;">
@@ -295,7 +472,7 @@
   <div class="layout">
 
     <aside class="left-sidebar">
-      <div class="sidebar-section">
+      <div class="sidebar-section" id="resourcePanelContent">
         <div style="font-weight:700;margin-bottom:8px">Spring/Summer Quick Links</div>
   <!-- Left block: three primary support links -->
   <button class="yellow" onclick="window.open('https://www.torontomu.ca/engineering-architectural-science/programs/undergraduate-programs/transition-program/','_blank')">Spring/Summer Engineering Transition Program</button>
@@ -340,11 +517,12 @@
       
             </div>
         </div>
+      </div>
     </aside>
 
     <div>
       <main class="main-container">
-        <div style="display:flex;align-items:center;gap:12px;justify-content:flex-start;">
+        <div class="main-header" style="display:flex;align-items:center;gap:12px;justify-content:flex-start;">
           <button id="backButton" class="back-btn hidden" onclick="goBack()">← Back</button>
           <h1>Engineering Spring/Summer 2026 Course Planning Calculator</h1>
         </div>
@@ -1820,7 +1998,83 @@ button[data-semester]:focus-visible {
     }
 }
 
+  function initMobileResourceDrawer() {
+    const openBtn = document.getElementById('openResourceDrawer');
+    const closeBtn = document.getElementById('closeResourceDrawer');
+    const drawer = document.getElementById('mobileResourceDrawer');
+    const backdrop = document.getElementById('drawerBackdrop');
+    const drawerBody = document.getElementById('mobileDrawerBody');
+    const source = document.getElementById('resourcePanelContent');
+    if (!openBtn || !closeBtn || !drawer || !backdrop || !drawerBody || !source) return;
+
+    drawerBody.appendChild(source.cloneNode(true));
+
+    let lastFocus = null;
+
+    function getFocusable() {
+      return drawer.querySelectorAll(
+        'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+    }
+
+    function openDrawer() {
+      lastFocus = document.activeElement;
+      drawer.classList.add('open');
+      backdrop.classList.add('open');
+      backdrop.hidden = false;
+      drawer.setAttribute('aria-hidden', 'false');
+      drawer.removeAttribute('inert');
+      openBtn.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('drawer-open');
+      closeBtn.focus();
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      backdrop.classList.remove('open');
+      backdrop.hidden = true;
+      drawer.setAttribute('aria-hidden', 'true');
+      drawer.setAttribute('inert', '');
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('drawer-open');
+      if (lastFocus && typeof lastFocus.focus === 'function') {
+        lastFocus.focus();
+      } else {
+        openBtn.focus();
+      }
+    }
+
+    openBtn.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    backdrop.addEventListener('click', closeDrawer);
+
+    drawer.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDrawer();
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const focusable = Array.from(getFocusable());
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+
+    drawerBody.addEventListener('click', (e) => {
+      const target = e.target.closest('button, a');
+      if (target) closeDrawer();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    initMobileResourceDrawer();
     loadCurriculumManifest().catch(err => {
       console.error(err);
       alert('Could not load curriculum_manifest.json. Run the app through a local server from the repo root (see README).');
