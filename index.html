@@ -1192,8 +1192,8 @@ button[data-semester]:focus-visible {
     if (hostHasLoneStarMarker(cb, label)) return true;
     const key = normalizeCourseKey(code);
     if (PASS_FAIL_STAR_CODES.has(key)) return true;
-    // Multi-term calendar courses (44A/B, 70A/B, year-long capstones)
-    if (/(?:44|70)A\/?B$/.test(key)) return true;
+    // Multi-term calendar courses (44A/B, 70A/B, 71A/B, 72A/B, year-long capstones)
+    if (/(?:44|70|71|72)A\/?B$/.test(key)) return true;
     if (/^(?:BME|COE)(?:700|800)$/.test(key)) return true;
     return false;
   }
@@ -1315,7 +1315,7 @@ button[data-semester]:focus-visible {
     }
     const key = normalizeCourseKey(code);
     if (!starred && PASS_FAIL_STAR_CODES.has(key)) starred = true;
-    if (!starred && /(?:44|70)A\/?B$/.test(key)) starred = true;
+    if (!starred && /(?:44|70|71|72)A\/?B$/.test(key)) starred = true;
     if (!starred && /^(?:BME|COE)(?:700|800)$/.test(key)) starred = true;
     if (!starred) return;
 
