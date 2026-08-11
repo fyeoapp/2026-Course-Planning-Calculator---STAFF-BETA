@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mobile layout — UI prototype</title>
+  <style>
+    :root {
+      --purple: #6f2bb8;
+      --yellow: #ffd842;
+      --blue: #16579b;
+      --bg: #5e2b97;
+      --ink: #1a1a1a;
+      --muted: #5c5c5c;
+      --line: #d9d6cf;
+      --surface: #fff;
+      --focus: #0b57d0;
+      --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: #f3f2ef;
+      color: var(--ink);
+      line-height: 1.45;
+    }
+
+    /* Prototype chrome */
+    .proto-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 1.1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .proto-header h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.15rem;
+    }
+    .proto-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      max-width: 40rem;
+    }
+    .variant-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.85rem;
+    }
+    .variant-tabs button {
+      font: inherit;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.4rem 0.75rem;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .variant-tabs button[aria-pressed="true"] {
+      background: var(--purple);
+      color: #fff;
+      border-color: var(--purple);
+    }
+    .variant-tabs button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .notes {
+      max-width: 430px;
+      margin: 0 auto;
+      padding: 0.85rem 1rem 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .notes strong { color: var(--ink); }
+    .notes ul { margin: 0.5rem 0 0; padding-left: 1.15rem; }
+    .notes li { margin: 0.25rem 0; }
+
+    /* Phone frame */
+    .phone-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .phone {
+      width: 100%;
+      max-width: 390px;
+      min-height: 780px;
+      border: 10px solid #222;
+      border-radius: 34px;
+      overflow: hidden;
+      background: var(--bg);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+      position: relative;
+    }
+    .phone-notch {
+      height: 26px;
+      background: #111;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+      width: 42%;
+      margin: 0 auto;
+    }
+
+    .screen {
+      height: calc(780px - 26px);
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 10px;
+    }
+    .screen[data-variant] { display: none; }
+    .screen[data-variant].active { display: block; }
+
+    /* Shared app tokens */
+    .app-top {
+      background: var(--purple);
+      color: #fff;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+    .main-card {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 16px 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .main-card h2 {
+      margin: 0 0 0.65rem;
+      font-size: 1.05rem;
+      text-align: center;
+    }
+    .main-card p {
+      text-align: center;
+      font-weight: 600;
+      margin: 0 0 0.75rem;
+      font-size: 0.92rem;
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .btn-row button,
+    .link-btn {
+      min-height: 44px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: #fff;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-row button:focus-visible,
+    .link-btn:focus-visible,
+    .icon-btn:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+    .pill {
+      background: var(--yellow);
+      color: #222;
+      border: none;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 8px 10px;
+      min-height: 36px;
+      cursor: pointer;
+    }
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .yellow { background: var(--yellow); color: #222; border: none; }
+    .blue { background: var(--blue); color: #fff; border: none; }
+
+    /* ── CURRENT (problem) ── */
+    .current-top {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .current-top .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-placeholder {
+      width: 72px;
+      height: 72px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.2);
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      font-size: 0.65rem;
+      text-align: center;
+      padding: 4px;
+    }
+    .current-top .title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1.25;
+    }
+    .current-top .top-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sidebar-card {
+      background: rgba(255,255,255,0.95);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    .sidebar-card h3 {
+      margin: 0 0 8px;
+      font-size: 0.9rem;
+    }
+    .sidebar-card button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      border: none;
+      padding: 10px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+      font-weight: 600;
+      font-size: 0.88rem;
+      line-height: 1.3;
+    }
+    .badge-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      width: 120px;
+      height: 36px;
+      border-radius: 6px;
+      background: #222;
+      color: #fff;
+      font-size: 0.65rem;
+      display: grid;
+      place-items: center;
+    }
+
+    /* ── VARIANT A: compact header + drawer (recommended) ── */
+    .compact-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .compact-top .logo-sm {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.2);
+      flex-shrink: 0;
+      font-size: 0.55rem;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+    .compact-top .title-sm {
+      flex: 1;
+      min-width: 0;
+      font-weight: 700;
+      font-size: 0.88rem;
+      line-height: 1.25;
+    }
+    .compact-top .title-sm span {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+    .drawer-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      z-index: 50;
+    }
+    .drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .drawer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: min(88%, 320px);
+      height: 100%;
+      background: #fff;
+      transform: translateX(100%);
+      transition: transform 0.25s ease;
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -8px 0 24px rgba(0,0,0,0.15);
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 14px 10px;
+      border-bottom: 1px solid var(--line);
+      background: var(--purple);
+      color: #fff;
+    }
+    .drawer-head h2 {
+      margin: 0;
+      font-size: 1rem;
+    }
+    .drawer-body {
+      overflow: auto;
+      padding: 12px;
+      flex: 1;
+    }
+    .drawer-section {
+      margin-bottom: 14px;
+    }
+    .drawer-section h3 {
+      margin: 0 0 8px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+    }
+    .drawer-section a,
+    .drawer-section button.link-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 8px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .drawer-quick {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .drawer-quick .pill {
+      width: 100%;
+      font-size: 0.72rem;
+      line-height: 1.2;
+      min-height: 44px;
+    }
+    .step-hint {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+    }
+
+    /* ── VARIANT B: accordion below calculator ── */
+    .accordion {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .accordion details {
+      border-bottom: 1px solid var(--line);
+    }
+    .accordion details:last-child { border-bottom: none; }
+    .accordion summary {
+      list-style: none;
+      padding: 12px 14px;
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .accordion summary::-webkit-details-marker { display: none; }
+    .accordion summary::after {
+      content: "▾";
+      color: var(--muted);
+    }
+    .accordion details[open] summary::after { content: "▴"; }
+    .accordion .panel {
+      padding: 0 12px 12px;
+    }
+    .accordion .panel button {
+      display: block;
+      width: 100%;
+      margin: 6px 0;
+      border: none;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-align: left;
+      font: inherit;
+      font-weight: 600;
+      font-size: 0.86rem;
+    }
+
+    /* ── VARIANT C: bottom tab bar ── */
+    .tab-screen {
+      padding-bottom: 62px;
+    }
+    .bottom-tabs {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 56px;
+      background: #fff;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      z-index: 40;
+    }
+    .bottom-tabs button {
+      border: none;
+      background: transparent;
+      font: inherit;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .bottom-tabs button[aria-selected="true"] {
+      color: var(--purple);
+      box-shadow: inset 0 -3px 0 var(--purple);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .rec-badge {
+      display: inline-block;
+      background: #e4f3ec;
+      color: #1f6b4a;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    @media (min-width: 900px) {
+      .phone-wrap { padding: 1.5rem; }
+      .notes { max-width: 900px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="proto-header">
+    <h1>Mobile layout prototype</h1>
+    <p>Compare how the calculator feels on a phone-sized screen. Open this file on your iPhone to preview each variant.</p>
+    <div class="variant-tabs" role="tablist" aria-label="Layout variants">
+      <button type="button" data-variant="current" aria-pressed="false">Current (problem)</button>
+      <button type="button" data-variant="a" aria-pressed="true">A — Drawer menu <span class="rec-badge">Recommended</span></button>
+      <button type="button" data-variant="b" aria-pressed="false">B — Accordion below</button>
+      <button type="button" data-variant="c" aria-pressed="false">C — Bottom tabs</button>
+    </div>
+  </header>
+
+  <div class="notes" id="variantNotes">
+    <strong>Variant A — Compact header + drawer (recommended)</strong>
+    <ul>
+      <li>Calculator is visible immediately — no scrolling past 8+ links.</li>
+      <li>Resources live in a slide-in panel (hamburger / “Menu”).</li>
+      <li>Matches common mobile patterns (TMU apps, banking, etc.).</li>
+      <li>Header shrinks: small logo, short title, one menu button.</li>
+    </ul>
+  </div>
+
+  <div class="phone-wrap">
+    <div class="phone" id="phone">
+      <div class="phone-notch" aria-hidden="true"></div>
+
+      <!-- CURRENT -->
+      <div class="screen active" data-variant="current" id="screen-current">
+        <div class="app-top current-top">
+          <div class="brand">
+            <div class="logo-placeholder">FYEO<br>logo</div>
+            <div class="title">Engineering Spring/Summer 2026 Course Planning Calculator</div>
+          </div>
+          <div class="top-buttons">
+            <button type="button" class="pill">Significant Dates Calendar</button>
+            <button type="button" class="pill">First-Year Engineering Office</button>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Spring/Summer Quick Links</h3>
+          <button type="button" class="yellow">Spring/Summer Engineering Transition Program</button>
+          <button type="button" class="yellow">Math Tutoring</button>
+          <button type="button" class="yellow">TMU GPA Scales</button>
+          <button type="button" class="yellow">TMU GPA Calculator</button>
+          <h3 style="margin-top:12px">Advising &amp; Tools</h3>
+          <button type="button" class="blue">How to View Your Advisement Report</button>
+          <button type="button" class="blue">How to Generate Your Unofficial Transcript</button>
+          <button type="button" class="blue">How to Add a Course</button>
+          <button type="button" class="blue">Undergraduate Course Grading, Academic Program Standing, and Eligibility to Graduate</button>
+          <h3 style="margin-top:12px">FYEng Mobile App</h3>
+          <div class="badge-row">
+            <div class="badge">App Store</div>
+            <div class="badge">Google Play</div>
+          </div>
+        </div>
+
+        <div class="main-card">
+          <h2>Standing Verification</h2>
+          <p>Is your academic standing clear?</p>
+          <div class="btn-row">
+            <button type="button">Yes</button>
+            <button type="button">No</button>
+          </div>
+          <p class="step-hint">Calculator starts here — but only after scrolling past all links above.</p>
+        </div>
+      </div>
+
+      <!-- VARIANT A -->
+      <div class="screen" data-variant="a" id="screen-a">
+        <div class="app-top compact-top">
+          <div class="logo-sm">FYEO</div>
+          <div class="title-sm">
+            Course Planning Calculator
+            <span>Spring/Summer 2026 · TMU Engineering</span>
+          </div>
+          <button type="button" class="icon-btn" id="openDrawer" aria-label="Open resources menu" aria-expanded="false" aria-controls="resourceDrawer">☰</button>
+        </div>
+
+        <div class="main-card">
+          <h2>Standing Verification</h2>
+          <p>Is your academic standing clear?</p>
+          <div class="btn-row">
+            <button type="button">Yes</button>
+            <button type="button">No</button>
+          </div>
+          <p class="step-hint">Primary task is above the fold. Tap ☰ for quick links &amp; advising tools.</p>
+        </div>
+
+        <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+        <aside class="drawer" id="resourceDrawer" aria-label="Resources" aria-hidden="true">
+          <div class="drawer-head">
+            <h2>Resources</h2>
+            <button type="button" class="icon-btn" id="closeDrawer" aria-label="Close menu" style="background:rgba(0,0,0,0.2);border-color:transparent">✕</button>
+          </div>
+          <div class="drawer-body">
+            <div class="drawer-quick">
+              <button type="button" class="pill">Significant Dates</button>
+              <button type="button" class="pill">FYEO website</button>
+            </div>
+            <div class="drawer-section">
+              <h3>Spring/Summer</h3>
+              <button type="button" class="link-btn yellow">Transition Program</button>
+              <button type="button" class="link-btn yellow">Math Tutoring</button>
+              <button type="button" class="link-btn yellow">GPA Scales</button>
+              <button type="button" class="link-btn yellow">GPA Calculator</button>
+            </div>
+            <div class="drawer-section">
+              <h3>Advising &amp; Tools</h3>
+              <button type="button" class="link-btn blue">Advisement report (video)</button>
+              <button type="button" class="link-btn blue">Unofficial transcript</button>
+              <button type="button" class="link-btn blue">How to add a course</button>
+              <button type="button" class="link-btn blue">Grading &amp; standing policy</button>
+            </div>
+            <div class="drawer-section">
+              <h3>FYEng Mobile App</h3>
+              <div class="badge-row">
+                <div class="badge">App Store</div>
+                <div class="badge">Google Play</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- VARIANT B -->
+      <div class="screen" data-variant="b" id="screen-b">
+        <div class="app-top compact-top">
+          <div class="logo-sm">FYEO</div>
+          <div class="title-sm">
+            Course Planning Calculator
+            <span>Spring/Summer 2026</span>
+          </div>
+        </div>
+
+        <div class="main-card">
+          <h2>Standing Verification</h2>
+          <p>Is your academic standing clear?</p>
+          <div class="btn-row">
+            <button type="button">Yes</button>
+            <button type="button">No</button>
+          </div>
+        </div>
+
+        <div class="accordion" aria-label="Resources">
+          <details>
+            <summary>Spring/Summer quick links (4)</summary>
+            <div class="panel">
+              <button type="button" class="yellow">Transition Program</button>
+              <button type="button" class="yellow">Math Tutoring</button>
+              <button type="button" class="yellow">GPA Scales</button>
+              <button type="button" class="yellow">GPA Calculator</button>
+            </div>
+          </details>
+          <details>
+            <summary>Advising &amp; tools (4)</summary>
+            <div class="panel">
+              <button type="button" class="blue">Advisement report</button>
+              <button type="button" class="blue">Unofficial transcript</button>
+              <button type="button" class="blue">How to add a course</button>
+              <button type="button" class="blue">Grading &amp; standing policy</button>
+            </div>
+          </details>
+          <details>
+            <summary>FYEng mobile app</summary>
+            <div class="panel badge-row">
+              <div class="badge">App Store</div>
+              <div class="badge">Google Play</div>
+            </div>
+          </details>
+        </div>
+        <p class="step-hint" style="color:#fff;margin-top:10px">Links stay on the page but collapsed — better than current, still pushes content down when expanded.</p>
+      </div>
+
+      <!-- VARIANT C -->
+      <div class="screen tab-screen" data-variant="c" id="screen-c">
+        <div class="app-top compact-top">
+          <div class="logo-sm">FYEO</div>
+          <div class="title-sm">
+            Course Planning Calculator
+            <span>Spring/Summer 2026</span>
+          </div>
+        </div>
+
+        <div class="tab-panel active" data-tab="calc">
+          <div class="main-card">
+            <h2>Standing Verification</h2>
+            <p>Is your academic standing clear?</p>
+            <div class="btn-row">
+              <button type="button">Yes</button>
+              <button type="button">No</button>
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel" data-tab="resources">
+          <div class="sidebar-card" style="margin-bottom:0">
+            <h3>Quick links</h3>
+            <button type="button" class="yellow">Transition Program</button>
+            <button type="button" class="yellow">Math Tutoring</button>
+            <button type="button" class="blue">Advisement report</button>
+            <button type="button" class="blue">Unofficial transcript</button>
+          </div>
+        </div>
+
+        <nav class="bottom-tabs" aria-label="Main">
+          <button type="button" data-tab-target="calc" aria-selected="true">Calculator</button>
+          <button type="button" data-tab-target="resources" aria-selected="false">Resources</button>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const notes = {
+      current: `<strong>Current layout (problem)</strong><ul>
+        <li>Sidebar stacks above the calculator on narrow screens.</li>
+        <li>Large logo + repeated long title + two header pills eat vertical space.</li>
+        <li>Users scroll through many links before reaching step 1.</li>
+      </ul>`,
+      a: `<strong>Variant A — Compact header + drawer (recommended)</strong><ul>
+        <li>Calculator is visible immediately — no scrolling past 8+ links.</li>
+        <li>Resources live in a slide-in panel (hamburger / “Menu”).</li>
+        <li>Matches common mobile patterns (TMU apps, banking, etc.).</li>
+        <li>Header shrinks: small logo, short title, one menu button.</li>
+      </ul>`,
+      b: `<strong>Variant B — Accordion below calculator</strong><ul>
+        <li>All links stay on the same page, collapsed by default.</li>
+        <li>Simpler to build than a drawer; no overlay state.</li>
+        <li>Still adds length when sections are opened; secondary choice.</li>
+      </ul>`,
+      c: `<strong>Variant C — Bottom tab bar</strong><ul>
+        <li>Clear split: Calculator vs Resources.</li>
+        <li>Works well if users often switch between both.</li>
+        <li>Uses permanent screen space; links are one tap away but not “alongside” the flow.</li>
+      </ul>`
+    };
+
+    const tabs = document.querySelectorAll('.variant-tabs button');
+    const screens = document.querySelectorAll('.screen[data-variant]');
+    const notesEl = document.getElementById('variantNotes');
+
+    function showVariant(id) {
+      tabs.forEach(btn => {
+        btn.setAttribute('aria-pressed', btn.dataset.variant === id ? 'true' : 'false');
+      });
+      screens.forEach(s => s.classList.toggle('active', s.dataset.variant === id));
+      notesEl.innerHTML = notes[id] || '';
+      closeDrawer();
+    }
+
+    tabs.forEach(btn => btn.addEventListener('click', () => showVariant(btn.dataset.variant)));
+
+    const drawer = document.getElementById('resourceDrawer');
+    const backdrop = document.getElementById('drawerBackdrop');
+    const openBtn = document.getElementById('openDrawer');
+    const closeBtn = document.getElementById('closeDrawer');
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      backdrop.classList.add('open');
+      backdrop.hidden = false;
+      drawer.setAttribute('aria-hidden', 'false');
+      openBtn.setAttribute('aria-expanded', 'true');
+    }
+    function closeDrawer() {
+      if (!drawer) return;
+      drawer.classList.remove('open');
+      backdrop.classList.remove('open');
+      backdrop.hidden = true;
+      drawer.setAttribute('aria-hidden', 'true');
+      if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+    document.querySelectorAll('.bottom-tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tabTarget;
+        document.querySelectorAll('.bottom-tabs button').forEach(b => {
+          b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+        });
+        document.querySelectorAll('#screen-c .tab-panel').forEach(p => {
+          p.classList.toggle('active', p.dataset.tab === target);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

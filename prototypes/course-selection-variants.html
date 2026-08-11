@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Course row selection — AODA prototype variants</title>
+  <style>
+    :root {
+      --bg: #f6f5f2;
+      --surface: #fff;
+      --ink: #1a1a1a;
+      --muted: #5c5c5c;
+      --line: #d9d6cf;
+      --accent: #003d4d;
+      --accent-soft: #e6f1f3;
+      --focus: #0b57d0;
+      --selected: #dceee8;
+      --selected-border: #2a7a66;
+      --danger-soft: #f8e8e8;
+      --link: #0b57d0;
+      --radius: 8px;
+      --touch: 44px;
+      --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.45;
+    }
+
+    header {
+      padding: 1.25rem 1.25rem 0.75rem;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    header h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      max-width: 52rem;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+      align-items: center;
+    }
+    .toolbar label {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .viewport-frame {
+      margin: 1rem auto 2rem;
+      width: min(100% - 1.5rem, 720px);
+      transition: width 0.2s ease;
+    }
+    .viewport-frame.phone { width: min(100% - 1.5rem, 390px); }
+    .viewport-frame.tablet { width: min(100% - 1.5rem, 768px); }
+
+    .hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0 0 0.75rem;
+    }
+
+    section.variant {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 1rem 1.1rem;
+      margin-bottom: 1rem;
+    }
+    section.variant > h2 {
+      margin: 0 0 0.25rem;
+      font-size: 1.05rem;
+    }
+    .meta {
+      margin: 0 0 0.85rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+    .tag.baseline { background: var(--danger-soft); color: #7a2e2e; }
+    .tag.recommend { background: var(--accent-soft); color: var(--accent); }
+    .tag.alt { background: #eeeae2; color: #444; }
+
+    ul.courses {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Shared link look */
+    a.course-code {
+      color: var(--link);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    a.course-code:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    .row:focus-within {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* ========== A: Current (baseline) ========== */
+    .v-a li {
+      margin: 0.35rem 0;
+      font-size: 0.95rem;
+    }
+    .v-a input {
+      /* native tiny checkbox — the problem */
+      margin-right: 0.25rem;
+    }
+
+    /* ========== B: Full-row label + large checkbox + isolated link ========== */
+    .v-b li { margin: 0.4rem 0; }
+    .v-b .row {
+      display: grid;
+      grid-template-columns: var(--touch) minmax(0, 1fr) auto;
+      gap: 0.35rem 0.5rem;
+      align-items: center;
+      min-height: var(--touch);
+      padding: 0.35rem 0.55rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fafafa;
+      cursor: pointer;
+    }
+    .v-b .row:has(input:checked) {
+      background: var(--selected);
+      border-color: var(--selected-border);
+    }
+    .v-b .check-wrap {
+      display: grid;
+      place-items: center;
+      width: var(--touch);
+      height: var(--touch);
+    }
+    .v-b input[type="checkbox"] {
+      width: 1.25rem;
+      height: 1.25rem;
+      accent-color: var(--accent);
+      margin: 0;
+    }
+    .v-b .main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.5rem;
+      align-items: baseline;
+      min-width: 0;
+    }
+    .v-b .title { color: var(--ink); }
+    .v-b .info {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: var(--touch);
+      min-height: var(--touch);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0 0.55rem;
+    }
+    .v-b .info:hover { background: var(--accent-soft); }
+
+    /* ========== C: Padded hit area (quick win) ========== */
+    .v-c li { margin: 0.35rem 0; }
+    .v-c label.hit {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-height: var(--touch);
+      padding: 0.35rem 0.5rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+    .v-c label.hit:hover { background: #f0efeb; }
+    .v-c label.hit:has(input:checked) { background: var(--selected); }
+    .v-c input {
+      width: 1.2rem;
+      height: 1.2rem;
+      flex-shrink: 0;
+      accent-color: var(--accent);
+    }
+    .v-c .text { display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; }
+    /* Link still inside label — intentional tradeoff for this variant */
+
+    /* ========== D: Select chip + info link ========== */
+    .v-d li {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 0.5rem;
+      align-items: center;
+      min-height: var(--touch);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .v-d .select-chip {
+      appearance: none;
+      border: 1px solid var(--accent);
+      background: #fff;
+      color: var(--accent);
+      border-radius: 999px;
+      min-height: 2.25rem;
+      padding: 0 0.85rem;
+      font: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .v-d .select-chip[aria-pressed="true"] {
+      background: var(--accent);
+      color: #fff;
+    }
+    .v-d .copy { min-width: 0; }
+    .v-d .copy .code { font-weight: 700; }
+    .v-d .copy .title { color: var(--muted); display: block; font-size: 0.9rem; }
+    .v-d .info-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      min-height: var(--touch);
+      display: inline-flex;
+      align-items: center;
+      padding: 0 0.35rem;
+    }
+
+    /* ========== E: Button-looking row (your idea) ========== */
+    .v-e li { margin: 0.45rem 0; }
+    .v-e .btn-row {
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #fff;
+      min-height: var(--touch);
+    }
+    .v-e .btn-row:has(input:checked) {
+      border-color: var(--selected-border);
+      background: var(--selected);
+    }
+    .v-e .toggle-area {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.55rem 0.75rem;
+      cursor: pointer;
+      border: 0;
+      background: transparent;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+      min-width: 0;
+    }
+    .v-e .toggle-area input {
+      width: 1.25rem;
+      height: 1.25rem;
+      accent-color: var(--accent);
+      pointer-events: none; /* whole button toggles via JS/label */
+      flex-shrink: 0;
+    }
+    .v-e .names {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 0;
+    }
+    .v-e .names .code-plain { font-weight: 700; }
+    .v-e .names .title { color: var(--muted); font-size: 0.9rem; }
+    .v-e .link-slot {
+      display: flex;
+      align-items: center;
+      border-left: 1px solid var(--line);
+      background: #fafafa;
+    }
+    .v-e .link-slot a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: var(--touch);
+      min-height: 100%;
+      padding: 0 0.75rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--link);
+      white-space: nowrap;
+    }
+    .v-e .link-slot a:hover { background: var(--accent-soft); }
+
+    /* ========== F: Checkbox + title row; code is icon-only external ========== */
+    .v-f li { margin: 0.4rem 0; }
+    .v-f .row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: var(--touch);
+      padding: 0.35rem 0.5rem;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+    }
+    .v-f label {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex: 1;
+      min-width: 0;
+      cursor: pointer;
+      min-height: var(--touch);
+    }
+    .v-f input {
+      width: 1.25rem;
+      height: 1.25rem;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+    }
+    .v-f .row:has(input:checked) {
+      background: var(--selected);
+      border-color: var(--selected-border);
+    }
+    .v-f .ext {
+      flex-shrink: 0;
+      width: var(--touch);
+      height: var(--touch);
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 1.1rem;
+      background: #fff;
+    }
+    .v-f .ext:hover { background: var(--accent-soft); }
+    .v-f .code { font-weight: 700; margin-right: 0.35rem; }
+
+    footer.note {
+      margin: 0 auto 2.5rem;
+      width: min(100% - 1.5rem, 720px);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    footer.note code {
+      font-size: 0.78rem;
+      background: #eee;
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Course selection hit-target prototypes</h1>
+    <!-- <p>
+      One file, six variants. Same three sample courses in each.
+      Try on a phone (or use the width toggle). Goal: tap to select without
+      accidentally opening the calendar link. Course links still open in a new tab.
+    </p> -->
+    <div class="toolbar">
+      <label for="widthMode">Preview width</label>
+      <select id="widthMode" aria-label="Preview width">
+        <option value="desktop">Desktop (~720px)</option>
+        <option value="tablet">Tablet (~768px frame)</option>
+        <option value="phone" selected>Phone (~390px)</option>
+      </select>
+      <button type="button" id="clearAll">Clear all selections</button>
+    </div>
+  </header>
+
+  <div class="viewport-frame phone" id="frame">
+    <p class="hint">Blue outline = keyboard focus. Green tint = selected.</p>
+
+    <!-- A -->
+    <section class="variant v-a" aria-labelledby="a-title">
+      <h2 id="a-title"><span class="tag baseline">Baseline</span> A — Current pattern</h2>
+      <p class="meta">Native small checkbox. Code link inside &lt;label&gt;. Title outside label (not tappable for select).</p>
+      <ul class="courses">
+        <li>
+          <label>
+            <input class="course-checkbox" type="checkbox" value="CEN 100" />
+            <a class="course-code" href="https://www.torontomu.ca/calendar/2026-2027/courses/common-engineering/CEN/100.html" target="_blank" rel="noopener">CEN 100</a>
+          </label>
+          Introduction to Engineering
+        </li>
+        <li>
+          <label>
+            <input class="course-checkbox" type="checkbox" value="CHY 102" />
+            <a class="course-code" href="https://www.torontomu.ca/calendar/2026-2027/courses/chemistry/CHY/102.html" target="_blank" rel="noopener">CHY 102</a>
+          </label>
+          General Chemistry
+        </li>
+        <li>
+          <label>
+            <input class="course-checkbox" type="checkbox" value="MTH 140" />
+            <a class="course-code" href="https://www.torontomu.ca/calendar/2026-2027/courses/mathematics/MTH/140.html" target="_blank" rel="noopener">MTH 140</a>
+          </label>
+          Calculus I
+        </li>
+      </ul>
+    </section>
+
+    <!-- B -->
+    <section class="variant v-b" aria-labelledby="b-title">
+      <h2 id="b-title"><span class="tag recommend">Slightly beefy</span> B </h2>
+      <p class="meta">Native checkbox</p>
+      <ul class="courses">
+        <li>
+          <div class="row">
+            <label class="check-wrap" for="b-cen100">
+              <input id="b-cen100" class="course-checkbox" type="checkbox" value="CEN 100" />
+            </label>
+            <label class="main" for="b-cen100">
+              <span class="code-plain"><strong>CEN 100</strong></span>
+              <span class="title">Introduction to Engineering</span>
+            </label>
+            <a class="info" href="https://www.torontomu.ca/calendar/2026-2027/courses/common-engineering/CEN/100.html" target="_blank" rel="noopener" aria-label="CEN 100 course outline (opens in new tab)">Outline</a>
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <label class="check-wrap" for="b-chy102">
+              <input id="b-chy102" class="course-checkbox" type="checkbox" value="CHY 102" />
+            </label>
+            <label class="main" for="b-chy102">
+              <span class="code-plain"><strong>CHY 102</strong></span>
+              <span class="title">General Chemistry</span>
+            </label>
+            <a class="info" href="https://www.torontomu.ca/calendar/2026-2027/courses/chemistry/CHY/102.html" target="_blank" rel="noopener" aria-label="CHY 102 course outline (opens in new tab)">Outline</a>
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <label class="check-wrap" for="b-mth140">
+              <input id="b-mth140" class="course-checkbox" type="checkbox" value="MTH 140" />
+            </label>
+            <label class="main" for="b-mth140">
+              <span class="code-plain"><strong>MTH 140</strong></span>
+              <span class="title">Calculus I</span>
+            </label>
+            <a class="info" href="https://www.torontomu.ca/calendar/2026-2027/courses/mathematics/MTH/140.html" target="_blank" rel="noopener" aria-label="MTH 140 course outline (opens in new tab)">Outline</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- C -->
+    <section class="variant v-c" aria-labelledby="c-title">
+      <h2 id="c-title"><span class="tag alt">Hover</span> C </h2>
+      <p class="meta"></p>
+      <ul class="courses">
+        <li>
+          <label class="hit">
+            <input class="course-checkbox" type="checkbox" value="CEN 100" />
+            <span class="text">
+              <a class="course-code" href="https://www.torontomu.ca/calendar/2026-2027/courses/common-engineering/CEN/100.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">CEN 100</a>
+              <span>Introduction to Engineering</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label class="hit">
+            <input class="course-checkbox" type="checkbox" value="CHY 102" />
+            <span class="text">
+              <a class="course-code" href="https://www.torontomu.ca/calendar/2026-2027/courses/chemistry/CHY/102.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">CHY 102</a>
+              <span>General Chemistry</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label class="hit">
+            <input class="course-checkbox" type="checkbox" value="MTH 140" />
+            <span class="text">
+              <a class="course-code" href="https://www.torontomu.ca/calendar/2026-2027/courses/mathematics/MTH/140.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">MTH 140</a>
+              <span>Calculus I</span>
+            </span>
+          </label>
+        </li>
+      </ul>
+    </section>
+
+    <!-- D -->
+    <section class="variant v-d" aria-labelledby="d-title">
+      <h2 id="d-title"><span class="tag alt">Alternate</span> D </h2>
+      <!-- <p class="meta">Clearest mental model: Select vs Outline are separate. Slightly more chrome; very hard to mis-tap. Uses aria-pressed chip wired to a visually hidden checkbox for eligibility compatibility.</p> -->
+      <ul class="courses">
+        <li>
+          <button type="button" class="select-chip" aria-pressed="false" data-for="d-cen100">Select</button>
+          <input id="d-cen100" class="course-checkbox" type="checkbox" value="CEN 100" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px" tabindex="-1" />
+          <div class="copy">
+            <span class="code">CEN 100</span>
+            <span class="title">Introduction to Engineering</span>
+          </div>
+          <a class="info-link" href="https://www.torontomu.ca/calendar/2026-2027/courses/common-engineering/CEN/100.html" target="_blank" rel="noopener">Outline</a>
+        </li>
+        <li>
+          <button type="button" class="select-chip" aria-pressed="false" data-for="d-chy102">Select</button>
+          <input id="d-chy102" class="course-checkbox" type="checkbox" value="CHY 102" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px" tabindex="-1" />
+          <div class="copy">
+            <span class="code">CHY 102</span>
+            <span class="title">General Chemistry</span>
+          </div>
+          <a class="info-link" href="https://www.torontomu.ca/calendar/2026-2027/courses/chemistry/CHY/102.html" target="_blank" rel="noopener">Outline</a>
+        </li>
+        <li>
+          <button type="button" class="select-chip" aria-pressed="false" data-for="d-mth140">Select</button>
+          <input id="d-mth140" class="course-checkbox" type="checkbox" value="MTH 140" style="position:absolute;opacity:0;pointer-events:none;width:1px;height:1px" tabindex="-1" />
+          <div class="copy">
+            <span class="code">MTH 140</span>
+            <span class="title">Calculus I</span>
+          </div>
+          <a class="info-link" href="https://www.torontomu.ca/calendar/2026-2027/courses/mathematics/MTH/140.html" target="_blank" rel="noopener">Outline</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- E -->
+    <section class="variant v-e" aria-labelledby="e-title">
+      <h2 id="e-title"><span class="tag recommend">B but more intuitive?</span> E </h2>
+      <!-- <p class="meta">Left = one big toggle control (checkbox + code text + title). Right = dedicated link to calendar. Closest to “button with CEN 100 still a hyperlink,” without nesting interactive elements incorrectly.</p> -->
+      <ul class="courses">
+        <li>
+          <div class="btn-row">
+            <label class="toggle-area" for="e-cen100">
+              <input id="e-cen100" class="course-checkbox" type="checkbox" value="CEN 100" />
+              <span class="names">
+                <span class="code-plain">CEN 100</span>
+                <span class="title">Introduction to Engineering</span>
+              </span>
+            </label>
+            <div class="link-slot">
+              <a href="https://www.torontomu.ca/calendar/2026-2027/courses/common-engineering/CEN/100.html" target="_blank" rel="noopener" aria-label="Open CEN 100 outline in new tab">CEN 100 ↗</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="btn-row">
+            <label class="toggle-area" for="e-chy102">
+              <input id="e-chy102" class="course-checkbox" type="checkbox" value="CHY 102" />
+              <span class="names">
+                <span class="code-plain">CHY 102</span>
+                <span class="title">General Chemistry</span>
+              </span>
+            </label>
+            <div class="link-slot">
+              <a href="https://www.torontomu.ca/calendar/2026-2027/courses/chemistry/CHY/102.html" target="_blank" rel="noopener" aria-label="Open CHY 102 outline in new tab">CHY 102 ↗</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="btn-row">
+            <label class="toggle-area" for="e-mth140">
+              <input id="e-mth140" class="course-checkbox" type="checkbox" value="MTH 140" />
+              <span class="names">
+                <span class="code-plain">MTH 140</span>
+                <span class="title">Calculus I</span>
+              </span>
+            </label>
+            <div class="link-slot">
+              <a href="https://www.torontomu.ca/calendar/2026-2027/courses/mathematics/MTH/140.html" target="_blank" rel="noopener" aria-label="Open MTH 140 outline in new tab">MTH 140 ↗</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- F -->
+    <section class="variant v-f" aria-labelledby="f-title">
+      <h2 id="f-title"><span class="tag alt">Compact</span> F </h2>
+      <!-- <p class="meta">Dense list feel. Code is plain text in the label (tappable to select). Outline is a ↗ icon button only. Good if you want less horizontal chrome than E.</p> -->
+      <ul class="courses">
+        <li>
+          <div class="row">
+            <label for="f-cen100">
+              <input id="f-cen100" class="course-checkbox" type="checkbox" value="CEN 100" />
+              <span><span class="code">CEN 100</span>Introduction to Engineering</span>
+            </label>
+            <a class="ext" href="https://www.torontomu.ca/calendar/2026-2027/courses/common-engineering/CEN/100.html" target="_blank" rel="noopener" aria-label="CEN 100 outline (opens in new tab)" title="Course outline">↗</a>
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <label for="f-chy102">
+              <input id="f-chy102" class="course-checkbox" type="checkbox" value="CHY 102" />
+              <span><span class="code">CHY 102</span>General Chemistry</span>
+            </label>
+            <a class="ext" href="https://www.torontomu.ca/calendar/2026-2027/courses/chemistry/CHY/102.html" target="_blank" rel="noopener" aria-label="CHY 102 outline (opens in new tab)" title="Course outline">↗</a>
+          </div>
+        </li>
+        <li>
+          <div class="row">
+            <label for="f-mth140">
+              <input id="f-mth140" class="course-checkbox" type="checkbox" value="MTH 140" />
+              <span><span class="code">MTH 140</span>Calculus I</span>
+            </label>
+            <a class="ext" href="https://www.torontomu.ca/calendar/2026-2027/courses/mathematics/MTH/140.html" target="_blank" rel="noopener" aria-label="MTH 140 outline (opens in new tab)" title="Course outline">↗</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- <footer class="note">
+    File: <code>prototypes/course-selection-variants.html</code> —
+    open in a browser (or Live Preview). No app wiring; checkboxes are local only.
+    When you pick a winner, we can inject that pattern into the curriculum iframe on load.
+  </footer> -->
+
+  <script>
+    const frame = document.getElementById('frame');
+    document.getElementById('widthMode').addEventListener('change', (e) => {
+      frame.classList.remove('phone', 'tablet');
+      if (e.target.value === 'phone') frame.classList.add('phone');
+      if (e.target.value === 'tablet') frame.classList.add('tablet');
+    });
+
+    document.getElementById('clearAll').addEventListener('click', () => {
+      document.querySelectorAll('input.course-checkbox').forEach((cb) => {
+        cb.checked = false;
+        cb.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+
+    // Variant D: chip <-> checkbox
+    document.querySelectorAll('.v-d .select-chip').forEach((btn) => {
+      const sync = () => {
+        const cb = document.getElementById(btn.getAttribute('data-for'));
+        const on = cb.checked;
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        btn.textContent = on ? 'Selected' : 'Select';
+      };
+      btn.addEventListener('click', () => {
+        const cb = document.getElementById(btn.getAttribute('data-for'));
+        cb.checked = !cb.checked;
+        sync();
+      });
+      const cb = document.getElementById(btn.getAttribute('data-for'));
+      cb.addEventListener('change', sync);
+      sync();
+    });
+  </script>
+</body>
+</html>

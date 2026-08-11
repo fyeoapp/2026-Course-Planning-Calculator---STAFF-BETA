@@ -29,6 +29,7 @@ PUBLIC_ITEMS = [
     "index.html",
     "curriculum_manifest.json",
     "course_aliases.json",
+    "transition_program_allowlist.json",
     "Assets",
     "Programs",
     "Programs_old",

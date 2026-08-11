@@ -415,9 +415,11 @@
         "anchor_text": "AER 817",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3970.html#327359",
         "prereqs": [
+            "AER606"
+        ],
+        "coreqs": [
             "AER715"
         ],
-        "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
@@ -503,10 +505,15 @@
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3857.html#327484",
         "prereqs": [
             "BLG143",
-            "CEN100"
+            [
+                "CEN100",
+                "PCS229"
+            ]
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "BLG600"
+        ],
         "custom_reqs": []
     },
     {
@@ -515,10 +522,15 @@
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3857.html#327489",
         "prereqs": [
             "BLG143",
-            "CEN100"
+            [
+                "CEN100",
+                "PCS229"
+            ]
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "BLG700"
+        ],
         "custom_reqs": []
     },
     {
@@ -541,10 +553,13 @@
             "ELE202",
             "MTH141",
             "MTH240",
-            "PCS125"
+            "PCS125",
+            "PCS211"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "PCS229"
+        ],
         "custom_reqs": []
     },
     {
@@ -562,7 +577,9 @@
             "PCS211"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "MEC323"
+        ],
         "custom_reqs": []
     },
     {
@@ -571,18 +588,25 @@
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3858.html#327503",
         "prereqs": [
             "CPS125",
-            "ELE202"
+            "ELE202",
+            "MTH240"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "COE328"
+        ],
         "custom_reqs": []
     },
     {
         "id": 41,
         "anchor_text": "BME 406",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3858.html#327504",
-        "prereqs": [],
-        "coreqs": [],
+        "prereqs": [
+            "BME323"
+        ],
+        "coreqs": [
+            "BLG601"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
@@ -604,10 +628,13 @@
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3858.html#327506",
         "prereqs": [
             "BLG601",
-            "CEN199"
+            "CEN199",
+            "MTH312"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CPS501"
+        ],
         "custom_reqs": []
     },
     {
@@ -615,10 +642,13 @@
         "anchor_text": "BME 506",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3858.html#327507",
         "prereqs": [
-            "BME328"
+            "BME328",
+            "CEN199"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "COE318"
+        ],
         "custom_reqs": []
     },
     {
@@ -629,10 +659,13 @@
             "BME229",
             "MTH312",
             "BME423",
-            "CEN199"
+            "CEN199",
+            "BME406"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "MEC516"
+        ],
         "custom_reqs": []
     },
     {
@@ -640,10 +673,13 @@
         "anchor_text": "BME 532",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3858.html#327509",
         "prereqs": [
-            "EES604"
+            "EES604",
+            "CEN199"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "ELE532"
+        ],
         "custom_reqs": []
     },
     {
@@ -651,10 +687,13 @@
         "anchor_text": "BME 538",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3858.html#327510",
         "prereqs": [
-            "BME328"
+            "BME328",
+            "CEN199"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "COE538"
+        ],
         "custom_reqs": []
     },
     {
@@ -662,10 +701,13 @@
         "anchor_text": "BME 632",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3858.html#327511",
         "prereqs": [
-            "BME532"
+            "BME532",
+            "CEN199"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "ELE632"
+        ],
         "custom_reqs": []
     },
     {
@@ -673,10 +715,13 @@
         "anchor_text": "BME 639",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3858.html#327512",
         "prereqs": [
-            "BME532"
+            "BME532",
+            "CEN199"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "ELE639"
+        ],
         "custom_reqs": []
     },
     {
@@ -763,10 +808,13 @@
         "prereqs": [
             "BLG601",
             "BME632",
-            "BLG701"
+            "BLG701",
+            "BME639"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "ELE772"
+        ],
         "custom_reqs": []
     },
     {
@@ -945,10 +993,12 @@
         "anchor_text": "CHE 220",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3864.html#327597",
         "prereqs": [
-            "CHE214",
+            "CHE217",
             "MTH425"
         ],
-        "coreqs": [],
+        "coreqs": [
+            "CHE214"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
@@ -992,6 +1042,60 @@
     },
     {
         "id": 74,
+        "anchor_text": "CHE 312",
+        "url": "https://www.torontomu.ca/calendar/2015-2016/pg3864.html#327601",
+        "prereqs": [
+            "CHE308",
+            "CEN199"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 75,
+        "anchor_text": "CHE 315",
+        "url": "https://www.torontomu.ca/calendar/2015-2016/pg3864.html#327602",
+        "prereqs": [
+            "CHE215",
+            "CHE308",
+            "CHE331",
+            "CEN199"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 76,
+        "anchor_text": "CHE 318",
+        "url": "https://www.torontomu.ca/calendar/2015-2016/pg3864.html#327603",
+        "prereqs": [
+            "CHE220",
+            "CHE308",
+            "CEN199"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 77,
+        "anchor_text": "CHE 319",
+        "url": "https://www.torontomu.ca/calendar/2015-2016/pg3864.html#327604",
+        "prereqs": [
+            "CHE308",
+            "CHE338",
+            "CEN199"
+        ],
+        "coreqs": [
+            "CHE312"
+        ],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 78,
         "anchor_text": "CHE 331",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3864.html#327605",
         "prereqs": [
@@ -1004,45 +1108,52 @@
         "custom_reqs": []
     },
     {
-        "id": 75,
+        "id": 79,
         "anchor_text": "CHE 338",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3864.html#327606",
         "prereqs": [
-            "CHE308",
+            "CPS125",
             "CEN199"
         ],
-        "coreqs": [],
+        "coreqs": [
+            "CHE308"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 76,
+        "id": 80,
         "anchor_text": "CHE 413",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3864.html#327608",
         "prereqs": [
             "CHE312",
             "CHE318",
+            "ECN801"
+        ],
+        "coreqs": [
+            "CHE415",
             "CHE430"
         ],
-        "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 77,
+        "id": 81,
         "anchor_text": "CHE 415",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3864.html#327609",
         "prereqs": [
-            "CHE430",
+            "CHE315",
             "CHE318",
             "CHE331"
         ],
-        "coreqs": [],
+        "coreqs": [
+            "CHE430"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 78,
+        "id": 82,
         "anchor_text": "CHE 430",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3864.html#327616",
         "prereqs": [
@@ -1055,19 +1166,22 @@
         "custom_reqs": []
     },
     {
-        "id": 79,
+        "id": 83,
         "anchor_text": "CHE 44A/B",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3864.html#327590",
         "prereqs": [
             "CHE312",
-            "CHE318"
+            "CHE318",
+            "ECN801"
         ],
-        "coreqs": [],
+        "coreqs": [
+            "CHE430"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 80,
+        "id": 84,
         "anchor_text": "CHY 102",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3865.html#327632",
         "prereqs": [],
@@ -1076,7 +1190,7 @@
         "custom_reqs": []
     },
     {
-        "id": 81,
+        "id": 85,
         "anchor_text": "CHY 203",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3865.html#327642",
         "prereqs": [
@@ -1095,7 +1209,7 @@
         "custom_reqs": []
     },
     {
-        "id": 82,
+        "id": 86,
         "anchor_text": "CHY 211",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3865.html#327645",
         "prereqs": [
@@ -1106,7 +1220,7 @@
         "custom_reqs": []
     },
     {
-        "id": 83,
+        "id": 87,
         "anchor_text": "CHY 224",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3865.html#327648",
         "prereqs": [
@@ -1118,7 +1232,7 @@
         "custom_reqs": []
     },
     {
-        "id": 84,
+        "id": 88,
         "anchor_text": "CMN 432",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3871.html#327821",
         "prereqs": [],
@@ -1127,7 +1241,7 @@
         "custom_reqs": []
     },
     {
-        "id": 85,
+        "id": 89,
         "anchor_text": "COE 318",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327831",
         "prereqs": [
@@ -1143,28 +1257,35 @@
         "custom_reqs": []
     },
     {
-        "id": 86,
+        "id": 90,
         "anchor_text": "COE 328",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327832",
         "prereqs": [
             "CPS125",
-            "ELE202"
+            "ELE202",
+            "MTH240"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "BME328"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 87,
+        "id": 91,
         "anchor_text": "COE 428",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327833",
-        "prereqs": [],
-        "coreqs": [],
+        "prereqs": [
+            "COE318"
+        ],
+        "coreqs": [
+            "MTH314"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 88,
+        "id": 92,
         "anchor_text": "COE 528",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327834",
         "prereqs": [
@@ -1177,7 +1298,7 @@
         "custom_reqs": []
     },
     {
-        "id": 89,
+        "id": 93,
         "anchor_text": "COE 538",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327835",
         "prereqs": [
@@ -1191,7 +1312,7 @@
         "custom_reqs": []
     },
     {
-        "id": 90,
+        "id": 94,
         "anchor_text": "COE 608",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327836",
         "prereqs": [
@@ -1204,7 +1325,7 @@
         "custom_reqs": []
     },
     {
-        "id": 91,
+        "id": 95,
         "anchor_text": "COE 628",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327837",
         "prereqs": [
@@ -1217,7 +1338,7 @@
         "custom_reqs": []
     },
     {
-        "id": 92,
+        "id": 96,
         "anchor_text": "COE 700",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327838",
         "prereqs": [
@@ -1233,7 +1354,7 @@
         "custom_reqs": []
     },
     {
-        "id": 93,
+        "id": 97,
         "anchor_text": "COE 718",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327839",
         "prereqs": [
@@ -1244,7 +1365,7 @@
         "custom_reqs": []
     },
     {
-        "id": 94,
+        "id": 98,
         "anchor_text": "COE 758",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327840",
         "prereqs": [
@@ -1259,7 +1380,7 @@
         "custom_reqs": []
     },
     {
-        "id": 95,
+        "id": 99,
         "anchor_text": "COE 768",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327841",
         "prereqs": [
@@ -1274,7 +1395,7 @@
         "custom_reqs": []
     },
     {
-        "id": 96,
+        "id": 100,
         "anchor_text": "COE 800",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327842",
         "prereqs": [
@@ -1285,7 +1406,7 @@
         "custom_reqs": []
     },
     {
-        "id": 97,
+        "id": 101,
         "anchor_text": "COE 838",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327845",
         "prereqs": [
@@ -1299,7 +1420,7 @@
         "custom_reqs": []
     },
     {
-        "id": 98,
+        "id": 102,
         "anchor_text": "COE 865",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3872.html#327847",
         "prereqs": [
@@ -1310,7 +1431,7 @@
         "custom_reqs": []
     },
     {
-        "id": 99,
+        "id": 103,
         "anchor_text": "CPS 125",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3873.html#327852",
         "prereqs": [],
@@ -1319,7 +1440,7 @@
         "custom_reqs": []
     },
     {
-        "id": 100,
+        "id": 104,
         "anchor_text": "CVL 207",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327724",
         "prereqs": [],
@@ -1328,7 +1449,7 @@
         "custom_reqs": []
     },
     {
-        "id": 101,
+        "id": 105,
         "anchor_text": "CVL 300",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327725",
         "prereqs": [],
@@ -1337,7 +1458,7 @@
         "custom_reqs": []
     },
     {
-        "id": 102,
+        "id": 106,
         "anchor_text": "CVL 312",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327726",
         "prereqs": [
@@ -1352,7 +1473,7 @@
         "custom_reqs": []
     },
     {
-        "id": 103,
+        "id": 107,
         "anchor_text": "CVL 313",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327727",
         "prereqs": [
@@ -1364,7 +1485,7 @@
         "custom_reqs": []
     },
     {
-        "id": 104,
+        "id": 108,
         "anchor_text": "CVL 316",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327728",
         "prereqs": [
@@ -1376,7 +1497,7 @@
         "custom_reqs": []
     },
     {
-        "id": 105,
+        "id": 109,
         "anchor_text": "CVL 320",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327729",
         "prereqs": [
@@ -1396,7 +1517,7 @@
         "custom_reqs": []
     },
     {
-        "id": 106,
+        "id": 110,
         "anchor_text": "CVL 323",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327730",
         "prereqs": [
@@ -1416,7 +1537,7 @@
         "custom_reqs": []
     },
     {
-        "id": 107,
+        "id": 111,
         "anchor_text": "CVL 352",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327731",
         "prereqs": [
@@ -1428,7 +1549,7 @@
         "custom_reqs": []
     },
     {
-        "id": 108,
+        "id": 112,
         "anchor_text": "CVL 354",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327732",
         "prereqs": [
@@ -1444,7 +1565,7 @@
         "custom_reqs": []
     },
     {
-        "id": 109,
+        "id": 113,
         "anchor_text": "CVL 400",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327733",
         "prereqs": [
@@ -1463,7 +1584,7 @@
         "custom_reqs": []
     },
     {
-        "id": 110,
+        "id": 114,
         "anchor_text": "CVL 405",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327734",
         "prereqs": [
@@ -1482,7 +1603,7 @@
         "custom_reqs": []
     },
     {
-        "id": 111,
+        "id": 115,
         "anchor_text": "CVL 410",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327736",
         "prereqs": [
@@ -1494,7 +1615,7 @@
         "custom_reqs": []
     },
     {
-        "id": 112,
+        "id": 116,
         "anchor_text": "CVL 411",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327737",
         "prereqs": [
@@ -1506,7 +1627,7 @@
         "custom_reqs": []
     },
     {
-        "id": 113,
+        "id": 117,
         "anchor_text": "CVL 420",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327738",
         "prereqs": [
@@ -1517,7 +1638,7 @@
         "custom_reqs": []
     },
     {
-        "id": 114,
+        "id": 118,
         "anchor_text": "CVL 423",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327739",
         "prereqs": [
@@ -1537,7 +1658,7 @@
         "custom_reqs": []
     },
     {
-        "id": 115,
+        "id": 119,
         "anchor_text": "CVL 434",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327740",
         "prereqs": [
@@ -1548,7 +1669,7 @@
         "custom_reqs": []
     },
     {
-        "id": 116,
+        "id": 120,
         "anchor_text": "CVL 500",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327741",
         "prereqs": [
@@ -1559,7 +1680,7 @@
         "custom_reqs": []
     },
     {
-        "id": 117,
+        "id": 121,
         "anchor_text": "CVL 533",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327743",
         "prereqs": [
@@ -1571,7 +1692,7 @@
         "custom_reqs": []
     },
     {
-        "id": 118,
+        "id": 122,
         "anchor_text": "CVL 553",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327744",
         "prereqs": [
@@ -1586,7 +1707,7 @@
         "custom_reqs": []
     },
     {
-        "id": 119,
+        "id": 123,
         "anchor_text": "CVL 600",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327745",
         "prereqs": [
@@ -1597,7 +1718,7 @@
         "custom_reqs": []
     },
     {
-        "id": 120,
+        "id": 124,
         "anchor_text": "CVL 609",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327747",
         "prereqs": [
@@ -1614,7 +1735,7 @@
         "custom_reqs": []
     },
     {
-        "id": 121,
+        "id": 125,
         "anchor_text": "CVL 633",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327748",
         "prereqs": [
@@ -1627,7 +1748,7 @@
         "custom_reqs": []
     },
     {
-        "id": 122,
+        "id": 126,
         "anchor_text": "CVL 650",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327750",
         "prereqs": [
@@ -1638,7 +1759,7 @@
         "custom_reqs": []
     },
     {
-        "id": 123,
+        "id": 127,
         "anchor_text": "CVL 710",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327751",
         "prereqs": [],
@@ -1647,22 +1768,24 @@
         "custom_reqs": []
     },
     {
-        "id": 124,
+        "id": 128,
         "anchor_text": "CVL 736",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327753",
         "prereqs": [
+            "CVL352"
+        ],
+        "coreqs": [
             "CVL650"
         ],
-        "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 125,
+        "id": 129,
         "anchor_text": "CVL 737",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327754",
         "prereqs": [
-            "CVL650",
+            "CVL323",
             [
                 "CVL405",
                 "MTH203",
@@ -1673,24 +1796,28 @@
                 "MTH425"
             ]
         ],
-        "coreqs": [],
+        "coreqs": [
+            "CVL650"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 126,
+        "id": 130,
         "anchor_text": "CVL 742",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327755",
         "prereqs": [
-            "ECN801",
-            "IND713"
+            "ECN801"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "EMS304",
+            "IND713"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 127,
+        "id": 131,
         "anchor_text": "CVL 810",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327756",
         "prereqs": [
@@ -1702,7 +1829,7 @@
         "custom_reqs": []
     },
     {
-        "id": 128,
+        "id": 132,
         "anchor_text": "CVL 899",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327757",
         "prereqs": [
@@ -1716,40 +1843,46 @@
         "custom_reqs": []
     },
     {
-        "id": 129,
+        "id": 133,
         "anchor_text": "CVL 900",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327758",
         "prereqs": [
             "CVL633"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CV8405"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 130,
+        "id": 134,
         "anchor_text": "CVL 904",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327762",
         "prereqs": [
             "CVL410"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CV8307"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 131,
+        "id": 135,
         "anchor_text": "CVL 905",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327763",
         "prereqs": [
             "CVL411"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CV8308"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 132,
+        "id": 136,
         "anchor_text": "CVL 906",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327764",
         "prereqs": [
@@ -1757,23 +1890,28 @@
             "CVL533"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CV8303"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 133,
+        "id": 137,
         "anchor_text": "CVL 908",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3868.html#327766",
         "prereqs": [
+            "CVL313",
             "CVL410",
             "CVL420"
         ],
-        "coreqs": [],
+        "coreqs": [
+            "CVL411"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 134,
+        "id": 138,
         "anchor_text": "ECN 801",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3879.html#328080",
         "prereqs": [],
@@ -1782,7 +1920,7 @@
         "custom_reqs": []
     },
     {
-        "id": 135,
+        "id": 139,
         "anchor_text": "EES 508",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328088",
         "prereqs": [
@@ -1794,7 +1932,7 @@
         "custom_reqs": []
     },
     {
-        "id": 136,
+        "id": 140,
         "anchor_text": "EES 512",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328089",
         "prereqs": [
@@ -1806,7 +1944,7 @@
         "custom_reqs": []
     },
     {
-        "id": 137,
+        "id": 141,
         "anchor_text": "EES 604",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328090",
         "prereqs": [
@@ -1824,7 +1962,7 @@
         "custom_reqs": []
     },
     {
-        "id": 138,
+        "id": 142,
         "anchor_text": "EES 612",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328091",
         "prereqs": [
@@ -1839,7 +1977,7 @@
         "custom_reqs": []
     },
     {
-        "id": 139,
+        "id": 143,
         "anchor_text": "ELE 202",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328092",
         "prereqs": [
@@ -1851,11 +1989,11 @@
         "custom_reqs": []
     },
     {
-        "id": 140,
+        "id": 144,
         "anchor_text": "ELE 302",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328093",
         "prereqs": [
-            "MTH312",
+            "CHY102",
             "MTH140",
             "MTH141",
             "PCS125",
@@ -1864,12 +2002,14 @@
             "ELE202",
             "MTH240"
         ],
-        "coreqs": [],
+        "coreqs": [
+            "MTH312"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 141,
+        "id": 145,
         "anchor_text": "ELE 401",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328094",
         "prereqs": [
@@ -1880,7 +2020,7 @@
         "custom_reqs": []
     },
     {
-        "id": 142,
+        "id": 146,
         "anchor_text": "ELE 404",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328095",
         "prereqs": [
@@ -1892,7 +2032,7 @@
         "custom_reqs": []
     },
     {
-        "id": 143,
+        "id": 147,
         "anchor_text": "ELE 504",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328096",
         "prereqs": [
@@ -1904,7 +2044,7 @@
         "custom_reqs": []
     },
     {
-        "id": 144,
+        "id": 148,
         "anchor_text": "ELE 531",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328097",
         "prereqs": [
@@ -1916,7 +2056,7 @@
         "custom_reqs": []
     },
     {
-        "id": 145,
+        "id": 149,
         "anchor_text": "ELE 532",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328098",
         "prereqs": [
@@ -1933,7 +2073,7 @@
         "custom_reqs": []
     },
     {
-        "id": 146,
+        "id": 150,
         "anchor_text": "ELE 604",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328099",
         "prereqs": [
@@ -1945,7 +2085,7 @@
         "custom_reqs": []
     },
     {
-        "id": 147,
+        "id": 151,
         "anchor_text": "ELE 614",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328100",
         "prereqs": [
@@ -1956,7 +2096,7 @@
         "custom_reqs": []
     },
     {
-        "id": 148,
+        "id": 152,
         "anchor_text": "ELE 632",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328101",
         "prereqs": [
@@ -1967,7 +2107,7 @@
         "custom_reqs": []
     },
     {
-        "id": 149,
+        "id": 153,
         "anchor_text": "ELE 635",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328102",
         "prereqs": [
@@ -1980,7 +2120,7 @@
         "custom_reqs": []
     },
     {
-        "id": 150,
+        "id": 154,
         "anchor_text": "ELE 637",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328103",
         "prereqs": [
@@ -1992,7 +2132,7 @@
         "custom_reqs": []
     },
     {
-        "id": 151,
+        "id": 155,
         "anchor_text": "ELE 639",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328104",
         "prereqs": [
@@ -2004,7 +2144,7 @@
         "custom_reqs": []
     },
     {
-        "id": 152,
+        "id": 156,
         "anchor_text": "ELE 654",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328105",
         "prereqs": [
@@ -2015,38 +2155,42 @@
         "custom_reqs": []
     },
     {
-        "id": 153,
+        "id": 157,
         "anchor_text": "ELE 700",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328106",
-        "prereqs": [
-            "COE538",
-            "ELE504",
-            "ELE531",
-            "ELE635",
-            "ELE639",
-            [
-                "ELE614",
-                "ELE604"
-            ],
-            [
-                "ELE632",
-                "ELE604"
-            ],
-            [
-                "ELE637",
-                "ELE614"
-            ],
-            [
-                "ELE632",
-                "ELE632"
+        "prereqs": {
+            "or": [
+                [
+                    "COE538",
+                    "ELE504",
+                    "ELE531",
+                    "ELE635",
+                    "ELE639",
+                    "ELE614"
+                ],
+                [
+                    "ELE604",
+                    "ELE632"
+                ],
+                [
+                    "ELE604",
+                    "ELE637"
+                ],
+                [
+                    "ELE614",
+                    "ELE632"
+                ],
+                [
+                    "ELE632"
+                ]
             ]
-        ],
+        },
         "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 154,
+        "id": 158,
         "anchor_text": "ELE 709",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328107",
         "prereqs": [
@@ -2060,7 +2204,7 @@
         "custom_reqs": []
     },
     {
-        "id": 155,
+        "id": 159,
         "anchor_text": "ELE 724",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328109",
         "prereqs": [
@@ -2071,7 +2215,7 @@
         "custom_reqs": []
     },
     {
-        "id": 156,
+        "id": 160,
         "anchor_text": "ELE 725",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328110",
         "prereqs": [
@@ -2082,7 +2226,7 @@
         "custom_reqs": []
     },
     {
-        "id": 157,
+        "id": 161,
         "anchor_text": "ELE 734",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328111",
         "prereqs": [
@@ -2093,7 +2237,7 @@
         "custom_reqs": []
     },
     {
-        "id": 158,
+        "id": 162,
         "anchor_text": "ELE 745",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328112",
         "prereqs": [
@@ -2104,7 +2248,7 @@
         "custom_reqs": []
     },
     {
-        "id": 159,
+        "id": 163,
         "anchor_text": "ELE 746",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328113",
         "prereqs": [
@@ -2116,7 +2260,7 @@
         "custom_reqs": []
     },
     {
-        "id": 160,
+        "id": 164,
         "anchor_text": "ELE 747",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328114",
         "prereqs": [
@@ -2129,7 +2273,7 @@
         "custom_reqs": []
     },
     {
-        "id": 161,
+        "id": 165,
         "anchor_text": "ELE 792",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328115",
         "prereqs": [
@@ -2145,7 +2289,7 @@
         "custom_reqs": []
     },
     {
-        "id": 162,
+        "id": 166,
         "anchor_text": "ELE 800",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328116",
         "prereqs": [
@@ -2156,7 +2300,7 @@
         "custom_reqs": []
     },
     {
-        "id": 163,
+        "id": 167,
         "anchor_text": "ELE 801",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328117",
         "prereqs": [
@@ -2167,7 +2311,7 @@
         "custom_reqs": []
     },
     {
-        "id": 164,
+        "id": 168,
         "anchor_text": "ELE 804",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328118",
         "prereqs": [
@@ -2181,7 +2325,7 @@
         "custom_reqs": []
     },
     {
-        "id": 165,
+        "id": 169,
         "anchor_text": "ELE 806",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328119",
         "prereqs": [
@@ -2193,7 +2337,7 @@
         "custom_reqs": []
     },
     {
-        "id": 166,
+        "id": 170,
         "anchor_text": "ELE 809",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328120",
         "prereqs": [
@@ -2204,7 +2348,7 @@
         "custom_reqs": []
     },
     {
-        "id": 167,
+        "id": 171,
         "anchor_text": "ELE 815",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328121",
         "prereqs": [
@@ -2215,7 +2359,7 @@
         "custom_reqs": []
     },
     {
-        "id": 168,
+        "id": 172,
         "anchor_text": "ELE 829",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328122",
         "prereqs": [
@@ -2226,7 +2370,7 @@
         "custom_reqs": []
     },
     {
-        "id": 169,
+        "id": 173,
         "anchor_text": "ELE 846",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328123",
         "prereqs": [
@@ -2237,7 +2381,7 @@
         "custom_reqs": []
     },
     {
-        "id": 170,
+        "id": 174,
         "anchor_text": "ELE 863",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328126",
         "prereqs": [
@@ -2251,7 +2395,7 @@
         "custom_reqs": []
     },
     {
-        "id": 171,
+        "id": 175,
         "anchor_text": "ELE 869",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328127",
         "prereqs": [
@@ -2266,18 +2410,18 @@
         "custom_reqs": []
     },
     {
-        "id": 172,
+        "id": 176,
         "anchor_text": "ELE 882",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328128",
-        "prereqs": [
+        "prereqs": [],
+        "coreqs": [
             "ELE632"
         ],
-        "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 173,
+        "id": 177,
         "anchor_text": "ELE 885",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328130",
         "prereqs": [
@@ -2288,7 +2432,7 @@
         "custom_reqs": []
     },
     {
-        "id": 174,
+        "id": 178,
         "anchor_text": "ELE 888",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3880.html#328131",
         "prereqs": [
@@ -2299,7 +2443,7 @@
         "custom_reqs": []
     },
     {
-        "id": 175,
+        "id": 179,
         "anchor_text": "ENG 503",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3883.html#328166",
         "prereqs": [],
@@ -2308,21 +2452,21 @@
         "custom_reqs": []
     },
     {
-        "id": 176,
+        "id": 180,
         "anchor_text": "GEO 702",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3894.html#328531",
-        "prereqs": [
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [
             "GEO703",
             "OC003",
             "OC005",
             "OC006"
         ],
-        "coreqs": [],
-        "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 177,
+        "id": 181,
         "anchor_text": "HST 701",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3900.html#328787",
         "prereqs": [],
@@ -2331,7 +2475,7 @@
         "custom_reqs": []
     },
     {
-        "id": 178,
+        "id": 182,
         "anchor_text": "IND 300",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328861",
         "prereqs": [
@@ -2348,7 +2492,7 @@
         "custom_reqs": []
     },
     {
-        "id": 179,
+        "id": 183,
         "anchor_text": "IND 303",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328862",
         "prereqs": [
@@ -2367,7 +2511,7 @@
         "custom_reqs": []
     },
     {
-        "id": 180,
+        "id": 184,
         "anchor_text": "IND 400",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328863",
         "prereqs": [
@@ -2389,7 +2533,7 @@
         "custom_reqs": []
     },
     {
-        "id": 181,
+        "id": 185,
         "anchor_text": "IND 405",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328864",
         "prereqs": [
@@ -2407,7 +2551,7 @@
         "custom_reqs": []
     },
     {
-        "id": 182,
+        "id": 186,
         "anchor_text": "IND 508",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328865",
         "prereqs": [
@@ -2428,7 +2572,7 @@
         "custom_reqs": []
     },
     {
-        "id": 183,
+        "id": 187,
         "anchor_text": "IND 600",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328866",
         "prereqs": [
@@ -2446,7 +2590,7 @@
         "custom_reqs": []
     },
     {
-        "id": 184,
+        "id": 188,
         "anchor_text": "IND 604",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328867",
         "prereqs": [
@@ -2465,7 +2609,7 @@
         "custom_reqs": []
     },
     {
-        "id": 185,
+        "id": 189,
         "anchor_text": "IND 605",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328868",
         "prereqs": [
@@ -2482,7 +2626,7 @@
         "custom_reqs": []
     },
     {
-        "id": 186,
+        "id": 190,
         "anchor_text": "IND 708",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328869",
         "prereqs": [
@@ -2508,7 +2652,37 @@
         "custom_reqs": []
     },
     {
-        "id": 187,
+        "id": 191,
+        "anchor_text": "IND 70A/B",
+        "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328859",
+        "prereqs": [
+            "MTL200",
+            [
+                "IND302",
+                "ECN801"
+            ],
+            [
+                "MEC323",
+                "MEC324"
+            ],
+            "PSY209",
+            "CMN432",
+            "IND300",
+            "IND405",
+            "MEC325",
+            "MEC516",
+            "MTH309",
+            "IND400",
+            "IND600",
+            "IND604",
+            "IND605"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 192,
         "anchor_text": "IND 710",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328870",
         "prereqs": [
@@ -2534,7 +2708,7 @@
         "custom_reqs": []
     },
     {
-        "id": 188,
+        "id": 193,
         "anchor_text": "IND 712",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328871",
         "prereqs": [
@@ -2559,7 +2733,7 @@
         "custom_reqs": []
     },
     {
-        "id": 189,
+        "id": 194,
         "anchor_text": "IND 713",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328872",
         "prereqs": [
@@ -2580,15 +2754,17 @@
             "IND400",
             "IND405",
             "MEC516",
-            "MTH309",
-            "EMS304"
+            "MTH309"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CVL742",
+            "EMS304"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 190,
+        "id": 195,
         "anchor_text": "IND 719",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328873",
         "prereqs": [],
@@ -2597,7 +2773,7 @@
         "custom_reqs": []
     },
     {
-        "id": 191,
+        "id": 196,
         "anchor_text": "IND 810",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328874",
         "prereqs": [
@@ -2625,7 +2801,7 @@
         "custom_reqs": []
     },
     {
-        "id": 192,
+        "id": 197,
         "anchor_text": "IND 816",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328875",
         "prereqs": [
@@ -2654,7 +2830,7 @@
         "custom_reqs": []
     },
     {
-        "id": 193,
+        "id": 198,
         "anchor_text": "IND 832",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328876",
         "prereqs": [
@@ -2672,7 +2848,7 @@
         "custom_reqs": []
     },
     {
-        "id": 194,
+        "id": 199,
         "anchor_text": "IND 833",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3903.html#328877",
         "prereqs": [
@@ -2689,7 +2865,7 @@
         "custom_reqs": []
     },
     {
-        "id": 195,
+        "id": 200,
         "anchor_text": "MEC 222",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329192",
         "prereqs": [],
@@ -2698,7 +2874,7 @@
         "custom_reqs": []
     },
     {
-        "id": 196,
+        "id": 201,
         "anchor_text": "MEC 309",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329193",
         "prereqs": [
@@ -2714,7 +2890,7 @@
         "custom_reqs": []
     },
     {
-        "id": 197,
+        "id": 202,
         "anchor_text": "MEC 311",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329194",
         "prereqs": [
@@ -2730,7 +2906,7 @@
         "custom_reqs": []
     },
     {
-        "id": 198,
+        "id": 203,
         "anchor_text": "MEC 322",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329195",
         "prereqs": [
@@ -2746,7 +2922,7 @@
         "custom_reqs": []
     },
     {
-        "id": 199,
+        "id": 204,
         "anchor_text": "MEC 323",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329196",
         "prereqs": [
@@ -2762,7 +2938,7 @@
         "custom_reqs": []
     },
     {
-        "id": 200,
+        "id": 205,
         "anchor_text": "MEC 325",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329197",
         "prereqs": [
@@ -2778,7 +2954,7 @@
         "custom_reqs": []
     },
     {
-        "id": 201,
+        "id": 206,
         "anchor_text": "MEC 411",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329198",
         "prereqs": [
@@ -2794,7 +2970,7 @@
         "custom_reqs": []
     },
     {
-        "id": 202,
+        "id": 207,
         "anchor_text": "MEC 430",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329199",
         "prereqs": [
@@ -2810,7 +2986,7 @@
         "custom_reqs": []
     },
     {
-        "id": 203,
+        "id": 208,
         "anchor_text": "MEC 431",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329200",
         "prereqs": [
@@ -2827,35 +3003,39 @@
         "custom_reqs": []
     },
     {
-        "id": 204,
+        "id": 209,
         "anchor_text": "MEC 511",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329201",
-        "prereqs": [
-            "CEN199",
-            "CHY102",
-            "MTH141",
-            "PCS211",
-            "CPS125",
-            "ELE202",
-            "MTH240",
-            [
-                "PCS224",
-                "CEN199"
-            ],
-            "CPS125",
-            "MTH141",
-            "MEC222",
-            "MTH240",
-            "MTL200",
-            "PCS211",
-            "PCS213"
-        ],
+        "prereqs": {
+            "or": [
+                [
+                    "CEN199",
+                    "CHY102",
+                    "MTH141",
+                    "PCS211",
+                    "CPS125",
+                    "ELE202",
+                    "MTH240",
+                    "PCS224"
+                ],
+                [
+                    "CEN199",
+                    "CPS125",
+                    "MTH141",
+                    "MEC222",
+                    "MTH240",
+                    "MTL200",
+                    "PCS211",
+                    "PCS213"
+                ]
+            ]
+        },
         "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 205,
+        "id": 210,
         "anchor_text": "MEC 514",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329202",
         "prereqs": [
@@ -2873,7 +3053,7 @@
         "custom_reqs": []
     },
     {
-        "id": 206,
+        "id": 211,
         "anchor_text": "MEC 516",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329203",
         "prereqs": [
@@ -2890,7 +3070,7 @@
         "custom_reqs": []
     },
     {
-        "id": 207,
+        "id": 212,
         "anchor_text": "MEC 531",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329205",
         "prereqs": [
@@ -2906,7 +3086,7 @@
         "custom_reqs": []
     },
     {
-        "id": 208,
+        "id": 213,
         "anchor_text": "MEC 613",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329206",
         "prereqs": [
@@ -2922,7 +3102,7 @@
         "custom_reqs": []
     },
     {
-        "id": 209,
+        "id": 214,
         "anchor_text": "MEC 616",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329207",
         "prereqs": [
@@ -2938,7 +3118,7 @@
         "custom_reqs": []
     },
     {
-        "id": 210,
+        "id": 215,
         "anchor_text": "MEC 617",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329208",
         "prereqs": [
@@ -2959,7 +3139,7 @@
         "custom_reqs": []
     },
     {
-        "id": 211,
+        "id": 216,
         "anchor_text": "MEC 626",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329209",
         "prereqs": [
@@ -2972,7 +3152,7 @@
         "custom_reqs": []
     },
     {
-        "id": 212,
+        "id": 217,
         "anchor_text": "MEC 701",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329210",
         "prereqs": [
@@ -2990,7 +3170,7 @@
         "custom_reqs": []
     },
     {
-        "id": 213,
+        "id": 218,
         "anchor_text": "MEC 709",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329211",
         "prereqs": [
@@ -3009,7 +3189,7 @@
         "custom_reqs": []
     },
     {
-        "id": 214,
+        "id": 219,
         "anchor_text": "MEC 713",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329212",
         "prereqs": [
@@ -3019,15 +3199,17 @@
             "MEC411",
             "MEC430",
             "MTH510",
-            "MEC709",
-            "CVL742"
+            "MEC709"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "EMS304",
+            "CVL742"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 215,
+        "id": 220,
         "anchor_text": "MEC 721",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329213",
         "prereqs": [
@@ -3048,7 +3230,7 @@
         "custom_reqs": []
     },
     {
-        "id": 216,
+        "id": 221,
         "anchor_text": "MEC 722",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329214",
         "prereqs": [
@@ -3067,7 +3249,7 @@
         "custom_reqs": []
     },
     {
-        "id": 217,
+        "id": 222,
         "anchor_text": "MEC 723",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329215",
         "prereqs": [
@@ -3082,23 +3264,25 @@
         "custom_reqs": []
     },
     {
-        "id": 218,
+        "id": 223,
         "anchor_text": "MEC 733",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329216",
         "prereqs": [
-            "MEC411",
+            "CEN199",
             "EES612",
             "PCS213",
             "CMN432",
             "MEC309",
             "MTH510"
         ],
-        "coreqs": [],
+        "coreqs": [
+            "MEC411"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 219,
+        "id": 224,
         "anchor_text": "MEC 734",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329217",
         "prereqs": [
@@ -3114,7 +3298,7 @@
         "custom_reqs": []
     },
     {
-        "id": 220,
+        "id": 225,
         "anchor_text": "MEC 740",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329218",
         "prereqs": [
@@ -3133,7 +3317,7 @@
         "custom_reqs": []
     },
     {
-        "id": 221,
+        "id": 226,
         "anchor_text": "MEC 751",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329219",
         "prereqs": [
@@ -3152,7 +3336,7 @@
         "custom_reqs": []
     },
     {
-        "id": 222,
+        "id": 227,
         "anchor_text": "MEC 809",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329220",
         "prereqs": [
@@ -3170,7 +3354,7 @@
         "custom_reqs": []
     },
     {
-        "id": 223,
+        "id": 228,
         "anchor_text": "MEC 810",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329221",
         "prereqs": [
@@ -3189,7 +3373,7 @@
         "custom_reqs": []
     },
     {
-        "id": 224,
+        "id": 229,
         "anchor_text": "MEC 811",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329222",
         "prereqs": [
@@ -3207,7 +3391,7 @@
         "custom_reqs": []
     },
     {
-        "id": 225,
+        "id": 230,
         "anchor_text": "MEC 813",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329223",
         "prereqs": [
@@ -3225,7 +3409,7 @@
         "custom_reqs": []
     },
     {
-        "id": 226,
+        "id": 231,
         "anchor_text": "MEC 816",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329224",
         "prereqs": [
@@ -3242,7 +3426,7 @@
         "custom_reqs": []
     },
     {
-        "id": 227,
+        "id": 232,
         "anchor_text": "MEC 817",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329225",
         "prereqs": [
@@ -3262,7 +3446,7 @@
         "custom_reqs": []
     },
     {
-        "id": 228,
+        "id": 233,
         "anchor_text": "MEC 825",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329226",
         "prereqs": [
@@ -3285,7 +3469,7 @@
         "custom_reqs": []
     },
     {
-        "id": 229,
+        "id": 234,
         "anchor_text": "MEC 830",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329227",
         "prereqs": [
@@ -3304,7 +3488,7 @@
         "custom_reqs": []
     },
     {
-        "id": 230,
+        "id": 235,
         "anchor_text": "MEC 832",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329228",
         "prereqs": [
@@ -3319,7 +3503,7 @@
         "custom_reqs": []
     },
     {
-        "id": 231,
+        "id": 236,
         "anchor_text": "MEC 850",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329229",
         "prereqs": [
@@ -3336,7 +3520,7 @@
         "custom_reqs": []
     },
     {
-        "id": 232,
+        "id": 237,
         "anchor_text": "MTH 140",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3916.html#329139",
         "prereqs": [],
@@ -3345,7 +3529,7 @@
         "custom_reqs": []
     },
     {
-        "id": 233,
+        "id": 238,
         "anchor_text": "MTH 141",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3916.html#329140",
         "prereqs": [],
@@ -3354,7 +3538,7 @@
         "custom_reqs": []
     },
     {
-        "id": 234,
+        "id": 239,
         "anchor_text": "MTH 240",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3916.html#329144",
         "prereqs": [
@@ -3365,7 +3549,7 @@
         "custom_reqs": []
     },
     {
-        "id": 235,
+        "id": 240,
         "anchor_text": "MTH 312",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3916.html#329147",
         "prereqs": [
@@ -3377,7 +3561,7 @@
         "custom_reqs": []
     },
     {
-        "id": 236,
+        "id": 241,
         "anchor_text": "MTH 314",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3916.html#329148",
         "prereqs": [
@@ -3389,7 +3573,7 @@
         "custom_reqs": []
     },
     {
-        "id": 237,
+        "id": 242,
         "anchor_text": "MTH 410",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3916.html#329153",
         "prereqs": [
@@ -3401,7 +3585,7 @@
         "custom_reqs": []
     },
     {
-        "id": 238,
+        "id": 243,
         "anchor_text": "MTH 425",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3916.html#329154",
         "prereqs": [
@@ -3414,7 +3598,7 @@
         "custom_reqs": []
     },
     {
-        "id": 239,
+        "id": 244,
         "anchor_text": "MTH 510",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3916.html#329160",
         "prereqs": [
@@ -3426,7 +3610,7 @@
         "custom_reqs": []
     },
     {
-        "id": 240,
+        "id": 245,
         "anchor_text": "MTH 514",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3916.html#329162",
         "prereqs": [
@@ -3437,7 +3621,7 @@
         "custom_reqs": []
     },
     {
-        "id": 241,
+        "id": 246,
         "anchor_text": "MTL 200",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329230",
         "prereqs": [
@@ -3448,7 +3632,7 @@
         "custom_reqs": []
     },
     {
-        "id": 242,
+        "id": 247,
         "anchor_text": "MTL 300",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329231",
         "prereqs": [
@@ -3466,7 +3650,7 @@
         "custom_reqs": []
     },
     {
-        "id": 243,
+        "id": 248,
         "anchor_text": "MTL 700",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3912.html#329232",
         "prereqs": [
@@ -3484,7 +3668,7 @@
         "custom_reqs": []
     },
     {
-        "id": 244,
+        "id": 249,
         "anchor_text": "PCS 125",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3927.html#329824",
         "prereqs": [],
@@ -3493,7 +3677,7 @@
         "custom_reqs": []
     },
     {
-        "id": 245,
+        "id": 250,
         "anchor_text": "PCS 211",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3927.html#329828",
         "prereqs": [],
@@ -3502,7 +3686,7 @@
         "custom_reqs": []
     },
     {
-        "id": 246,
+        "id": 251,
         "anchor_text": "PCS 213",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3927.html#329829",
         "prereqs": [
@@ -3513,7 +3697,7 @@
         "custom_reqs": []
     },
     {
-        "id": 247,
+        "id": 252,
         "anchor_text": "PCS 224",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3927.html#329830",
         "prereqs": [
@@ -3528,7 +3712,7 @@
         "custom_reqs": []
     },
     {
-        "id": 248,
+        "id": 253,
         "anchor_text": "PHL 709",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3925.html#329783",
         "prereqs": [],
@@ -3537,7 +3721,7 @@
         "custom_reqs": []
     },
     {
-        "id": 249,
+        "id": 254,
         "anchor_text": "POL 507",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3930.html#329957",
         "prereqs": [],
@@ -3546,7 +3730,7 @@
         "custom_reqs": []
     },
     {
-        "id": 250,
+        "id": 255,
         "anchor_text": "PSY 209",
         "url": "https://www.torontomu.ca/calendar/2015-2016/pg3932.html#330009",
         "prereqs": [],

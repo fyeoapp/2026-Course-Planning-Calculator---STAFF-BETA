@@ -51,6 +51,7 @@ python3 build_public.py --clean --out public
 | `index.html` | Calculator UI |
 | `curriculum_manifest.json` | Program / year / layout index |
 | `course_aliases.json` | Code equivalences |
+| `transition_program_allowlist.json` | Transition off-checklist exceptions (Type B) |
 | `Assets/` | Logos |
 | `Programs/`, `Programs_old/` | Curriculum layout HTML |
 | `Course_requisites/` | Admit-year prereq/coreq JSON |
@@ -105,7 +106,8 @@ Corequisites are scraped into the data files but are **not** shown as warnings o
 - **Antirequisites** not used in our calculations
 - **Course aliases** (`course_aliases.json`) let renamed/equivalent codes count toward prereqs across admit years (e.g. CPS 125 ↔ CPS 188).
 - **Fall/Winter** candidate courses are drawn from checkbox courses under the relevant odd/even semester blocks on the layout. Liberal studies tables and open-ended elective groups are not expanded automatically.
-- **Spring/Summer (Transition)** candidate courses come from scraped transition *offerings* JSON and must also appear on the student's active curriculum panel(s). Transition JSON does not supply prereq rules. This dual filter can miss courses that exist on transition JSON but not on the program calendar (e.g. CHE 474).
+- **Spring/Summer (Transition)** candidate courses come from scraped transition *offerings* JSON and must also appear on the student's active curriculum panel(s), **or** match an entry in `transition_program_allowlist.json`. Transition JSON does not supply prereq rules.
+- **Type B exceptions** (on transition, not on curriculum): prefer adding the course to the layout HTML when it belongs on the checklist. When staff deliberately want a transition elective suggested without putting it on the checklist (e.g. Chemical **CHE 474**), add a row to `transition_program_allowlist.json` — see that file's `howToAdd`. Do **not** unlock “any transition course whose prereqs appear on the layout” (large cross-program false positives).
 
 ---
 
@@ -116,6 +118,7 @@ Corequisites are scraped into the data files but are **not** shown as warnings o
 ├── index.html                              # Main calculator app
 ├── course_correction.html                  # Staff tool for layout/course fixes / Work in Progress
 ├── course_aliases.json                     # Cross-year course code equivalences
+├── transition_program_allowlist.json       # Transition courses allowed off-checklist (Type B)
 ├── programs_config.json                    # Program labels + calendar slugs (maintainer-edited)
 ├── curriculum_manifest.json                # Generated index of layout files (used by index.html)
 │
@@ -145,6 +148,7 @@ Corequisites are scraped into the data files but are **not** shown as warnings o
 - **`index.html`** — Main application. Loads `curriculum_manifest.json` at startup to populate program/year dropdowns and resolve layout file paths (including legacy stream/option pickers).
 - **`course_correction.html`** — Separate maintainer-facing form for reviewing or correcting course/layout data. (Work in Progress)
 - **`course_aliases.json`** — Manual map of equivalent course codes used during prereq checks when admit-year layouts use older codes than the current calendar.
+- **`transition_program_allowlist.json`** — Manual allowlist of Spring/Summer transition courses that may be suggested for a program even when they are **not** on that program's curriculum checklist (Type B exceptions, e.g. Chemical CHE 474). See the file's `howToAdd`. Prefer adding the course to layout HTML when it belongs on the checklist.
 - **`programs_config.json`** — Maintainer-edited program list (display labels, calendar URL slugs, default planning years). Used by `build_curriculum_manifest.py` and `annual_calendar_generator.py`.
 - **`curriculum_manifest.json`** — **Generated** index of which layout files exist under `Programs/` and `Programs_old/`. Built by scanning disk; does not modify any layout HTML. Used by `index.html` for dropdowns and layout paths.
 
@@ -163,7 +167,7 @@ Corequisites are scraped into the data files but are **not** shown as warnings o
 |--------|---------|--------|
 | `build_curriculum_manifest.py` | Scans `Programs/` + `Programs_old/` and writes the manifest | `curriculum_manifest.json` |
 | `transition_courses_generator.py` | Scrapes Engineering Transition Program spring/summer sections | `Transition_courses/spring/*.json`, `Transition_courses/summer/*.json` |
-| `course_requisites_generator.py` | Scrapes admit-year prereqs/coreqs (modern 2016+ or legacy 2010–2015) | `Course_requisites/requisites_<year>.json` |
+| `course_requisites_generator.py` | Scrapes admit-year prereqs/coreqs (modern 2016+ or legacy 2010–2015). JSON shape is an AND-list (`["A", ["B","C"]]`) or OR-of-AND-groups (`{"or":[["A","B"],["C","D"]]}` for calendar `(A, B) or (C, D)`). | `Course_requisites/requisites_<year>.json` |
 | `legacy_course_requisites_generator.py` | Legacy calendar page parser used by the requisites generator for 2010–2015 | (called internally) |
 | `setup_year.py` | Runs the safe yearly refresh steps (transition + requisites + manifest) | Same as the scripts it calls |
 | `annual_calendar_generator.py` | Scrapes the TMU calendar and builds modern curriculum layouts | `Programs/<Program>/...` |
@@ -300,10 +304,11 @@ The app will **not** automatically suggest every course a student might realisti
 For these, maintainers can:
 
 1. Add the course link/checkbox to the relevant layout HTML in `Programs/` or `Programs_old/`, and/or
-2. Add equivalences to `course_aliases.json`, and/or
-3. Add a targeted special case in `index.html` (avoid broad auto-unlock rules)
+2. Add a Type B exception to `transition_program_allowlist.json` (program + course + optional admit year range + note), and/or
+3. Add equivalences to `course_aliases.json`, and/or
+4. Add a targeted special case in `index.html` only as a last resort (avoid broad auto-unlock rules)
 
-Developer notes for this behavior are also documented inline above the eligibility logic in `index.html`.
+Developer notes for this behavior are also documented inline above the eligibility logic in `index.html`, and in `transition_program_allowlist.json` / `course_aliases.json` `howToAdd` fields.
 
 ### Updating for a new calendar year
 
@@ -320,7 +325,8 @@ That runs transition spring + summer, `Course_requisites/requisites_<YYYY>.json`
 1. **Layouts** — `python3 annual_calendar_generator.py --year <YYYY>` (overwrites manual HTML edits; do not bundle into the default refresh). **Then** review the HTML: fix formatting (`<br>` etc.) and remove duplicate semester blocks after staff confirm which curriculum version to keep (see above).
 2. **App config** — update `programs_config.json` planning defaults and `index.html` transition JSON paths if the planning year changed.
 3. **Aliases** — review `course_aliases.json` for renames.
-4. Keep older `Course_requisites/requisites_*.json` files for prior admit years (do not delete them when adding a new year).
+4. **Transition allowlist** — review `transition_program_allowlist.json` if new off-checklist Spring/Summer electives need exceptions (or extend `admitYears.to` when the planning year rolls forward).
+5. Keep older `Course_requisites/requisites_*.json` files for prior admit years (do not delete them when adding a new year).
 
 ### Known limitations
 

@@ -355,9 +355,11 @@
         "anchor_text": "AER 817",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2572.html#222421",
         "prereqs": [
+            "AER606"
+        ],
+        "coreqs": [
             "AER715"
         ],
-        "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
@@ -487,7 +489,9 @@
             "PCS211"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "PCS229"
+        ],
         "custom_reqs": []
     },
     {
@@ -505,7 +509,9 @@
             "PCS211"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "MEC323"
+        ],
         "custom_reqs": []
     },
     {
@@ -523,7 +529,9 @@
             "PCS211"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "COE328"
+        ],
         "custom_reqs": []
     },
     {
@@ -531,9 +539,11 @@
         "anchor_text": "BME 406",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2727.html#240503",
         "prereqs": [
+            "BME323"
+        ],
+        "coreqs": [
             "BLG600"
         ],
-        "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
@@ -561,7 +571,9 @@
             ]
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CPS501"
+        ],
         "custom_reqs": []
     },
     {
@@ -572,7 +584,9 @@
             "CPS125"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "COE318"
+        ],
         "custom_reqs": []
     },
     {
@@ -585,7 +599,9 @@
             "PCS211"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "MEC516"
+        ],
         "custom_reqs": []
     },
     {
@@ -597,7 +613,9 @@
             "MTH312"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "ELE532"
+        ],
         "custom_reqs": []
     },
     {
@@ -619,7 +637,9 @@
             "BME532"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "ELE632"
+        ],
         "custom_reqs": []
     },
     {
@@ -630,7 +650,9 @@
             "BME532"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "ELE639"
+        ],
         "custom_reqs": []
     },
     {
@@ -644,7 +666,9 @@
             "EES604"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "ELE874"
+        ],
         "custom_reqs": []
     },
     {
@@ -711,7 +735,9 @@
             "BME632"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "ELE772"
+        ],
         "custom_reqs": []
     },
     {
@@ -877,7 +903,112 @@
         "anchor_text": "CHE 220",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240546",
         "prereqs": [
+            "CHE217",
+            "MTH425"
+        ],
+        "coreqs": [
+            "CHE214"
+        ],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 67,
+        "anchor_text": "CHE 307",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240547",
+        "prereqs": [
+            [
+                "CHY224",
+                "CHY271"
+            ]
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 68,
+        "anchor_text": "CHE 308",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240548",
+        "prereqs": [
             "CHE214",
+            "CHE220"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 69,
+        "anchor_text": "CHE 309",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240549",
+        "prereqs": [
+            "CHE200",
+            [
+                "CHY224",
+                "CHY271"
+            ]
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 70,
+        "anchor_text": "CHE 312",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240550",
+        "prereqs": [
+            "CHE308"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 71,
+        "anchor_text": "CHE 315",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240551",
+        "prereqs": [
+            "CHE215",
+            "CHE308",
+            "CHE331"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 72,
+        "anchor_text": "CHE 318",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240552",
+        "prereqs": [
+            "CHE220",
+            "CHE308"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 73,
+        "anchor_text": "CHE 319",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240553",
+        "prereqs": [
+            "CHE308",
+            "CHE338"
+        ],
+        "coreqs": [
+            "CHE312"
+        ],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 74,
+        "anchor_text": "CHE 331",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240554",
+        "prereqs": [
+            "CPS125",
             "MTH425"
         ],
         "coreqs": [],
@@ -885,7 +1016,88 @@
         "custom_reqs": []
     },
     {
-        "id": 67,
+        "id": 75,
+        "anchor_text": "CHE 338",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240555",
+        "prereqs": [
+            "CPS125"
+        ],
+        "coreqs": [
+            "CHE308"
+        ],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 76,
+        "anchor_text": "CHE 413",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240556",
+        "prereqs": [
+            [
+                "CHE312",
+                "CHE323"
+            ],
+            "CHE318",
+            "ECN801"
+        ],
+        "coreqs": [
+            "CHE415",
+            "CHE430"
+        ],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 77,
+        "anchor_text": "CHE 415",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240557",
+        "prereqs": [
+            "CHE315",
+            "CHE318",
+            "CHE331"
+        ],
+        "coreqs": [
+            "CHE430"
+        ],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 78,
+        "anchor_text": "CHE 430",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240564",
+        "prereqs": [
+            [
+                "CHE312",
+                "CHE323"
+            ],
+            "CHE318",
+            "CHE319"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 79,
+        "anchor_text": "CHE 44A/B",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2732.html#240539",
+        "prereqs": [
+            [
+                "CHE312",
+                "CHE323"
+            ],
+            "CHE318",
+            "ECN801"
+        ],
+        "coreqs": [
+            "CHE430"
+        ],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 80,
         "anchor_text": "CHY 102",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2733.html#240580",
         "prereqs": [],
@@ -894,7 +1106,7 @@
         "custom_reqs": []
     },
     {
-        "id": 68,
+        "id": 81,
         "anchor_text": "CHY 203",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2733.html#240588",
         "prereqs": [
@@ -913,7 +1125,7 @@
         "custom_reqs": []
     },
     {
-        "id": 69,
+        "id": 82,
         "anchor_text": "CHY 211",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2733.html#240591",
         "prereqs": [],
@@ -922,7 +1134,7 @@
         "custom_reqs": []
     },
     {
-        "id": 70,
+        "id": 83,
         "anchor_text": "CHY 224",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2733.html#240594",
         "prereqs": [
@@ -934,7 +1146,7 @@
         "custom_reqs": []
     },
     {
-        "id": 71,
+        "id": 84,
         "anchor_text": "CMN 432",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2738.html#240717",
         "prereqs": [],
@@ -943,7 +1155,7 @@
         "custom_reqs": []
     },
     {
-        "id": 72,
+        "id": 85,
         "anchor_text": "COE 318",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2739.html#240724",
         "prereqs": [
@@ -961,7 +1173,7 @@
         "custom_reqs": []
     },
     {
-        "id": 73,
+        "id": 86,
         "anchor_text": "COE 328",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2739.html#240725",
         "prereqs": [
@@ -979,19 +1191,21 @@
         "custom_reqs": []
     },
     {
-        "id": 74,
+        "id": 87,
         "anchor_text": "COE 428",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2739.html#240726",
         "prereqs": [
-            "MTH314",
+            "COE318",
             "COE328"
         ],
-        "coreqs": [],
+        "coreqs": [
+            "MTH314"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 75,
+        "id": 88,
         "anchor_text": "COE 518",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2739.html#240727",
         "prereqs": [
@@ -1003,7 +1217,7 @@
         "custom_reqs": []
     },
     {
-        "id": 76,
+        "id": 89,
         "anchor_text": "COE 538",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2739.html#240728",
         "prereqs": [
@@ -1016,7 +1230,7 @@
         "custom_reqs": []
     },
     {
-        "id": 77,
+        "id": 90,
         "anchor_text": "COE 608",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2739.html#240729",
         "prereqs": [
@@ -1028,7 +1242,7 @@
         "custom_reqs": []
     },
     {
-        "id": 78,
+        "id": 91,
         "anchor_text": "COE 618",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2739.html#240730",
         "prereqs": [
@@ -1039,11 +1253,11 @@
         "custom_reqs": []
     },
     {
-        "id": 79,
+        "id": 92,
         "anchor_text": "COE 700",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2739.html#240731",
         "prereqs": [
-            "MEC511",
+            "COE518",
             "COE608",
             "COE618",
             "ELE635",
@@ -1053,12 +1267,14 @@
                 "ELE504"
             ]
         ],
-        "coreqs": [],
+        "coreqs": [
+            "MEC511"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 80,
+        "id": 93,
         "anchor_text": "COE 758",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2739.html#240733",
         "prereqs": [
@@ -1073,7 +1289,7 @@
         "custom_reqs": []
     },
     {
-        "id": 81,
+        "id": 94,
         "anchor_text": "COE 768",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2739.html#240734",
         "prereqs": [
@@ -1088,7 +1304,7 @@
         "custom_reqs": []
     },
     {
-        "id": 82,
+        "id": 95,
         "anchor_text": "COE 800",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2739.html#240735",
         "prereqs": [
@@ -1099,7 +1315,7 @@
         "custom_reqs": []
     },
     {
-        "id": 83,
+        "id": 96,
         "anchor_text": "COE 865",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2739.html#240739",
         "prereqs": [
@@ -1110,7 +1326,7 @@
         "custom_reqs": []
     },
     {
-        "id": 84,
+        "id": 97,
         "anchor_text": "CPS 125",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2740.html#240744",
         "prereqs": [],
@@ -1119,7 +1335,7 @@
         "custom_reqs": []
     },
     {
-        "id": 85,
+        "id": 98,
         "anchor_text": "CVL 207",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240649",
         "prereqs": [],
@@ -1128,7 +1344,7 @@
         "custom_reqs": []
     },
     {
-        "id": 86,
+        "id": 99,
         "anchor_text": "CVL 312",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240651",
         "prereqs": [
@@ -1143,7 +1359,7 @@
         "custom_reqs": []
     },
     {
-        "id": 87,
+        "id": 100,
         "anchor_text": "CVL 313",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240652",
         "prereqs": [
@@ -1154,7 +1370,7 @@
         "custom_reqs": []
     },
     {
-        "id": 88,
+        "id": 101,
         "anchor_text": "CVL 316",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240653",
         "prereqs": [],
@@ -1163,7 +1379,7 @@
         "custom_reqs": []
     },
     {
-        "id": 89,
+        "id": 102,
         "anchor_text": "CVL 320",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240654",
         "prereqs": [
@@ -1186,7 +1402,7 @@
         "custom_reqs": []
     },
     {
-        "id": 90,
+        "id": 103,
         "anchor_text": "CVL 323",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240655",
         "prereqs": [
@@ -1209,7 +1425,7 @@
         "custom_reqs": []
     },
     {
-        "id": 91,
+        "id": 104,
         "anchor_text": "CVL 352",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240656",
         "prereqs": [
@@ -1224,7 +1440,7 @@
         "custom_reqs": []
     },
     {
-        "id": 92,
+        "id": 105,
         "anchor_text": "CVL 354",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240658",
         "prereqs": [
@@ -1239,7 +1455,7 @@
         "custom_reqs": []
     },
     {
-        "id": 93,
+        "id": 106,
         "anchor_text": "CVL 410",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240660",
         "prereqs": [
@@ -1250,7 +1466,7 @@
         "custom_reqs": []
     },
     {
-        "id": 94,
+        "id": 107,
         "anchor_text": "CVL 411",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240661",
         "prereqs": [
@@ -1262,11 +1478,11 @@
         "custom_reqs": []
     },
     {
-        "id": 95,
+        "id": 108,
         "anchor_text": "CVL 420",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240662",
         "prereqs": [
-            "CVL434",
+            "CEN100",
             "CHY102",
             "CPS125",
             "CVL320",
@@ -1281,12 +1497,14 @@
                 "MEC222"
             ]
         ],
-        "coreqs": [],
+        "coreqs": [
+            "CVL434"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 96,
+        "id": 109,
         "anchor_text": "CVL 423",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240663",
         "prereqs": [
@@ -1308,7 +1526,7 @@
         "custom_reqs": []
     },
     {
-        "id": 97,
+        "id": 110,
         "anchor_text": "CVL 425",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240664",
         "prereqs": [
@@ -1319,18 +1537,20 @@
         "custom_reqs": []
     },
     {
-        "id": 98,
+        "id": 111,
         "anchor_text": "CVL 434",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240665",
         "prereqs": [
+            "CVL320"
+        ],
+        "coreqs": [
             "CVL420"
         ],
-        "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 99,
+        "id": 112,
         "anchor_text": "CVL 533",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240666",
         "prereqs": [
@@ -1341,7 +1561,7 @@
         "custom_reqs": []
     },
     {
-        "id": 100,
+        "id": 113,
         "anchor_text": "CVL 553",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240667",
         "prereqs": [
@@ -1352,7 +1572,7 @@
         "custom_reqs": []
     },
     {
-        "id": 101,
+        "id": 114,
         "anchor_text": "CVL 600",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240668",
         "prereqs": [
@@ -1363,7 +1583,7 @@
         "custom_reqs": []
     },
     {
-        "id": 102,
+        "id": 115,
         "anchor_text": "CVL 609",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240669",
         "prereqs": [
@@ -1375,7 +1595,7 @@
         "custom_reqs": []
     },
     {
-        "id": 103,
+        "id": 116,
         "anchor_text": "CVL 633",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240670",
         "prereqs": [
@@ -1387,7 +1607,7 @@
         "custom_reqs": []
     },
     {
-        "id": 104,
+        "id": 117,
         "anchor_text": "CVL 638",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240671",
         "prereqs": [
@@ -1398,7 +1618,7 @@
         "custom_reqs": []
     },
     {
-        "id": 105,
+        "id": 118,
         "anchor_text": "CVL 650",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240672",
         "prereqs": [
@@ -1409,7 +1629,7 @@
         "custom_reqs": []
     },
     {
-        "id": 106,
+        "id": 119,
         "anchor_text": "CVL 710",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240673",
         "prereqs": [
@@ -1420,7 +1640,7 @@
         "custom_reqs": []
     },
     {
-        "id": 107,
+        "id": 120,
         "anchor_text": "CVL 735",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240674",
         "prereqs": [
@@ -1431,22 +1651,24 @@
         "custom_reqs": []
     },
     {
-        "id": 108,
+        "id": 121,
         "anchor_text": "CVL 736",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240675",
         "prereqs": [
+            "CVL323"
+        ],
+        "coreqs": [
             "CVL650"
         ],
-        "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 109,
+        "id": 122,
         "anchor_text": "CVL 737",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240676",
         "prereqs": [
-            "CVL650",
+            "CVL323",
             [
                 "MTH203",
                 "MTH410"
@@ -1456,38 +1678,44 @@
                 "MTH425"
             ]
         ],
-        "coreqs": [],
+        "coreqs": [
+            "CVL650"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 110,
+        "id": 123,
         "anchor_text": "CVL 742",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240677",
         "prereqs": [
             "MTH510",
-            "ECN801",
-            "IND713"
+            "ECN801"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "EMS304",
+            "IND713"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 111,
+        "id": 124,
         "anchor_text": "CVL 755",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240678",
         "prereqs": [
-            "CVL411",
+            "CVL313",
             "CVL316",
             "CVL410"
         ],
-        "coreqs": [],
+        "coreqs": [
+            "CVL411"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 112,
+        "id": 125,
         "anchor_text": "CVL 810",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240679",
         "prereqs": [
@@ -1499,7 +1727,7 @@
         "custom_reqs": []
     },
     {
-        "id": 113,
+        "id": 126,
         "anchor_text": "CVL 855",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240680",
         "prereqs": [
@@ -1512,18 +1740,20 @@
         "custom_reqs": []
     },
     {
-        "id": 114,
+        "id": 127,
         "anchor_text": "CVL 900",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240681",
         "prereqs": [
             "CVL633"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CV8405"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 115,
+        "id": 128,
         "anchor_text": "CVL 901",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240682",
         "prereqs": [],
@@ -1532,18 +1762,20 @@
         "custom_reqs": []
     },
     {
-        "id": 116,
+        "id": 129,
         "anchor_text": "CVL 902",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240683",
         "prereqs": [
             "CVL316"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CV8401"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 117,
+        "id": 130,
         "anchor_text": "CVL 903",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240684",
         "prereqs": [
@@ -1554,29 +1786,33 @@
         "custom_reqs": []
     },
     {
-        "id": 118,
+        "id": 131,
         "anchor_text": "CVL 904",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240685",
         "prereqs": [
             "CVL410"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CV8307"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 119,
+        "id": 132,
         "anchor_text": "CVL 905",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240686",
         "prereqs": [
             "CVL411"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CV8308"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 120,
+        "id": 133,
         "anchor_text": "CVL 906",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240687",
         "prereqs": [
@@ -1584,11 +1820,13 @@
             "CVL533"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CV8303"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 121,
+        "id": 134,
         "anchor_text": "CVL 907",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240688",
         "prereqs": [
@@ -1599,7 +1837,7 @@
         "custom_reqs": []
     },
     {
-        "id": 122,
+        "id": 135,
         "anchor_text": "CVL 908",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240689",
         "prereqs": [
@@ -1613,7 +1851,7 @@
         "custom_reqs": []
     },
     {
-        "id": 123,
+        "id": 136,
         "anchor_text": "CVL 909",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240690",
         "prereqs": [
@@ -1624,7 +1862,7 @@
         "custom_reqs": []
     },
     {
-        "id": 124,
+        "id": 137,
         "anchor_text": "CVL 910",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2735.html#240691",
         "prereqs": [
@@ -1636,7 +1874,7 @@
         "custom_reqs": []
     },
     {
-        "id": 125,
+        "id": 138,
         "anchor_text": "ECN 801",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2746.html#240946",
         "prereqs": [],
@@ -1645,7 +1883,7 @@
         "custom_reqs": []
     },
     {
-        "id": 126,
+        "id": 139,
         "anchor_text": "EES 508",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#240954",
         "prereqs": [
@@ -1656,7 +1894,7 @@
         "custom_reqs": []
     },
     {
-        "id": 127,
+        "id": 140,
         "anchor_text": "EES 512",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#240955",
         "prereqs": [
@@ -1668,7 +1906,7 @@
         "custom_reqs": []
     },
     {
-        "id": 128,
+        "id": 141,
         "anchor_text": "EES 604",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#240956",
         "prereqs": [
@@ -1679,7 +1917,7 @@
         "custom_reqs": []
     },
     {
-        "id": 129,
+        "id": 142,
         "anchor_text": "EES 612",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#240957",
         "prereqs": [
@@ -1690,7 +1928,7 @@
         "custom_reqs": []
     },
     {
-        "id": 130,
+        "id": 143,
         "anchor_text": "ELE 202",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242391",
         "prereqs": [
@@ -1702,11 +1940,11 @@
         "custom_reqs": []
     },
     {
-        "id": 131,
+        "id": 144,
         "anchor_text": "ELE 302",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242392",
         "prereqs": [
-            "MTH312",
+            "CHY102",
             "MTH140",
             "MTH141",
             "PCS125",
@@ -1715,12 +1953,14 @@
             "ELE202",
             "MTH240"
         ],
-        "coreqs": [],
+        "coreqs": [
+            "MTH312"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 132,
+        "id": 145,
         "anchor_text": "ELE 401",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242393",
         "prereqs": [
@@ -1731,7 +1971,7 @@
         "custom_reqs": []
     },
     {
-        "id": 133,
+        "id": 146,
         "anchor_text": "ELE 404",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242394",
         "prereqs": [
@@ -1743,7 +1983,7 @@
         "custom_reqs": []
     },
     {
-        "id": 134,
+        "id": 147,
         "anchor_text": "ELE 504",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242395",
         "prereqs": [
@@ -1754,7 +1994,7 @@
         "custom_reqs": []
     },
     {
-        "id": 135,
+        "id": 148,
         "anchor_text": "ELE 531",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242396",
         "prereqs": [
@@ -1765,7 +2005,7 @@
         "custom_reqs": []
     },
     {
-        "id": 136,
+        "id": 149,
         "anchor_text": "ELE 532",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242397",
         "prereqs": [
@@ -1781,7 +2021,7 @@
         "custom_reqs": []
     },
     {
-        "id": 137,
+        "id": 150,
         "anchor_text": "ELE 604",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242398",
         "prereqs": [
@@ -1796,7 +2036,7 @@
         "custom_reqs": []
     },
     {
-        "id": 138,
+        "id": 151,
         "anchor_text": "ELE 632",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242399",
         "prereqs": [
@@ -1807,7 +2047,7 @@
         "custom_reqs": []
     },
     {
-        "id": 139,
+        "id": 152,
         "anchor_text": "ELE 635",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242400",
         "prereqs": [
@@ -1819,7 +2059,7 @@
         "custom_reqs": []
     },
     {
-        "id": 140,
+        "id": 153,
         "anchor_text": "ELE 637",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242401",
         "prereqs": [
@@ -1831,7 +2071,7 @@
         "custom_reqs": []
     },
     {
-        "id": 141,
+        "id": 154,
         "anchor_text": "ELE 639",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242402",
         "prereqs": [
@@ -1842,33 +2082,39 @@
         "custom_reqs": []
     },
     {
-        "id": 142,
+        "id": 155,
         "anchor_text": "ELE 700",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242403",
-        "prereqs": [
-            "MEC511",
-            "ELE531",
-            "ELE635",
-            "ELE639",
-            [
-                "ELE538",
-                "COE538"
-            ],
-            [
-                "ELE632",
-                "ELE604"
-            ],
-            [
-                "ELE637",
-                "ELE632"
+        "prereqs": {
+            "or": [
+                [
+                    "ELE504",
+                    "ELE531",
+                    "ELE635",
+                    "ELE639",
+                    [
+                        "ELE538",
+                        "COE538"
+                    ],
+                    "ELE632"
+                ],
+                [
+                    "ELE604",
+                    "ELE637"
+                ],
+                [
+                    "ELE632"
+                ]
             ]
+        },
+        "coreqs": [
+            "MEC511"
         ],
-        "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 143,
+        "id": 156,
         "anchor_text": "ELE 704",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242404",
         "prereqs": [
@@ -1882,7 +2128,7 @@
         "custom_reqs": []
     },
     {
-        "id": 144,
+        "id": 157,
         "anchor_text": "ELE 709",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242405",
         "prereqs": [
@@ -1893,7 +2139,7 @@
         "custom_reqs": []
     },
     {
-        "id": 145,
+        "id": 158,
         "anchor_text": "ELE 725",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242406",
         "prereqs": [],
@@ -1902,7 +2148,7 @@
         "custom_reqs": []
     },
     {
-        "id": 146,
+        "id": 159,
         "anchor_text": "ELE 734",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242407",
         "prereqs": [
@@ -1916,7 +2162,7 @@
         "custom_reqs": []
     },
     {
-        "id": 147,
+        "id": 160,
         "anchor_text": "ELE 744",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242408",
         "prereqs": [
@@ -1931,7 +2177,7 @@
         "custom_reqs": []
     },
     {
-        "id": 148,
+        "id": 161,
         "anchor_text": "ELE 745",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242409",
         "prereqs": [
@@ -1942,7 +2188,7 @@
         "custom_reqs": []
     },
     {
-        "id": 149,
+        "id": 162,
         "anchor_text": "ELE 746",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242410",
         "prereqs": [
@@ -1954,7 +2200,7 @@
         "custom_reqs": []
     },
     {
-        "id": 150,
+        "id": 163,
         "anchor_text": "ELE 754",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242411",
         "prereqs": [
@@ -1967,7 +2213,7 @@
         "custom_reqs": []
     },
     {
-        "id": 151,
+        "id": 164,
         "anchor_text": "ELE 792",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242413",
         "prereqs": [
@@ -1983,7 +2229,7 @@
         "custom_reqs": []
     },
     {
-        "id": 152,
+        "id": 165,
         "anchor_text": "ELE 800",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242414",
         "prereqs": [
@@ -1994,7 +2240,7 @@
         "custom_reqs": []
     },
     {
-        "id": 153,
+        "id": 166,
         "anchor_text": "ELE 804",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242415",
         "prereqs": [
@@ -2008,7 +2254,7 @@
         "custom_reqs": []
     },
     {
-        "id": 154,
+        "id": 167,
         "anchor_text": "ELE 806",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242416",
         "prereqs": [
@@ -2020,7 +2266,7 @@
         "custom_reqs": []
     },
     {
-        "id": 155,
+        "id": 168,
         "anchor_text": "ELE 809",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242417",
         "prereqs": [
@@ -2031,7 +2277,7 @@
         "custom_reqs": []
     },
     {
-        "id": 156,
+        "id": 169,
         "anchor_text": "ELE 813",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242418",
         "prereqs": [
@@ -2045,7 +2291,7 @@
         "custom_reqs": []
     },
     {
-        "id": 157,
+        "id": 170,
         "anchor_text": "ELE 815",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242419",
         "prereqs": [
@@ -2056,7 +2302,7 @@
         "custom_reqs": []
     },
     {
-        "id": 158,
+        "id": 171,
         "anchor_text": "ELE 829",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242420",
         "prereqs": [
@@ -2067,7 +2313,7 @@
         "custom_reqs": []
     },
     {
-        "id": 159,
+        "id": 172,
         "anchor_text": "ELE 846",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242421",
         "prereqs": [
@@ -2078,7 +2324,7 @@
         "custom_reqs": []
     },
     {
-        "id": 160,
+        "id": 173,
         "anchor_text": "ELE 847",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242422",
         "prereqs": [
@@ -2090,7 +2336,7 @@
         "custom_reqs": []
     },
     {
-        "id": 161,
+        "id": 174,
         "anchor_text": "ELE 863",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242424",
         "prereqs": [
@@ -2104,7 +2350,7 @@
         "custom_reqs": []
     },
     {
-        "id": 162,
+        "id": 175,
         "anchor_text": "ELE 864",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242425",
         "prereqs": [
@@ -2116,7 +2362,7 @@
         "custom_reqs": []
     },
     {
-        "id": 163,
+        "id": 176,
         "anchor_text": "ELE 869",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242426",
         "prereqs": [
@@ -2130,18 +2376,18 @@
         "custom_reqs": []
     },
     {
-        "id": 164,
+        "id": 177,
         "anchor_text": "ELE 882",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242428",
-        "prereqs": [
+        "prereqs": [],
+        "coreqs": [
             "ELE632"
         ],
-        "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 165,
+        "id": 178,
         "anchor_text": "ELE 885",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242430",
         "prereqs": [
@@ -2152,7 +2398,7 @@
         "custom_reqs": []
     },
     {
-        "id": 166,
+        "id": 179,
         "anchor_text": "ELE 888",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2747.html#242431",
         "prereqs": [
@@ -2163,7 +2409,7 @@
         "custom_reqs": []
     },
     {
-        "id": 167,
+        "id": 180,
         "anchor_text": "ENG 503",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2749.html#242549",
         "prereqs": [],
@@ -2172,21 +2418,21 @@
         "custom_reqs": []
     },
     {
-        "id": 168,
+        "id": 181,
         "anchor_text": "GEO 702",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2761.html#242761",
-        "prereqs": [
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [
             "GEO703",
             "OC003",
             "OC005",
             "OC006"
         ],
-        "coreqs": [],
-        "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 169,
+        "id": 182,
         "anchor_text": "HST 701",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2766.html#241247",
         "prereqs": [],
@@ -2195,7 +2441,7 @@
         "custom_reqs": []
     },
     {
-        "id": 170,
+        "id": 183,
         "anchor_text": "IND 300",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241333",
         "prereqs": [
@@ -2211,7 +2457,7 @@
         "custom_reqs": []
     },
     {
-        "id": 171,
+        "id": 184,
         "anchor_text": "IND 303",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241334",
         "prereqs": [
@@ -2228,7 +2474,7 @@
         "custom_reqs": []
     },
     {
-        "id": 172,
+        "id": 185,
         "anchor_text": "IND 400",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241335",
         "prereqs": [
@@ -2249,7 +2495,7 @@
         "custom_reqs": []
     },
     {
-        "id": 173,
+        "id": 186,
         "anchor_text": "IND 405",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241336",
         "prereqs": [
@@ -2266,7 +2512,7 @@
         "custom_reqs": []
     },
     {
-        "id": 174,
+        "id": 187,
         "anchor_text": "IND 508",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241337",
         "prereqs": [
@@ -2285,7 +2531,7 @@
         "custom_reqs": []
     },
     {
-        "id": 175,
+        "id": 188,
         "anchor_text": "IND 600",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241338",
         "prereqs": [
@@ -2301,7 +2547,7 @@
         "custom_reqs": []
     },
     {
-        "id": 176,
+        "id": 189,
         "anchor_text": "IND 604",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241339",
         "prereqs": [
@@ -2319,7 +2565,7 @@
         "custom_reqs": []
     },
     {
-        "id": 177,
+        "id": 190,
         "anchor_text": "IND 605",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241340",
         "prereqs": [
@@ -2335,7 +2581,7 @@
         "custom_reqs": []
     },
     {
-        "id": 178,
+        "id": 191,
         "anchor_text": "IND 708",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241341",
         "prereqs": [
@@ -2361,7 +2607,37 @@
         "custom_reqs": []
     },
     {
-        "id": 179,
+        "id": 192,
+        "anchor_text": "IND 70A/B",
+        "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241331",
+        "prereqs": [
+            "MTL200",
+            [
+                "IND302",
+                "ECN801"
+            ],
+            [
+                "MEC323",
+                "MEC324"
+            ],
+            "PSY209",
+            "CMN432",
+            "IND300",
+            "IND405",
+            "MEC325",
+            "MEC516",
+            "MTH309",
+            "IND400",
+            "IND600",
+            "IND604",
+            "IND605"
+        ],
+        "coreqs": [],
+        "antireqs": [],
+        "custom_reqs": []
+    },
+    {
+        "id": 193,
         "anchor_text": "IND 710",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241342",
         "prereqs": [
@@ -2387,7 +2663,7 @@
         "custom_reqs": []
     },
     {
-        "id": 180,
+        "id": 194,
         "anchor_text": "IND 712",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241343",
         "prereqs": [
@@ -2411,7 +2687,7 @@
         "custom_reqs": []
     },
     {
-        "id": 181,
+        "id": 195,
         "anchor_text": "IND 713",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241344",
         "prereqs": [
@@ -2432,15 +2708,17 @@
             "IND400",
             "IND405",
             "MEC516",
-            "MTH309",
-            "EMS304"
+            "MTH309"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "CVL742",
+            "EMS304"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 182,
+        "id": 196,
         "anchor_text": "IND 716",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241345",
         "prereqs": [
@@ -2457,11 +2735,13 @@
             ]
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "MB8004"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 183,
+        "id": 197,
         "anchor_text": "IND 810",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241346",
         "prereqs": [
@@ -2489,7 +2769,7 @@
         "custom_reqs": []
     },
     {
-        "id": 184,
+        "id": 198,
         "anchor_text": "IND 816",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241347",
         "prereqs": [
@@ -2518,7 +2798,7 @@
         "custom_reqs": []
     },
     {
-        "id": 185,
+        "id": 199,
         "anchor_text": "IND 817",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241348",
         "prereqs": [
@@ -2535,11 +2815,13 @@
             ]
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "MB8003"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 186,
+        "id": 200,
         "anchor_text": "IND 832",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241349",
         "prereqs": [
@@ -2557,7 +2839,7 @@
         "custom_reqs": []
     },
     {
-        "id": 187,
+        "id": 201,
         "anchor_text": "IND 833",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2769.html#241350",
         "prereqs": [
@@ -2574,7 +2856,7 @@
         "custom_reqs": []
     },
     {
-        "id": 188,
+        "id": 202,
         "anchor_text": "MEC 222",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241473",
         "prereqs": [],
@@ -2583,7 +2865,7 @@
         "custom_reqs": []
     },
     {
-        "id": 189,
+        "id": 203,
         "anchor_text": "MEC 309",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241474",
         "prereqs": [
@@ -2599,7 +2881,7 @@
         "custom_reqs": []
     },
     {
-        "id": 190,
+        "id": 204,
         "anchor_text": "MEC 311",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241475",
         "prereqs": [
@@ -2615,7 +2897,7 @@
         "custom_reqs": []
     },
     {
-        "id": 191,
+        "id": 205,
         "anchor_text": "MEC 322",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241476",
         "prereqs": [
@@ -2631,7 +2913,7 @@
         "custom_reqs": []
     },
     {
-        "id": 192,
+        "id": 206,
         "anchor_text": "MEC 323",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241477",
         "prereqs": [
@@ -2647,7 +2929,7 @@
         "custom_reqs": []
     },
     {
-        "id": 193,
+        "id": 207,
         "anchor_text": "MEC 325",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241478",
         "prereqs": [
@@ -2663,7 +2945,7 @@
         "custom_reqs": []
     },
     {
-        "id": 194,
+        "id": 208,
         "anchor_text": "MEC 411",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241479",
         "prereqs": [
@@ -2678,7 +2960,7 @@
         "custom_reqs": []
     },
     {
-        "id": 195,
+        "id": 209,
         "anchor_text": "MEC 430",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241480",
         "prereqs": [
@@ -2693,7 +2975,7 @@
         "custom_reqs": []
     },
     {
-        "id": 196,
+        "id": 210,
         "anchor_text": "MEC 431",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241481",
         "prereqs": [
@@ -2710,33 +2992,37 @@
         "custom_reqs": []
     },
     {
-        "id": 197,
+        "id": 211,
         "anchor_text": "MEC 511",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241482",
-        "prereqs": [
-            "CHY102",
-            "MTH141",
-            "PCS211",
-            "CPS125",
-            "ELE202",
-            "MTH240",
-            [
-                "PCS224",
-                "CPS125"
-            ],
-            "MTH141",
-            "MEC222",
-            "MTH240",
-            "MTL200",
-            "PCS211",
-            "PCS213"
-        ],
+        "prereqs": {
+            "or": [
+                [
+                    "CHY102",
+                    "MTH141",
+                    "PCS211",
+                    "CPS125",
+                    "ELE202",
+                    "MTH240",
+                    "PCS224"
+                ],
+                [
+                    "CPS125",
+                    "MTH141",
+                    "MEC222",
+                    "MTH240",
+                    "MTL200",
+                    "PCS211",
+                    "PCS213"
+                ]
+            ]
+        },
         "coreqs": [],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 198,
+        "id": 212,
         "anchor_text": "MEC 514",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241483",
         "prereqs": [
@@ -2753,7 +3039,7 @@
         "custom_reqs": []
     },
     {
-        "id": 199,
+        "id": 213,
         "anchor_text": "MEC 516",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241484",
         "prereqs": [
@@ -2769,7 +3055,7 @@
         "custom_reqs": []
     },
     {
-        "id": 200,
+        "id": 214,
         "anchor_text": "MEC 522",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241485",
         "prereqs": [
@@ -2788,7 +3074,7 @@
         "custom_reqs": []
     },
     {
-        "id": 201,
+        "id": 215,
         "anchor_text": "MEC 531",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241486",
         "prereqs": [
@@ -2804,7 +3090,7 @@
         "custom_reqs": []
     },
     {
-        "id": 202,
+        "id": 216,
         "anchor_text": "MEC 613",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241487",
         "prereqs": [
@@ -2819,7 +3105,7 @@
         "custom_reqs": []
     },
     {
-        "id": 203,
+        "id": 217,
         "anchor_text": "MEC 616",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241488",
         "prereqs": [
@@ -2834,7 +3120,7 @@
         "custom_reqs": []
     },
     {
-        "id": 204,
+        "id": 218,
         "anchor_text": "MEC 617",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241489",
         "prereqs": [
@@ -2855,7 +3141,7 @@
         "custom_reqs": []
     },
     {
-        "id": 205,
+        "id": 219,
         "anchor_text": "MEC 626",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241490",
         "prereqs": [
@@ -2868,7 +3154,7 @@
         "custom_reqs": []
     },
     {
-        "id": 206,
+        "id": 220,
         "anchor_text": "MEC 701",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241491",
         "prereqs": [
@@ -2885,7 +3171,7 @@
         "custom_reqs": []
     },
     {
-        "id": 207,
+        "id": 221,
         "anchor_text": "MEC 709",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241492",
         "prereqs": [
@@ -2903,7 +3189,7 @@
         "custom_reqs": []
     },
     {
-        "id": 208,
+        "id": 222,
         "anchor_text": "MEC 713",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241493",
         "prereqs": [
@@ -2913,15 +3199,17 @@
             "MEC411",
             "MEC430",
             "MTH510",
-            "MEC709",
-            "CVL742"
+            "MEC709"
         ],
         "coreqs": [],
-        "antireqs": [],
+        "antireqs": [
+            "EMS304",
+            "CVL742"
+        ],
         "custom_reqs": []
     },
     {
-        "id": 209,
+        "id": 223,
         "anchor_text": "MEC 721",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241494",
         "prereqs": [
@@ -2941,7 +3229,7 @@
         "custom_reqs": []
     },
     {
-        "id": 210,
+        "id": 224,
         "anchor_text": "MEC 722",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241495",
         "prereqs": [
@@ -2960,7 +3248,7 @@
         "custom_reqs": []
     },
     {
-        "id": 211,
+        "id": 225,
         "anchor_text": "MEC 723",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241496",
         "prereqs": [
@@ -2975,22 +3263,24 @@
         "custom_reqs": []
     },
     {
-        "id": 212,
+        "id": 226,
         "anchor_text": "MEC 733",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241497",
         "prereqs": [
-            "MEC411",
+            "EES612",
             "PCS213",
             "CMN432",
             "MEC309",
             "MTH510"
         ],
-        "coreqs": [],
+        "coreqs": [
+            "MEC411"
+        ],
         "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 213,
+        "id": 227,
         "anchor_text": "MEC 734",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241498",
         "prereqs": [
@@ -3006,7 +3296,7 @@
         "custom_reqs": []
     },
     {
-        "id": 214,
+        "id": 228,
         "anchor_text": "MEC 740",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241499",
         "prereqs": [
@@ -3025,7 +3315,7 @@
         "custom_reqs": []
     },
     {
-        "id": 215,
+        "id": 229,
         "anchor_text": "MEC 751",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241500",
         "prereqs": [
@@ -3044,7 +3334,7 @@
         "custom_reqs": []
     },
     {
-        "id": 216,
+        "id": 230,
         "anchor_text": "MEC 809",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241501",
         "prereqs": [
@@ -3062,7 +3352,7 @@
         "custom_reqs": []
     },
     {
-        "id": 217,
+        "id": 231,
         "anchor_text": "MEC 810",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241502",
         "prereqs": [
@@ -3081,7 +3371,7 @@
         "custom_reqs": []
     },
     {
-        "id": 218,
+        "id": 232,
         "anchor_text": "MEC 811",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241503",
         "prereqs": [
@@ -3100,7 +3390,7 @@
         "custom_reqs": []
     },
     {
-        "id": 219,
+        "id": 233,
         "anchor_text": "MEC 813",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241504",
         "prereqs": [
@@ -3118,7 +3408,7 @@
         "custom_reqs": []
     },
     {
-        "id": 220,
+        "id": 234,
         "anchor_text": "MEC 816",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241505",
         "prereqs": [
@@ -3135,7 +3425,7 @@
         "custom_reqs": []
     },
     {
-        "id": 221,
+        "id": 235,
         "anchor_text": "MEC 817",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241506",
         "prereqs": [
@@ -3155,7 +3445,7 @@
         "custom_reqs": []
     },
     {
-        "id": 222,
+        "id": 236,
         "anchor_text": "MEC 825",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241507",
         "prereqs": [
@@ -3178,7 +3468,7 @@
         "custom_reqs": []
     },
     {
-        "id": 223,
+        "id": 237,
         "anchor_text": "MEC 830",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241508",
         "prereqs": [
@@ -3197,7 +3487,7 @@
         "custom_reqs": []
     },
     {
-        "id": 224,
+        "id": 238,
         "anchor_text": "MEC 832",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241509",
         "prereqs": [
@@ -3212,7 +3502,7 @@
         "custom_reqs": []
     },
     {
-        "id": 225,
+        "id": 239,
         "anchor_text": "MEC 850",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#241510",
         "prereqs": [
@@ -3229,7 +3519,7 @@
         "custom_reqs": []
     },
     {
-        "id": 226,
+        "id": 240,
         "anchor_text": "MTH 140",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2804.html#242898",
         "prereqs": [],
@@ -3238,7 +3528,7 @@
         "custom_reqs": []
     },
     {
-        "id": 227,
+        "id": 241,
         "anchor_text": "MTH 141",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2804.html#242899",
         "prereqs": [],
@@ -3247,7 +3537,7 @@
         "custom_reqs": []
     },
     {
-        "id": 228,
+        "id": 242,
         "anchor_text": "MTH 240",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2804.html#242904",
         "prereqs": [
@@ -3258,7 +3548,7 @@
         "custom_reqs": []
     },
     {
-        "id": 229,
+        "id": 243,
         "anchor_text": "MTH 309",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2804.html#242906",
         "prereqs": [
@@ -3270,7 +3560,7 @@
         "custom_reqs": []
     },
     {
-        "id": 230,
+        "id": 244,
         "anchor_text": "MTH 312",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2804.html#242908",
         "prereqs": [
@@ -3291,7 +3581,7 @@
         "custom_reqs": []
     },
     {
-        "id": 231,
+        "id": 245,
         "anchor_text": "MTH 314",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2804.html#242909",
         "prereqs": [
@@ -3310,7 +3600,7 @@
         "custom_reqs": []
     },
     {
-        "id": 232,
+        "id": 246,
         "anchor_text": "MTH 410",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2804.html#242914",
         "prereqs": [
@@ -3333,7 +3623,7 @@
         "custom_reqs": []
     },
     {
-        "id": 233,
+        "id": 247,
         "anchor_text": "MTH 425",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2804.html#242915",
         "prereqs": [
@@ -3346,18 +3636,18 @@
         "custom_reqs": []
     },
     {
-        "id": 234,
+        "id": 248,
         "anchor_text": "MTH 510",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2804.html#242921",
-        "prereqs": [
+        "prereqs": [],
+        "coreqs": [],
+        "antireqs": [
             "MTH501"
         ],
-        "coreqs": [],
-        "antireqs": [],
         "custom_reqs": []
     },
     {
-        "id": 235,
+        "id": 249,
         "anchor_text": "MTH 514",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2804.html#242922",
         "prereqs": [
@@ -3375,7 +3665,7 @@
         "custom_reqs": []
     },
     {
-        "id": 236,
+        "id": 250,
         "anchor_text": "MTL 200",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#242080",
         "prereqs": [
@@ -3386,7 +3676,7 @@
         "custom_reqs": []
     },
     {
-        "id": 237,
+        "id": 251,
         "anchor_text": "MTL 300",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#242081",
         "prereqs": [
@@ -3403,7 +3693,7 @@
         "custom_reqs": []
     },
     {
-        "id": 238,
+        "id": 252,
         "anchor_text": "MTL 700",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2777.html#242082",
         "prereqs": [
@@ -3421,7 +3711,7 @@
         "custom_reqs": []
     },
     {
-        "id": 239,
+        "id": 253,
         "anchor_text": "PCS 125",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2789.html#241919",
         "prereqs": [],
@@ -3430,7 +3720,7 @@
         "custom_reqs": []
     },
     {
-        "id": 240,
+        "id": 254,
         "anchor_text": "PCS 211",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2789.html#241922",
         "prereqs": [],
@@ -3439,7 +3729,7 @@
         "custom_reqs": []
     },
     {
-        "id": 241,
+        "id": 255,
         "anchor_text": "PCS 213",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2789.html#241923",
         "prereqs": [
@@ -3450,7 +3740,7 @@
         "custom_reqs": []
     },
     {
-        "id": 242,
+        "id": 256,
         "anchor_text": "PCS 224",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2789.html#241924",
         "prereqs": [
@@ -3465,7 +3755,7 @@
         "custom_reqs": []
     },
     {
-        "id": 243,
+        "id": 257,
         "anchor_text": "PHL 709",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2787.html#241879",
         "prereqs": [],
@@ -3474,7 +3764,7 @@
         "custom_reqs": []
     },
     {
-        "id": 244,
+        "id": 258,
         "anchor_text": "POL 507",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2807.html#243039",
         "prereqs": [],
@@ -3483,7 +3773,7 @@
         "custom_reqs": []
     },
     {
-        "id": 245,
+        "id": 259,
         "anchor_text": "PSY 209",
         "url": "https://www.torontomu.ca/calendar/2011-2012/pg2795.html#242100",
         "prereqs": [],

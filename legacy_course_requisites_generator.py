@@ -45,6 +45,13 @@ LABEL_PREFIX_RE = re.compile(
     r"^(Prerequisites?|Co-?Requisites?|Antirequisites?|Custom Requisites?)\s*:\s*",
     re.I,
 )
+# Legacy cnCoursePrereq often packs multiple labels into one span, e.g.
+# "Prerequisite: BME 323 ; Corequisite: BLG 601" or
+# "Prerequisites: A and B and C ; Antirequisite: D"
+EMBEDDED_LABEL_RE = re.compile(
+    r"(Prerequisites?|Co-?Requisites?|Antirequisites?|Custom Requisites?)\s*:\s*",
+    re.I,
+)
 
 
 def calendar_span(year: int) -> str:
@@ -69,12 +76,47 @@ def layout_year(path: Path) -> int | None:
     return int(m.group(1)) if m else None
 
 
+def _label_to_key(label: str) -> str | None:
+    compact = re.sub(r"[^a-z]", "", (label or "").lower())
+    if compact.startswith("prereq"):
+        return "prereqs"
+    if compact.startswith("coreq"):
+        return "coreqs"
+    if compact.startswith("antireq"):
+        return "antireqs"
+    if compact.startswith("custom"):
+        return "custom_reqs"
+    return None
+
+
 def parse_req_text(text: str) -> list:
-    """Parse 'A and B or C' style requisite text into the app's JSON shape."""
+    """Parse a single AND/OR course list (one label's body only)."""
     text = (text or "").strip()
     text = LABEL_PREFIX_RE.sub("", text).strip()
+    # Safety: if a secondary label leaked into this body, cut it off
+    text = re.split(
+        r";\s*(?=Co-?Requisites?|Antirequisites?|Prerequisites?|Custom Requisites?)\s*:",
+        text,
+        maxsplit=1,
+        flags=re.I,
+    )[0].strip()
+    # Drop trailing catalog metadata that shares the same span/text node
+    text = re.split(
+        r"(?i)\b(?:Course Weight|GPA Weight|Billing Units|Lect(?:ure)?s?\s*:|Lab\s*:)\b",
+        text,
+        maxsplit=1,
+    )[0].strip()
+    text = text.strip(" ;,")
     if not text or text.lower() == "none":
         return []
+
+    # Prefer shared modern parser (supports (group) or (group) → {"or": [...]})
+    try:
+        from course_requisites_generator import parse_req_list_text
+
+        return parse_req_list_text(text)
+    except Exception:
+        pass
 
     text = text.replace("(", "").replace(")", "")
     and_parts = re.split(r"\band\b|,", text, flags=re.IGNORECASE)
@@ -86,7 +128,6 @@ def parse_req_text(text: str) -> list:
         if re.search(r"\bor\b", part, flags=re.IGNORECASE):
             or_choices = re.split(r"\bor\b", part, flags=re.IGNORECASE)
             cleaned = [normalize_code(c) for c in or_choices if c.strip()]
-            # Drop tokens that are not course-like
             cleaned = [c for c in cleaned if COURSE_CODE_RE.match(format_code(c))]
             if cleaned:
                 parsed.append(cleaned if len(cleaned) > 1 else cleaned[0])
@@ -95,6 +136,40 @@ def parse_req_text(text: str) -> list:
             if COURSE_CODE_RE.match(format_code(course)):
                 parsed.append(course)
     return parsed
+
+
+def parse_combined_req_field(text: str) -> dict:
+    """Parse a legacy cnCoursePrereq span that may contain several labels.
+
+    Example inputs:
+      "Prerequisite: BME 323 ; Corequisite: BLG 601"
+      "Prerequisites: CPS 125 and ELE 202 and MTH 240 ; Antirequisite: COE 328"
+      "Corequisite: CHE 214 , Prerequisites: CHE 217 and MTH 425"
+    """
+    empty = {"prereqs": [], "coreqs": [], "antireqs": [], "custom_reqs": []}
+    text = (text or "").strip()
+    if not text or text.lower() == "none":
+        return empty
+
+    if not EMBEDDED_LABEL_RE.search(text):
+        # Plain course list with no labels — treat as prerequisites
+        return {**empty, "prereqs": parse_req_text(text)}
+
+    parts = EMBEDDED_LABEL_RE.split(text)
+    # parts[0] = optional preamble; then label, body, label, body, ...
+    result = {**empty}
+    i = 1
+    while i < len(parts):
+        label = parts[i]
+        body = parts[i + 1] if i + 1 < len(parts) else ""
+        key = _label_to_key(label)
+        i += 2
+        if not key:
+            continue
+        parsed = parse_req_text(body)
+        if parsed:
+            result[key] = parsed
+    return result
 
 
 def normalize_legacy_url(href: str, year: int) -> tuple[str, str] | None:
@@ -218,11 +293,34 @@ def parse_legacy_page(soup: BeautifulSoup, page_url: str) -> dict[str, dict]:
             elif "course-title" in classes and not title:
                 title = el.get_text(" ", strip=True)
             elif "course-prereq" in classes:
+                text = el.get_text(" ", strip=True)
+                if not text:
+                    continue
+                eid = (el.get("id") or "").lower()
+                # cnCoursePrereq often packs Prerequisite + Corequisite + Antirequisite
+                # into one span. Parsing it as a single course token yields [] (BME 406).
+                label_count = len(EMBEDDED_LABEL_RE.findall(text))
+                if eid.endswith("cncourseprereq") or label_count >= 2:
+                    combined = parse_combined_req_field(text)
+                    for key, parsed in combined.items():
+                        if parsed:
+                            reqs[key] = parsed
+                    continue
                 kind = _field_kind(el)
-                if kind:
-                    parsed = parse_req_text(el.get_text(" ", strip=True))
-                    if parsed:
-                        reqs[kind] = parsed
+                if not kind:
+                    continue
+                if label_count == 1:
+                    # e.g. "Prerequisite: A and B" — still use combined so the
+                    # label routes to the right bucket
+                    combined = parse_combined_req_field(text)
+                    if combined.get(kind) or any(combined.values()):
+                        for key, parsed in combined.items():
+                            if parsed:
+                                reqs[key] = parsed
+                        continue
+                parsed = parse_req_text(text)
+                if parsed:
+                    reqs[kind] = parsed
 
         if not subject or not number:
             continue

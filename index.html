@@ -1113,6 +1113,14 @@
   outline: 3px solid #0b57d0;
   outline-offset: 2px;
 }
+.course-star-footnote {
+  margin: 0.35rem 0 0.85rem;
+  color: #333;
+  line-height: 1.35;
+}
+.course-star-footnote small {
+  font-size: 0.92em;
+}
 ul:has(> li > .course-row) {
   list-style: none;
   padding-left: 0;
@@ -1147,6 +1155,49 @@ button[data-semester]:focus-visible {
     return String(cb && cb.value || '').replace(/\s+/g, ' ').trim();
   }
 
+  function normalizeCourseKey(code) {
+    return String(code || '').replace(/\s+/g, '').toUpperCase();
+  }
+
+  // TMU marks these with "*" on the checklist; footnotes explain pass/fail or multi-term.
+  const PASS_FAIL_STAR_CODES = new Set(['CEN199', 'BME100']);
+
+  function peelLeadingStar(title) {
+    let t = String(title || '').replace(/\s+/g, ' ').trim();
+    let starred = false;
+    if (/^\*/.test(t)) {
+      starred = true;
+      t = t.replace(/^\*\s*/, '').trim();
+    }
+    if (/\*$/.test(t) && !/\d\*$/.test(t)) {
+      starred = true;
+      t = t.replace(/\s*\*$/, '').trim();
+    }
+    return { title: t, starred };
+  }
+
+  function hostHasLoneStarMarker(cb, label) {
+    const hosts = [cb.closest('td'), cb.closest('li'), label && label.parentElement].filter(Boolean);
+    for (const host of hosts) {
+      for (const node of Array.from(host.childNodes)) {
+        if (node.nodeType !== Node.TEXT_NODE) continue;
+        if (/^\s*\*\s*$/.test(node.textContent || '')) return true;
+      }
+    }
+    return false;
+  }
+
+  function shouldShowCourseStar(code, titleInfo, cb, label) {
+    if (titleInfo.starred) return true;
+    if (hostHasLoneStarMarker(cb, label)) return true;
+    const key = normalizeCourseKey(code);
+    if (PASS_FAIL_STAR_CODES.has(key)) return true;
+    // Multi-term calendar courses (44A/B, 70A/B, year-long capstones)
+    if (/(?:44|70)A\/?B$/.test(key)) return true;
+    if (/^(?:BME|COE)(?:700|800)$/.test(key)) return true;
+    return false;
+  }
+
   function extractCourseTitle(cb, label, anchor) {
     const li = cb.closest('li');
     if (li) {
@@ -1165,10 +1216,25 @@ button[data-semester]:focus-visible {
     }
     const td = cb.closest('td');
     if (td) {
+      // Pass/fail marker often sits in the code cell as a text node (e.g. "CEN 199 *")
+      // while the course name is in the next <td> ("Writing Skills").
+      const markers = [];
+      Array.from(td.childNodes).forEach(node => {
+        if (label && (node === label || (label.contains && label.contains(node)))) return;
+        if (node.nodeType === Node.TEXT_NODE) {
+          const t = node.textContent.replace(/\s+/g, ' ').trim();
+          if (t) markers.push(t);
+        }
+      });
       const titleTd = td.nextElementSibling;
+      let title = '';
       if (titleTd && titleTd.tagName === 'TD') {
-        return titleTd.textContent.replace(/\s+/g, ' ').trim();
+        title = titleTd.textContent.replace(/\s+/g, ' ').trim();
       }
+      if (markers.length) {
+        title = `${markers.join(' ')}${title ? ` ${title}` : ''}`.trim();
+      }
+      if (title) return title;
     }
     if (anchor) {
       const after = anchor.parentElement;
@@ -1180,12 +1246,17 @@ button[data-semester]:focus-visible {
     return '';
   }
 
-  function buildCourseRow(iframeDoc, cb, code, title, href) {
+  function buildCourseRow(iframeDoc, cb, code, title, href, opts = {}) {
     const uid = cb.id || `course-row-${Math.random().toString(36).slice(2, 9)}-${code.replace(/[^A-Za-z0-9]+/g, '-').toLowerCase()}`;
     cb.id = uid;
 
+    const peeled = peelLeadingStar(title);
+    const starred = !!(opts.starred || peeled.starred);
+    const cleanTitle = peeled.title;
+
     const row = iframeDoc.createElement('div');
     row.className = 'course-row';
+    if (starred) row.dataset.starred = '1';
 
     const checkLabel = iframeDoc.createElement('label');
     checkLabel.className = 'course-row-check';
@@ -1198,14 +1269,15 @@ button[data-semester]:focus-visible {
     const codeSpan = iframeDoc.createElement('span');
     codeSpan.className = 'course-row-code';
     const strong = iframeDoc.createElement('strong');
-    strong.textContent = code;
+    // TMU checklist style: CEN 199*  Writing Skills (star on the code, not the title)
+    strong.textContent = starred ? `${code}*` : code;
     codeSpan.appendChild(strong);
     mainLabel.appendChild(codeSpan);
 
-    if (title) {
+    if (cleanTitle) {
       const titleSpan = iframeDoc.createElement('span');
       titleSpan.className = 'course-row-title';
-      titleSpan.textContent = title;
+      titleSpan.textContent = cleanTitle;
       mainLabel.appendChild(titleSpan);
     }
 
@@ -1214,13 +1286,87 @@ button[data-semester]:focus-visible {
     outline.href = href || '#';
     outline.textContent = 'Outline';
     outline.setAttribute('data-course-code', code);
-    outline.setAttribute('aria-label', `${code} course outline (opens in new tab)`);
+    const starNote = starred ? ', see footnote' : '';
+    outline.setAttribute('aria-label', `${code}${starred ? '*' : ''} course outline (opens in new tab)${starNote}`);
 
     checkLabel.appendChild(cb);
     row.appendChild(checkLabel);
     row.appendChild(mainLabel);
     row.appendChild(outline);
     return row;
+  }
+
+  function repairStarredCourseRow(row) {
+    const cb = row.querySelector('input.course-checkbox');
+    const codeStrong = row.querySelector('.course-row-code strong') || row.querySelector('.course-row-code');
+    const titleEl = row.querySelector('.course-row-title');
+    if (!cb || !codeStrong) return;
+
+    const code = courseCodeFromCheckbox(cb);
+    if (!code) return;
+
+    let starred = row.dataset.starred === '1' || /\*$/.test((codeStrong.textContent || '').trim());
+    if (titleEl) {
+      const peeled = peelLeadingStar(titleEl.textContent || '');
+      if (peeled.starred) starred = true;
+      if (peeled.title !== (titleEl.textContent || '').trim()) {
+        titleEl.textContent = peeled.title;
+      }
+    }
+    const key = normalizeCourseKey(code);
+    if (!starred && PASS_FAIL_STAR_CODES.has(key)) starred = true;
+    if (!starred && /(?:44|70)A\/?B$/.test(key)) starred = true;
+    if (!starred && /^(?:BME|COE)(?:700|800)$/.test(key)) starred = true;
+    if (!starred) return;
+
+    row.dataset.starred = '1';
+    const bare = (codeStrong.textContent || '').replace(/\s*\*$/, '').trim() || code;
+    codeStrong.textContent = `${bare.includes(code) ? code : bare}*`;
+    // Prefer canonical checkbox value + star
+    codeStrong.textContent = `${code}*`;
+  }
+
+  function panelHasPassFailFootnote(root) {
+    const text = (root && root.textContent) || '';
+    return /pass\s*\/?\s*fail|graded on a pass|graded in a pass/i.test(text);
+  }
+
+  /**
+   * Ensure a visible pass/fail footnote when CEN 199 / BME 100 appear with *.
+   * Some Computer layouts have "* Writing Skills" but omit the calendar footnote.
+   */
+  function ensurePassFailFootnotes(iframeDoc) {
+    if (!iframeDoc || !iframeDoc.body) return;
+
+    const starredPassFail = Array.from(
+      iframeDoc.querySelectorAll('input.course-checkbox')
+    ).filter(cb => PASS_FAIL_STAR_CODES.has(normalizeCourseKey(courseCodeFromCheckbox(cb))));
+    if (!starredPassFail.length) return;
+
+    // If the curriculum doc already explains pass/fail, keep the scraped wording.
+    if (panelHasPassFailFootnote(iframeDoc.body)) return;
+
+    // Place footnote after the first list/table that contains a pass/fail course.
+    const first = starredPassFail[0];
+    const host =
+      first.closest('ul') ||
+      first.closest('table') ||
+      first.closest('.course-row')?.parentElement ||
+      first.parentElement;
+    if (!host || !host.parentElement) return;
+    if (host.parentElement.querySelector(':scope > .course-star-footnote')) return;
+
+    const codes = [...new Set(starredPassFail.map(cb => courseCodeFromCheckbox(cb)))];
+    const note = iframeDoc.createElement('p');
+    note.className = 'course-star-footnote';
+    const small = iframeDoc.createElement('small');
+    // Match common TMU checklist wording
+    small.textContent = '* This course is graded on a pass/fail basis.';
+    if (codes.length > 1) {
+      small.textContent = `* ${codes.join(' and ')} are graded on a pass/fail basis.`;
+    }
+    note.appendChild(small);
+    host.insertAdjacentElement('afterend', note);
   }
 
   /**
@@ -1245,6 +1391,7 @@ button[data-semester]:focus-visible {
           outline.setAttribute('aria-label', `${code} course outline (opens in new tab)`);
         }
       }
+      repairStarredCourseRow(row);
     });
 
     const checkboxes = Array.from(iframeDoc.querySelectorAll('input.course-checkbox'));
@@ -1261,8 +1408,10 @@ button[data-semester]:focus-visible {
       if (!code) return;
 
       const href = anchor ? anchor.getAttribute('href') : '#';
-      const title = extractCourseTitle(cb, label, anchor);
-      const row = buildCourseRow(iframeDoc, cb, code, title, href);
+      const rawTitle = extractCourseTitle(cb, label, anchor);
+      const titleInfo = peelLeadingStar(rawTitle);
+      const starred = shouldShowCourseStar(code, titleInfo, cb, label);
+      const row = buildCourseRow(iframeDoc, cb, code, rawTitle, href, { starred });
 
       if (li) {
         li.replaceChildren(row);
@@ -1292,6 +1441,8 @@ button[data-semester]:focus-visible {
         host.replaceChildren(row);
       }
     });
+
+    ensurePassFailFootnotes(iframeDoc);
   }
 
   /** Course code from a curriculum outline link (Variant B uses data-course-code). */
@@ -1663,6 +1814,7 @@ button[data-semester]:focus-visible {
     // a legacy year file is missing.
     let springCourses, summerCourses, admitYearRequisites = [];
     let aliasConfig = { equivalences: [] };
+    let transitionAllowlist = { entries: [] };
     let requisitesYearUsed = admitYear;
 
     async function loadAdmitYearRequisites(year) {
@@ -1718,6 +1870,13 @@ button[data-semester]:focus-visible {
         console.warn('course_aliases.json not loaded — continuing without equivalences', e);
     }
 
+    try {
+        const allowRes = await fetch(appAssetUrl('transition_program_allowlist.json'), { cache: 'no-store' });
+        if (allowRes.ok) transitionAllowlist = await allowRes.json();
+    } catch (e) {
+        console.warn('transition_program_allowlist.json not loaded — continuing without Type B exceptions', e);
+    }
+
     // Expand completed codes with year/program-scoped equivalences (course_aliases.json)
     function admitYearInRange(range) {
         if (!range || Number.isNaN(admitYearNum)) return true; // no range / no year → apply
@@ -1754,13 +1913,17 @@ button[data-semester]:focus-visible {
     // data-course-code / course-code text). Courses that exist only as open
     // electives / liberal studies / "not on the main calendar checklist" (e.g. CHE 474
     // when only CHE 307 is on the Chemical layout) will NOT appear automatically.
-    // To support those, manually add the course link to the relevant Programs/
-    // (or Programs_old/) layout HTML, or add a special-case in this function.
+    // Prefer: add the course to the layout HTML, OR add an entry to
+    // transition_program_allowlist.json (see that file's howToAdd).
     // Do not broaden the filter to "any course whose prereqs are on the layout" —
     // that falsely unlocks many cross-program transition courses.
     //
     // Course renames across admit years: add an entry to course_aliases.json
     // (codes + admitYears from/to + optional programs). See that file's howToAdd.
+    //
+    // Transition courses NOT on the curriculum checklist (Type B, e.g. CHE 474):
+    // add a row to transition_program_allowlist.json — do NOT broaden isInProgram
+    // to "any course whose prereqs appear on the layout".
     //
     // Fall/Winter / Transition requisites: Course_requisites/requisites_<admitYear>.json
     // (regenerate with course_requisites_generator.py --year <admitYear>).
@@ -1831,19 +1994,53 @@ button[data-semester]:focus-visible {
         return m ? `${m[1]} ${m[2]}` : (s || n);
     }
 
+    // Requisite shapes from Course_requisites JSON:
+    //   ["A", ["B","C"]]              → A AND (B OR C)
+    //   { or: [ ["A","B"], ["C","D"] ] } → (A AND B) OR (C AND D)
+    function checkPrereqItem(req) {
+        if (req && typeof req === 'object' && !Array.isArray(req) && Array.isArray(req.or)) {
+            return req.or.some(group => checkAndGroup(group));
+        }
+        if (Array.isArray(req)) {
+            return req.some(r => effectiveCompleted.has(normalizeCode(r)));
+        }
+        return effectiveCompleted.has(normalizeCode(req));
+    }
+
+    function checkAndGroup(group) {
+        if (!Array.isArray(group) || group.length === 0) return true;
+        return group.every(req => checkPrereqItem(req));
+    }
+
     function checkPrereqs(prereqs) {
-        if (!prereqs || prereqs.length === 0) return true;
-        return prereqs.every(req => {
-            if (Array.isArray(req)) {
-                return req.some(r => effectiveCompleted.has(normalizeCode(r)));
-            }
-            return effectiveCompleted.has(normalizeCode(req));
+        if (!prereqs) return true;
+        if (Array.isArray(prereqs)) {
+            if (prereqs.length === 0) return true;
+            return prereqs.every(req => checkPrereqItem(req));
+        }
+        if (typeof prereqs === 'object' && Array.isArray(prereqs.or)) {
+            if (prereqs.or.length === 0) return true;
+            return prereqs.or.some(group => checkAndGroup(group));
+        }
+        return true;
+    }
+
+    function isAllowlistedTransitionCourse(code) {
+        const want = normalizeCode(code);
+        const prog = String(program || '').toLowerCase();
+        return (transitionAllowlist.entries || []).some(entry => {
+            if (normalizeCode(entry.course) !== want) return false;
+            if (String(entry.program || '').toLowerCase() !== prog) return false;
+            return admitYearInRange(entry.admitYears);
         });
     }
 
     function isInProgram(code) {
         if (programCourseSet === null) return true; // fail-open if layout didn't load
-        return programCourseSet.has(normalizeCode(code));
+        const n = normalizeCode(code);
+        if (programCourseSet.has(n)) return true;
+        // Type B exceptions: transition offerings intentionally not on the checklist
+        return isAllowlistedTransitionCourse(n);
     }
 
     function requisitesByCode() {

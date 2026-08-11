@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eligibility results — UI prototype</title>
+  <style>
+    :root {
+      --bg: #f3f2ef;
+      --surface: #fff;
+      --ink: #1a1a1a;
+      --muted: #5c5c5c;
+      --line: #d9d6cf;
+      --accent: #003d4d;
+      --accent-soft: #e6f1f3;
+      --spring: #1f6b4a;
+      --spring-soft: #e4f3ec;
+      --summer: #8a4b00;
+      --summer-soft: #f8efdf;
+      --fall: #16579b;
+      --fall-soft: #e7f0f8;
+      --focus: #0b57d0;
+      --radius: 10px;
+      --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.45;
+    }
+
+    header.app-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 1.25rem;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    header.app-bar h1 {
+      margin: 0 0 0.25rem;
+      font-size: 1.2rem;
+    }
+    header.app-bar p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      max-width: 42rem;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+      align-items: center;
+    }
+    .toolbar label { font-size: 0.85rem; color: var(--muted); }
+    select, button {
+      font: inherit;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 0.45rem 0.75rem;
+      cursor: pointer;
+    }
+    button.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+    button:focus-visible,
+    select:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .frame {
+      width: min(100% - 1.5rem, 720px);
+      margin: 1rem auto 2.5rem;
+      transition: width 0.2s ease;
+    }
+    .frame.phone { width: min(100% - 1.5rem, 390px); }
+
+    .compare {
+      display: grid;
+      gap: 1rem;
+    }
+
+    section.panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 1rem 1.15rem;
+    }
+    section.panel > h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.05rem;
+      text-align: left;
+    }
+    .meta {
+      margin: 0 0 1rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+    .tag.old { background: #f8e8e8; color: #7a2e2e; }
+    .tag.new { background: var(--accent-soft); color: var(--accent); }
+
+    /* ===== Baseline (current app) ===== */
+    .baseline {
+      text-align: center;
+    }
+    .baseline h3 {
+      margin: 1rem 0 0.4rem;
+      text-align: center;
+    }
+    .baseline ul {
+      text-align: left;
+      margin: 0.25rem 0 0.75rem;
+      padding-left: 1.25rem;
+    }
+    .baseline a { color: #337ab7; }
+
+    /* ===== Proposed results ===== */
+    .results-shell {
+      text-align: left;
+    }
+    .results-kicker {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0 0 0.35rem;
+    }
+    .results-title {
+      margin: 0 0 0.75rem;
+      font-size: 1.35rem;
+      text-align: left;
+    }
+    .summary-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.15rem;
+    }
+    .summary-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-height: 2rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      background: #fafafa;
+    }
+    .summary-chip .n {
+      display: inline-grid;
+      place-items: center;
+      min-width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+    }
+    .summary-chip.spring { background: var(--spring-soft); border-color: #b7d9c8; color: var(--spring); }
+    .summary-chip.spring .n { background: var(--spring); }
+    .summary-chip.summer { background: var(--summer-soft); border-color: #e2c89a; color: var(--summer); }
+    .summary-chip.summer .n { background: var(--summer); }
+    .summary-chip.fall { background: var(--fall-soft); border-color: #b7cce4; color: var(--fall); }
+    .summary-chip.fall .n { background: var(--fall); }
+
+    .term-block {
+      margin-bottom: 1.5rem;
+    }
+    .term-block:last-child { margin-bottom: 0; }
+    .term-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.65rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .term-head h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      text-align: left;
+    }
+    .term-head .count {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .course-results {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.65rem;
+    }
+    .result-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.5rem 0.75rem;
+      align-items: center;
+      min-height: 44px;
+      padding: 0.75rem 0.85rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fafafa;
+    }
+    .result-card:hover { background: #f3f7f8; border-color: #c5d4d8; }
+    .result-card .code {
+      display: block;
+      font-weight: 750;
+      font-size: 1rem;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+    .result-card .title {
+      display: block;
+      margin-top: 0.15rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .result-card .outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .result-card .outline:hover { background: var(--accent-soft); }
+
+    .empty-state {
+      padding: 1rem 1rem;
+      border: 1px dashed #c9c4ba;
+      border-radius: var(--radius);
+      background: #fbfaf7;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .empty-state strong { color: var(--ink); }
+
+    .actions-sticky {
+      position: sticky;
+      bottom: 0;
+      margin-top: 1rem;
+      padding: 0.75rem 0 0.15rem;
+      background: linear-gradient(to top, var(--surface) 70%, transparent);
+    }
+    .actions-sticky .inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.65rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+    }
+    .actions-sticky button {
+      min-height: 44px;
+      flex: 1 1 auto;
+      font-weight: 700;
+    }
+
+    .notes {
+      margin-top: 1rem;
+      padding: 0.9rem 1rem;
+      background: #fff3cd;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .notes h4 {
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .notes ul {
+      margin: 0;
+      padding-left: 1.25em;
+    }
+    .notes li + li {
+      margin-top: 0.75em;
+    }
+
+    footer.file-note {
+      width: min(100% - 1.5rem, 720px);
+      margin: 0 auto 2rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    footer.file-note code {
+      font-size: 0.78rem;
+      background: #eee;
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+    }
+
+    [aria-live] {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+  </style>
+</head>
+<body>
+  <header class="app-bar">
+    <h1>Eligibility results — UI prototype</h1>
+    <p>
+      Baseline vs proposed layout. Toggle phone width and sample datasets
+      (including an empty state). Proposed uses cards, spacing, counts, and a sticky action row.
+    </p>
+    <div class="toolbar">
+      <label for="widthMode">Preview width</label>
+      <select id="widthMode" aria-label="Preview width">
+        <option value="desktop">Desktop (~720px)</option>
+        <option value="phone" selected>Phone (~390px)</option>
+      </select>
+      <label for="dataset">Sample data</label>
+      <select id="dataset" aria-label="Sample dataset">
+        <option value="transition">Transition (spring + summer)</option>
+        <option value="fall">Fall only</option>
+        <option value="empty">Empty results</option>
+      </select>
+    </div>
+  </header>
+
+  <div id="live" class="sr-only" aria-live="polite"></div>
+
+  <div class="frame phone" id="frame">
+    <div class="compare">
+
+      <!-- BASELINE -->
+      <section class="panel" aria-labelledby="old-title">
+        <h2 id="old-title"><span class="tag old">Current</span> Baseline results</h2>
+        <p class="meta">Centered headings, default list spacing, link-only rows — what the app renders today.</p>
+        <div class="baseline" id="baselineMount"></div>
+      </section>
+
+      <!-- PROPOSED -->
+      <section class="panel results-shell" aria-labelledby="new-title">
+        <h2 id="new-title"><span class="tag new">Proposed</span> Redesigned results</h2>
+        <p class="meta">Left-aligned hierarchy, summary chips, spaced cards, Outline control, empty guidance, sticky actions.</p>
+        <div id="proposedMount"></div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="file-note">
+    File: <code>prototypes/eligibility-results-variants.html</code> —
+    open in a browser. No app wiring; pick a direction and we can port it into
+    <code>renderList</code> / step 4.
+  </footer>
+
+  <script>
+    const SAMPLE = {
+      transition: {
+        program: 'Computer-2026',
+        mode: 'transition',
+        spring: [
+          { code: 'MTH 140', title: 'Calculus I', url: '#' },
+          { code: 'MTH 141', title: 'Linear Algebra', url: '#' },
+          { code: 'CHY 102', title: 'General Chemistry', url: '#' },
+          { code: 'PCS 211', title: 'Physics: Mechanics', url: '#' },
+          { code: 'CPS 188', title: 'Computer Programming Fundamentals', url: '#' },
+        ],
+        summer: [
+          { code: 'ELE 202', title: 'Electric Circuit Analysis', url: '#' },
+          { code: 'MTH 240', title: 'Calculus II', url: '#' },
+          { code: 'PCS 125', title: 'Physics: Waves and Fields', url: '#' },
+        ],
+      },
+      fall: {
+        program: 'Aerospace-2025',
+        mode: 'fall',
+        fall: [
+          { code: 'AER 504', title: 'Aerodynamics', url: '#' },
+          { code: 'AER 520', title: 'Flight Mechanics', url: '#' },
+          { code: 'EES 612', title: 'Electric Machines and Actuators', url: '#' },
+          { code: 'MTH 510', title: 'Ordinary Differential Equations', url: '#' },
+        ],
+      },
+      empty: {
+        program: 'Chemical-2024',
+        mode: 'transition',
+        spring: [],
+        summer: [],
+      },
+    };
+
+    const frame = document.getElementById('frame');
+    const live = document.getElementById('live');
+
+    document.getElementById('widthMode').addEventListener('change', (e) => {
+      frame.classList.toggle('phone', e.target.value === 'phone');
+    });
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function renderBaseline(data) {
+      if (data.mode === 'fall') {
+        const items = data.fall.map(c =>
+          `<li><a href="${c.url}"><strong>${escapeHtml(c.code)}</strong>${c.title ? ' — ' + escapeHtml(c.title) : ''}</a></li>`
+        ).join('') || '<li>No eligible courses found.</li>';
+        return `<h2>${escapeHtml(data.program)}</h2>
+          <h2>Automated Course Eligibility Mapping</h2>
+          <h3>Fall Eligible Courses</h3>
+          <ul>${items}</ul>`;
+      }
+      const spring = data.spring.map(c =>
+        `<li><a href="${c.url}"><strong>${escapeHtml(c.code)}</strong>${c.title ? ' — ' + escapeHtml(c.title) : ''}</a></li>`
+      ).join('') || '<li>No eligible courses found.</li>';
+      const summer = data.summer.map(c =>
+        `<li><a href="${c.url}"><strong>${escapeHtml(c.code)}</strong>${c.title ? ' — ' + escapeHtml(c.title) : ''}</a></li>`
+      ).join('') || '<li>No eligible courses found.</li>';
+      return `<h2>${escapeHtml(data.program)}</h2>
+        <h2>Automated Course Eligibility Mapping</h2>
+        <h3>Spring Eligible Courses</h3>
+        <ul>${spring}</ul>
+        <h3>Summer Eligible Courses</h3>
+        <ul>${summer}</ul>`;
+    }
+
+    function resultCards(courses) {
+      if (!courses.length) {
+        return `<div class="empty-state">
+          <strong>No eligible courses in this term.</strong>
+          Try selecting more completed courses on the curriculum, or switch planning term.
+        </div>`;
+      }
+      return `<ul class="course-results">${courses.map(c => `
+        <li class="result-card">
+          <div>
+            <span class="code">${escapeHtml(c.code)}</span>
+            ${c.title ? `<span class="title">${escapeHtml(c.title)}</span>` : ''}
+          </div>
+          <a class="outline" href="${c.url}" target="_blank" rel="noopener"
+             aria-label="${escapeHtml(c.code)} course outline (opens in new tab)">Outline</a>
+        </li>`).join('')}</ul>`;
+    }
+
+    const CURRICULUM_NOTE =
+      'Curriculum changes may affect course options. The courses shown may not reflect recent changes to your program requirements or required course replacements. Consult your department if you are unsure.';
+    const SPRING_SUMMER_NOTE =
+      'Spring/Summer courses run in a six-week compressed format. Students are encouraged to consult with their department to determine a realistic and manageable course load.';
+
+    function importantNotesHtml(mode) {
+      // Matches index.html updateImportantNotes(): curriculum note always;
+      // compressed-format note only for Spring/Summer (transition).
+      const items = [CURRICULUM_NOTE];
+      if (mode === 'transition') items.push(SPRING_SUMMER_NOTE);
+      return `
+        <div class="notes">
+          <h4>Important Notes</h4>
+          <ul>
+            ${items.map(t => `<li>${escapeHtml(t)}</li>`).join('')}
+          </ul>
+        </div>`;
+    }
+
+    function renderProposed(data) {
+      if (data.mode === 'fall') {
+        const n = data.fall.length;
+        live.textContent = `${n} fall eligible course${n === 1 ? '' : 's'} for ${data.program}.`;
+        return `
+          <p class="results-kicker">${escapeHtml(data.program)}</p>
+          <h3 class="results-title" tabindex="-1" id="resultsHeading">Eligible courses</h3>
+          <div class="summary-strip" aria-hidden="true">
+            <span class="summary-chip fall"><span class="n">${n}</span> Fall</span>
+          </div>
+          <div class="term-block">
+            <div class="term-head">
+              <h3>Fall</h3>
+              <span class="count">${n} course${n === 1 ? '' : 's'}</span>
+            </div>
+            ${resultCards(data.fall)}
+          </div>
+          ${importantNotesHtml('fall')}
+          <div class="actions-sticky">
+            <div class="inner">
+              <button type="button">Back to curriculum</button>
+              <button type="button" class="primary">Check another term</button>
+            </div>
+          </div>`;
+      }
+
+      const ns = data.spring.length;
+      const nu = data.summer.length;
+      live.textContent = `${ns} spring and ${nu} summer eligible courses for ${data.program}.`;
+      return `
+        <p class="results-kicker">${escapeHtml(data.program)}</p>
+        <h3 class="results-title" tabindex="-1" id="resultsHeading">Eligible courses</h3>
+        <div class="summary-strip" aria-hidden="true">
+          <span class="summary-chip spring"><span class="n">${ns}</span> Spring</span>
+          <span class="summary-chip summer"><span class="n">${nu}</span> Summer</span>
+        </div>
+        <div class="term-block">
+          <div class="term-head">
+            <h3>Spring</h3>
+            <span class="count">${ns} course${ns === 1 ? '' : 's'}</span>
+          </div>
+          ${resultCards(data.spring)}
+        </div>
+        <div class="term-block">
+          <div class="term-head">
+            <h3>Summer</h3>
+            <span class="count">${nu} course${nu === 1 ? '' : 's'}</span>
+          </div>
+          ${resultCards(data.summer)}
+        </div>
+        ${importantNotesHtml('transition')}
+        <div class="actions-sticky">
+          <div class="inner">
+            <button type="button">Back to curriculum</button>
+            <button type="button" class="primary">Check another term</button>
+          </div>
+        </div>`;
+    }
+
+    function paint() {
+      const key = document.getElementById('dataset').value;
+      const data = SAMPLE[key];
+      document.getElementById('baselineMount').innerHTML = renderBaseline(data);
+      document.getElementById('proposedMount').innerHTML = renderProposed(data);
+      const heading = document.getElementById('resultsHeading');
+      if (heading) heading.focus({ preventScroll: true });
+    }
+
+    document.getElementById('dataset').addEventListener('change', paint);
+    paint();
+  </script>
+</body>
+</html>

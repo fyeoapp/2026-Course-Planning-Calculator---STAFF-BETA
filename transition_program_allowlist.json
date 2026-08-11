@@ -1,0 +1,12 @@
+{
+  "description": "Transition (Spring/Summer) courses that should be eligible for a program even when they are not listed on that program's curriculum checklist HTML. Use this sparingly for known electives/exceptions (e.g. CHE 474 for Chemical). Do NOT use this to unlock arbitrary transition courses whose prerequisites happen to appear on a layout — that creates large cross-program false positives.",
+  "howToAdd": "Add an object under entries with: program (exact program id from the dropdown, e.g. Chemical), course (catalog code with space, e.g. CHE 474), optional admitYears { from, to } inclusive (omit a bound for open-ended; omit admitYears entirely for all years), and a short note explaining why the exception exists and who approved it. After editing, redeploy (build_public.py includes this file). Retest Transition eligibility for that program/year.",
+  "entries": [
+    {
+      "program": "Chemical",
+      "course": "CHE 474",
+      "admitYears": { "from": 2016, "to": 2026 },
+      "note": "Offered in Spring transition; not on the main Chemical calendar checklist. Staff testing expects it when admit-year prerequisites are met (CHE 307 for recent years; older years use CHE 312 + CHE 318 + CHY 224). Prefer adding to layout HTML instead if curriculum owners want it on the checklist."
+    }
+  ]
+}

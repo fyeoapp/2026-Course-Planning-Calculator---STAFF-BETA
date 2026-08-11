@@ -53,6 +53,167 @@ MODERN_COURSES_RE = re.compile(
     re.I,
 )
 YEAR_IN_LAYOUT_RE = re.compile(r"-(\d{4})(?:_|_layout\.html)")
+# Labels sometimes jammed into Custom Requisites, e.g.
+# "Prerequisites: BME 100 and …; Antirequisite; MEC 323"
+CUSTOM_LABEL_RE = re.compile(
+    r"(Prerequisites?|Co-?Requisites?|Antirequisites?)\s*:?\s*",
+    re.I,
+)
+COURSE_TOKEN_RE = re.compile(r"^[A-Z]{2,4}\d{2,4}[A-Z]?(?:/[A-Z])?$")
+
+
+def normalize_code(text: str) -> str:
+    return re.sub(r"\s+", "", (text or "").upper())
+
+
+def format_code(text: str) -> str:
+    raw = re.sub(r"\s+", " ", (text or "").strip())
+    m = COURSE_CODE_RE.match(raw.upper().replace("  ", " "))
+    if m:
+        return f"{m.group(1).upper()} {m.group(2).upper()}"
+    spaced = re.sub(r"^([A-Z]{2,4})(\d)", r"\1 \2", normalize_code(raw))
+    return spaced
+
+
+def _is_course_token(code: str) -> bool:
+    """Accept normal catalog codes (incl. rare 4-digit antireqs like CV8505)."""
+    c = normalize_code(code)
+    if not c:
+        return False
+    if COURSE_CODE_RE.match(format_code(c)):
+        return True
+    return bool(COURSE_TOKEN_RE.match(c))
+
+
+def _parse_and_clause(text: str) -> list:
+    """Parse one AND-group: 'A and B or C, D' → [A, [B,C], D].
+
+    Nested arrays mean OR of single courses. Used for both simple requisites and
+    each branch of a top-level (group) or (group) expression.
+    """
+    text = (text or "").replace("(", "").replace(")", "")
+    text = text.replace(";", " ")
+    and_parts = re.split(r"\band\b|,", text, flags=re.IGNORECASE)
+    parsed: list = []
+    for part in and_parts:
+        part = part.strip()
+        if not part:
+            continue
+        if re.search(r"\bor\b", part, flags=re.IGNORECASE):
+            or_choices = re.split(r"\bor\b", part, flags=re.IGNORECASE)
+            cleaned = [
+                normalize_code(c)
+                for c in or_choices
+                if _is_course_token(c)
+            ]
+            if cleaned:
+                parsed.append(cleaned if len(cleaned) > 1 else cleaned[0])
+        else:
+            course = normalize_code(part)
+            if _is_course_token(course):
+                parsed.append(course)
+    return parsed
+
+
+def parse_req_list_text(text: str):
+    """Parse requisite text into the app's JSON shape.
+
+    Shapes:
+      - list: AND of course codes / OR-pairs, e.g. ["A", ["B","C"]]
+      - {"or": [group, group, ...]}: OR of AND-groups, for calendar text like
+        "(A, B, C) or (D, E, F)".
+
+    Important: do NOT strip parentheses before detecting top-level group ORs.
+    Older logic removed () first, then split on commas, which turned
+    "(A, B, PCS 224) or (CEN 199, C, D)" into a single AND-list with a bogus
+    ["PCS224","CEN199"] OR at the path boundary (see MEC 511 2010–2020).
+    """
+    text = (text or "").strip()
+    text = re.sub(
+        r"^(Prerequisites?|Co-?Requisites?|Antirequisites?)\s*:?\s*",
+        "",
+        text,
+        flags=re.I,
+    ).strip()
+    if not text or text.lower() == "none":
+        return []
+
+    # Top-level OR of parenthesized AND-groups: ( ... ) or ( ... )
+    if re.search(r"\)\s*or\s*\(", text, flags=re.IGNORECASE):
+        chunks = re.split(r"\)\s*or\s*\(", text, flags=re.IGNORECASE)
+        groups = []
+        for i, chunk in enumerate(chunks):
+            chunk = chunk.strip()
+            if i == 0:
+                chunk = re.sub(r"^\(+", "", chunk)
+            if i == len(chunks) - 1:
+                chunk = re.sub(r"\)+\s*$", "", chunk)
+            group = _parse_and_clause(chunk)
+            if group:
+                groups.append(group)
+        if len(groups) >= 2:
+            return {"or": groups}
+        if len(groups) == 1:
+            return groups[0]
+
+    return _parse_and_clause(text)
+
+
+def promote_embedded_custom_requisites(result: dict, custom_text: str) -> None:
+    """Promote Custom Requisites that embed Prerequisites:/Antirequisites:/etc.
+
+    Some calendar pages set Prerequisites/Antirequisites to "None" and put the
+    real rules only under Custom Requisites. Without promotion, eligibility sees
+    empty prereqs and incorrectly treats the course as unrestricted.
+    """
+    custom_text = (custom_text or "").strip()
+    if not custom_text or custom_text.lower() == "none":
+        result["custom_reqs"] = []
+        return
+
+    if not CUSTOM_LABEL_RE.search(custom_text):
+        result["custom_reqs"] = parse_req_list_text(custom_text)
+        return
+
+    # "AntirequisiteCV8505" / "Antirequisite; MEC 323" → separable labels
+    softened = re.sub(
+        r"(?i)(Prerequisites?|Co-?Requisites?|Antirequisites?)(?=[A-Z]{2,4}\d)",
+        r"\1: ",
+        custom_text,
+    )
+    softened = re.sub(
+        r"(?i)(Prerequisites?|Co-?Requisites?|Antirequisites?)\s*;\s*",
+        r"\1: ",
+        softened,
+    )
+
+    pieces = CUSTOM_LABEL_RE.split(softened)
+    promoted = False
+    i = 1
+    while i < len(pieces):
+        label = pieces[i].strip().lower()
+        body = pieces[i + 1] if i + 1 < len(pieces) else ""
+        compact = re.sub(r"[^a-z]", "", label)
+        if compact.startswith("prereq"):
+            key = "prereqs"
+        elif compact.startswith("coreq"):
+            key = "coreqs"
+        elif compact.startswith("antireq"):
+            key = "antireqs"
+        else:
+            i += 2
+            continue
+
+        parsed = parse_req_list_text(body)
+        if parsed:
+            # Structured heading said None → fill from custom. If already filled
+            # (rare), keep existing structured values.
+            if not result[key]:
+                result[key] = parsed
+            promoted = True
+        i += 2
+
+    result["custom_reqs"] = [] if promoted else parse_req_list_text(custom_text)
 
 
 def parse_requisites(requisites_block):
@@ -72,31 +233,7 @@ def parse_requisites(requisites_block):
         "Custom Requisites": "custom_reqs",
     }
 
-    def parse_req_text(p_tag):
-        if not p_tag:
-            return []
-        text = p_tag.get_text(separator=" ", strip=True)
-        if text.lower() == "none" or not text:
-            return []
-
-        text = text.replace("(", "").replace(")", "")
-        and_parts = re.split(r"\band\b|,", text, flags=re.IGNORECASE)
-        parsed = []
-        for part in and_parts:
-            part = part.strip()
-            if not part:
-                continue
-            if re.search(r"\bor\b", part, flags=re.IGNORECASE):
-                or_choices = re.split(r"\bor\b", part, flags=re.IGNORECASE)
-                cleaned = [c.strip().replace(" ", "") for c in or_choices if c.strip()]
-                if cleaned:
-                    parsed.append(cleaned)
-            else:
-                course = part.replace(" ", "")
-                if course:
-                    parsed.append(course)
-        return parsed
-
+    custom_raw = None
     for div in requisites_block.find_all(class_="requisites"):
         heading = div.find("h3")
         if not heading:
@@ -104,21 +241,17 @@ def parse_requisites(requisites_block):
         key = key_map.get(heading.get_text(strip=True))
         if not key:
             continue
-        result[key] = parse_req_text(div.find("p"))
+        p_tag = div.find("p")
+        text = p_tag.get_text(separator=" ", strip=True) if p_tag else ""
+        if key == "custom_reqs":
+            custom_raw = text
+        else:
+            result[key] = parse_req_list_text(text)
+
+    if custom_raw is not None:
+        promote_embedded_custom_requisites(result, custom_raw)
+
     return result
-
-
-def normalize_code(text: str) -> str:
-    return re.sub(r"\s+", "", (text or "").upper())
-
-
-def format_code(text: str) -> str:
-    raw = re.sub(r"\s+", " ", (text or "").strip())
-    m = COURSE_CODE_RE.match(raw.upper().replace("  ", " "))
-    if m:
-        return f"{m.group(1).upper()} {m.group(2).upper()}"
-    spaced = re.sub(r"^([A-Z]{2,4})(\d)", r"\1 \2", normalize_code(raw))
-    return spaced
 
 
 def calendar_span(year: int) -> str:
