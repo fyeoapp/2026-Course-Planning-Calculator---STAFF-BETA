@@ -7,7 +7,7 @@
 //   - course codes used in programs.js that are missing from courses.js
 //   - admit years listed in more than one version of the same program
 //   - programs.js entries that aren't in the expected 'CODE' or 'CODE (note)' form
-//   - spring-summer.js program names or course codes that don't exist
+//   - spring-summer.js course codes that don't exist
 
 const fs = require('fs');
 const path = require('path');
@@ -47,14 +47,9 @@ for (const [program, versions] of Object.entries(ctx.PROGRAMS)) {
     }
 }
 
-const springSummer = ctx.SPRING_SUMMER;
-for (const code of springSummer.allPrograms) {
-    if (!ctx.COURSES[code]) problems.push(`spring-summer.js allPrograms: ${code} is missing from data/courses.js`);
-}
-for (const [program, codes] of Object.entries(springSummer.byProgram)) {
-    if (!ctx.PROGRAMS[program]) problems.push(`spring-summer.js: "${program}" is not a program in data/programs.js`);
-    for (const code of codes) {
-        if (!ctx.COURSES[code]) problems.push(`spring-summer.js "${program}": ${code} is missing from data/courses.js`);
+for (const list of ['spring', 'summer', 'osms']) {
+    for (const code of ctx.SPRING_SUMMER[list] || []) {
+        if (!ctx.COURSES[code]) problems.push(`spring-summer.js ${list}: ${code} is missing from data/courses.js`);
     }
 }
 

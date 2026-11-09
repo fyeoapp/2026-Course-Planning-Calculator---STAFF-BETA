@@ -597,6 +597,23 @@ select:focus-visible {
     text-decoration: none;
 }
 
+.result-main .term-badge {
+    flex-shrink: 0;
+    margin-left: auto;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: var(--amber-bg);
+    color: #7a5b00;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.8;
+    white-space: nowrap;
+}
+
+.result-main .term-badge + .outline-link {
+    margin-left: 0
+}
+
 .result-reason {
     margin-top: 4px;
     color: #4b7a3c;

@@ -78,18 +78,24 @@ function isAssessable(code) {
     return Boolean(course && !course.noOutline && courseOutlineUrl(code));
 }
 
-function springSummerCourses(program) {
-    return new Set([
-        ...SPRING_SUMMER.allPrograms,
-        ...(SPRING_SUMMER.byProgram[program] || []),
-    ]);
+// When each transition-session course runs, keyed by code:
+// 'Spring', 'Summer' or 'Spring or Summer'.
+function springSummerTerms() {
+    const terms = {};
+    const add = (codes, term) => codes.forEach(code => {
+        terms[code] = terms[code] && terms[code] !== term ? terms[code] + ' or ' + term : term;
+    });
+    add([...SPRING_SUMMER.spring, ...SPRING_SUMMER.osms], 'Spring');
+    add(SPRING_SUMMER.summer, 'Summer');
+    return terms;
 }
 
 // Sort every unticked checklist course into eligible / not yet.
-function assessCourses(program) {
+function assessCourses() {
     const inputs = [...document.querySelectorAll('#step3 input[type="checkbox"]')];
     const completed = new Set(inputs.filter(i => i.checked).map(i => normalizeCode(i.value)));
-    const offered = springSummerCourses(program);
+    const terms = springSummerTerms();
+    const offered = new Set(Object.keys(terms));
     const seen = new Set();
     const results = [];
 
@@ -99,7 +105,7 @@ function assessCourses(program) {
         seen.add(code);
         const prereqs = COURSES[code].prereqs || '';
         const missing = missingCourses(parsePrereqs(prereqs), completed);
-        results.push({ code, prereqs, missing, springSummer: offered.has(code) });
+        results.push({ code, prereqs, missing, term: terms[code] || '', springSummer: offered.has(code) });
     });
 
     const offeredInChecklist = [...new Set(inputs.map(i => normalizeCode(i.value)))].filter(c => offered.has(c));
@@ -126,6 +132,7 @@ function resultRowHtml(result) {
     }
     return '<li class="result-row">' +
         '<div class="result-main"><span class="course-code">' + formatCourseCode(result.code) + '</span> ' + title +
+        (result.term ? '<span class="term-badge">' + result.term + '</span>' : '') +
         outlineLinkHtml(result.code) + '</div>' +
         '<div class="result-reason' + (result.missing.length ? ' is-missing' : '') + '">' + reason + '</div>' +
         '</li>';
@@ -140,16 +147,18 @@ function resultsHtml(assessment) {
     let html = '';
 
     html += '<h3 class="result-heading">Offered in Spring/Summer and you\'re eligible</h3>';
+    html += '<p class="result-note">Based on the ' + SPRING_SUMMER.session + ' transition session course list. ' +
+        'Upper-year courses run only with sufficient enrolment.</p>';
     if (springSummer.length) {
         html += resultListHtml(springSummer);
     } else if (allOfferedCompleted) {
-        html += '<p class="result-empty">You\'ve already completed all of your program\'s Spring/Summer courses. ' +
+        html += '<p class="result-empty">You\'ve already completed every Spring/Summer course in your curriculum. ' +
             'Check the courses below or speak with your program advisor about other options.</p>';
     } else if (notYet.length) {
-        html += '<p class="result-empty">None of your program\'s Spring/Summer courses are available to you yet. ' +
+        html += '<p class="result-empty">None of the Spring/Summer courses in your curriculum are available to you yet. ' +
             'See what\'s still needed below, or speak with your program advisor.</p>';
     } else {
-        html += '<p class="result-empty">No Spring/Summer courses are listed for your curriculum. ' +
+        html += '<p class="result-empty">None of your curriculum\'s remaining courses are offered in Spring/Summer. ' +
             'Check the courses below or speak with your program advisor.</p>';
     }
 
@@ -167,8 +176,8 @@ function resultsHtml(assessment) {
     if (otherEligible.length) {
         html += '<details class="result-more"><summary>Other courses you meet the prerequisites for (' +
             otherEligible.length + ')</summary>' +
-            '<p class="result-note">These aren\'t listed as Spring/Summer offerings in the calendar. ' +
-            'Check the Spring/Summer timetable before planning around them.</p>' +
+            '<p class="result-note">These aren\'t on the ' + SPRING_SUMMER.session + ' transition course list, ' +
+            'so they\'re usually taken in Fall or Winter. Check with your department before planning around them.</p>' +
             resultListHtml(otherEligible) + '</details>';
     }
 
@@ -177,7 +186,7 @@ function resultsHtml(assessment) {
 }
 
 function calculateEligibility() {
-    const assessment = assessCourses(currentSelection.program);
+    const assessment = assessCourses();
     byId('eligibleCourses').innerHTML = resultsHtml(assessment);
     goToStep(4);
 }

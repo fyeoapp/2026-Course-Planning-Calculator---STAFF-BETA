@@ -210,21 +210,24 @@ Rules:
 
 ### `data/spring-summer.js` — Spring/Summer offerings
 
-Lists which courses run in the condensed Spring/Summer term (May–July). The
-results page shows these first:
+Lists the courses offered in the FEAS **Spring/Summer transition session**.
+The results page shows these first, labelled Spring, Summer, or Spring or
+Summer:
 
 ```js
 const SPRING_SUMMER = {
-    allPrograms: ['AER222', 'BME100', ...],              // first-year transition, Phase II
-    byProgram: {
-        'Aerospace Engineering': ['EES512', 'MTH410'],    // program-specific extras
-        ...
-    },
+    session: 'Spring/Summer 2026',          // shown on the results page
+    spring: ['AER222', 'BME100', ...],      // May to June
+    summer: ['ELE202', 'MTE401', ...],      // July to August
+    osms:   ['EMS201', ...],                // Management Sciences option
 };
 ```
 
-The lists come from the **"Transition Programs"** section near the top of each
-program's calendar page. Check it every year, since offerings can change.
+The lists are **faculty-wide**: any engineering student can take a listed
+course if they meet its prerequisites. Copy them every year from **"Significant
+Dates & Courses"** on the
+[Engineering Transition Program page](https://www.torontomu.ca/engineering-architectural-science/programs/undergraduate-programs/transition-program/),
+and update `session` to match.
 
 ### Where the data comes from
 
@@ -264,8 +267,8 @@ For every course in the checklist the student did **not** tick
 2. Parse its `prereqs` text into a tree and work out which courses are still
    missing. If none are, the student is eligible.
 3. Sort the results into three groups:
-   - **Offered in Spring/Summer and you're eligible**: in `data/spring-summer.js`
-     for this program, no prerequisites missing;
+   - **Offered in Spring/Summer and you're eligible**: on the transition
+     session list in `data/spring-summer.js`, no prerequisites missing;
    - **Spring/Summer courses you can't take yet**: shows what's still needed;
    - **Other courses you meet the prerequisites for**: collapsed, with a
      reminder to check the Spring/Summer timetable.
@@ -304,9 +307,9 @@ When the new calendar is published (e.g. 2027-2028):
 3. **New courses?** Add each one to `data/courses.js` with its title and
    `prereqs` (see [Add a new course](#add-a-new-course)).
 4. **Prerequisites and Spring/Summer offerings:** prerequisites can change
-   from year to year. Re-check them against the calendar course pages, and
-   update `data/spring-summer.js` from each program page's "Transition
-   Programs" section.
+   from year to year, so re-check them against the calendar course pages.
+   When the new transition-session course list is published, update
+   `data/spring-summer.js` (see [above](#dataspring-summerjs--springsummer-offerings)).
 5. **New programs or options?** See
    [Add a program or option](#add-a-program-or-option).
 6. **Update the year shown on the page:**
@@ -390,8 +393,7 @@ Put it after the code instead of in the title:
 ### Add a program or option
 
 Add a new key to `PROGRAMS` (any position; the dropdown sorts
-alphabetically). If it has its own Spring/Summer offerings, add it to
-`SPRING_SUMMER.byProgram` too. For an option that shares the early years with its main
+alphabetically). For an option that shares the early years with its main
 program, copy those semesters across:
 
 ```js
@@ -467,10 +469,9 @@ needed.
 
 ## Known limitations
 
-- **Spring/Summer offerings come from the calendar's transition-program
-  notes.** The actual timetable may offer more (or fewer) courses each year.
-  That's why other eligible courses are listed separately with a reminder to
-  check the timetable.
+- **Spring/Summer offerings are last year's list until the new one is
+  published.** Upper-year courses also run only with sufficient enrolment, so
+  the results remind students of this.
 - **Corequisites and antirequisites aren't checked.** Only prerequisites
   decide eligibility.
 - **Older courses without a calendar page** (`noOutline`) are never suggested,
