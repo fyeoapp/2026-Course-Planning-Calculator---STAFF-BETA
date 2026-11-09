@@ -102,7 +102,11 @@ function assessCourses(program) {
         results.push({ code, prereqs, missing, springSummer: offered.has(code) });
     });
 
+    const offeredInChecklist = [...new Set(inputs.map(i => normalizeCode(i.value)))].filter(c => offered.has(c));
+
     return {
+        // Every Spring/Summer course in this curriculum is already ticked.
+        allOfferedCompleted: offeredInChecklist.length > 0 && offeredInChecklist.every(c => completed.has(c)),
         springSummer: results.filter(r => r.springSummer && r.missing.length === 0),
         notYet: results.filter(r => r.springSummer && r.missing.length > 0)
             .sort((a, b) => a.missing.length - b.missing.length),
@@ -132,14 +136,20 @@ function resultListHtml(results) {
 }
 
 function resultsHtml(assessment) {
-    const { springSummer, notYet, otherEligible } = assessment;
+    const { allOfferedCompleted, springSummer, notYet, otherEligible } = assessment;
     let html = '';
 
     html += '<h3 class="result-heading">Offered in Spring/Summer and you\'re eligible</h3>';
     if (springSummer.length) {
         html += resultListHtml(springSummer);
-    } else {
+    } else if (allOfferedCompleted) {
+        html += '<p class="result-empty">You\'ve already completed all of your program\'s Spring/Summer courses. ' +
+            'Check the courses below or speak with your program advisor about other options.</p>';
+    } else if (notYet.length) {
         html += '<p class="result-empty">None of your program\'s Spring/Summer courses are available to you yet. ' +
+            'See what\'s still needed below, or speak with your program advisor.</p>';
+    } else {
+        html += '<p class="result-empty">No Spring/Summer courses are listed for your curriculum. ' +
             'Check the courses below or speak with your program advisor.</p>';
     }
 
