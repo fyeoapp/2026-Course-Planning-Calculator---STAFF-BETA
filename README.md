@@ -57,13 +57,14 @@ assets/fyeo-logo.png    Header logo
 data/                   ← the files you'll edit most
   courses.js            Course catalog: every course defined once
   programs.js           Every program's curriculum, per admit year
+  spring-summer.js      Which courses run in the Spring/Summer term
 
 js/                     Page logic (rarely needs changing)
   dom.js                Small helpers: byId, show/hide, setDebug, fillSelect
-  curriculum.js         Fills the dropdowns, renders the Step 3 checklist
-  eligibility.js        Parses prerequisites, works out eligible courses
-  navigation.js         Moving between steps, Back button, step indicator
-  main.js               Startup: sidebar links, app-store picker, saved program
+  curriculum.js         Dropdowns, Step 3 checklist, Select all, remembered ticks
+  eligibility.js        Prerequisite parser, eligibility, the results page
+  navigation.js         Moving between steps, browser history, step indicator
+  main.js               Startup: sidebar links, app-store picker, saved program, print
 
 scripts/check-data.js   Validates the data files (optional, needs Node)
 ```
@@ -75,8 +76,8 @@ scripts/check-data.js   Validates the data files (optional, needs Node)
 `index.html` loads these scripts **in this order** at the bottom of the page:
 
 ```
-data/courses.js → data/programs.js → js/dom.js → js/curriculum.js
-→ js/eligibility.js → js/navigation.js → js/main.js
+data/courses.js → data/programs.js → data/spring-summer.js → js/dom.js
+→ js/curriculum.js → js/eligibility.js → js/navigation.js → js/main.js
 ```
 
 They are ordinary `<script>` tags, not ES modules, and share global variables
@@ -89,15 +90,23 @@ The flow:
 1. On load, `main.js` calls `initCurricula()`, which fills the **program**
    dropdown from the keys of `PROGRAMS` (alphabetically) and the **admit year**
    dropdown from all years found in `PROGRAMS`.
+   The last program chosen on this device is re-selected (`localStorage`).
 2. Picking a program limits the year dropdown to that program's years
    (`updateAdmitYearsForProgram`).
 3. **Continue** calls `showCourses()`, which looks up the curriculum version
-   containing that year and renders one checkbox per course.
-4. **Calculate** calls `calculateEligibility()`, which compares the ticked
-   courses against each unticked course's prerequisites (from `COURSES`).
+   containing that year and renders one checkbox per course. Ticks are kept
+   for the browser tab (`sessionStorage`), so going back or refreshing doesn't
+   lose them, and nothing is left behind on shared computers.
+4. **Calculate** calls `calculateEligibility()`, which builds the results page
+   (see [How eligibility is calculated](#how-eligibility-is-calculated)).
 
-The grey pill above the title (`#debugInfo`) shows what was loaded, e.g.
-`Rendering: Computer:2026`. It's handy when checking data changes.
+Each step change goes through `showStep()` / `goToStep()` in `navigation.js`
+and is recorded in browser history, so the browser's Back and Forward buttons
+move between steps just like the page's own ← Back button.
+
+A grey status pill (`#debugInfo`) shows what was loaded, e.g.
+`Rendering: Computer Engineering:2026`. It's hidden from students; add
+`?debug` to the URL (`index.html?debug`) to see it while checking data.
 
 ---
 
@@ -123,7 +132,7 @@ const COURSES = {
 | Field | Required | Used for |
 |---|---|---|
 | `title` | yes | Shown after the code in the checklist |
-| `prereqs` | no | **Drives eligibility.** Free text, see [below](#how-eligibility-is-calculated) |
+| `prereqs` | no | **Drives eligibility.** Copied from the calendar, see [below](#how-eligibility-is-calculated) |
 | `coreqs`, `antireqs`, `customRequisites`, `description` | no | Reference only; not currently shown on the page |
 | `noOutline` | no | `true` hides the "Outline" link when the calendar has no page for the course |
 
@@ -155,7 +164,7 @@ the admit years it applies to:
 
 ```js
 const PROGRAMS = {
-    Aerospace: [
+    'Aerospace Engineering': [
         {
             years: [2019, 2020, 2021, 2022, 2023, 2024],   // old curriculum
             semesters: [ ... ],
@@ -178,9 +187,10 @@ const PROGRAMS = {
 
 Rules:
 
-- **The program key is the dropdown label.** `Civil (Structural Option)` is a
-  separate key because options have their own upper-year courses. Keys with
-  spaces or brackets need quotes: `'Civil (Structural Option)': [ ... ]`.
+- **The program key is the dropdown label**, so use the full name:
+  `'Aerospace Engineering'`. Options with their own upper-year courses are
+  separate keys, e.g. `'Civil Engineering (Structural Option)'`. Keys must
+  match the names used in `data/spring-summer.js`.
 - **Each admit year may appear in only one version of a program.**
 - Years that are missing are simply not offered. For example, Aerospace
   currently has no 2025 entry.
@@ -197,6 +207,24 @@ Rules:
 
 - The same code may appear in more than one group (e.g. Undeclared lists
   `CPS125` under several program groups).
+
+### `data/spring-summer.js` — Spring/Summer offerings
+
+Lists which courses run in the condensed Spring/Summer term (May–July). The
+results page shows these first:
+
+```js
+const SPRING_SUMMER = {
+    allPrograms: ['AER222', 'BME100', ...],              // first-year transition, Phase II
+    byProgram: {
+        'Aerospace Engineering': ['EES512', 'MTH410'],    // program-specific extras
+        ...
+    },
+};
+```
+
+The lists come from the **"Transition Programs"** section near the top of each
+program's calendar page. Check it every year, since offerings can change.
 
 ### Where the data comes from
 
@@ -217,7 +245,7 @@ https://www.torontomu.ca/calendar/<YYYY-YYYY>/programs/feas/<program>/
 | Industrial | `industrial` |
 | Mechanical | `mechanical` |
 | Undeclared | `undeclared_eng` |
-| Mechatronics | find it from the calendar's Programs page |
+| Mechatronics | `mechatronics-engineering` |
 
 Read each page's **"Full-Time, Four-Year Program"** section, plus any
 **"… Option"** sections. Watch for notes such as *"Revised curriculum begins
@@ -228,33 +256,36 @@ admit years a change applies to.
 
 ## How eligibility is calculated
 
-For every course the student did **not** tick (`js/eligibility.js`):
+For every course in the checklist the student did **not** tick
+(`js/eligibility.js`):
 
-1. Look up its `prereqs` text in `COURSES`.
-2. Pull out every course code in it (`MTH 140`, `CPS125`, …).
-3. If the text contains `or` (or `/`), **any one** completed prerequisite is
-   enough. Otherwise **all** must be completed.
-4. If there's no `prereqs` text at all:
-   - 100- and 200-level courses are treated as eligible;
-   - **300-level and above are never suggested.**
-5. If nothing qualifies, a few fallback first-year rules apply (e.g. MTH140
-   done → suggest MTH141).
+1. Skip it if it isn't a real course with a calendar page: placeholders like
+   `CORE_ELECTIVES`, and courses marked `noOutline`.
+2. Parse its `prereqs` text into a tree and work out which courses are still
+   missing. If none are, the student is eligible.
+3. Sort the results into three groups:
+   - **Offered in Spring/Summer and you're eligible**: in `data/spring-summer.js`
+     for this program, no prerequisites missing;
+   - **Spring/Summer courses you can't take yet**: shows what's still needed;
+   - **Other courses you meet the prerequisites for**: collapsed, with a
+     reminder to check the Spring/Summer timetable.
 
-Writing `prereqs`:
+   If more than `MAX_RECOMMENDED_COURSES` (2) Spring/Summer courses qualify, a
+   course-load warning is shown.
+
+The parser follows the calendar's wording exactly, so **copy prerequisites
+straight from the course's calendar page**:
 
 ```js
-prereqs: 'MTH 140 and MTH 141'          // both required
-prereqs: 'PCS 110 or PCS 125 or PCS 130'  // any one
-prereqs: 'CPS 188, ELE 202, MTH 240'     // all (no "or")
+prereqs: 'MTH 140 and MTH 141'                       // both required
+prereqs: 'PCS 110 or PCS 125 or PCS 130'             // any one
+prereqs: 'CPS 188, ELE 202, MTH 240'                 // commas mean "and"
+prereqs: 'CEN 199 and (EES 512 or MTE 401)'          // brackets group
+prereqs: 'COE 528 and [(COE 501, ELE 632) or (COE 691, CPS 688)]'
 ```
 
-The parser is simple. A mixed string like `'CEN 199 and (EES 512 or MTE 401)'`
-contains `or`, so it's treated as "any one of the three". If a course needs
-exact logic, simplify the text to what you want it to check.
-
-> **Why this matters when adding courses:** a new upper-year course with no
-> `prereqs` will never appear as eligible. Copy its prerequisites from the
-> course's calendar page when you add it.
+"and" binds tighter than "or", and `( )` and `[ ]` both group. A course with
+no `prereqs` is treated as having none.
 
 ---
 
@@ -272,9 +303,13 @@ When the new calendar is published (e.g. 2027-2028):
    - Don't edit older versions. Students admitted earlier still follow them.
 3. **New courses?** Add each one to `data/courses.js` with its title and
    `prereqs` (see [Add a new course](#add-a-new-course)).
-4. **New programs or options?** See
+4. **Prerequisites and Spring/Summer offerings:** prerequisites can change
+   from year to year. Re-check them against the calendar course pages, and
+   update `data/spring-summer.js` from each program page's "Transition
+   Programs" section.
+5. **New programs or options?** See
    [Add a program or option](#add-a-program-or-option).
-5. **Update the year shown on the page:**
+6. **Update the year shown on the page:**
 
    | File | What to change |
    |---|---|
@@ -289,7 +324,7 @@ When the new calendar is published (e.g. 2027-2028):
    After changing `CALENDAR_YEAR`, open a few Outline links to confirm they
    load. If a course has been dropped from the new calendar, its link will
    404; add `noOutline: true` to that course.
-6. **Check your changes** (next sections), then commit and open a pull request.
+7. **Check your changes** (next sections), then commit and open a pull request.
 
 ---
 
@@ -300,7 +335,7 @@ When the new calendar is published (e.g. 2027-2028):
 Add the year to the version that applies:
 
 ```diff
- Biomedical: [
+ 'Biomedical Engineering': [
      {
 -        years: [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
 +        years: [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
@@ -312,7 +347,7 @@ Copy the program's latest version, give it only the new year(s), and edit the
 copy. Leave the old version alone so earlier students keep their curriculum:
 
 ```js
-Electrical: [
+'Electrical Engineering': [
     { years: [2019, 2020, ..., 2025], semesters: [ /* old */ ] },
     { years: [2026],                  semesters: [ /* new */ ] },
 ],
@@ -355,15 +390,16 @@ Put it after the code instead of in the title:
 ### Add a program or option
 
 Add a new key to `PROGRAMS` (any position; the dropdown sorts
-alphabetically). For an option that shares the early years with its main
+alphabetically). If it has its own Spring/Summer offerings, add it to
+`SPRING_SUMMER.byProgram` too. For an option that shares the early years with its main
 program, copy those semesters across:
 
 ```js
-'Civil (Structural Option)': [
+'Civil Engineering (Structural Option)': [
     {
         years: [2026],
         semesters: [
-            // 1st–4th semester: same as Civil
+            // 1st–4th semester: same as Civil Engineering
             // 5th–8th semester: option-specific
         ],
     },
@@ -395,7 +431,8 @@ needed.
 2. **Open `index.html`** (hard-refresh if it was already open) and for each program you touched:
    - pick the program and every year you changed, press Continue, and check
      the checklist against the calendar;
-   - tick a few courses and press Calculate to make sure results appear.
+   - tick a few courses and press Calculate, and check the results make sense;
+   - use `index.html?debug` to see which program/year was loaded.
 3. **Open the browser console** (⌥⌘J in Chrome) and check there are no red
    errors. A typo in a data file (missing comma or quote) usually shows up
    here as a `SyntaxError` with a line number, and the dropdowns will be empty.
@@ -430,18 +467,11 @@ needed.
 
 ## Known limitations
 
-- **Upper-year courses without `prereqs` are never suggested.** Many courses
-  added for 2026 (e.g. ELE401, ELE531, most Mechanical courses) don't have
-  prerequisites entered yet.
-- **Placeholders can appear in results**, e.g. `CORE_ELECTIVES`, because they
-  are treated like courses.
-- **The prerequisite parser is basic.** It doesn't understand brackets or
-  mixed and/or logic (see above).
-- **Answering "No" to the standing question has no Back button.** The
-  student must reload the page.
-- **The saved program isn't restored.** The last chosen program is saved in
-  `localStorage` (`tmu_selected_program_v1`), but the dropdown is rebuilt
-  after it's restored, so it doesn't stick.
-- **Browser Back leaves the page.** Pressing the browser's Back button leaves
-  the site instead of going back a step. Students should use the page's own
-  ← Back button.
+- **Spring/Summer offerings come from the calendar's transition-program
+  notes.** The actual timetable may offer more (or fewer) courses each year.
+  That's why other eligible courses are listed separately with a reminder to
+  check the timetable.
+- **Corequisites and antirequisites aren't checked.** Only prerequisites
+  decide eligibility.
+- **Older courses without a calendar page** (`noOutline`) are never suggested,
+  because their requisites are unknown.

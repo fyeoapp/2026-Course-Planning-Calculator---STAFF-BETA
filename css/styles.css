@@ -474,7 +474,8 @@ select:focus-visible {
 
 .course-code {
     font-weight: 700;
-    margin-right: 2px
+    margin-right: 2px;
+    white-space: nowrap
 }
 
 /* "Outline" link to the course's TMU calendar page */
@@ -505,13 +506,133 @@ select:focus-visible {
     font-size: 12px
 }
 
+/* Semester heading with its "Select all" toggle */
+.semester-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.semester-head .group-title {
+    margin: 0
+}
+
+.section .select-all {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    padding: 4px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 999px;
+    background: transparent;
+    box-shadow: none;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.section .select-all:hover {
+    transform: none;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.section .selection-count {
+    margin: 28px 0 0;
+    font-weight: 600;
+    text-align: center;
+}
+
 /* Step 4 results */
 #eligibleCourses {
     padding: 24px 28px;
     border-radius: 12px;
     background: #fff;
     color: var(--text);
+}
+
+#eligibleCourses .result-heading {
+    margin: 28px 0 12px;
+    font-size: 1.05rem;
+}
+
+#eligibleCourses .result-heading:first-child {
+    margin-top: 0
+}
+
+.result-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.result-row {
+    padding: 12px 0;
+    border-top: 1px solid #ececf3;
+}
+
+.result-row:first-child {
+    border-top: none
+}
+
+.result-main {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    line-height: 1.45;
+}
+
+.result-main .outline-link {
+    flex-shrink: 0;
+    margin-left: auto;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: var(--sidebar-bg);
+    color: var(--blue);
+    font-size: 0.8rem;
+    font-weight: 600;
     line-height: 1.8;
+    text-decoration: none;
+}
+
+.result-reason {
+    margin-top: 4px;
+    color: #4b7a3c;
+    font-size: 0.9rem;
+}
+
+.result-reason.is-missing {
+    color: #a1552b
+}
+
+#eligibleCourses .result-empty,
+#eligibleCourses .result-note {
+    margin: 0 0 8px;
+    color: var(--text-muted);
+}
+
+.load-warning {
+    margin: 20px 0 4px;
+    padding: 12px 16px;
+    border-left: 4px solid var(--amber-border);
+    border-radius: 4px;
+    background: var(--amber-bg);
+    font-weight: 600;
+}
+
+.result-more {
+    margin-top: 28px
+}
+
+.result-more summary {
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.result-more[open] summary {
+    margin-bottom: 12px
 }
 
 /* Step 5 guidance */
@@ -627,3 +748,39 @@ select:focus-visible {
         height: 32px
     }
 }
+
+/* ---------- Print: just the results ---------- */
+@media print {
+    .no-print,
+    #step1,
+    #step2,
+    #step3 {
+        display: none !important
+    }
+
+    body,
+    .layout,
+    .main-container {
+        display: block;
+        padding: 0;
+        background: #fff;
+    }
+
+    .section {
+        margin: 0 0 16px;
+        padding: 0;
+        box-shadow: none;
+        background: #fff;
+        color: var(--text);
+        animation: none;
+    }
+
+    #eligibleCourses {
+        padding: 0
+    }
+
+    .result-more {
+        display: block
+    }
+}
+

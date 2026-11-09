@@ -1,20 +1,43 @@
 // Step-to-step navigation:
-//   step1 Standing -> step2 Program -> step3 Courses -> step4/step5 Results
+//   1 Standing -> 2 Program -> 3 Courses -> 4 Results (step4 + step5 cards)
+//
+// Every forward move is pushed onto browser history, so the browser's Back
+// button and the page's own Back button both step back through the planner.
+
+let currentStep = 1;
+
+// Show `step` and hide the others.
+function showStep(step) {
+    currentStep = step;
+    ['step1', 'step2', 'step3', 'step4', 'step5'].forEach(hide);
+    if (step === 4) {
+        show('step4');
+        show('step5');
+    } else {
+        show('step' + step);
+    }
+    updateNavigation();
+    window.scrollTo(0, 0);
+}
+
+// Move forward to `step` and record it so Back can return.
+function goToStep(step) {
+    showStep(step);
+    history.pushState({ step }, '');
+}
 
 // Step 1: answer to "Is your academic standing clear?"
 function standingCheck(isClear) {
-    hide('step1');
     if (isClear) {
         hide('contactDept');
-        show('step2');
+        goToStep(2);
     } else {
+        // Stay on step 1 so the student can read the advice or change their answer.
         show('contactDept');
-        hide('step2');
     }
-    updateNavigation();
 }
 
-// Step 2 -> Step 3: load and render the selected program's curriculum.
+// Step 2 -> Step 3: render the selected program's curriculum.
 function showCourses() {
     const program = byId('programSelect').value;
     const admitYear = byId('admitYearSelect').value;
@@ -25,56 +48,36 @@ function showCourses() {
     }
 
     if (!renderCurriculum(program, admitYear)) renderCurriculumNotFound(program, admitYear);
-
-    hide('step2');
-    show('step3');
-    updateNavigation();
+    goToStep(3);
 }
 
-// The step number shown in the stepper (results count as step 4).
-function currentStep() {
-    if (isVisible('step4')) return 4;
-    if (isVisible('step3')) return 3;
-    if (isVisible('step2')) return 2;
-    return 1;
-}
-
-// Sync the Back button and stepper with whichever step is on screen.
+// Sync the Back button and stepper with the current step.
 function updateNavigation() {
-    const step = currentStep();
-    byId('backButton').classList.toggle('hidden', step === 1);
+    byId('backButton').classList.toggle('hidden', currentStep === 1);
     document.querySelectorAll('#stepper li').forEach(li => {
         const n = Number(li.dataset.step);
-        li.classList.toggle('active', n === step);
-        li.classList.toggle('done', n < step);
+        li.classList.toggle('active', n === currentStep);
+        li.classList.toggle('done', n < currentStep);
     });
 }
 
+// The page's Back button behaves exactly like the browser's.
 function goBack() {
-    if (isVisible('step4')) {
-        hide('step4');
-        hide('step5');
-        show('step3');
-    } else if (isVisible('step3')) {
-        hide('step3');
-        show('step2');
-    } else if (isVisible('step2')) {
-        hide('step2');
-        show('step1');
-    } else {
-        return;
-    }
-    updateNavigation();
+    history.back();
 }
 
-// Map the browser Back button onto goBack() while the app is on screen.
-function interceptBrowserBack() {
-    history.replaceState(null, document.title, window.location.href);
-    window.addEventListener('popstate', function() {
-        const anyVisible = ['step1', 'step2', 'step3', 'step4'].some(isVisible);
-        if (anyVisible) {
-            history.pushState(null, document.title, window.location.href);
-            goBack();
-        }
+// A step can only be shown again if its content still exists (it won't after
+// a page reload, e.g. when the browser's Forward button is used).
+function canShowStep(step) {
+    if (step === 3) return Boolean(byId('step3').innerHTML.trim());
+    if (step === 4) return Boolean(byId('eligibleCourses').innerHTML.trim());
+    return true;
+}
+
+function initHistoryNavigation() {
+    history.replaceState({ step: 1 }, '');
+    window.addEventListener('popstate', function(event) {
+        const step = (event.state && event.state.step) || 1;
+        showStep(canShowStep(step) ? step : 1);
     });
 }

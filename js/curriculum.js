@@ -3,6 +3,13 @@
 
 const DEFAULT_YEAR = '2026';
 
+// Ticked courses are kept for the browser tab (sessionStorage), so going back
+// or refreshing doesn't lose them, and nothing is left on shared computers.
+const TICKED_KEY_PREFIX = 'tmu_completed_courses_v1:';
+
+// The program and admit year whose checklist is on screen.
+const currentSelection = { program: '', year: '' };
+
 const PROGRAM_PLACEHOLDER = '-- Choose your program --';
 const YEAR_PLACEHOLDER = '-- Select admit year --';
 
@@ -84,7 +91,8 @@ function outlineLinkHtml(code) {
 function curriculumChecklistHtml(semesters) {
     let html = CHECKLIST_INTRO;
     semesters.forEach(semester => {
-        html += '<h3 class="group-title">' + semester.title + '</h3>';
+        html += '<div class="semester-head"><h3 class="group-title">' + semester.title + '</h3>' +
+            '<button type="button" class="select-all" onclick="toggleSemester(this)">Select all</button></div>';
         html += '<div class="course-grid">';
         semester.courses.map(parseCourseEntry).forEach(({ code, name }) => {
             html += '<label><input type="checkbox" value="' + code + '">' +
@@ -93,6 +101,7 @@ function curriculumChecklistHtml(semesters) {
         });
         html += '</div>';
     });
+    html += '<p class="selection-count" id="selectionCount"></p>';
     html += '<div class="button-row"><button onclick="calculateEligibility()">Calculate Spring/Summer Eligibility</button></div>';
     return html;
 }
@@ -103,8 +112,65 @@ function renderCurriculum(program, admitYear) {
     const semesters = curriculumFor(program, admitYear);
     if (!semesters) return false;
     setDebug('Rendering: ' + program + ':' + admitYear);
+    currentSelection.program = program;
+    currentSelection.year = admitYear;
     byId('step3').innerHTML = curriculumChecklistHtml(semesters);
+    restoreTickedCourses();
+    updateChecklistStatus();
     return true;
+}
+
+function checklistInputs() {
+    return [...document.querySelectorAll('#step3 input[type="checkbox"]')];
+}
+
+// "Select all" ticks every course in that semester; if they're all ticked
+// already, it clears them instead.
+function toggleSemester(button) {
+    const inputs = [...button.closest('.semester-head').nextElementSibling.querySelectorAll('input')];
+    const tickAll = inputs.some(i => !i.checked);
+    inputs.forEach(i => { i.checked = tickAll; });
+    onChecklistChange();
+}
+
+function onChecklistChange() {
+    updateChecklistStatus();
+    saveTickedCourses();
+}
+
+// Refresh the "N of M selected" line and each semester's toggle label.
+function updateChecklistStatus() {
+    const inputs = checklistInputs();
+    const count = byId('selectionCount');
+    if (count) {
+        const ticked = inputs.filter(i => i.checked).length;
+        count.textContent = ticked + ' of ' + inputs.length + ' courses selected';
+    }
+    document.querySelectorAll('#step3 .select-all').forEach(button => {
+        const grid = button.closest('.semester-head').nextElementSibling;
+        const allTicked = [...grid.querySelectorAll('input')].every(i => i.checked);
+        button.textContent = allTicked ? 'Clear' : 'Select all';
+    });
+}
+
+function tickedStorageKey() {
+    return TICKED_KEY_PREFIX + currentSelection.program + ':' + currentSelection.year;
+}
+
+function saveTickedCourses() {
+    const ticked = checklistInputs().filter(i => i.checked).map(i => i.value);
+    try {
+        sessionStorage.setItem(tickedStorageKey(), JSON.stringify(ticked));
+    } catch (e) { /* storage unavailable (e.g. blocked); ticks just aren't remembered */ }
+}
+
+function restoreTickedCourses() {
+    let ticked = [];
+    try {
+        ticked = JSON.parse(sessionStorage.getItem(tickedStorageKey()) || '[]');
+    } catch (e) { /* storage unavailable or corrupt; start with nothing ticked */ }
+    const set = new Set(ticked);
+    checklistInputs().forEach(i => { i.checked = set.has(i.value); });
 }
 
 function renderCurriculumNotFound(program, admitYear) {

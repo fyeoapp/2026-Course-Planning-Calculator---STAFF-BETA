@@ -11,7 +11,7 @@
 
 <body>
 
-    <header class="main-header-bar">
+    <header class="main-header-bar no-print">
         <div class="main-header-left">
             <img class="site-logo" src="assets/fyeo-logo.png" alt="FYEO Logo" />
             <span class="main-header-title">Engineering 2026-2027 Course Planning Calculator</span>
@@ -26,7 +26,7 @@
 
     <div class="layout">
 
-        <aside class="left-sidebar">
+        <aside class="left-sidebar no-print">
             <div class="sidebar-card">
                 <h2 class="sidebar-heading"><span aria-hidden="true">☀️</span>Spring/Summer Quick Links</h2>
                 <button class="btn btn-yellow"
@@ -68,17 +68,17 @@
 
         <main class="main-container">
             <div class="main-inner">
-                <div class="debug-bar">
+                <div class="debug-bar no-print">
                     <span id="debugInfo" class="debug-info">Debug: no action yet</span>
                 </div>
 
                 <div class="main-header">
-                    <button id="backButton" class="back-btn hidden" onclick="goBack()">← Back</button>
+                    <button id="backButton" class="back-btn hidden no-print" onclick="goBack()">← Back</button>
                     <h1>Engineering 2026-2027 Course Planning Calculator</h1>
                 </div>
 
                 <!-- Progress indicator; js/navigation.js highlights the current step -->
-                <ol class="stepper" id="stepper">
+                <ol class="stepper no-print" id="stepper">
                     <li data-step="1"><span>1</span>Standing</li>
                     <li data-step="2"><span>2</span>Program</li>
                     <li data-step="3"><span>3</span>Courses</li>
@@ -150,6 +150,7 @@
 Order matters: later scripts use globals from earlier ones. -->
     <script src="data/courses.js"></script>
     <script src="data/programs.js"></script>
+    <script src="data/spring-summer.js"></script>
     <script src="js/dom.js"></script>
     <script src="js/curriculum.js"></script>
     <script src="js/eligibility.js"></script>
