@@ -823,7 +823,7 @@ const PROGRAMS = {
     ],
     'Mechatronics Engineering': [
         {
-            years: [2019, 2020, 2021, 2022, 2023, 2024, 2026],
+            years: [2019, 2020, 2021, 2022, 2023, 2024],
             semesters: [
                 {
                     title: '1st Semester (Required)', courses: [
@@ -847,7 +847,7 @@ const PROGRAMS = {
                 },
                 {
                     title: '5th Semester (Required)', courses: [
-                        'EES612', 'MTE713', 'MTE501', 'MTE502', 'MTH510'
+                        'EES612', 'MEC713', 'MTE501', 'MTE502', 'MTH510'
                     ]
                 },
                 {
@@ -857,12 +857,72 @@ const PROGRAMS = {
                 },
                 {
                     title: '7th Semester (Capstone & Core)', courses: [
-                        'MTE70A', 'MTE701', 'MTE617'
+                        'MTE70A', 'MTE701', 'MEC617'
                     ]
                 },
                 {
                     title: '8th Semester (Capstone & Options)', courses: [
                         'CEN800', 'MTE70B', 'MTE801', 'MTE811', 'MTE812', 'MTE819', 'MTE882', 'MTE888'
+                    ]
+                },
+            ],
+        },
+        {
+            years: [2026],
+            semesters: [
+                {
+                    title: '1st Semester (Required)', courses: [
+                        'CEN100', 'CEN199', 'CHY102', 'MTH140', 'MTH141', 'PCS211'
+                    ]
+                },
+                {
+                    title: '2nd Semester (Required)', courses: [
+                        'CPS188', 'ECN801', 'MEC222', 'MTH240', 'MTL200', 'PCS125'
+                    ]
+                },
+                {
+                    title: '3rd Semester (Required)', courses: [
+                        'CMN432', 'MEC323', 'MEC325', 'MTE301', 'MTH425'
+                    ]
+                },
+                {
+                    title: '4th Semester (Required)', courses: [
+                        'MEC311', 'MEC322', 'MEC511', 'MTE401', 'MTH410'
+                    ]
+                },
+                {
+                    title: '5th Semester (Required)', courses: [
+                        'EES612', 'MEC713', 'MTE501', 'MTE502', 'MTH510'
+                    ]
+                },
+                {
+                    title: '6th Semester (Required)', courses: [
+                        'MEC709', 'MTE601', 'MTE602', 'MTE603', 'MTE604', 'MTE751'
+                    ]
+                },
+                {
+                    title: '7th Semester (Required)', courses: [
+                        'MTE70A', 'MTE701'
+                    ]
+                },
+                {
+                    title: '7th Semester (Core Electives)', courses: [
+                        'MEC617', 'MTE711', 'MTE712', 'MTE792', 'MTE829'
+                    ]
+                },
+                {
+                    title: '7th Semester (Liberal Studies)', courses: [
+                        'ENG503', 'GEO702', 'HST701', 'PHL709', 'POL507'
+                    ]
+                },
+                {
+                    title: '8th Semester (Required)', courses: [
+                        'CEN800', 'MTE70B', 'MTE801'
+                    ]
+                },
+                {
+                    title: '8th Semester (Core Electives)', courses: [
+                        'CEN810', 'MTE811', 'MTE812', 'MTE819', 'MTE882', 'MTE888'
                     ]
                 },
             ],

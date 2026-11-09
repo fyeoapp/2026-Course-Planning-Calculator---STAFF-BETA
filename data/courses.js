@@ -1109,7 +1109,6 @@ const COURSES = {
         prereqs: 'CMN 432, MEC 311, MEC 325, MEC 323, CEN 199, MTE 501, EES 612',
         coreqs: 'MTE 601, MTE 751',
     },
-    MTE617: { title: 'Manufacturing System Controls', noOutline: true },
     MTE701: {
         title: 'Real-Time Digital Control Systems Design',
         prereqs: 'MTE 301, MTE 502, MEC 709, MTE 603, MTE 501, MTE 604',
@@ -1122,10 +1121,21 @@ const COURSES = {
         title: 'Mechatronics Capstone Design (part B)',
         prereqs: 'MTE 601, MTE 751, MTE 604, MTE 603',
     },
-    MTE713: { title: 'Project Management', noOutline: true },
+    MTE711: {
+        title: 'Fundamentals of Microelectromechanical Systems',
+        prereqs: 'PCS 125, MEC 323, MEC 325, MEC 322, MTE 301, EES 612, MTE 502, MTE 751, MTE 604',
+    },
+    MTE712: {
+        title: 'Sensor Fusion',
+        prereqs: 'MTH 410, MTH 510, MTE 751',
+    },
     MTE751: {
         title: 'Measurements, Sensors and Instruments',
         prereqs: 'MEC 511, MEC 322, EES 612',
+    },
+    MTE792: {
+        title: 'Digital Signal Processing',
+        prereqs: '(ELE 632 or MTE 501) and (COE 538 or ELE 538 or MTE 502)',
     },
     MTE801: {
         title: 'Hardware in the Loop and RCP',
@@ -1142,6 +1152,10 @@ const COURSES = {
     MTE819: {
         title: 'Control of Robotic Manipulators',
         prereqs: '(ELE 719 or MTE 602) and MEC 709',
+    },
+    MTE829: {
+        title: 'System Models and Identification',
+        prereqs: 'ELE 639 or MEC 709',
     },
     MTE882: {
         title: 'Introduction to Digital Image Processing',
