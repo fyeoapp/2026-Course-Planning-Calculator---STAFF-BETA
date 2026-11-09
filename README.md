@@ -35,12 +35,12 @@ You only need a web browser.
 ```sh
 git clone https://github.com/juderozario08/2026-Course-Planning-Calculator---STAFF-BETA.git
 cd 2026-Course-Planning-Calculator---STAFF-BETA
-./run.sh            # serves on http://localhost:8000 and opens your browser
-./run.sh 3000       # same, on another port
+open index.html     # or just double-click index.html
 ```
 
-`run.sh` needs `python3` (preinstalled on macOS). You can also just
-double-click `index.html`; everything works when opened straight from disk.
+Everything works when the page is opened straight from disk. After editing a
+file, refresh the page. If the browser still shows the old version, hard-refresh
+with **⌘⇧R** (Mac) or **Ctrl+Shift+R** (Windows) to skip its cache.
 
 Optional: install [Node.js](https://nodejs.org) to use the data checker
 (`node scripts/check-data.js`, see [Checking your changes](#checking-your-changes)).
@@ -66,7 +66,6 @@ js/                     Page logic (rarely needs changing)
   main.js               Startup: sidebar links, app-store picker, saved program
 
 scripts/check-data.js   Validates the data files (optional, needs Node)
-run.sh                  Starts a local server and opens the page
 ```
 
 ---
@@ -281,7 +280,7 @@ When the new calendar is published (e.g. 2027-2028):
    |---|---|
    | `js/curriculum.js` | `DEFAULT_YEAR` (the year pre-selected in the dropdown) |
    | `data/courses.js` | `CALENDAR_YEAR` (used by every "Outline" link), e.g. `'2027-2028'` |
-   | `index.html` | Page `<title>`, the header title and the `<h1>`: "Spring/Summer **2026**" |
+   | `index.html` | Page `<title>`, the header title and the `<h1>`: "Engineering **2026-2027** Course Planning Calculator" |
    | `index.html` | "Significant Dates Calendar" link: `/calendar/2026-2027/dates/` |
    | `index.html` | "Any additional Spring/Summer supports" link (currently a 2025 news post) |
 
@@ -393,7 +392,7 @@ needed.
    ```
    It reports syntax errors, codes missing from `courses.js`, years listed
    twice, and badly formed entries. It should print `✓ Data OK`.
-2. **Run the page** with `./run.sh` and for each program you touched:
+2. **Open `index.html`** (hard-refresh if it was already open) and for each program you touched:
    - pick the program and every year you changed, press Continue, and check
      the checklist against the calendar;
    - tick a few courses and press Calculate to make sure results appear.
