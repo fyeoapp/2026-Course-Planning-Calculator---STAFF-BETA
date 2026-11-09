@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-// Sanity-check data/courses.js and data/programs.js after editing them.
+// Sanity-check data/courses.js, data/programs.js and data/spring-summer.js.
 // Usage: node scripts/check-data.js
 //
 // Reports:
-//   - syntax errors in either data file
+//   - syntax errors in the data files
 //   - course codes used in programs.js that are missing from courses.js
 //   - admit years listed in more than one version of the same program
 //   - programs.js entries that aren't in the expected 'CODE' or 'CODE (note)' form
+//   - spring-summer.js program names or course codes that don't exist
 
 const fs = require('fs');
 const path = require('path');
@@ -17,8 +18,8 @@ const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 
 const ctx = {};
 try {
-    vm.runInNewContext(read('data/courses.js') + read('data/programs.js') +
-        ';this.COURSES = COURSES; this.PROGRAMS = PROGRAMS;', ctx);
+    vm.runInNewContext(read('data/courses.js') + read('data/programs.js') + read('data/spring-summer.js') +
+        ';this.COURSES = COURSES; this.PROGRAMS = PROGRAMS; this.SPRING_SUMMER = SPRING_SUMMER;', ctx);
 } catch (e) {
     console.error('Could not load the data files: ' + e.message);
     process.exit(1);
@@ -43,6 +44,17 @@ for (const [program, versions] of Object.entries(ctx.PROGRAMS)) {
                 }
             }
         }
+    }
+}
+
+const springSummer = ctx.SPRING_SUMMER;
+for (const code of springSummer.allPrograms) {
+    if (!ctx.COURSES[code]) problems.push(`spring-summer.js allPrograms: ${code} is missing from data/courses.js`);
+}
+for (const [program, codes] of Object.entries(springSummer.byProgram)) {
+    if (!ctx.PROGRAMS[program]) problems.push(`spring-summer.js: "${program}" is not a program in data/programs.js`);
+    for (const code of codes) {
+        if (!ctx.COURSES[code]) problems.push(`spring-summer.js "${program}": ${code} is missing from data/courses.js`);
     }
 }
 

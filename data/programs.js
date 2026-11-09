@@ -10,7 +10,7 @@
 // "AER626 Applied Finite Elements (Aircraft stream elective)".
 
 const PROGRAMS = {
-    Aerospace: [
+    'Aerospace Engineering': [
         {
             years: [2019, 2020, 2021, 2022, 2023, 2024],
             semesters: [
@@ -128,7 +128,7 @@ const PROGRAMS = {
             ],
         },
     ],
-    Biomedical: [
+    'Biomedical Engineering': [
         {
             years: [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
             semesters: [
@@ -181,7 +181,7 @@ const PROGRAMS = {
             ],
         },
     ],
-    Chemical: [
+    'Chemical Engineering (Co-op)': [
         {
             years: [2019, 2020, 2021, 2022, 2023, 2024, 2025],
             semesters: [
@@ -279,7 +279,7 @@ const PROGRAMS = {
             ],
         },
     ],
-    Civil: [
+    'Civil Engineering': [
         {
             years: [2019, 2020, 2021, 2022, 2023, 2024, 2025],
             semesters: [
@@ -386,7 +386,7 @@ const PROGRAMS = {
             ],
         },
     ],
-    'Civil (Structural Option)': [
+    'Civil Engineering (Structural Option)': [
         {
             years: [2026],
             semesters: [
@@ -438,7 +438,7 @@ const PROGRAMS = {
             ],
         },
     ],
-    Computer: [
+    'Computer Engineering': [
         {
             years: [2019, 2020, 2021, 2022, 2023, 2024, 2025],
             semesters: [
@@ -542,7 +542,7 @@ const PROGRAMS = {
             ],
         },
     ],
-    'Computer (Software Engineering Option)': [
+    'Computer Engineering (Software Engineering Option)': [
         {
             years: [2026],
             semesters: [
@@ -599,7 +599,7 @@ const PROGRAMS = {
             ],
         },
     ],
-    Electrical: [
+    'Electrical Engineering': [
         {
             years: [2019, 2020, 2021, 2022, 2023, 2024, 2025],
             semesters: [
@@ -701,7 +701,7 @@ const PROGRAMS = {
             ],
         },
     ],
-    Industrial: [
+    'Industrial Engineering': [
         {
             years: [2026],
             semesters: [
@@ -758,7 +758,7 @@ const PROGRAMS = {
             ],
         },
     ],
-    Mechanical: [
+    'Mechanical Engineering': [
         {
             years: [2026],
             semesters: [
@@ -821,7 +821,7 @@ const PROGRAMS = {
             ],
         },
     ],
-    Mechatronics: [
+    'Mechatronics Engineering': [
         {
             years: [2019, 2020, 2021, 2022, 2023, 2024, 2026],
             semesters: [
@@ -868,7 +868,7 @@ const PROGRAMS = {
             ],
         },
     ],
-    Undeclared: [
+    'Undeclared Engineering': [
         {
             years: [2026],
             semesters: [
