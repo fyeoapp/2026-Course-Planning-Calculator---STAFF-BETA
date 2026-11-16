@@ -1,35 +1,95 @@
-StudyPlanner — local testing notes
+# Engineering 2026-2027 Course Planning Calculator
 
-Purpose
-- The StudyPlanner HTML loads per-program curriculum JSON files from the same folder (e.g. `Aerospace-2026.json`).
+A web page for TMU engineering students to plan their **Spring/Summer**
+courses. Students confirm their standing, pick their program and admit year,
+and tick the courses they've completed. The calculator then shows:
 
-Quick test (macOS / zsh)
-1. If you prefer not to run a server and want to open the HTML directly (file://), generate an embedded bundle first:
-   cd /Users/camdenhampe/curricula
-   python3 generate_bundle.py
+- the Spring/Summer courses they're **eligible** for, with when each runs and
+  why they qualify;
+- the Spring/Summer courses they **can't take yet**, and exactly what's
+  missing;
+- other courses they meet the prerequisites for.
 
-   This writes `curricula.bundle.js` which the HTML will load when opened locally and make all curricula available without a server.
+Every course links to its page in the TMU undergraduate calendar, and the
+results can be printed or saved as a PDF for an advising appointment.
 
-2. Or, start a simple static server (recommended):
-   python3 -m http.server 8000
+It's a static site (plain HTML, CSS and JavaScript) with no backend, build
+step or install. Open `index.html` and it runs.
 
-3. Open the planner in your browser:
-   http://localhost:8000/StudyPlanner%20-%20v0.7.html
-   Or, if you generated a bundle, you can also open the HTML file directly in the browser (double-click / file://).
+![The results step: eligible Spring/Summer courses with term labels, Outline links and the prerequisites each one meets](docs/images/overview.jpg)
 
-Filename expectations
-- Each curriculum file must be named exactly as `<Program>-<Year>.json` where `Program` is the option value used by the program dropdown (for example `Aerospace`, `Biomedical`, `Computer`, etc.) and `Year` is the admit year (e.g. `2026`).
-- The JSON shape expected is an array of groups, e.g.:
-  [
-    { "title": "First Year - Fall", "courses": [ { "code": "CEN100", "title": "Introduction to ..." }, ... ] },
-    ...
-  ]
+---
 
-Troubleshooting
-- If the planner shows the static checklist instead of your program's curriculum, check the browser console for a fetch error (likely file not found or CORS when opening via file://). Serving via HTTP (step 2 above) resolves this.
-- If filenames don't match (spacing/case), either rename the JSON files or modify the HTML loader logic to map names.
+## Quick start
 
-Next steps you can ask me to do
-- Add a small index.json listing available program-year files and make the loader use it.
-- Add graceful UI messages when no curriculum file is found.
-- Normalize program names (e.g., spaces/case) so filenames can be more flexible.
+```sh
+git clone https://github.com/juderozario08/2026-Course-Planning-Calculator---STAFF-BETA.git
+cd 2026-Course-Planning-Calculator---STAFF-BETA
+open index.html            # or double-click it
+```
+
+- After editing, hard-refresh the browser: **⌘⇧R** (Mac) / **Ctrl+Shift+R**
+  (Windows).
+- Add `?debug` to the URL to see which program and year were loaded.
+- Optional, with [Node.js](https://nodejs.org) installed: `node scripts/check-data.js` validates the data files.
+
+---
+
+## Documentation
+
+| Document | Read it if you want to… |
+|---|---|
+| **[User guide](docs/user-guide.md)** | use the website, or help a student use it |
+| **[Architecture](docs/architecture.md)** | understand how the code works: files, data flow, state, every function |
+| **[Maintaining](docs/maintaining.md)** | update courses or curricula, do the yearly update, test, or deploy |
+
+---
+
+## Project structure
+
+```
+index.html            Page markup
+css/styles.css        All styling (matches the CEN100 Assignment Calculator)
+assets/               Logo
+
+data/                 ← what you'll edit most
+  courses.js          Every course once: title, prerequisites, calendar link settings
+  programs.js         Each program's curriculum per admit year
+  spring-summer.js    Courses offered in the Spring/Summer transition session
+
+js/                   Page logic
+  dom.js              DOM helpers
+  curriculum.js       Dropdowns, course checklist, remembered ticks
+  eligibility.js      Prerequisite parser and results page
+  navigation.js       Steps and browser Back/Forward
+  main.js             Startup and event wiring
+
+scripts/check-data.js Data validator (Node)
+docs/                 Documentation
+```
+
+---
+
+## Common tasks
+
+| Task | Where | Guide |
+|---|---|---|
+| New intake year, curriculum unchanged | `data/programs.js`: add the year to `years` | [Recipe](docs/maintaining.md#a-new-intake-year-curriculum-unchanged) |
+| Curriculum changed | `data/programs.js`: add a new version | [Recipe](docs/maintaining.md#the-curriculum-changed) |
+| New or renamed course | `data/courses.js` | [Recipe](docs/maintaining.md#add-a-new-course) |
+| New Spring/Summer course list | `data/spring-summer.js` | [Reference](docs/maintaining.md#dataspring-summerjs--springsummer-offerings) |
+| New calendar year | Several files | [Yearly runbook](docs/maintaining.md#yearly-update-runbook) |
+| Change page wording or links | `index.html`, `js/` | [Recipe](docs/maintaining.md#change-wording-on-the-page) |
+
+---
+
+## Contributing
+
+1. Branch from `main`.
+2. Make focused changes. Keep data and code in separate commits.
+3. Run `node scripts/check-data.js` and the
+   [manual test checklist](docs/maintaining.md#3-full-manual-test-checklist).
+4. Open a pull request.
+
+Conventions and deployment details are in
+[maintaining.md](docs/maintaining.md#code-conventions).
