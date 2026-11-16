@@ -1,0 +1,74 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check JavaScript syntax
+        run: for f in js/*.js data/*.js; do node --check "$f"; done
+
+      - name: Check course data
+        run: node scripts/check-data.js
+
+      - name: Check files referenced by index.html exist
+        run: |
+          missing=0
+          for p in $(grep -oE '(src|href)="[^"#:]+"' index.html | sed -E 's/.*="([^"]+)"/\1/'); do
+            if [ ! -e "$p" ]; then echo "::error file=index.html::Missing file: $p"; missing=1; fi
+          done
+          exit $missing
+
+  build:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build public tree
+        run: |
+          mkdir public
+          cp -r index.html css js data assets public/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    # Only publish from the main repo, never from PRs or forks.
+    if: github.event_name != 'pull_request' && github.repository_owner == 'fyeoapp'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
