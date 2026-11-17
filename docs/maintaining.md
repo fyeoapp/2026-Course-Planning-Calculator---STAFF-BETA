@@ -183,7 +183,7 @@ are listed first in the results, with their term.
 
 ```js
 const SPRING_SUMMER = {
-    session: 'Spring/Summer 2026',          // shown on the results page
+    session: 'Spring/Summer 2027',          // shown on the results page
     spring: ['AER222', 'BME100', ...],      // May–June
     summer: ['ELE202', 'MTE401', ...],      // July–August
     osms:   ['EMS201', ...],                // Management Sciences option (spring)
