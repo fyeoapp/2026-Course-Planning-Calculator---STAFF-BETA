@@ -152,7 +152,7 @@ erDiagram
         bool noOutline "no calendar page"
     }
     SPRING_SUMMER {
-        string session "e.g. 'Spring/Summer 2026'"
+        string session "e.g. 'Spring/Summer 2027'"
         string[] spring
         string[] summer
         string[] osms
