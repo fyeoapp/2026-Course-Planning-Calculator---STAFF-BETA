@@ -208,7 +208,7 @@ flowchart TD
     CS --> F
     F --> G{missing empty?}
     G -- yes, on Spring/Summer list --> R1[Offered in Spring/Summer<br/>and you're eligible]
-    G -- no, on Spring/Summer list --> R2[Can't take yet<br/>Still needs: …]
+    G -- no, on Spring/Summer list --> X3[not shown<br/>avoids exemption requests]
     G -- yes, not on list --> R3[Other courses<br/>collapsed]
     G -- no, not on list --> X2[not shown]
 ```
@@ -308,8 +308,8 @@ Every function, grouped by file. All are globals (classic scripts).
 | `updateAdmitYearsForProgram(program)` | Limit years to that program; pick the default |
 | `parseCourseEntry(entry)` | `'AER626 (note)'` → `{ code, name }` |
 | `courseOutlineUrl(code)` | Calendar URL from `CALENDAR_YEAR` + `SUBJECT_PATHS`, or `null`. Part-B capstones use the part-A page. |
-| `outlineLinkHtml(code)` | The "Outline" link HTML (empty if no URL) |
-| `curriculumChecklistHtml(semesters)` | Step 3 HTML: semesters, Select all toggles, count, Calculate |
+| `courseCodeHtml(code)` | The course code linked to its calendar page (plain bold code if no URL) |
+| `curriculumChecklistHtml(semesters)` | Step 3 HTML: semesters and Select all toggles, beside the sticky count + Calculate panel |
 | `renderCurriculum(program, year)` | Render Step 3 and restore ticks; `false` if no curriculum |
 | `renderCurriculumNotFound(program, year)` | Fallback Step 3 message (e.g. no year selected) |
 | `checklistInputs()` | All Step 3 checkboxes |
@@ -412,9 +412,9 @@ Calculator** so the two FYEO tools feel like one family. Keep them consistent.
 | `--blue` | `#1857b8` | Secondary buttons, links |
 | `--card-bg` | `#676cbc` | Step cards |
 | `--panel-bg` | `#f7f7fa` | Inputs, hover rows |
-| `--sidebar-bg` | `#e7ecff` | Sidebar, Outline pills |
+| `--sidebar-bg` | `#e7ecff` | Sidebar |
 | `--danger` | `#d7263d` | Warnings |
-| `--amber-bg` / `--amber-border` | `#fff9db` / `#fcc419` | Guidance boxes, term labels |
+| `--amber-bg` / `--amber-border` | `#fff9db` / `#fcc419` | Guidance boxes |
 
 **Sections of the stylesheet**, in order: base, header, layout, sidebar, main
 header row, stepper, step cards, Step 2 form, Step 3 checklist, results,
@@ -438,7 +438,7 @@ Font: **Inter** from Google Fonts, falling back to system fonts.
 | Dependency | Used for | If it's unavailable |
 |---|---|---|
 | Google Fonts (Inter) | Typography | Falls back to Segoe UI / Helvetica / Arial |
-| torontomu.ca | Outline links, sidebar links | Links fail; the calculator still works |
+| torontomu.ca | course-code links, sidebar links | Links fail; the calculator still works |
 | apps.apple.com, play.google.com | FYEng app links | Links fail |
 
 No analytics, no tracking, no API calls. Nothing the student enters leaves

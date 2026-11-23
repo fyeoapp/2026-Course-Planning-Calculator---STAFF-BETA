@@ -82,27 +82,35 @@ function courseOutlineUrl(code) {
     return `https://www.torontomu.ca/calendar/${CALENDAR_YEAR}/courses/${SUBJECT_PATHS[subject]}/${subject}/${page}/`;
 }
 
-function outlineLinkHtml(code) {
+// The course code, linked to its calendar page (prerequisites and course
+// description) when it has one, otherwise as plain bold text.
+function courseCodeHtml(code) {
     const url = courseOutlineUrl(code);
-    if (!url) return '';
-    return ' <a class="outline-link" href="' + url + '" target="_blank" rel="noopener">Outline</a>';
+    if (!url) return '<span class="course-code">' + code + '</span>';
+    return '<a class="course-code course-link" href="' + url + '" target="_blank" rel="noopener" ' +
+        'title="Open ' + code + ' in the TMU calendar (prerequisites and description)">' + code + '</a>';
 }
 
+// The checklist sits beside a sticky "Calculate" panel (see .checklist-actions
+// in css/styles.css) so the button stays next to whichever semester the
+// student has scrolled to.
 function curriculumChecklistHtml(semesters) {
-    let html = CHECKLIST_INTRO;
+    let html = CHECKLIST_INTRO + '<div class="checklist-layout"><div class="checklist-main">';
     semesters.forEach(semester => {
         html += '<div class="semester-head"><h3 class="group-title">' + semester.title + '</h3>' +
             '<button type="button" class="select-all" onclick="toggleSemester(this)">Select all</button></div>';
         html += '<div class="course-grid">';
         semester.courses.map(parseCourseEntry).forEach(({ code, name }) => {
             html += '<label><input type="checkbox" value="' + code + '">' +
-                '<span class="course-name"><span class="course-code">' + code + '</span> ' + name + '</span>' +
-                outlineLinkHtml(code) + '</label>';
+                '<span class="course-name">' + courseCodeHtml(code) + ' ' + name + '</span></label>';
         });
         html += '</div>';
     });
-    html += '<p class="selection-count" id="selectionCount"></p>';
-    html += '<div class="button-row"><button onclick="calculateEligibility()">Calculate Spring/Summer Eligibility</button></div>';
+    html += '</div>';
+    html += '<aside class="checklist-actions">' +
+        '<p class="selection-count" id="selectionCount"></p>' +
+        '<button onclick="calculateEligibility()">Calculate Spring/Summer Eligibility</button>' +
+        '</aside></div>';
     return html;
 }
 

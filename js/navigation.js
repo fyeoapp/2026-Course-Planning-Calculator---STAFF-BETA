@@ -16,6 +16,8 @@ function showStep(step) {
     } else {
         show('step' + step);
     }
+    // Step 3 widens the page for the checklist's sticky Calculate panel.
+    document.body.classList.toggle('on-checklist', step === 3);
     updateNavigation();
     window.scrollTo(0, 0);
 }

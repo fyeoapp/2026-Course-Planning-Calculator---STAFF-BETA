@@ -6,9 +6,9 @@
 //                     Omit when there are none.
 //   coreqs, antireqs, customRequisites, description   optional reference info
 //   noOutline         true when the TMU calendar has no page for the course,
-//                     so no "Outline" link is shown
+//                     so its code is shown unlinked
 
-// "Outline" links point to the course's page in this TMU calendar year:
+// Course-code links point to the course's page in this TMU calendar year:
 //   https://www.torontomu.ca/calendar/<CALENDAR_YEAR>/courses/<subject path>/<SUBJECT>/<number>/
 const CALENDAR_YEAR = '2026-2027';
 

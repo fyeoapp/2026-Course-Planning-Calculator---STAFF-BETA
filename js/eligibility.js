@@ -114,28 +114,17 @@ function assessCourses() {
         // Every Spring/Summer course in this curriculum is already ticked.
         allOfferedCompleted: offeredInChecklist.length > 0 && offeredInChecklist.every(c => completed.has(c)),
         springSummer: results.filter(r => r.springSummer && r.missing.length === 0),
-        notYet: results.filter(r => r.springSummer && r.missing.length > 0)
-            .sort((a, b) => a.missing.length - b.missing.length),
+        // Not listed (to avoid exemption requests); only used to pick the empty-state message.
+        notYet: results.filter(r => r.springSummer && r.missing.length > 0),
         otherEligible: results.filter(r => !r.springSummer && r.missing.length === 0),
     };
 }
 
+// One result line: the linked course code with its title next to it, e.g.
+// "EES512 Electric Circuits". The link opens the calendar page, which has the
+// prerequisites and course description.
 function resultRowHtml(result) {
-    const title = COURSES[result.code].title;
-    let reason;
-    if (result.missing.length) {
-        reason = 'Still needs: ' + result.missing.map(formatCourseCode).join(', ');
-    } else if (result.prereqs) {
-        reason = 'Prerequisites met: ' + result.prereqs;
-    } else {
-        reason = 'No prerequisites';
-    }
-    return '<li class="result-row">' +
-        '<div class="result-main"><span class="course-code">' + formatCourseCode(result.code) + '</span> ' + title +
-        (result.term ? '<span class="term-badge">' + result.term + '</span>' : '') +
-        outlineLinkHtml(result.code) + '</div>' +
-        '<div class="result-reason' + (result.missing.length ? ' is-missing' : '') + '">' + reason + '</div>' +
-        '</li>';
+    return '<li class="result-row">' + courseCodeHtml(result.code) + ' ' + COURSES[result.code].title + '</li>';
 }
 
 function resultListHtml(results) {
@@ -148,7 +137,8 @@ function resultsHtml(assessment) {
 
     html += '<h3 class="result-heading">Offered in Spring/Summer and you\'re eligible</h3>';
     html += '<p class="result-note">Based on the ' + SPRING_SUMMER.session + ' transition session course list. ' +
-        'Upper-year courses run only with sufficient enrolment.</p>';
+        'Upper-year courses run only with sufficient enrolment. ' +
+        'Click a course code to see its prerequisites and course description.</p>';
     if (springSummer.length) {
         html += resultListHtml(springSummer);
     } else if (allOfferedCompleted) {
@@ -156,7 +146,7 @@ function resultsHtml(assessment) {
             'Check the courses below or speak with your program advisor about other options.</p>';
     } else if (notYet.length) {
         html += '<p class="result-empty">None of the Spring/Summer courses in your curriculum are available to you yet. ' +
-            'See what\'s still needed below, or speak with your program advisor.</p>';
+            'Speak with your program advisor about your options.</p>';
     } else {
         html += '<p class="result-empty">None of your curriculum\'s remaining courses are offered in Spring/Summer. ' +
             'Check the courses below or speak with your program advisor.</p>';
@@ -166,11 +156,6 @@ function resultsHtml(assessment) {
         html += '<div class="load-warning">You qualify for ' + springSummer.length + ' Spring/Summer courses, ' +
             'but they run in a compressed 6-week format. Take no more than ' + MAX_RECOMMENDED_COURSES +
             ' per term.</div>';
-    }
-
-    if (notYet.length) {
-        html += '<h3 class="result-heading">Spring/Summer courses you can\'t take yet</h3>';
-        html += resultListHtml(notYet);
     }
 
     if (otherEligible.length) {
