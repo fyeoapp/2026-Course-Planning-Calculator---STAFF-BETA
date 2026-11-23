@@ -478,22 +478,53 @@ select:focus-visible {
     white-space: nowrap
 }
 
-/* "Outline" link to the course's TMU calendar page */
-.course-grid .outline-link {
-    flex-shrink: 0;
-    margin-left: auto;
-    padding: 0 10px;
-    border-radius: 999px;
-    background: var(--sidebar-bg);
-    color: var(--blue);
-    font-size: 0.8rem;
-    font-weight: 600;
-    line-height: 1.8;
-    text-decoration: none;
+/* Course code linked to its TMU calendar page (prerequisites + description) */
+.course-link {
+    color: var(--blue) !important;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
-.course-grid .outline-link:hover {
-    text-decoration: underline;
+.course-link:hover {
+    color: var(--accent) !important
+}
+
+/* Step 3: checklist beside a sticky "Calculate" panel, so the button stays
+   next to whichever semester the student has scrolled to. */
+body.on-checklist .main-inner {
+    max-width: 1080px
+}
+
+.checklist-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 210px;
+    gap: 28px;
+    align-items: start;
+}
+
+.checklist-actions {
+    position: sticky;
+    top: calc(50vh - 40px);
+    margin-top: 32px;
+    padding: 18px 16px;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--text);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+.section .checklist-actions .selection-count {
+    margin: 0 0 4px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--text-muted)
+}
+
+.section .checklist-actions button {
+    margin: 8px 0 0;
+    background: var(--yellow);
+    line-height: 1.3
 }
 
 .info-btn {
@@ -539,12 +570,6 @@ select:focus-visible {
     background: rgba(255, 255, 255, 0.15);
 }
 
-.section .selection-count {
-    margin: 28px 0 0;
-    font-weight: 600;
-    text-align: center;
-}
-
 /* Step 4 results */
 #eligibleCourses {
     padding: 24px 28px;
@@ -569,59 +594,8 @@ select:focus-visible {
 }
 
 .result-row {
-    padding: 12px 0;
-    border-top: 1px solid #ececf3;
-}
-
-.result-row:first-child {
-    border-top: none
-}
-
-.result-main {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
+    padding: 8px 0;
     line-height: 1.45;
-}
-
-.result-main .outline-link {
-    flex-shrink: 0;
-    margin-left: auto;
-    padding: 0 10px;
-    border-radius: 999px;
-    background: var(--sidebar-bg);
-    color: var(--blue);
-    font-size: 0.8rem;
-    font-weight: 600;
-    line-height: 1.8;
-    text-decoration: none;
-}
-
-.result-main .term-badge {
-    flex-shrink: 0;
-    margin-left: auto;
-    padding: 0 10px;
-    border-radius: 999px;
-    background: var(--amber-bg);
-    color: #7a5b00;
-    font-size: 0.8rem;
-    font-weight: 600;
-    line-height: 1.8;
-    white-space: nowrap;
-}
-
-.result-main .term-badge + .outline-link {
-    margin-left: 0
-}
-
-.result-reason {
-    margin-top: 4px;
-    color: #4b7a3c;
-    font-size: 0.9rem;
-}
-
-.result-reason.is-missing {
-    color: #a1552b
 }
 
 #eligibleCourses .result-empty,
@@ -718,6 +692,28 @@ select:focus-visible {
 
     .main-container {
         padding: 24px 20px 48px
+    }
+
+    .checklist-layout {
+        grid-template-columns: 1fr;
+        gap: 0
+    }
+
+    .checklist-actions {
+        top: auto;
+        bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .section .checklist-actions .selection-count {
+        flex: 0 0 auto;
+        margin: 0
+    }
+
+    .section .checklist-actions button {
+        margin: 0
     }
 }
 

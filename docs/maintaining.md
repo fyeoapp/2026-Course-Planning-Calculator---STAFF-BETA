@@ -52,10 +52,10 @@ rarely need to touch `js/`.
 ### `data/courses.js` — course catalog
 
 Every course is defined **exactly once**, keyed by its code with no space.
-The file also holds the settings used to build Outline links.
+The file also holds the settings used to build course-code links.
 
 ```js
-// Outline links point to the course's page in this TMU calendar year.
+// course-code links point to the course's page in this TMU calendar year.
 const CALENDAR_YEAR = '2026-2027';
 
 // Calendar URL path for each course subject.
@@ -84,20 +84,20 @@ const COURSES = {
 | `prereqs` | no | **Drives eligibility.** Copy it word for word from the calendar course page. Omit if there are none. |
 | `coreqs`, `antireqs`, `customRequisites` | no | Reference only. Copied from the calendar; not checked. |
 | `description` | no | Reference only |
-| `noOutline` | no | `true` when the course has no page in the current calendar. Hides its Outline link and excludes it from results. |
+| `noOutline` | no | `true` when the course has no page in the current calendar. Hides its course-code link and excludes it from results. |
 
 Rules:
 
 - Keep entries in **alphabetical order** by code.
 - Leave a field out rather than writing `'None'`.
 - **Two-term capstones** are split into part A and part B entries (`COE70A`,
-  `COE70B`); the calendar writes them as `COE 70A/B`. Part B's Outline link
+  `COE70B`); the calendar writes them as `COE 70A/B`. Part B's course-code link
   goes to the part-A page.
 - **Placeholders** stand for "pick from a table" requirements:
   `CORE_ELECTIVES` (title "Core electives") and `CHE___` (title "Core Elective
   (see Table I)"). They appear as checkboxes but never in results.
 
-**Outline links** are built as:
+**course-code links** are built as:
 
 ```
 https://www.torontomu.ca/calendar/<CALENDAR_YEAR>/courses/<SUBJECT_PATHS[subject]>/<SUBJECT>/<number>/
@@ -106,7 +106,7 @@ MTH140 → https://www.torontomu.ca/calendar/2026-2027/courses/mathematics/MTH/1
 
 A course with a **new subject prefix** needs a `SUBJECT_PATHS` entry. Copy
 the path from any link to that subject's courses on a calendar page. Without
-one, the course has no Outline link and is left out of results.
+one, the course has no course-code link and is left out of results.
 
 ### `data/programs.js` — curricula
 
@@ -200,7 +200,7 @@ const SPRING_SUMMER = {
 | Data | Source |
 |---|---|
 | Curricula (`programs.js`) | Program pages: `https://www.torontomu.ca/calendar/<YYYY-YYYY>/programs/feas/<slug>/` |
-| Titles and requisites (`courses.js`) | Course pages: the course's Outline link |
+| Titles and requisites (`courses.js`) | Course pages: the course's course-code link |
 | Spring/Summer offerings | **"Significant Dates & Courses"** on the [Engineering Transition Program page](https://www.torontomu.ca/engineering-architectural-science/programs/undergraduate-programs/transition-program/) |
 
 Program page slugs:
@@ -256,7 +256,7 @@ the courses students use most: first- and second-year courses, and everything
 on the Spring/Summer list.
 
 **5. Calendar year for links.** In `data/courses.js` set
-`CALENDAR_YEAR = '2027-2028'`. Open a few Outline links to confirm they load.
+`CALENDAR_YEAR = '2027-2028'`. Open a few course-code links to confirm they load.
 If a course has been dropped from the calendar, add `noOutline: true` to it.
 
 **6. Spring/Summer offerings.** When the new transition session is posted,
@@ -429,15 +429,15 @@ window.
 | 3 | Click **Yes** | Step 2; message gone; "Program" highlighted |
 | 4 | Browser Back, then Forward | Step 1, then Step 2; never leaves the site |
 | 5 | Pick Mechanical Engineering, Continue | Year list shows only 2026; checklist shows "0 of 61 courses selected" |
-| 6 | **Select all** on semesters 1 and 2 | "12 of 61"; buttons change to **Clear**; Clear unticks |
+| 6 | **Select all** on semesters 1 and 2; scroll | "12 of 61"; buttons change to **Clear**; Clear unticks; the Calculate panel stays on the right as you scroll |
 | 7 | ← Back, then Continue | Ticks still there |
 | 8 | Refresh the page, Yes, Continue | Mechanical pre-selected; ticks still there |
-| 9 | Calculate | 8 Spring courses eligible (MEC 323, MTH 425, PCS 213, EES 512, MEC 309, MEC 311, MTH 410, MTH 510), each with a Spring label and "Prerequisites met"; "You qualify for 8" course-load warning; "Other courses" collapsed |
-| 10 | Click an **Outline** link | Correct calendar page opens in a new tab; checkbox not ticked |
-| 11 | Browser Back, Clear semester 1, Calculate | "Can't take yet" group with "Still needs:" lines, e.g. MTH 425 still needs MTH 140, MTH 141 |
+| 9 | Calculate | 8 Spring courses eligible (MEC 323, MTH 425, PCS 213, EES 512, MEC 309, MEC 311, MTH 410, MTH 510), as a plain list of linked code + title; "You qualify for 8" course-load warning; "Other courses" collapsed |
+| 10 | Click a course code (checklist and results) | Correct calendar page opens in a new tab; checkbox not ticked |
+| 11 | Chemical Engineering (Co-op), 2026, tick semesters 1 and 2, Calculate | Eligible list is exactly **EES512** Electric Circuits and **MTH425** Differential Equations and Vector Calculus; no "can't take yet" section |
 | 12 | Print / save as PDF | Preview shows only results and guidance; "Other courses" expanded |
 | 13 | Try a few other programs and years | Results appear; no `CORE_ELECTIVES` or `CHE___` in results; no console errors |
-| 14 | Narrow the window to phone width | Sidebar below; Back above the title; course codes never split across lines |
+| 14 | Narrow the window to phone width | Sidebar below; Back above the title; course codes never split across lines; Calculate panel sticks to the bottom of the screen |
 | 15 | Open `index.html?debug` | Status pill shows, e.g. "Rendering: Mechanical Engineering:2026" |
 
 ---
@@ -504,7 +504,7 @@ gh pr create --base main               # review, then merge into main
 | A course shows `??` or only its code | Not in `courses.js` | Add it; the checker lists these |
 | A course never appears in results | No calendar page (`noOutline`), unknown subject, or it's a placeholder | Add its `SUBJECT_PATHS` entry, or check `noOutline` |
 | An upper-year course is never eligible | Its `prereqs` are wrong or reference a course not in the checklist | Compare with the calendar course page |
-| Outline link gives "page not found" | Course dropped from the calendar, or wrong `SUBJECT_PATHS` | Add `noOutline: true`, or fix the path |
+| course-code link gives "page not found" | Course dropped from the calendar, or wrong `SUBJECT_PATHS` | Add `noOutline: true`, or fix the path |
 | Ticks or saved program not remembered | Browser blocks storage (e.g. strict private mode) | Expected; the page still works without it |
 | Browser Back leaves the site | You're on Step 1 (there's nothing before it) | Expected |
 

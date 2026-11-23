@@ -4,19 +4,17 @@ A web page for TMU engineering students to plan their **Spring/Summer**
 courses. Students confirm their standing, pick their program and admit year,
 and tick the courses they've completed. The calculator then shows:
 
-- the Spring/Summer courses they're **eligible** for, with when each runs and
-  why they qualify;
-- the Spring/Summer courses they **can't take yet**, and exactly what's
-  missing;
+- a simple list of the Spring/Summer courses they're **eligible** for;
 - other courses they meet the prerequisites for.
 
-Every course links to its page in the TMU undergraduate calendar, and the
+Every course code links to its page in the TMU undergraduate calendar
+(prerequisites and course description), and the
 results can be printed or saved as a PDF for an advising appointment.
 
 It's a static site (plain HTML, CSS and JavaScript) with no backend, build
 step or install. Open `index.html` and it runs.
 
-![The results step: eligible Spring/Summer courses with term labels, Outline links and the prerequisites each one meets](docs/images/overview.jpg)
+![The results step: eligible Spring/Summer courses](docs/images/overview.jpg)
 
 ---
 

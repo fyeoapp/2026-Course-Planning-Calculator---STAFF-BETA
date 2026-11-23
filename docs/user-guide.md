@@ -6,7 +6,7 @@ it.
 
 > **What it does:** you tell it your program, your admit year and the courses
 > you've completed. It tells you which Spring/Summer courses you can take,
-> which ones you can't take yet (and why), and what else you qualify for.
+> and what else you qualify for.
 
 It's a guide, not an official record. Always confirm your plan with your
 program department or academic advisor before enrolling.
@@ -88,7 +88,7 @@ selects it for you.
 ## Step 3: Completed courses
 
 You'll see your program's full curriculum, grouped by semester. For each
-course you'll see its code (in bold), its title, and an **Outline** link.
+course you'll see its code (a link) with its title next to it.
 
 **Tick every course you've completed with a D- or higher, or received credit
 for.** Leave everything else unticked, including courses you're taking right
@@ -98,43 +98,45 @@ Shortcuts:
 
 - **Select all** next to a semester ticks every course in it. Once they're all
   ticked, the button changes to **Clear**, which unticks them.
-- The line above the button shows your progress, for example
-  **"14 of 61 courses selected"**.
-- **Outline** opens that course's page in the TMU undergraduate calendar in a
-  new tab: description, prerequisites, antirequisites and weekly hours.
-  Clicking it doesn't tick the course.
+- The panel on the right shows your progress, for example
+  **"14 of 61 courses selected"**, with the **Calculate** button under it.
+  The panel stays beside the checklist as you scroll, so you can calculate as
+  soon as you've ticked your last completed semester. (On a phone it sits
+  along the bottom of the screen.)
+- Clicking a **course code** opens that course's page in the TMU
+  undergraduate calendar in a new tab: description, prerequisites,
+  antirequisites and weekly hours. Clicking it doesn't tick the course.
 
-![The checklist with 1st Semester fully ticked; each course shows its bold code, title and an Outline link, and the semester's toggle reads Clear](images/step3-checklist.jpg)
+![The checklist with 1st Semester fully ticked; each course shows its linked code and title, and the semester's toggle reads Clear](images/step3-checklist.jpg)
 
 Some entries are notes rather than single courses, such as *Core electives
 (see Table II)*. You can tick them to keep track, but they aren't used in the
 results.
 
-When you're done, click **Calculate Spring/Summer Eligibility**.
+When you're done, click **Calculate Spring/Summer Eligibility** in the
+panel on the right.
 
-![The bottom of the checklist: "12 of 61 courses selected" above the yellow Calculate button](images/step3-count.jpg)
+![The Calculate panel: "12 of 61 courses selected" above the yellow Calculate button](images/step3-count.jpg)
 
 ---
 
 ## Step 4: Results
 
-The results page has up to three groups. Every course shows its title and
-**Outline** link, and a line explaining the result.
+The results page has up to two groups, each a simple list: the course code
+(a link) with its title next to it, for example:
+
+> **EES512** Electric Circuits
+> **MTH425** Differential Equations and Vector Calculus
+
+Click a course code to open its calendar page, with the prerequisite details
+and course description.
 
 ### 1. Offered in Spring/Summer and you're eligible
 
 Courses on the FEAS Spring/Summer transition-session list whose prerequisites
-you've met. Each one has a label showing when it runs:
+you've met.
 
-| Label | When |
-|---|---|
-| **Spring** | Second week of May to the end of June |
-| **Summer** | Early July to late August |
-| **Spring or Summer** | Offered in both terms |
-
-The green line lists the prerequisites you've met, or says *No prerequisites*.
-
-![Results: eligible Spring/Summer courses, each with a Spring label, an Outline link and a green "Prerequisites met" line](images/step4-eligible.jpg)
+![Results: eligible Spring/Summer courses as a list of linked course codes and titles](images/step4-eligible.jpg)
 
 If more than two courses qualify, a yellow note reminds you that Spring/Summer
 courses run in a **compressed 6-week format** and you should **take no more
@@ -144,19 +146,10 @@ If none qualify, you'll see one of these instead:
 
 - *You've already completed every Spring/Summer course in your curriculum*
 - *None of the Spring/Summer courses in your curriculum are available to you
-  yet* (see the next group for what's missing)
+  yet* (speak with your program advisor)
 - *None of your curriculum's remaining courses are offered in Spring/Summer*
 
-### 2. Spring/Summer courses you can't take yet
-
-Spring/Summer courses you **don't** have the prerequisites for yet. The orange
-**"Still needs:"** line lists exactly which courses are missing, so you can
-see what to take first. Courses missing the fewest prerequisites are listed
-first.
-
-![The course-load warning, then "Spring/Summer courses you can't take yet" with orange "Still needs" lines and Spring or Summer labels](images/step4-not-yet.jpg)
-
-### 3. Other courses you meet the prerequisites for
+### 2. Other courses you meet the prerequisites for
 
 Collapsed by default. Click it to expand. These are courses you qualify for
 that **aren't** on the Spring/Summer list, so they're usually taken in Fall or
@@ -181,7 +174,7 @@ This is handy to bring to an advising appointment.
   session (the results say which one). **Upper-year courses only run with
   sufficient enrolment**, and offerings can change.
 - Only **prerequisites** are checked. Corequisites, antirequisites and program
-  restrictions aren't. Check the course's Outline page.
+  restrictions aren't. Click the course code to check its calendar page.
 - Results are only as accurate as the courses you tick.
 
 ---
@@ -238,11 +231,10 @@ Tick the course you received credit for. Your advisement report lists
 credits and substitutions.
 
 **A course I need isn't showing as eligible.**
-Click its **Outline** link to check its prerequisites, and make sure you've
-ticked every prerequisite you've completed. If it's in "can't take yet", the
-"Still needs" line tells you what's missing.
+Click its course code to check its prerequisites in the calendar, and make
+sure you've ticked every prerequisite you've completed.
 
-**A course says "Spring" but isn't in the timetable.**
+**An eligible course isn't in the timetable.**
 Upper-year courses run only with enough enrolment, and the list may be from
 the previous year. Check with your department.
 
